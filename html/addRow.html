@@ -1,0 +1,16 @@
+<div id="addRowArea" ng-controller="addRowAreaController">
+  <div>
+    <div ng-repeat="att in attributes">
+      <div ng-if="!checkIfIsReference(att)" class="spaceBetweenAtt">
+        {{att}}: <input type="text" id="{{att}}"/>
+      </div>
+      <div ng-if="checkIfIsReference(att)" class="spaceBetweenAtt">
+        {{att}}: <select>
+                   <option ng-repeat="ref in getReferences(att)" value="{{ref}}">{{ref}}</option>
+                 </select>
+      </div>
+    </div>
+    <button id="saveButton" ng-click="saveRecord()" class="paddingRigth">Save</button>
+    <button id="cancelButton" ng-click="cancelRecord()">Cancel</button>
+  </div>
+</div>

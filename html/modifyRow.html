@@ -1,0 +1,17 @@
+<div id="modifyRowArea" ng-controller="modifyRowAreaController">
+  <div>
+    <div ng-repeat="att in attributes">
+      <div ng-if="!checkIfIsReference(att.name)" class="spaceBetweenAtt">
+        {{att.name}}: <input type="text" id="{{att.name}}" value="{{att.value}}"/>
+      </div>
+      <div ng-if="checkIfIsReference(att.name)" class="spaceBetweenAtt">
+        {{att.name}}: <select>
+                        <option value="{{att.value}}" selected="selected">{{att.value}}</option>
+                        <option ng-repeat="ref in getReferences(att.name,att.value)" value="{{ref}}">{{ref}}</option>
+                      </select>
+      </div>
+    </div>
+    <button id="saveButton" ng-click="saveRecord()" class="paddingRigth">Save</button>
+    <button id="cancelButton" ng-click="cancelRecord()">Cancel</button>
+  </div>
+</div>
