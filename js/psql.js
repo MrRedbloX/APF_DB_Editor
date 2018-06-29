@@ -4,15 +4,15 @@ module.exports = {
         //You can run command "heroku config" to see what is Database URL from Heroku belt
         var conString = "postgres://192.168.133.136:5432/"+req.query.db;
         var client = new pg.Client(conString);
-        await client.connect();
-        var query = await client.query("select * from "+req.query.table);
+        async client.connect();
+        var query = async client.query("select * from "+req.query.table);
         res.rows.forEach(row=>{
           result.addRow(row);
           res.writeHead(200, {'Content-Type': 'text/plain'});
           res.write(JSON.stringify(result.rows, null, "    ") + "\n");
           res.end();
         });
-        await client.end();
+        async client.end();
 
   },
     addRecord : function(req, res){
