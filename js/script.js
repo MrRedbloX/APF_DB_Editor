@@ -65,8 +65,21 @@ app.factory('columnsDisplayFactory', function(){
   };
 });
 
+app.factory('postgresqlFactory', function(){
+  var theScope;
+
+  return{
+    setScope : function(scope){
+      theScope = scope;
+    },
+
+    getScope : function(){
+      return theScope;
+    }
+  };
+});
+
 app.controller('treeDatabaseAreaController', function($scope){
-  $
   $scope.databases = [
     {
       name : "DB1",
@@ -103,7 +116,9 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   ];
 });
 
-app.controller('buttonAreaController', function($scope, columnsDisplayFactory){
+app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
+
+  var postgresScope = postgresqlFactory.getScope();
 
   document.getElementById("displayButton").disabled = true;
   document.getElementById("addButton").disabled = true;
@@ -122,7 +137,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory){
       let table = temp[1];
       document.getElementById('addButton').disabled = false;
 
-      //Envoyer requete
+      postgresScope.getAllRec();
+      console.log(postgresScope.dataset);
     }
   }
 
@@ -252,10 +268,12 @@ app.controller('modifyRowAreaController', function($scope){
   };
 });
 
-app.controller('postgresqlController', function($scope,$http){
+app.controller('postgresqlController', function($scope,$http, postgresqlFactory){
+
+  postgresqlFactory.setScope($scope);
 
   $scope.getAllRec = function(){
-    $http({method: 'GET', url: '/db/readRecords'})
+    $http({method: 'GET', url: '/db/readRecords?db=catalogue&table=vcp_table'})
     .success(function(data, status) {
       $scope.dataset = data;
       })
