@@ -3,11 +3,11 @@ var express = require('express'),
     request = require('request'),
     bodyParser = require('body-parser'),
     app = express();
-var dbOperations = require("./psql.js");
+var dbOperations = require("js/psql.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
-    res.sendfile('index.html');
+    res.sendFile('index.html');
 } );
 app.get('/db/readRecords', function(req,res){
     dbOperations.getRecords(req,res);
