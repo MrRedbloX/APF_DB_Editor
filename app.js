@@ -3,7 +3,7 @@ var express = require('express'),
     request = require('request'),
     bodyParser = require('body-parser'),
     app = express();
-var dbOperations = require("js/psql.js");
+var dbOperations = require("/js/psql.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
