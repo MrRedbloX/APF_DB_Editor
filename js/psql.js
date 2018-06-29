@@ -5,16 +5,15 @@ module.exports = {
         var conString = "postgres://192.168.133.136:5432/"+req.query.db;
         var client = new pg.Client(conString);
         client.connect();
-        var query = client.query("select * from "+req.query.table);
-        query.on("row", function (row, result) {
-            result.addRow(row);
+        var query = await client.query("select * from "+req.query.table);
+        res.rows.forEach(row=>{
+          result.addRow(row);
+          res.writeHead(200, {'Content-Type': 'text/plain'});
+          res.write(JSON.stringify(result.rows, null, "    ") + "\n");
+          res.end();
         });
-        query.on("end", function (result) {
-            client.end();
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.write(JSON.stringify(result.rows, null, "    ") + "\n");
-            res.end();
-        });
+        await client.end();
+
   },
     addRecord : function(req, res){
         var pg = require('pg');
