@@ -5,9 +5,9 @@ var express = require('express'),
     app = express();
 var dbOperations = require("./psql.js");
 var logFmt = require("logfmt");
-app.set('views', __dirname + '/') ;
+app.set('views', __dirname + '/views') ;
 app.get('/' , function(req,res) {
-    res.sendfile('/index.html');
+    res.sendfile('views/index.html');
 } );
 app.get('/db/readRecords', function(req,res){
     dbOperations.getRecords(req,res);
