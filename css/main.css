@@ -29,6 +29,7 @@ div.showBorder {
 }
 
 div.displayArea {
+  position:relative;
   height: 100%;
   width: 50%;
   overflow: hidden;
@@ -82,4 +83,11 @@ button.paddingRigth{
 
  .spaceBetweenAtt{
    padding-bottom: 10px;
+ }
+
+ div.ngViewArea {
+   position: relative;
+   overflow: hidden;
+   padding-left: 30%;
+   padding-top: 5%;
  }

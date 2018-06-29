@@ -40,9 +40,6 @@ app.config(function($routeProvider) {
     .when("/", {
         templateUrl : "html/defaultDisplay.html"
     })
-    .when("/display", {
-        templateUrl : "html/tableDisplay.html"
-    })
     .when("/add", {
         templateUrl : "html/addRow.html"
     })
@@ -121,15 +118,16 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var postgresScope = postgresqlFactory.getScope();
 
   document.getElementById("displayButton").disabled = true;
-  document.getElementById("addButton").disabled = true;
-  document.getElementById("modifyButton").disabled = true;
-  document.getElementById("deleteButton").disabled = true;
+  if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
+  if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+  if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
   document.getElementById("clearButton").disabled = false;
 
   $scope.display = function(){
 
-    document.getElementById("modifyButton").disabled = true;
-    document.getElementById("deleteButton").disabled = true;
+    document.getElementById("columnsDisplayArea").style.display = "block";
+    if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+    if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
     if(tableSelected != null){
 
       let temp = tableSelected.split(';');
@@ -185,6 +183,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $scope.clear = function(){
+    document.getElementById("columnsDisplayArea").style.display = "none";
     document.getElementById("addButton").disabled = true;
     document.getElementById("modifyButton").disabled = true;
     document.getElementById("deleteButton").disabled = true;
