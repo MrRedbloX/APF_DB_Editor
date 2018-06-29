@@ -7,7 +7,7 @@ var dbOperations = require("./js/psql.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
-    res.sendFile('index.html');
+    res.sendFile(__dirname+'/index.html');
 } );
 app.get('/db/readRecords', function(req,res){
     dbOperations.getRecords(req,res);
