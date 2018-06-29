@@ -66,9 +66,7 @@ app.factory('columnsDisplayFactory', function(){
 });
 
 app.controller('treeDatabaseAreaController', function($scope){
-  var connect = connectToServer("192.168.133.136","5432");
-  getDBName(connect);
-  closeConnection(connect);
+  $
   $scope.databases = [
     {
       name : "DB1",
@@ -253,3 +251,34 @@ app.controller('modifyRowAreaController', function($scope){
     return ret;
   };
 });
+
+app.controller('postgresqlController', function($scope,$http)){
+
+  $scope.getAllRec = function(){
+    $http({method: 'GET', url: '/db/readRecords'})
+    .success(function(data, status) {
+      $scope.dataset = data;
+      })
+    .error(function(data, status) {
+      $scope.dataset = data || "Request failed ";
+      });
+  }
+
+  $scope.addRecord = function(){
+    $http({method: 'GET', url: '/db/addRecord?fName='+$scope.fName+'&lName='+$scope.lName+'&email='+$scope.email+'&mbl='+$scope.mbl})
+    .success(function(data, status) {
+      alert('Record Added');
+      $scope.getAllRec();
+    });
+  }
+
+  $scope.delRecord = function(recId){
+    console.log(recId);
+    if(confirm('Are you sure you want to delete this record ? ')){
+      $http({method: 'GET', url: '/db/delRecord?id='+recId})
+      .success(function(data, status) {
+        $scope.getAllRec();
+      });
+    }
+  }
+};
