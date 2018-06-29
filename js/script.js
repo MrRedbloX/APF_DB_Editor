@@ -281,4 +281,4 @@ app.controller('postgresqlController', function($scope,$http){
       });
     }
   }
-};
+});
