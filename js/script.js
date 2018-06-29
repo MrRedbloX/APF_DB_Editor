@@ -252,7 +252,7 @@ app.controller('modifyRowAreaController', function($scope){
   };
 });
 
-app.controller('postgresqlController', function($scope,$http)){
+app.controller('postgresqlController', function($scope,$http){
 
   $scope.getAllRec = function(){
     $http({method: 'GET', url: '/db/readRecords'})
