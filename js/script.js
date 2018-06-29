@@ -66,6 +66,9 @@ app.factory('columnsDisplayFactory', function(){
 });
 
 app.controller('treeDatabaseAreaController', function($scope){
+  var connect = connectToServer("192.168.133.136","5432");
+  getDBName(connect);
+  closeConnection(connect);
   $scope.databases = [
     {
       name : "DB1",
