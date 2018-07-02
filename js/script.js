@@ -1,4 +1,5 @@
 var exceptionDB = ['postgres', 'template0', 'template1'];
+var exceptionColumns = ['uuid'];
 
 var tableSelected = null;
 var isTableSelected = function (table){
