@@ -5,7 +5,7 @@ module.exports = {
         var conString = "postgres://postgres:postgres@192.168.133.136:5432/postgres";
         var client = new pg.Client(conString);
 
-        client.connect(function(err,client,done) {
+        client.connect(function(err,client) {
           if(err){
            console.log("Not able to get connection : "+ err);
            res.status(400).send(err);
@@ -13,7 +13,7 @@ module.exports = {
           else{
             console.log("ok");
             client.query("SELECT datname FROM pg_database" ,function(err,result) {
-              done(); // closing the connection;
+              client.end(); // closing the connection;
               if(err){
                  console.log(err);
                  res.status(400).send(err);
