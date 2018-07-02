@@ -88,10 +88,9 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
         if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
           postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){
             if(postgresScope.tableArray){
-              console.log(postgresScope.tableArray);
               $scope.databases.push({
                 name : postgresScope.dbArray.data[i].datname,
-                //table : listTables
+                table : postgresScope.tableArray.data
               });
               $scope.ready = true;
               $(function() {

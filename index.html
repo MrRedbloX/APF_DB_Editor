@@ -23,7 +23,7 @@
       <ul ng-repeat="db in databases">
          <li><a class="inactiveLink">{{db.name}}</a>
            <ul ng-repeat="tab in db.table">
-             <li id="{{db.name}};{{tab.name}}" onclick="isTableSelected(id)">{{tab.name}}</li>
+             <li id="{{db.name}};{{tab.table_name}}" onclick="isTableSelected(id)">{{tab.table_name}}</li>
            </ul>
          </li>
        </ul>
