@@ -10,7 +10,7 @@ module.exports = {
            console.log("Not able to get connection : "+ err);
            res.status(400).send(err);
           }
-          client.query('SELECT * FROM '++req.query.table ,function(err,result) {
+          client.query("SELECT * FROM "+req.query.table ,function(err,result) {
             done(); // closing the connection;
             if(err){
                console.log(err);
