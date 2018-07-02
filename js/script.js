@@ -80,14 +80,17 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
   $scope.ready = false;
 
   postgresScope.getDBName(function(){
-    if(!postgresScope.dataset){
+    if(!postgresScope.dbArray){
       alert('The request has failed, contact your administrator')
     }
     else{
-      for(let i=0;i<postgresScope.dataset.data.length;i++){
-        if(!exceptionDB.includes(postgresScope.dataset.data[i].datname)){
+      for(let i=0;i<postgresScope.dbArray.data.length;i++){
+        if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
+          let listTables = [];
+          for(let j=0;j<)
           $scope.databases.push({
-            name : postgresScope.dataset.data[i].datname
+            name : postgresScope.dbArray.data[i].datname,
+            table : listTables
           });
           $scope.ready = true;
           $(function() {
@@ -97,22 +100,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       }
     }
   });
-
-    /*{
-      name : "DB1",
-      table : [
-        {name : "T1"},
-        {name : "T2"}
-      ]
-    },
-    {
-      name : "DB2",
-      table : [
-        {name : "T1"},
-        {name : "T2"}
-      ]
-    }
-  ];*/
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
@@ -294,11 +281,27 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
-        $scope.dataset = data;
+        $scope.dbArray = data;
         callback();
       },
       function errorCallback(data) {
-        $scope.dataset = false;
+        $scope.dbArray = false;
+        callback();
+    });
+  };
+
+  $scope.getTableName = function(dbName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getDBName?db='+dbName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.tableArray = data;
+        callback();
+      },
+      function errorCallback(data) {
+        $scope.tableArray = false;
         callback();
     });
   };

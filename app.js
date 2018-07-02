@@ -12,6 +12,9 @@ app.get('/' , function(req,res) {
 app.get('/db/getDBName', function(req,res){
     dbOperations.getDBName(req,res);
 });
+app.get('/db/getTableName', function(req,res){
+    dbOperations.getTableName(req,res);
+});
 app.get('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
 });
