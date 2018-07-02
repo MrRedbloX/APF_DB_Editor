@@ -135,7 +135,14 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       let table = temp[1];
       document.getElementById('addButton').disabled = false;
 
-      postgresScope.getDBName();
+      postgresScope.getDBName(function(){
+        if(!postgresScope.dataset){
+          alert('The request has failed, contact your administrator')
+        }
+        else{
+          console.log(postgresScope.dataset.data[0].datname);
+        }
+      });
     }
   }
 
@@ -270,18 +277,19 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
 
   postgresqlFactory.setScope($scope);
 
-  $scope.getDBName = function(){
+  $scope.getDBName = function(callback){
     $http({
       method: 'GET',
       url: '/db/getDBName'
     })
     .then(
       function successCallback(data) {
-      $scope.dataset = data;
-      console.log($scope.dataset)
+        $scope.dataset = data;
+        callback();
       },
       function errorCallback(data) {
-      $scope.dataset = data || "Request failed ";
+        $scope.dataset = false;
+        callback();
     });
   };
 
