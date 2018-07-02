@@ -20,7 +20,7 @@
   </header>
   <div id="databasesArea" class="treeArea">
     <div id="treeDatabaseArea"  class="relative" ng-controller="treeDatabaseAreaController">
-      <ul ng-repeat="db in databases">
+      <ul ng-if="ready" ng-repeat="db in databases">
          <li><a class="inactiveLink">{{db.name}}</a>
            <ul ng-repeat="tab in db.table">
              <li id="{{db.name}};{{tab.name}}" onclick="isTableSelected(id)">{{tab.name}}</li>

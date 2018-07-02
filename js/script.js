@@ -81,6 +81,7 @@ app.factory('postgresqlFactory', function(){
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
   $scope.databases = [];
   var postgresScope = postgresqlFactory.getScope();
+  $scope.ready = false;
 
   postgresScope.getDBName(function(){
     if(!postgresScope.dataset){
@@ -92,7 +93,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
           $scope.databases.push({
             name : postgresScope.dataset.data[i].datname
           });
-          console.log($scope.databases[0].name);
+          $scope.ready = true;
         }
       }
     }
