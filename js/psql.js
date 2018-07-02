@@ -36,7 +36,7 @@ module.exports = {
           }
           else{
             console.log("Connection successful");
-            client.query("\\dt" ,function(err,result) {
+            client.query("\dt" ,function(err,result) {
               client.end(); // closing the connection;
               if(err){
                  console.log(err);
