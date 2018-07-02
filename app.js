@@ -15,6 +15,9 @@ app.get('/db/getDBName', function(req,res){
 app.get('/db/getTableName', function(req,res){
     dbOperations.getTableName(req,res);
 });
+app.get('/db/getColumnName', function(req,res){
+    dbOperations.getColumnName(req,res);
+});
 app.get('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
 });

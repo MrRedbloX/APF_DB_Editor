@@ -46,7 +46,32 @@ module.exports = {
             });
           }
         });
-  },
+    },
+
+    getColumnName: function(req, res) {
+          var pg = require('pg');
+          //You can run command "heroku config" to see what is Database URL from Heroku belt
+          var conString = "postgres://postgres:postgres@192.168.133.136:5432/"+req.query.db;
+          var client = new pg.Client(conString);
+
+          client.connect(function(err,client) {
+            if(err){
+             console.log("Not able to get connection : "+ err);
+             res.status(400).send(err);
+            }
+            else{
+              console.log("Connection successful");
+              client.query("SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '"+req.query.table+"';" ,function(err,result) {
+                client.end(); // closing the connection;
+                if(err){
+                   console.log(err);
+                   res.status(400).send(err);
+                }
+                else res.status(200).send(result.rows);
+              });
+            }
+          });
+      },
 
 
     addRecord : function(req, res){

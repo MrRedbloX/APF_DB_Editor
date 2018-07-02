@@ -98,7 +98,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
               });
             }
           });
-
         }
       }
     }
@@ -123,7 +122,10 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   ];
 });
 
-app.controller('buttonAreaController', function($scope, columnsDisplayFactory){
+app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
+
+  var columnsDisplayScope = columnsDisplayFactory.getScope();
+  var postgresScope = postgresqlFactory.getScope();
 
   document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
@@ -137,11 +139,16 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory){
     if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
     if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
     if(tableSelected != null){
-
       let temp = tableSelected.split(';');
       let db = temp[0];
       let table = temp[1];
       document.getElementById('addButton').disabled = false;
+
+      postgresScope.getColumnName(db, table, function(){
+        if(postgresScope.columnsArray){
+          console.log(postgresScope.columnsArray);
+        }
+      });
 
     }
   }
@@ -164,21 +171,19 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory){
   $scope.delete = function(){
     if(confirm('Do you want to delete this record ?')){
       //Faire requête de suppression
-
-      var aScope = columnsDisplayFactory.getScope();
       var isRecord;
       var rowSelectedParse = JSON.parse(rowSelected);
 
-      for(var i=0; i<aScope.tuples.length;i++){
+      for(var i=0; i<columnsDisplayScope.tuples.length;i++){
         isRecord = true;
-        for(var j=0; j<aScope.tuples[i].values.length; j++){
-          if(aScope.tuples[i].values[j] !== rowSelectedParse[j]){
+        for(var j=0; j<columnsDisplayScope.tuples[i].values.length; j++){
+          if(columnsDisplayScope.tuples[i].values[j] !== rowSelectedParse[j]){
             isRecord = false;
             break;
           }
         }
         if(isRecord){
-          aScope.tuples.splice(i,1);
+          columnsDisplayScope.tuples.splice(i,1);
           rowSelected = null;
           document.getElementById("modifyButton").disabled = true;
           document.getElementById("deleteButton").disabled = true;
@@ -305,6 +310,22 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
       },
       function errorCallback(data) {
         $scope.tableArray = false;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getColumnName = function(dbName,tableName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getColumnName?db='+dbName+'&table='+tableName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.columnsArray = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.columnsArray = false;
         if(callback) callback();
     });
   };
