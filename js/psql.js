@@ -10,14 +10,17 @@ module.exports = {
            console.log("Not able to get connection : "+ err);
            res.status(400).send(err);
           }
-          client.query("SELECT datname FROM pg_database" ,function(err,result) {
-            done(); // closing the connection;
-            if(err){
-               console.log(err);
-               res.status(400).send(err);
-            }
-            else res.status(200).send(result.rows);
-          });
+          else{
+            console.log("ok");
+            client.query("SELECT datname FROM pg_database" ,function(err,result) {
+              done(); // closing the connection;
+              if(err){
+                 console.log(err);
+                 res.status(400).send(err);
+              }
+              else res.status(200).send(result.rows);
+            });
+          }
         });
         /*await (client.connect());
         var query = await client.query("select * from "+req.query.table);
