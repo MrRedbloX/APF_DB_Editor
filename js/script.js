@@ -85,7 +85,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
     }
     else{
       for(let i=0;i<postgresScope.dataset.data.length;i++){
-        if(exceptionDB.indexOf(postgresScope.dataset.data[i].name) < 0){
+        if(!exceptionDB.includes(postgresScope.dataset.data[i].name)){
           $scope.databases.push({
             name : postgresScope.dataset.data[i].datname
           });
