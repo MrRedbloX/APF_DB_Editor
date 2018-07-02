@@ -12,7 +12,7 @@ module.exports = {
           }
           else{
             console.log("Connection successful");
-            client.query("SELECT datname FROM pg_database" ,function(err,result) {
+            client.query("SELECT datname FROM pg_database ORDER BY datname;" ,function(err,result) {
               client.end(); // closing the connection;
               if(err){
                  console.log(err);
@@ -36,7 +36,7 @@ module.exports = {
           }
           else{
             console.log("Connection successful");
-            client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = \"public\" AND table_type = \"table\" ORDER BY table_name;" ,function(err,result) {
+            client.query('SELECT table_name FROM information_schema.tables WHERE table_schema = "public" ORDER BY table_name;' ,function(err,result) {
               client.end(); // closing the connection;
               if(err){
                  console.log(err);
