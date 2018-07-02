@@ -20,14 +20,14 @@ module.exports = {
         var conString = process.env.DATABASE_URL ||  "postgres://postgres:Welcome123@localhost:5432/postgres";
         var client = new pg.Client(conString);
         client.connect();
-        var query = client.query("insert into employee (firstName,lastName,email,mobile) "+
+        /*var query = client.query("insert into employee (firstName,lastName,email,mobile) "+
                                 "values ('"+req.query.fName+"','"+req.query.lName+"','"+
                                     req.query.email+"','"+req.query.mbl+"')");
         query.on("end", function (result) {
             client.end();
             res.write('Success');
             res.end();
-        });
+        });*/
     },
      delRecord : function(req, res){
         var pg = require('pg');
