@@ -1,8 +1,8 @@
 module.exports = {
-  getRecords: function(req, res) {
+  getDBName: function(req, res) {
         var pg = require('pg');
         //You can run command "heroku config" to see what is Database URL from Heroku belt
-        var conString = "postgres://192.168.133.136:5432/"+req.query.db;
+        var conString = "postgres://192.168.133.136:5432/";
         var client = new pg.Client(conString);
 
         client.connect(connectionString,function(err,client,done) {
@@ -10,7 +10,7 @@ module.exports = {
            console.log("Not able to get connection : "+ err);
            res.status(400).send(err);
           }
-          client.query("SELECT * FROM "+req.query.table ,function(err,result) {
+          client.query("SELECT datname FROM pg_database" ,function(err,result) {
             done(); // closing the connection;
             if(err){
                console.log(err);

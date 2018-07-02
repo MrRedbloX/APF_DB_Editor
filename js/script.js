@@ -135,7 +135,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       let table = temp[1];
       document.getElementById('addButton').disabled = false;
 
-      postgresScope.getAllRec();
+      postgresScope.getDBName();
       console.log(postgresScope.dataset);
     }
   }
@@ -271,10 +271,10 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
 
   postgresqlFactory.setScope($scope);
 
-  $scope.getAllRec = function(){
+  $scope.getDBName = function(){
     $http({
       method: 'GET',
-      url: '/db/readRecords?db=catalogue&table=vcp_table'
+      url: '/db/getDBName'
     })
     .then(
       function successCallback(data) {

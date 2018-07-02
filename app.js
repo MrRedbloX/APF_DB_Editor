@@ -9,8 +9,8 @@ app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
     res.sendFile(__dirname+'/index.html');
 } );
-app.get('/db/readRecords', function(req,res){
-    dbOperations.getRecords(req,res);
+app.get('/db/getDBName', function(req,res){
+    dbOperations.getDBName(req,res);
 });
 app.get('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
