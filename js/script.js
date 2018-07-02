@@ -1,7 +1,3 @@
-$(function() {
-  $('#treeDatabaseArea').jstree();
-});
-
 var exceptionDB = ['postgres', 'template0', 'template1'];
 
 var tableSelected = null;
@@ -94,6 +90,9 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
             name : postgresScope.dataset.data[i].datname
           });
           $scope.ready = true;
+          $(function() {
+            $('#treeDatabaseArea').jstree();
+          });
         }
       }
     }
