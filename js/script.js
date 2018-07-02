@@ -272,14 +272,18 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
   postgresqlFactory.setScope($scope);
 
   $scope.getAllRec = function(){
-    $http({method: 'GET', url: '/db/readRecords?db=catalogue&table=vcp_table'})
-    .success(function(data, status) {
+    $http({
+      method: 'GET',
+      url: '/db/readRecords?db=catalogue&table=vcp_table'
+    })
+    .then(
+      function successCallback(data) {
       $scope.dataset = data;
-      })
-    .error(function(data, status) {
+      },
+      function errorCallback(data) {
       $scope.dataset = data || "Request failed ";
-      });
-  }
+      }
+    });
 
   $scope.addRecord = function(){
     $http({method: 'GET', url: '/db/addRecord?fName='+$scope.fName+'&lName='+$scope.lName+'&email='+$scope.email+'&mbl='+$scope.mbl})
