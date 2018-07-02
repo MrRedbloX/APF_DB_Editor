@@ -87,11 +87,10 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       alert('The request has failed, contact your administrator')
     }
     else{
-      console.log(postgresScope.dataset.data[0].datname);
       for(let i=0;i<postgresScope.dataset.data.length;i++){
-        if(!(postgresScope.dataset.data[i] in exceptionDB)){
+        if(exceptionDB.indexOf(postgresScope.dataset.data[i]) < 0){
           $scope.databases.push({
-            name : postgresScope.dataset.data[i]
+            "name" : postgresScope.dataset.data[i]
           });
         }
       }
