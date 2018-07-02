@@ -136,7 +136,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById('addButton').disabled = false;
 
       postgresScope.getDBName();
-      console.log(postgresScope.dataset);
     }
   }
 
@@ -279,6 +278,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     .then(
       function successCallback(data) {
       $scope.dataset = data;
+      console.log($scope.dataset)
       },
       function errorCallback(data) {
       $scope.dataset = data || "Request failed ";

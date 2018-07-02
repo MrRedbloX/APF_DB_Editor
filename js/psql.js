@@ -11,7 +11,7 @@ module.exports = {
            res.status(400).send(err);
           }
           else{
-            console.log("ok");
+            console.log("Request databases successful");
             client.query("SELECT datname FROM pg_database" ,function(err,result) {
               client.end(); // closing the connection;
               if(err){
