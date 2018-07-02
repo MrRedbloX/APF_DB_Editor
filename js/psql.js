@@ -5,7 +5,7 @@ module.exports = {
         var conString = "postgres://192.168.133.136:5432/";
         var client = new pg.Client(conString);
 
-        client.connect(conString,function(err,client,done) {
+        client.connect(function(err,client,done) {
           if(err){
            console.log("Not able to get connection : "+ err);
            res.status(400).send(err);
@@ -16,7 +16,7 @@ module.exports = {
                console.log(err);
                res.status(400).send(err);
             }
-            res.status(200).send(result.rows);
+            else res.status(200).send(result.rows);
           });
         });
         /*await (client.connect());
