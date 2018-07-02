@@ -2,6 +2,8 @@ $(function() {
   $('#treeDatabaseArea').jstree();
 });
 
+var exceptionDB = ['postgres', 'template0', 'template1'];
+
 var tableSelected = null;
 var isTableSelected = function (table){
   tableSelected = table;
@@ -76,9 +78,27 @@ app.factory('postgresqlFactory', function(){
   };
 });
 
-app.controller('treeDatabaseAreaController', function($scope){
-  $scope.databases = [
-    {
+app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
+  $scope.databases = [];
+  var postgresScope = postgresqlFactory.getScope();
+
+  postgresScope.getDBName(function(){
+    if(!postgresScope.dataset){
+      alert('The request has failed, contact your administrator')
+    }
+    else{
+      console.log(postgresScope.dataset.data[0].datname);
+      for(let i=0;i<postgresScope.dataset.data.length;i++){
+        if(!(postgresScope.dataset.data[i] in exceptionDB)){
+          $scope.databases.push({
+            name : postgresScope.dataset.data[i]
+          });
+        }
+      }
+    }
+  });
+
+    /*{
       name : "DB1",
       table : [
         {name : "T1"},
@@ -92,7 +112,7 @@ app.controller('treeDatabaseAreaController', function($scope){
         {name : "T2"}
       ]
     }
-  ];
+  ];*/
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
@@ -113,9 +133,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   ];
 });
 
-app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
-
-  var postgresScope = postgresqlFactory.getScope();
+app.controller('buttonAreaController', function($scope, columnsDisplayFactory){
 
   document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
@@ -135,14 +153,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       let table = temp[1];
       document.getElementById('addButton').disabled = false;
 
-      postgresScope.getDBName(function(){
-        if(!postgresScope.dataset){
-          alert('The request has failed, contact your administrator')
-        }
-        else{
-          console.log(postgresScope.dataset.data[0].datname);
-        }
-      });
     }
   }
 
