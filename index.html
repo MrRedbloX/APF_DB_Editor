@@ -19,7 +19,7 @@
     <h2 class="topRight">Orange Business Services</h2>
   </header>
   <div id="databasesArea" class="treeArea" ng-controller="treeDatabaseAreaController">
-    <div id="treeDatabaseArea"  ng-if="ready" class="relative">
+    <div id="treeDatabaseArea" class="relative">
       <ul ng-repeat="db in databases">
          <li><a class="inactiveLink">{{db.name}}</a>
            <ul ng-repeat="tab in db.table">
