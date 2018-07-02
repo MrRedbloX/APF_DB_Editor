@@ -92,6 +92,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
           $scope.databases.push({
             "name" : postgresScope.dataset.data[i]
           });
+          console.log($scope.databases);
         }
       }
     }
