@@ -86,16 +86,20 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
     else{
       for(let i=0;i<postgresScope.dbArray.data.length;i++){
         if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
-          let listTables = [];
-          for(let j=0;j<)
-          $scope.databases.push({
-            name : postgresScope.dbArray.data[i].datname,
-            table : listTables
+          postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){
+            if(postgresScope.tableArray){
+              console.log(postgresScope.tableArray);
+              $scope.databases.push({
+                name : postgresScope.dbArray.data[i].datname,
+                //table : listTables
+              });
+              $scope.ready = true;
+              $(function() {
+                $('#treeDatabaseArea').jstree();
+              });
+            }
           });
-          $scope.ready = true;
-          $(function() {
-            $('#treeDatabaseArea').jstree();
-          });
+
         }
       }
     }
@@ -282,11 +286,11 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     .then(
       function successCallback(data) {
         $scope.dbArray = data;
-        callback();
+        if(callback) callback();
       },
       function errorCallback(data) {
         $scope.dbArray = false;
-        callback();
+        if(callback) callback();
     });
   };
 
@@ -298,11 +302,11 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     .then(
       function successCallback(data) {
         $scope.tableArray = data;
-        callback();
+        if(callback) callback();
       },
       function errorCallback(data) {
         $scope.tableArray = false;
-        callback();
+        if(callback) callback();
     });
   };
 
