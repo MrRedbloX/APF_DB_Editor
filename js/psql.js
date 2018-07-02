@@ -36,7 +36,7 @@ module.exports = {
           }
           else{
             console.log("Connection successful");
-            client.query("SELECT table_name FROM information_schema.tables ORDER BY table_name;" ,function(err,result) {
+            client.query("SELECT table_schema, table_name FROM information_schema.tables ORDER BY table_schema,table_name;" ,function(err,result) {
               client.end(); // closing the connection;
               if(err){
                  console.log(err);
