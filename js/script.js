@@ -282,8 +282,8 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
       },
       function errorCallback(data) {
       $scope.dataset = data || "Request failed ";
-      }
     });
+  };
 
   $scope.addRecord = function(){
     $http({method: 'GET', url: '/db/addRecord?fName='+$scope.fName+'&lName='+$scope.lName+'&email='+$scope.email+'&mbl='+$scope.mbl})
