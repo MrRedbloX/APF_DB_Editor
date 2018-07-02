@@ -90,7 +90,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       for(let i=0;i<postgresScope.dataset.data.length;i++){
         if(exceptionDB.indexOf(postgresScope.dataset.data[i]) < 0){
           $scope.databases.push({
-            name : postgresScope.dataset.data[i]
+            name : postgresScope.dataset.data[i].datname
           });
           console.log($scope.databases);
         }
