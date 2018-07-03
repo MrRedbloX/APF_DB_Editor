@@ -145,7 +145,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 temp = [];
                 for(col in columnsDisplayScope.columns){
                   console.log(postgresScope.columnValues.data[i].valueOf(col.column_name));
-                  temp.push(postgresScope.columnValues.data[i].get(col.column_name));
+                  temp.push(postgresScope.columnValues.data[i].valueOf(col.column_name));
                 }
                 columnsDisplayScope.columns.push({
                   values : temp
