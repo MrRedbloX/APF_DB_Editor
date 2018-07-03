@@ -202,7 +202,9 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   };
 });
 
-app.controller('addRowAreaController', function($scope){
+app.controller('addRowAreaController', function($scope, columnsDisplayFactory){
+
+  var columnsDisplayScope = columnsDisplayFactory.getScope();
 
   $scope.attributes = ["Att1", "Att2", "Att3"];
 
@@ -210,6 +212,15 @@ app.controller('addRowAreaController', function($scope){
 
   $scope.getReferences = function(att){
     ret = ["Choice1","Choice2","Choice3"];
+
+    if(tableSelected != null){
+      let temp = tableSelected.split(';');
+      let db = temp[0];
+      let table = temp[1];
+
+      postgresqlFactory.getColumnConstraint(db, table)
+
+    }
 
     return ret;
   };
