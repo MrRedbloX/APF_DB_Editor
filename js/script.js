@@ -199,7 +199,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
 
-  $scope.attributes = ["Att1", "Att2", "Att3"];
+  $scope.attributes = columnsDisplayScope.columns;
 
   $scope.checkIfIsReference = function(att){
     ret = false;
