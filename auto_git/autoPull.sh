@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ..
 while true
 do
   (val=$(git pull)) &>/dev/null
