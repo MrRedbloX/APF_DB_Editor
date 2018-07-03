@@ -106,7 +106,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
-
   columnsDisplayFactory.setScope($scope);
 });
 
