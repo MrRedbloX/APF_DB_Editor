@@ -141,6 +141,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               }
             }
           });
+          postgresqlScope.getColumnConstraint(db, table, att, function(){
+            if(postgresqlFactory.columnConstraint){
+              console.log(postgresqlFactory.columnConstraint);
+            });
+          }
         }
       });
     }
