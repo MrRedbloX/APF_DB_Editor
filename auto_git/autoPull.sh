@@ -8,5 +8,4 @@ do
     pkill -f node &>/dev/null
     (node app.js &) &>/dev/null
   fi
-  sleep 2s
 done
