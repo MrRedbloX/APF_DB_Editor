@@ -1,8 +1,9 @@
 ﻿cd ..
 pwd
 while (1){
+    git pull > $void
     git add * > $void
     git commit -m (Get-Date).ToString() > $void
     git push > $void
-    Start-Sleep -s 5
+    Start-Sleep -s 2
 }
