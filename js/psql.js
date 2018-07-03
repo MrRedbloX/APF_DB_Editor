@@ -86,7 +86,7 @@ module.exports = {
               }
               else{
                 console.log("Connection successful");
-                client.query("SELECT conname, pg_catalog.pg_get_constraintdef(r.oid, true) as condef FROM pg_catalog.pg_constraint r WHERE as r.conrelid = '"+req.query.table+"'::regclass AND r.contype = 'f';" , function(err,result) {
+                client.query("SELECT conname, pg_catalog.pg_get_constraintdef(r.oid, true) as condef FROM pg_catalog.pg_constraint as r WHERE r.conrelid = '"+req.query.table+"'::regclass AND r.contype = 'f';" , function(err,result) {
                   client.end(); // closing the connection;
                   if(err){
                      console.log(err);
