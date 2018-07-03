@@ -1,4 +1,5 @@
 ﻿cd ..
+pwd
 while (1){
     git add * > $void
     git commit -m (Get-Date).ToString() > $void
