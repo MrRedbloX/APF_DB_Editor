@@ -1,6 +1,6 @@
 ﻿while (1){
     git add *
     git commit -m (Get-Date).ToString()
-    git push
+    git push origin master
     Start-Sleep -s 10
 }
