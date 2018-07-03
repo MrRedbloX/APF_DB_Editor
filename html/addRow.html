@@ -1,7 +1,7 @@
 <div id="addRowArea" ng-controller="addRowAreaController">
   <div>
     <div ng-repeat="att in attributes">
-      <div ng-if="!checkIfIsReference(att)" class="spaceBetweenAtt">
+      <div ng-if="!checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
         {{att}}: <input type="text" id="{{att}}"/>
       </div>
       <div ng-if="checkIfIsReference(att)" class="spaceBetweenAtt">
