@@ -209,10 +209,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       let db = temp[0];
       let table = temp[1];
 
-      postgresqlScope.getColumnConstraint(db, table, att, function(){
-        if(postgresqlFactory.columnConstraint){
-          console.log(postgresqlFactory.columnConstraint);
-        }
       });
     }
     return ret;
