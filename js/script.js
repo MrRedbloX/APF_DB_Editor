@@ -148,6 +148,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       postgresScope.getColumnName(db, table, function(){
         if(postgresScope.columnsArray){
           console.log(postgresScope.columnsArray);
+          columnsDisplayScope.columns = postgresScope.columnsArray.data;
         }
       });
 
@@ -327,6 +328,22 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
       },
       function errorCallback(data) {
         $scope.columnsArray = false;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getColumnConstraint = function(dbName,tableName,columnName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getColumnName?db='+dbName+'&table='+tableName+'$column='+columnName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.columnConstraint = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.columnConstraint = false;
         if(callback) callback();
     });
   };
