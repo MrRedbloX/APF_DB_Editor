@@ -109,7 +109,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   columnsDisplayFactory.setScope($scope);
 
-  $scope.columns = ["Col1","Col2","Col3"];
+  $scope.columns = [];
   $scope.tuples = [
     {
       values : ["Val1","Val2","Val3"]
@@ -149,15 +149,21 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       postgresScope.getColumnName(db, table, function(){
         if(postgresScope.columnsArray){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
+          postgresScope.getAllValues(db, table, function(){
+            if(postgresScope.columnValues){
+              for(let i=0;i<postgresScope.columnValues.data.length;i++){
+                temp = [];
+                for(col in columnsDisplayScope.columns){
+                  temp.push(postgresScope.columnValues.data.valueOf(col.column_name));
+                }
+                columnsDisplayScope.columns.push({
+                  values : temp
+                });
+              }
+            }
+          });
         }
       });
-
-      postgresScope.getAllValues(db, table, function(){
-        if(postgresScope.columnValues){
-          console.log(postgresScope.columnValues);
-        }
-      });
-
     }
   }
 
