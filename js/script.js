@@ -212,21 +212,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   $scope.getReferences = function(att){
     ret = ["Choice1","Choice2","Choice3"];
 
-    if(tableSelected != null){
-      alert("1");
-      let temp = tableSelected.split(';');
-      let db = temp[0];
-      let table = temp[1];
-
-      postgresqlFactory.getColumnConstraint(db, table, att, function(){
-        if(postgresqlFactory.columnConstraint){
-          alert("2");
-          console.log(postgresqlFactory.columnConstraint);
-        }
-      });
-
-    }
-
     return ret;
   };
 
