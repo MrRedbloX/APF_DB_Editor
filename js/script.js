@@ -146,7 +146,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 temp = [];
                 for(let j=0;j<columnsDisplayScope.columns.length;j++){
                   //console.log(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name).toString()])
-                  temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
+                  temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name).toString()]);
                 }
                 columnsDisplayScope.columns.push({
                   values : temp
