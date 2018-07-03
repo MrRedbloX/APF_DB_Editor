@@ -147,7 +147,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
       postgresScope.getColumnName(db, table, function(){
         if(postgresScope.columnsArray){
-          console.log(postgresScope.columnsArray);
+          console.log(postgresScope.columnsArray.data);
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
         }
       });
