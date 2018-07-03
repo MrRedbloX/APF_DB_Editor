@@ -125,7 +125,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
 
-  var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresScope = postgresqlFactory.getScope();
 
   document.getElementById("displayButton").disabled = true;
@@ -135,6 +134,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   document.getElementById("clearButton").disabled = false;
 
   $scope.display = function(){
+
+    var columnsDisplayScope = columnsDisplayFactory.getScope();
 
     document.getElementById("columnsDisplayArea").style.display = "block";
     if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
