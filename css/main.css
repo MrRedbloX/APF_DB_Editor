@@ -102,7 +102,7 @@ button.paddingRigth{
    padding-top: 5%;
  }
 
- #tableColumnsDisplay {
+ #tableDisplayArea {
    overflow-x: auto;
    white-space: nowrap;
  }
