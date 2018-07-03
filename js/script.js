@@ -217,7 +217,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       let table = temp[1];
 
     }
-  }
     return ret;
   };;
 
