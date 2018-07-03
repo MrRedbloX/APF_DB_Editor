@@ -86,7 +86,7 @@ module.exports = {
               }
               else{
                 console.log("Connection successful");
-                client.query("SELECT R.TABLE_NAMEFROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE u inner join INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS FK on U.CONSTRAINT_CATALOG = FK.UNIQUE_CONSTRAINT_CATALOG and U.CONSTRAINT_SCHEMA = FK.UNIQUE_CONSTRAINT_SCHEMA and U.CONSTRAINT_NAME = FK.UNIQUE_CONSTRAINT_NAME inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE R ON R.CONSTRAINT_CATALOG = FK.CONSTRAINT_CATALOG AND R.CONSTRAINT_SCHEMA = FK.CONSTRAINT_SCHEMA AND R.CONSTRAINT_NAME = FK.CONSTRAINT_NAME WHERE U.COLUMN_NAME = '"+req.query.column+"' AND U.TABLE_CATALOG = '"+req.query.db+"' AND U.TABLE_SCHEMA = 'public' AND U.TABLE_NAME = '"+req.query.table+"';" , function(err,result) {
+                client.query("SELECT tc.table_schema,tc.constraint_name,tc.table_name,kcu.column_name,ccu.table_schema AS foreign_table_schema,ccu.table_name AS foreign_table_name,ccu.column_name AS foreign_column_name FROM information_schema.table_constraints AS tc JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='"+req.query.table+"' AND tc.column_name='"+req.query.column+"';" , function(err,result) {
                   client.end(); // closing the connection;
                   if(err){
                      console.log(err);
