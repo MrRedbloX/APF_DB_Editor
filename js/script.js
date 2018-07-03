@@ -218,7 +218,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     }
     return ret;
-  };;
+  };
 
   $scope.getReferences = function(att){
     ret = ["Choice1","Choice2","Choice3"];
