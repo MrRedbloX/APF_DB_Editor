@@ -36,27 +36,25 @@
       <button id="clearButton" ng-click="clear()" onclick="location.href='#!';">Clear</button>
     </div>
   </div>
-  <div class="displayArea">
-    <div style="display:none;" id="columnsDisplayArea" ng-controller="columnsDisplayAreaController">
-      <div id="tableColumnsDisplay">
-        <table  class="table table-bordered">
-          <thead>
-            <tr>
-              <th ng-repeat="col in columns">{{col.column_name}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="{{tuple.values}}" ng-repeat="tuple in tuples" onclick="isRowSelected(id)" class="hoverTable">
-              <td ng-repeat="val in tuple.values">{{val}}</td>
-            </tr>
-          </tbody>
-        </table>
-      <div>
-      <div id="secondButtonsArea" ng-controller='buttonAreaController'>
-        <button id="addButton" ng-click="add()" onclick="location.href='#!add';" class="paddingRigth"><a>Add</button>
-        <button id="modifyButton" ng-click="modify()" onclick="location.href='#!modify';" class="paddingRigth">Modify</button>
-        <button id="deleteButton" ng-click="delete()">Delete</button>
-      </div>
+  <div class="displayArea" style="display:none;">
+    <div id="columnsDisplayArea" ng-controller="columnsDisplayAreaController">
+      <table id="tableColumnsDisplay" class="table table-bordered">
+        <thead>
+          <tr>
+            <th ng-repeat="col in columns">{{col.column_name}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="{{tuple.values}}" ng-repeat="tuple in tuples" onclick="isRowSelected(id)" class="hoverTable">
+            <td ng-repeat="val in tuple.values">{{val}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="secondButtonsArea" ng-controller='buttonAreaController'>
+      <button id="addButton" ng-click="add()" onclick="location.href='#!add';" class="paddingRigth"><a>Add</button>
+      <button id="modifyButton" ng-click="modify()" onclick="location.href='#!modify';" class="paddingRigth">Modify</button>
+      <button id="deleteButton" ng-click="delete()">Delete</button>
     </div>
   </div>
   <div class="ngViewArea" ng-view></div>
