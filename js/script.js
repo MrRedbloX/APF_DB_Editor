@@ -24,14 +24,6 @@ var isRowSelected = function(row){
   }
 }
 
-var checkIfIsReference = function(att){
-  ret = false;
-
-  if(att=="Att2") ret = true;
-
-  return ret;
-};
-
 var app = angular.module('DBEditorAPF', ["ngRoute"]);
 
 app.config(function($routeProvider) {
