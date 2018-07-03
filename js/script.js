@@ -141,17 +141,14 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
           postgresScope.getAllValues(db, table, function(){
             if(postgresScope.columnValues){
-              //console.log(postgresScope.columnValues.data);
               for(let i=0;i<postgresScope.columnValues.data.length;i++){
                 temp = [];
                 for(let j=0;j<columnsDisplayScope.columns.length;j++){
-                  //console.log(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name).toString()])
                   temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name).toString()]);
                 }
                 columnsDisplayScope.tuples.push({
                   values : temp
                 });
-                console.log(columnsDisplayScope.tuples);
               }
             }
           });
