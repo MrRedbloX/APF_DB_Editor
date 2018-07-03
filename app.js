@@ -21,6 +21,9 @@ app.get('/db/getColumnConstraint', function(req,res){
 app.get('/db/getColumnName', function(req,res){
     dbOperations.getColumnName(req,res);
 });
+app.get('/db/getAllValues', function(req,res){
+    dbOperations.getAllValues(req,res);
+});
 app.get('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
 });

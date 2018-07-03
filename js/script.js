@@ -148,8 +148,13 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
       postgresScope.getColumnName(db, table, function(){
         if(postgresScope.columnsArray){
-          console.log(postgresScope.columnsArray.data);
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
+        }
+      });
+
+      postgresScope.getAllValues(db, table, function(){
+        if(postgresScope.columnValues){
+          console.log(postgresScope.columnValues);
         }
       });
 
@@ -336,7 +341,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
   $scope.getColumnConstraint = function(dbName,tableName,columnName,callback){
     $http({
       method: 'GET',
-      url: '/db/getColumnName?db='+dbName+'&table='+tableName+'$column='+columnName
+      url: '/db/getColumnConstraint?db='+dbName+'&table='+tableName+'$column='+columnName
     })
     .then(
       function successCallback(data) {
@@ -345,6 +350,22 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
       },
       function errorCallback(data) {
         $scope.columnConstraint = false;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getAllValues = function(dbName,tableName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getAllValues?db='+dbName+'&table='+tableName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.columnValues = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.columnValues = false;
         if(callback) callback();
     });
   };
