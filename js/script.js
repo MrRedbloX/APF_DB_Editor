@@ -214,7 +214,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
           console.log(postgresqlFactory.columnConstraint);
         }
       });
-
+    }
     return ret;
   };;
 
