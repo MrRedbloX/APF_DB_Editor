@@ -202,9 +202,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   };
 });
 
-app.controller('addRowAreaController', function($scope, columnsDisplayFactory){
+app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
+  var postgresqlScope = postgresqlFactory.getScope();
 
   $scope.attributes = ["Att1", "Att2", "Att3"];
 
