@@ -2,7 +2,7 @@
   <div>
     <div ng-repeat="att in attributes">
       <div ng-if="!checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
-        {{att}}: <input type="text" id="{{att}}"/>
+        {{att.column_name}}: <input type="text" id="{{att.column_name}}"/>
       </div>
       <div ng-if="checkIfIsReference(att)" class="spaceBetweenAtt">
         {{att}}: <select>
