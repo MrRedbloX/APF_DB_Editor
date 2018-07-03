@@ -151,6 +151,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 columnsDisplayScope.columns.push({
                   values : temp
                 });
+                console.log(columnsDisplayScope.columns);
               }
             }
           });
