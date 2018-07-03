@@ -43,6 +43,8 @@ div.displayArea {
   position:relative;
   height: 100%;
   overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 div.treeArea {
