@@ -110,17 +110,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
 
   $scope.columns = [];
-  $scope.tuples = [
-    {
-      values : ["Val1","Val2","Val3"]
-    },
-    {
-      values : ["Val1","Val2",""]
-    },
-    {
-      values : ["Val1","","Val3"]
-    }
-  ];
+  $scope.tuples = [];
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
