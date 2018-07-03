@@ -139,20 +139,19 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       postgresScope.getColumnName(db, table, function(){
         if(postgresScope.columnsArray){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
-          console.log(columnsDisplayScope.columns);
-          /*postgresScope.getAllValues(db, table, function(){
+          postgresScope.getAllValues(db, table, function(){
             if(postgresScope.columnValues){
               for(let i=0;i<postgresScope.columnValues.data.length;i++){
                 temp = [];
                 for(col in columnsDisplayScope.columns){
-                  temp.push(postgresScope.columnValues.data.valueOf(col.column_name));
+                  temp.push(postgresScope.columnValues.data[i].valueOf(col.column_name));
                 }
                 columnsDisplayScope.columns.push({
                   values : temp
                 });
               }
             }
-          });*/
+          });
         }
       });
     }
