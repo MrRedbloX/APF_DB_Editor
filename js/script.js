@@ -108,9 +108,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
 
   columnsDisplayFactory.setScope($scope);
-
-  $scope.columns = [];
-  $scope.tuples = [];
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
