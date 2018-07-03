@@ -1,4 +1,4 @@
-﻿cd .\APF
+﻿cd ..
 while (1){
     git add * > $void
     git commit -m (Get-Date).ToString() > $void
