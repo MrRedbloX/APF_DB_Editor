@@ -201,7 +201,13 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.attributes = ["Att1", "Att2", "Att3"];
 
-  $scope.checkIfIsReference = checkIfIsReference;
+  $scope.checkIfIsReference = function(att){
+    ret = false;
+
+    if(att=="Att2") ret = true;
+
+    return ret;
+  };;
 
   $scope.getReferences = function(att){
     ret = ["Choice1","Choice2","Choice3"];
