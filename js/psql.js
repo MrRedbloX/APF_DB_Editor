@@ -86,7 +86,7 @@ module.exports = {
               }
               else{
                 console.log("Connection successful");
-                client.query("SELECT * FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY';"/* AND table_name = '"+req.query.table+"';" */, function(err,result) {
+                client.query("SELECT * FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY' AND table_name = '"+req.query.table+"';", function(err,result) {
                   client.end(); // closing the connection;
                   if(err){
                      console.log(err);
