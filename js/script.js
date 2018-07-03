@@ -145,8 +145,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
             postgresqlScope.getColumnConstraint(db, table, columnsDisplayScope.columns[i].column_name, function(){
               if(postgresqlFactory.columnConstraint){
                 console.log(postgresqlFactory.columnConstraint);
-              });
-            }
+              }
+            });
           }
         }
       });
