@@ -139,7 +139,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       postgresScope.getColumnName(db, table, function(){
         if(postgresScope.columnsArray){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
-          postgresScope.getAllValues(db, table, function(){
+          /*postgresScope.getAllValues(db, table, function(){
             if(postgresScope.columnValues){
               for(let i=0;i<postgresScope.columnValues.data.length;i++){
                 temp = [];
@@ -151,7 +151,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 });
               }
             }
-          });
+          });*/
         }
       });
     }
