@@ -210,11 +210,13 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $scope.checkIfIsReference = function(att){
-    ret = false;
+    var ret = false;
+    alert("ok1");
 
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.length; i++){
         if(att === postgresqlScope.columnConstraint[i].column_name){
+          alert("ok2");
           $scope.foreignColumName = postgresqlScope.columnConstraint[i].foreign_column_name;
           $scope.foreignTableName = postgresqlScope.columnConstraint[i].foreign_table_name;
           ret = true;
@@ -227,10 +229,10 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.getReferences = function(att){
     ret = [];
-    alert("ok1");
+
 
     if(tableSelected != null){
-      alert("ok2");
+
       postgresqlScope.getValuesOf($scope.foreignColumName, $scope.foreignTableName, function(){
         if(postgresqlScope.valuesOf){
           console.log(postgresqlScope.valuesOf);
