@@ -216,11 +216,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
         if(att === postgresqlScope.columnConstraint.data[i].column_name){
-          postgresqlScope.getValuesOf(postgresqlScope.columnConstraint.data[i].foreign_column_name, postgresqlScope.columnConstraint.data[i].foreign_table_name, function(){
-            if(postgresqlScope.valuesOf){
-              console.log(postgresqlScope.valuesOf);
-            }
-          });
           ret = true;
           break;
         }
