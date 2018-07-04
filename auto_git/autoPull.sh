@@ -2,7 +2,7 @@
 cd ..
 while true
 do
-  val=$(git pull)
+  val=$(git pull) &>/dev/null
   echo $val
   if [ "$val" != "Déjà à jour." ]
   then
