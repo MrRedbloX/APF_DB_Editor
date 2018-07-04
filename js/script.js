@@ -227,11 +227,15 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.getReferences = function(att){
     ret = [];
-    /*postgresqlScope.getValuesOf(, , function(){
-      if(postgresqlScope.valuesOf){
-        console.log(postgresqlScope.valuesOf);
-      }
-    });*/
+    if(tableSelected != null){
+      let temp = tableSelected.split(';');
+      let db = temp[0];
+      postgresqlScope.getValuesOf(db,$scope.foreignTableName,$scope.foreignColumnName, function(){
+        if(postgresqlScope.valuesOf){
+          console.log(postgresqlScope.valuesOf);
+        }
+      });
+    }
     return ret;
   }
 
