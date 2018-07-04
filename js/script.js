@@ -141,7 +141,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               }
             }
           });
-          postgresScope.getColumnConstraint(db, table, columnsDisplayScope.columns[i].column_name, function(){
+          postgresScope.getColumnConstraint(db, table, function(){
             if(postgresScope.columnConstraint){
               console.log(postgresScope.columnConstraint);
             }
@@ -345,10 +345,10 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     });
   };
 
-  $scope.getColumnConstraint = function(dbName,tableName,columnName,callback){
+  $scope.getColumnConstraint = function(dbName,tableName,callback){
     $http({
       method: 'GET',
-      url: '/db/getColumnConstraint?db='+dbName+'&table='+tableName+'&column='+columnName
+      url: '/db/getColumnConstraint?db='+dbName+'&table='+tableName
     })
     .then(
       function successCallback(data) {
