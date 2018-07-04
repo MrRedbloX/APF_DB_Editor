@@ -6,7 +6,7 @@
       </div>
       <div ng-if="checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
         {{att.column_name}}: <select>
-                   <option ng-repeat="ref in getReferences(att.column_name)" value="{{ref}}">{{ref}}</option>
+                   <option ng-repeat="ref in references" value="{{ref}}">{{ref}}</option>
                  </select>
       </div>
     </div>
