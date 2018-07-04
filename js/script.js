@@ -227,7 +227,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
-        if(att === postgresqlScope.columnConstraint.data[i].name){
+        if(att === postgresqlScope.columnConstraint.data[i].column_name){
           ret = true;
           break;
         }
@@ -240,7 +240,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     ret = [];
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        if(att === postgresqlScope.valuesOfConstraint[i].column_name){
+        if(att === postgresqlScope.valuesOfConstraint[i].name){
           ret = postgresqlScope.valuesOfConstraint[i].values;
           break;
         }
