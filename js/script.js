@@ -95,6 +95,8 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       }
     }
   });
+
+  console.log($scope.databases);
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
