@@ -142,11 +142,23 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
             }
           });
           postgresScope.getColumnConstraint(db, table, function(){
-            if(!postgresScope.columnConstraint)
-              console.log('Aucunce contraintes de clé étrangère trouvées pour cette table');
-          });
-        }
-      });
+            if(postgresScope.columnConstraint){
+              postgresScope.valuesOfConstraint = [];
+              for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+                let temp = [];
+                postgresqlScope.getValuesOf(db,postgresqlScope.columnConstraint.data[i].foreign_table_name,postgresqlScope.columnConstraint.data[i].foreign_column_name, function(){
+                  if(postgresqlScope.valuesOf){
+                    console.log(postgresqlScope.valuesOf);
+                  }
+                });
+                postgresScope.valuesOfConstraint.push({
+                  postgresqlScope.columnConstraint.data[i].column_name : temp
+                });
+              }
+            });
+          }
+        });
+      }
     }
   }
 
@@ -230,11 +242,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     if(tableSelected != null){
       let temp = tableSelected.split(';');
       let db = temp[0];
-      postgresqlScope.getValuesOf(db,$scope.foreignTableName,$scope.foreignColumnName, function(){
-        if(postgresqlScope.valuesOf){
-          console.log(postgresqlScope.valuesOf);
-        }
-      });
+
     }
     return ret;
   }
