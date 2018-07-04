@@ -156,8 +156,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   values : temp
                 });
               }
-            });
-          }
+            };
+          });
         });
       }
     }
