@@ -213,7 +213,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     ret = false;
 
     if(tableSelected != null){
-      for(let i=0; i<$scope.foreignKeyList.length; i++){
+      for(let i=0; i<postgresqlScope.columnConstraint.length; i++){
         if(att === postgresqlScope.columnConstraint[i].column_name){
           $scope.foreignColumName = postgresqlScope.columnConstraint[i].foreign_column_name;
           $scope.foreignTableName = postgresqlScope.columnConstraint[i].foreign_table_name;
