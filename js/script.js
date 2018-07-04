@@ -216,6 +216,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
         if(att === postgresqlScope.columnConstraint.data[i].column_name){
+          $scope.foreignColumnName = postgresqlScope.columnConstraint.data[i].foreign_column_name;
+          $scope.foreignTableName = postgresqlScope.columnConstraint.data[i].foreign_table_name;
           ret = true;
           break;
         }
@@ -223,6 +225,14 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     }
     return ret;
   };
+
+  $scope.getReferences = function(att){
+    postgresqlScope.getValuesOf(, , function(){
+      if(postgresqlScope.valuesOf){
+        console.log(postgresqlScope.valuesOf);
+      }
+    });
+  }
 
   $scope.saveRecord = function(){
 
