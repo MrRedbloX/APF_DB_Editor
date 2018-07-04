@@ -211,7 +211,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.checkIfIsReference = function(att){
     var ret = false;
-    $scope.references = [];
 
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
@@ -227,11 +226,13 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $scope.getReferences = function(att){
-    postgresqlScope.getValuesOf(, , function(){
+    ret = [];
+    /*postgresqlScope.getValuesOf(, , function(){
       if(postgresqlScope.valuesOf){
         console.log(postgresqlScope.valuesOf);
       }
-    });
+    });*/
+    return ret;
   }
 
   $scope.saveRecord = function(){
