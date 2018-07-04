@@ -214,7 +214,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     alert(att);
 
     if(tableSelected != null){
-      alert("ok");
+      alert(postgresqlScope.columnConstraint.length);
       for(let i=0; i<postgresqlScope.columnConstraint.length; i++){
         alert(postgresqlScope.columnConstraint[i].column_name+"ok");
         if(att === postgresqlScope.columnConstraint[i].column_name){
