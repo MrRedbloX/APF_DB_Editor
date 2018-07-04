@@ -24,6 +24,9 @@ app.get('/db/getColumnName', function(req,res){
 app.get('/db/getAllValues', function(req,res){
     dbOperations.getAllValues(req,res);
 });
+app.get('/db/getValuesOf', function(req,res){
+    dbOperations.getValuesOf(req,res);
+});
 app.get('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
 });

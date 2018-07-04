@@ -229,11 +229,11 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     ret = [];
 
     if(tableSelected != null){
-      for(let i=0; i<$scope.foreignKeyList.length; i++){
-        if(att === $scope.foreignKeyList[i].column_name){
-          ret = true;
-          break;
+      postgresqlScope.getValuesOf($scope.foreignColumName, $scope.foreignTableName, function(){
+        if(postgresqlScope.valuesOf){
+          console.log(postgresqlScope.valuesOf);
         }
+      })
     }
 
     return ret;
@@ -388,21 +388,21 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     });
   };
 
-  $scope.addRecord = function(){
-    $http({method: 'GET', url: '/db/addRecord?fName='+$scope.fName+'&lName='+$scope.lName+'&email='+$scope.email+'&mbl='+$scope.mbl})
-    .success(function(data, status) {
-      alert('Record Added');
-      $scope.getAllRec();
+  $scope.getValuesOf = function(dbName,tableName,columnName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getValuesOf?db='+dbName+'&table='+tableName+'&att='+columnName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.valuesOf = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.valuesOf = false;
+        if(callback) callback();
     });
-  }
+  };
 
-  $scope.delRecord = function(recId){
-    console.log(recId);
-    if(confirm('Are you sure you want to delete this record ? ')){
-      $http({method: 'GET', url: '/db/delRecord?id='+recId})
-      .success(function(data, status) {
-        $scope.getAllRec();
-      });
-    }
-  }
+
 });
