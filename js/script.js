@@ -152,7 +152,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                 });
                 postgresScope.valuesOfConstraint.push({
-                  postgresqlScope.columnConstraint.data[i].column_name : temp
+                  name : postgresqlScope.columnConstraint.data[i].column_name,
+                  values : temp
                 });
               }
             });
@@ -226,10 +227,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
-        if(att === postgresqlScope.columnConstraint.data[i].column_name){
-          $scope.foreignColumnName = postgresqlScope.columnConstraint.data[i].foreign_column_name;
-          $scope.foreignTableName = postgresqlScope.columnConstraint.data[i].foreign_table_name;
-          ret = true;
+        if(att === postgresqlScope.columnConstraint.[i].name){
+          ret = postgresqlScope.columnConstraint.[i].values;
           break;
         }
       }
@@ -240,9 +239,12 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   $scope.getReferences = function(att){
     ret = [];
     if(tableSelected != null){
-      let temp = tableSelected.split(';');
-      let db = temp[0];
-
+      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
+        if(att === postgresqlScope.columnConstraint.data[i].column_name){
+          ret = true;
+          break;
+        }
+      }
     }
     return ret;
   }
