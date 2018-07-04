@@ -2,7 +2,7 @@ module.exports = {
   getDBName: function(req, res) {
         var pg = require('pg');
         //You can run command "heroku config" to see what is Database URL from Heroku belt
-        var conString = "postgres://postgres:postgres@10.239.238.29:5432/postgres";
+        var conString = "postgres://postgres@10.239.238.29:5432/postgres";
         var client = new pg.Client(conString);
 
         client.connect(function(err,client) {
