@@ -1,10 +1,10 @@
-var conString = "postgres://postgres:postgres@10.239.238.69:5432/postgres";
+var conString = "postgres://postgres:postgres@10.239.238.69:5432/";
 
 module.exports = {
   getDBName: function(req, res) {
         var pg = require('pg');
-        //You can run command "heroku config" to see what is Database URL from Heroku belt
-        var client = new pg.Client(conString);
+
+        var client = new pg.Client(conString+"postgres");
 
         client.connect(function(err,client) {
           if(err){
@@ -26,9 +26,7 @@ module.exports = {
   },
   getTableName: function(req, res) {
         var pg = require('pg');
-        //You can run command "heroku config" to see what is Database URL from Heroku belt
-        var conString = "postgres://postgres:postgres@192.168.133.136:5432/"+req.query.db;
-        var client = new pg.Client(conString);
+        var client = new pg.Client(conString+req.query.db);
 
         client.connect(function(err,client) {
           if(err){
