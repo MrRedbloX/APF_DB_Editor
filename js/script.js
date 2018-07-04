@@ -142,8 +142,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
             }
           });
           postgresScope.getColumnConstraint(db, table, function(){
-            if(postgresScope.columnConstraint)
-              addRowScope.foreignKeyList = postgresScope.columnConstraint;
+            if(!postgresScope.columnConstraint)
+              console.log('Aucunce contraintes de clé étrangère trouvées pour cette table');
           });
         }
       });
