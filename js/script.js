@@ -142,9 +142,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
             }
           });
           postgresScope.getColumnConstraint(db, table, function(){
-            if(postgresScope.columnConstraint){
-              console.log(postgresScope.columnConstraint);
-            }
+            if(postgresScope.columnConstraint)
+              addRowScope.foreignKeyList = postgresScope.columnConstraint;
           });
         }
       });
@@ -214,10 +213,12 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     ret = false;
 
     if(tableSelected != null){
-      let temp = tableSelected.split(';');
-      let db = temp[0];
-      let table = temp[1];
-
+      for(let i=0; i<$scope.foreignKeyList.length; i++){
+        if(att === $scope.foreignKeyList[i].column_name){
+          ret = true;
+          break;
+        }
+      }
     }
     return ret;
   };
