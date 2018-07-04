@@ -215,6 +215,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     if(tableSelected != null){
       for(let i=0; i<$scope.foreignKeyList.length; i++){
         if(att === $scope.foreignKeyList[i].column_name){
+          $scope.foreignColumName = $scope.foreignKeyList[i].foreign_column_name;
+          $scope.foreignTableName = $scope.foreignKeyList[i].foreign_table_name
           ret = true;
           break;
         }
@@ -224,7 +226,15 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $scope.getReferences = function(att){
-    ret = ["Choice1","Choice2","Choice3"];
+    ret = [];
+
+    if(tableSelected != null){
+      for(let i=0; i<$scope.foreignKeyList.length; i++){
+        if(att === $scope.foreignKeyList[i].column_name){
+          ret = true;
+          break;
+        }
+    }
 
     return ret;
   };
