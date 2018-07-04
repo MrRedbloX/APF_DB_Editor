@@ -211,12 +211,12 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.checkIfIsReference = function(att){
     var ret = false;
-    alert("ok1");
+    alert(att);
 
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.length; i++){
         if(att === postgresqlScope.columnConstraint[i].column_name){
-          alert("ok2");
+          alert(postgresqlScope.columnConstraint[i].column_name);
           $scope.foreignColumName = postgresqlScope.columnConstraint[i].foreign_column_name;
           $scope.foreignTableName = postgresqlScope.columnConstraint[i].foreign_table_name;
           ret = true;
