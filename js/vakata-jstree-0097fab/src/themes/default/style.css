@@ -289,7 +289,7 @@
 .jstree-default .jstree-node,
 .jstree-default .jstree-icon {
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: blue;
 }
 .jstree-default .jstree-anchor,
 .jstree-default .jstree-animated,
