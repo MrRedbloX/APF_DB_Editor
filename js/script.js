@@ -279,6 +279,15 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
 app.controller('modifyRowAreaController', function($scope){
 
+  var columnsDisplayScope = columnsDisplayFactory.getScope();
+  var postgresqlScope = postgresqlFactory.getScope();
+
+  $scope.attributes = [];
+  for(let i=0;i<columnsDisplayScope.columns.length;i++){
+    if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
+      $scope.attributes.push(columnsDisplayScope.columns[i]);
+  };
+
   $scope.saveRecord = function(){
     if(confirm("Are you sure you want to save this record ?")){
 
