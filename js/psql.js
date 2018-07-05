@@ -140,4 +140,40 @@ module.exports = {
       });
   },
 
+  addRecord: function(req, res) {
+      var pg = require('pg');
+      var client = new pg.Client(conString+req.query.db);
+
+      client.connect(function(err,client) {
+        if(err){
+         console.log("Not able to get connection : "+ err);
+         res.status(400).send(err);
+        }
+        else{
+          console.log("Connection successful");
+          let columnList = JSON.parse(req.query.column_list);
+          let valueList = JSON.parse(req.query.value_list);
+          let columns = "";
+          let values = "";
+
+          for(col in columnList)
+            columns += col+",";
+          for(val in valueList)
+            values += val+",";
+
+          columns.replace(/.$/,"");
+          values.replace(/.$/,"");
+
+          client.query("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");" , function(err,result) {
+            client.end(); // closing the connection;
+            if(err){
+               console.log(err);
+               res.status(400).send(err);
+            }
+            else res.status(200).send(result.rows);
+          });
+        }
+      });
+  },
+
 };
