@@ -3742,7 +3742,7 @@
 			var tmp = {
 				'id' : obj.id,
 				'text' : obj.text,
-			//	'icon' : this.get_icon(obj),
+				'icon' : this.get_icon(obj),
 				'li_attr' : $.extend(true, {}, obj.li_attr),
 				'a_attr' : $.extend(true, {}, obj.a_attr),
 				'state' : {},
@@ -4781,7 +4781,7 @@
 			if($.isArray(obj)) {
 				obj = obj.slice();
 				for(t1 = 0, t2 = obj.length; t1 < t2; t1++) {
-					this.set_icon(obj[t1], icon);
+					//this.set_icon(obj[t1], icon);
 				}
 				return true;
 			}
