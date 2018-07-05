@@ -249,7 +249,10 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   $scope.attributes = [];
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
     if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
-      $scope.attributes.push(columnsDisplayScope.columns[i]);
+      $scope.attributes.push({
+        name : columnsDisplayScope.columns[i],
+        values : rowSelected[i]
+      });
   };
 
   $scope.checkIfIsReference = checkIfIsReference;
