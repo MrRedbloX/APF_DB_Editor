@@ -24,33 +24,6 @@ var isRowSelected = function(row){
   }
 }
 
-var checkIfIsReference = function(att){
-  var ret = false;
-
-  if(tableSelected != null){
-    for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
-      if(att === postgresqlScope.columnConstraint.data[i].column_name){
-        ret = true;
-        break;
-      }
-    }
-  }
-  return ret;
-};
-
-var getReferences = function(att){
-  ret = [];
-  if(tableSelected != null){
-    for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-      if(att === postgresqlScope.valuesOfConstraint[i].name){
-        ret = postgresqlScope.valuesOfConstraint[i].values;
-        break;
-      }
-    }
-  }
-  return ret;
-}
-
 var app = angular.module('DBEditorAPF', ["ngRoute"]);
 
 app.config(function($routeProvider) {
@@ -254,9 +227,32 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       });
   };
 
-  $scope.checkIfIsReference = checkIfIsReference;
+  $scope.checkIfIsReference = function(att){
+    var ret = false;
 
-  $scope.getReferences = getReferences;
+    if(tableSelected != null){
+      for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+        if(att === postgresqlScope.columnConstraint.data[i].column_name){
+          ret = true;
+          break;
+        }
+      }
+    }
+    return ret;
+  };
+
+  $scope.getReferences = function(att){
+    ret = [];
+    if(tableSelected != null){
+      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
+        if(att === postgresqlScope.valuesOfConstraint[i].name){
+          ret = postgresqlScope.valuesOfConstraint[i].values;
+          break;
+        }
+      }
+    }
+    return ret;
+  };
 
   $scope.saveRecord = function(){
 
@@ -277,7 +273,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     }
   }
-
 });
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
@@ -323,11 +318,30 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
     }
   ];
 
-  $scope.checkIfIsReference = checkIfIsReference;
+  $scope.checkIfIsReference = function(att){
+    var ret = false;
 
-  $scope.getReferences = function(att, value){
-    ret = ["Val4","Val5","Val6"]; //Retourner toutes les références sauf values
+    if(tableSelected != null){
+      for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+        if(att === postgresqlScope.columnConstraint.data[i].column_name){
+          ret = true;
+          break;
+        }
+      }
+    }
+    return ret;
+  };
 
+  $scope.getReferences = function(att){
+    ret = [];
+    if(tableSelected != null){
+      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
+        if(att === postgresqlScope.valuesOfConstraint[i].name){
+          ret = postgresqlScope.valuesOfConstraint[i].values;
+          break;
+        }
+      }
+    }
     return ret;
   };
 });
