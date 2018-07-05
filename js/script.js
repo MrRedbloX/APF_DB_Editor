@@ -292,6 +292,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
       window.location = "#!";
       document.getElementById('addButton').disabled = false;
+      $('#modifyButton').disabled = false;
     }
   }
 
@@ -300,7 +301,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
       window.location = "#!";
       document.getElementById('addButton').disabled = false;
-
+      $('#modifyButton').disabled = false;
     }
   }
 
