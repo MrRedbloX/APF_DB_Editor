@@ -151,10 +151,10 @@ module.exports = {
         }
         else{
           console.log("Connection successful");
-          let columnList = JSON.parse(req.query.column_list);
-          let valueList = JSON.parse(req.query.value_list);
-          let columns = "";
-          let values = "";
+          columnList = JSON.parse(req.query.column_list);
+          valueList = JSON.parse(req.query.value_list);
+          columns = "";
+          values = "";
 
           for(col in columnList)
             columns += col+",";
