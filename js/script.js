@@ -15,6 +15,7 @@ var isRowSelected = function(row){
     document.getElementById(row).style.backgroundColor = "gray";
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = row;
+    console.log(rowSelected);
   }
   else{
     document.getElementById(row).style.backgroundColor = "";
