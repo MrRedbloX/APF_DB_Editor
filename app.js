@@ -30,13 +30,13 @@ app.get('/db/getValuesOf', function(req,res){
 app.get('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
 });
-app.get('/db/modifyRecord', function(req,res){
+/*app.get('/db/modifyRecord', function(req,res){
     dbOperations.modifyRecord(req,res);
 });
 app.get('/db/delRecord', function(req,res){
     dbOperations.delRecord(req,res);
 });
-
+*/
 app.set('port', process.env.PORT || 3001);
 app.use(express.static(__dirname));
 app.listen(app.get('port'), function () {
