@@ -4781,7 +4781,7 @@
 			if($.isArray(obj)) {
 				obj = obj.slice();
 				for(t1 = 0, t2 = obj.length; t1 < t2; t1++) {
-					//this.set_icon(obj[t1], icon);
+					this.set_icon(obj[t1], icon);
 				}
 				return true;
 			}
