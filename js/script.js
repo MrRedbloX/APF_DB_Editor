@@ -318,12 +318,13 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
     return ret;
   };
 
-  $scope.getReferences = function(att){
+  $scope.getReferences = function(att, val){
     ret = [];
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if(att === postgresqlScope.valuesOfConstraint[i].name){
           ret = postgresqlScope.valuesOfConstraint[i].values;
+          ret.splice(ret.indexOf(val), 1);
           break;
         }
       }
