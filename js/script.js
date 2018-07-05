@@ -257,6 +257,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
       window.location = "#!";
       document.getElementById('addButton').disabled = false;
+      if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
 
     }
   }
@@ -267,6 +268,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
       window.location = "#!";
       document.getElementById('addButton').disabled = false;
+      if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
 
     }
   }
