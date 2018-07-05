@@ -87,22 +87,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
               });
               $scope.ready = true;
               $(function() {
-<<<<<<< HEAD
                 $('#treeDatabaseArea').jstree();
-=======
-                $('#treeDatabaseArea').jstree({
-                      'core' : {
-                          'data' : [
-                              { "text" : "Root node", "children" : [
-                                  { "text" : "Child node 1" },
-                                  { "text" : "Child node 2" }
-                              ]
-                              },
-                          ]
-                      }
-                  }
-                );
->>>>>>> 43fa8f8209bde045014bc49b3f9001fbe17436e6
               });
             }
           });
@@ -163,9 +148,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 let temp = [];
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){
                   if(postgresScope.valuesOf){
-                    for(val in postgresScope.valuesOf.data)
-                      temp.push(val[postgresScope.columnConstraint.data[i].foreign_column_name])
-                      console.log(postgresScope.valuesOf);
+                    console.log(postgresScope.valuesOf);
                   }
                 });
                 postgresScope.valuesOfConstraint.push({
