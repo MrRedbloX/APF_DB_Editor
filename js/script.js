@@ -87,19 +87,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
               });
               $scope.ready = true;
               $(function() {
-                $('#treeDatabaseArea').jstree({
-                      'core' : {
-                          'data' : [
-                              { "text" : "Root node", "children" : [
-                                  { "text" : "Child node 1",
-                                    "icon" : "1.jpg"},
-                                  { "text" : "Child node 2" }
-                              ]
-                              },
-                          ]
-                      }
-                  }
-                );
+                $('#treeDatabaseArea').jstree();
               });
             }
           });
