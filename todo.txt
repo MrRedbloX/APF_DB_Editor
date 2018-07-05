@@ -1,0 +1,16 @@
+A faire : recopier la table Task Report Utils
+	  Tester pour les created
+	  Faire un compte rendu à Matthieu
+
+	  Commencer les développements en HTML
+	  Tester les BDD
+
+#	Continuer modifier
+
+Formulaire en dessous
+
+array scrud js
+
+	Vérifier requête column étrangère
+
+	Vérifier pourquoi requête clé étrangère ne fonctionne pas quand on renseigne la table
