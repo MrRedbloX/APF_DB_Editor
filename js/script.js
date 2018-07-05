@@ -114,6 +114,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.display = function(){
 
     var columnsDisplayScope = columnsDisplayFactory.getScope();
+    window.location = "#!";
 
     document.getElementById("columnsDisplayArea").style.display = "block";
     if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
@@ -254,7 +255,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     if(confirm("Are you sure you want to save this record ?")){
 
-      window.location = "#!display";
+      window.location = "#!";
       document.getElementById('addButton').disabled = false;
 
     }
@@ -264,7 +265,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     if(confirm("Are you sure you want to cancel ?")){
 
-      window.location = "#!display";
+      window.location = "#!";
       document.getElementById('addButton').disabled = false;
 
     }
@@ -277,7 +278,7 @@ app.controller('modifyRowAreaController', function($scope){
   $scope.saveRecord = function(){
     if(confirm("Are you sure you want to save this record ?")){
 
-      window.location = "#!display";
+      window.location = "#!";
       document.getElementById('addButton').disabled = false;
     }
   }
@@ -285,7 +286,7 @@ app.controller('modifyRowAreaController', function($scope){
   $scope.cancelRecord = function(){
     if(confirm("Are you sure you want to cancel ?")){
 
-      window.location = "#!display";
+      window.location = "#!";
       document.getElementById('addButton').disabled = false;
 
     }
