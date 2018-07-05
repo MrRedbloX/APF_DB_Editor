@@ -279,8 +279,9 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
           if(postgresqlScope.insertSucess)
             console.log(postgresqlScope.insertSucess);
         });
+      }
     }
-  }
+  };
 
   $scope.cancelRecord = function(){
 
@@ -291,7 +292,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
 
     }
-  }
+  };
 });
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
