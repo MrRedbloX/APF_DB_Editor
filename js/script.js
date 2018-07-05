@@ -259,6 +259,26 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById('addButton').disabled = false;
       if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
 
+      if(tableSelected != null){
+        let temp = tableSelected.split(';');
+        let db = temp[0];
+        let table = temp[1];
+
+        columnList = [];
+        for(att in $scope.attributes)
+          columnList.push(att.column_name);
+
+        valueList = [];
+        for(col in columnList){
+          let elt = document.getElementById(col);
+          if(elt.nodeName === "INPUT") valueList.push(elt.value);
+          else if(elt.nodeName === "SELECT") value.list.push(elt.options[elt.selectedIndex].text);
+        }
+
+        postgresqlScope.addRecord(db, table, columnList, valueList, function(){
+          if(postgresqlScope.insertSucess)
+            console.log(postgresqlScope.insertSucess);
+        });
     }
   }
 
