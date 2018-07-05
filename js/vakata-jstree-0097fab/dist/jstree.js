@@ -3742,7 +3742,7 @@
 			var tmp = {
 				'id' : obj.id,
 				'text' : obj.text,
-				'icon' : this.get_icon(obj),
+			//	'icon' : this.get_icon(obj),
 				'li_attr' : $.extend(true, {}, obj.li_attr),
 				'a_attr' : $.extend(true, {}, obj.a_attr),
 				'state' : {},
