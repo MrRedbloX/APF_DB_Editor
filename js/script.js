@@ -281,7 +281,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
 });
 
-app.controller('modifyRowAreaController', function($scope){
+app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
