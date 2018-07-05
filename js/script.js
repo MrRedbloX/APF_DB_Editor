@@ -91,8 +91,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                       'core' : {
                           'data' : [
                               { "text" : "Root node", "children" : [
-                                  { "text" : "Child node 1",
-                                    "icon" : "1.jpg"},
+                                  { "text" : "Child node 1" },
                                   { "text" : "Child node 2" }
                               ]
                               },
@@ -160,7 +159,9 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 let temp = [];
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){
                   if(postgresScope.valuesOf){
-                    console.log(postgresScope.valuesOf);
+                    for(val in postgresScope.valuesOf.data)
+                      temp.push(val[postgresScope.columnConstraint.data[i].foreign_column_name])
+                      console.log(postgresScope.valuesOf);
                   }
                 });
                 postgresScope.valuesOfConstraint.push({
