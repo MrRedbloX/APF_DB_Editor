@@ -87,30 +87,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
               });
               $scope.ready = true;
               $(function() {
-                $('#treeDatabaseArea').jstree({
-                    "types" : {
-                      "#" : {
-                        "max_children" : 1,
-                        "max_depth" : 4,
-                        "valid_children" : ["root"]
-                      },
-                      "root" : {
-                        "icon" : "Penguins.jpg",
-                        "valid_children" : ["default"]
-                      },
-                      "default" : {
-                        "valid_children" : ["default","file"]
-                      },
-                      "file" : {
-                        "icon" : "Penguins.jpg",
-                        "valid_children" : []
-                      }
-                    },
-                    "plugins" : [
-                      "contextmenu", "dnd", "search",
-                      "state", "types", "wholerow"
-                    ]
-                  });
+                $('#treeDatabaseArea').jstree();
               });
             }
           });
