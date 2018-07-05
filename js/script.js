@@ -92,7 +92,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                           'data' : [
                               { "text" : "Root node", "children" : [
                                   { "text" : "Child node 1",
-                                    "icon" : "./1.jpg"},
+                                    "icon" : "1.jpg"},
                                   { "text" : "Child node 2" }
                               ]
                               },
