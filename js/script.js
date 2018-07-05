@@ -303,21 +303,6 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
     }
   }
 
-  $scope.attributes = [
-    {
-      name : "Att1",
-      value : "Val1"
-    },
-    {
-      name : "Att2",
-      value : "Val2"
-    },
-    {
-      name : "Att3",
-      value : "Val3"
-    }
-  ];
-
   $scope.checkIfIsReference = function(att){
     var ret = false;
 
