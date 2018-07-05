@@ -148,8 +148,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 let temp = [];
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){
                   if(postgresScope.valuesOf){
-                    for(val in postgresScope.valuesOf.data)
+                    for(val in postgresScope.valuesOf.data){
+                      console.log(val[(postgresScope.columnConstraint.data[i].foreign_column_name).toString()])
                       temp.push(val[(postgresScope.columnConstraint.data[i].foreign_column_name).toString()]);
+                    }
                   }
                 });
                 postgresScope.valuesOfConstraint.push({
