@@ -88,20 +88,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
               $scope.ready = true;
               $(function() {
                 $('#treeDatabaseArea').jstree({
-                    "core" : {
-                      "animation" : 0,
-                      "check_callback" : true,
-                      "themes" : { "stripes" : true },
-                      'data' : {
-                        'url' : function (node) {
-                          return node.id === '#' ?
-                            'ajax_demo_roots.json' : 'ajax_demo_children.json';
-                        },
-                        'data' : function (node) {
-                          return { 'id' : node.id };
-                        }
-                      }
-                    },
                     "types" : {
                       "#" : {
                         "max_children" : 1,
