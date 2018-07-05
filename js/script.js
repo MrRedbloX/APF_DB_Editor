@@ -116,7 +116,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                         "valid_children" : ["default","file"]
                       },
                       "file" : {
-                        "icon" : "glyphicon glyphicon-file",
+                        "icon" : "Penguins.jpg",
                         "valid_children" : []
                       }
                     },
