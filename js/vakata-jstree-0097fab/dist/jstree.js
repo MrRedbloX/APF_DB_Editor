@@ -2001,7 +2001,7 @@
 				data = {
 					id			: false,
 					text		: false,
-					icon		: false,
+					icon		: true,
 					parent		: p,
 					parents		: ps,
 					children	: [],
