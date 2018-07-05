@@ -221,10 +221,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   $scope.attributes = [];
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
     if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
-      $scope.attributes.push({
-        name : columnsDisplayScope.columns[i],
-        values : rowSelected[i]
-      });
+      $scope.attributes.push(columnsDisplayScope.columns[i]);
   };
 
   $scope.checkIfIsReference = function(att){
@@ -283,7 +280,10 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   $scope.attributes = [];
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
     if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
-      $scope.attributes.push(columnsDisplayScope.columns[i]);
+      $scope.attributes.push({
+        name : columnsDisplayScope.columns[i],
+        value : rowSelected[i]
+      });
   };
 
   $scope.saveRecord = function(){
