@@ -1,8 +1,8 @@
 A faire : recopier la table Task Report Utils
 	  Tester pour les created
-	  Faire un compte rendu à Matthieu
+	  Faire un compte rendu ï¿½ Matthieu
 
-	  Commencer les développements en HTML
+	  Commencer les dï¿½veloppements en HTML
 	  Tester les BDD
 
 #	Continuer modifier
@@ -11,6 +11,8 @@ Formulaire en dessous
 
 array scrud js
 
-	Vérifier requête column étrangère
+	Vï¿½rifier requï¿½te column ï¿½trangï¿½re
 
-	Vérifier pourquoi requête clé étrangère ne fonctionne pas quand on renseigne la table
+	Vï¿½rifier pourquoi requï¿½te clï¿½ ï¿½trangï¿½re ne fonctionne pas quand on renseigne la table
+
+	Tester le addRecord
