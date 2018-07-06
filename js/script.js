@@ -353,13 +353,13 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         postgresqlScope.getPrimaryKey(db, table, function(){
           if(postgresqlScope.primaryKey){
             console.log(postgresqlScope.primaryKey);
-            /*postgresqlScope.modifyRecord(db, table, columnList, valueList, function(){
+            console.log(postgresqlScope.columnValues);
+            postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0], function(){
               if(postgresqlScope.insertSucess){
                 buttonAreaScope.display();
               }
-            });*/
+            });
           }
-          else console.log("ko");
         });
       }
     }
