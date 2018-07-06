@@ -119,6 +119,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
+  var columnsDisplayScope = columnsDisplayFactory.getScope();
 
   document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
