@@ -481,7 +481,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     console.log('/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+columnList.toString()+'&value_list='+valueList.toString());
     $http({
       method: 'GET',
-      url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+columnList.toString()+'&value_list='+valueList.toString()
+      url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list=['+columnList.toString()+']&value_list=['+valueList.toString()+']'
     })
     .then(
       function successCallback(data) {
