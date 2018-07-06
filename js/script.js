@@ -317,6 +317,8 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
 
+  console.log(columnsDisplayScope.columns);
+
   $scope.attributes = [];
   let parseRowSelected = JSON.parse(rowSelected);
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
