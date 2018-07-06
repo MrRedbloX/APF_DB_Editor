@@ -352,10 +352,14 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
         postgresqlScope.getPrimaryKey(db, table, function(){
           if(postgresqlScope.primaryKey){
-            console.log(postgresqlScope.primaryKey);
-            console.log($scope.attributes);
-            postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0], function(){
-              if(postgresqlScope.insertSucess){
+            for(let i=0; i<$scope.attributes.length; i++){
+              if(postgresqlScope.primaryKey.data[0] === $scope.attributes[i].name.column_name){
+                pkValue = $scope.attributes[i].name.column_name;
+                break;
+              }
+            }
+            postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0],pkValue, function(){
+              if(postgresqlScope.modifySuccess){
                 buttonAreaScope.display();
               }
             });
