@@ -214,6 +214,29 @@ module.exports = {
       });
   },
 
+  getPrimaryKey: function(req, res) {
+        var pg = require('pg');
+        var client = new pg.Client(conString+req.query.db);
+
+        client.connect(function(err,client) {
+          if(err){
+           console.log("Not able to get connection : "+ err);
+           res.status(400).send(err);
+          }
+          else{
+            console.log("Connection successful");
+            client.query("SELECT a.attname, format_type(a.atttypid, a.atttypmod) AS data_type FROM pg_index i JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = ANY(i.indkey) WHERE i.indrelid = "+req.query.table+"::regclass AND i.indisprimary;" , function(err,result) {
+              client.end(); // closing the connection;
+              if(err){
+                 console.log(err);
+                 res.status(400).send(err);
+              }
+              else res.status(200).send(result.rows);
+            });
+          }
+        });
+  },
+
 };
 
 //column_name, data_type, is_identity, is_nullable
