@@ -242,7 +242,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.checkIfIsReference = function(att){
     var ret = false;
-    console.log(att);
 
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
@@ -288,7 +287,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         valueList = [];
         for(let j=0; j<columnList.length; j++){
           console.log(columnList[i]);
-          let elt = document.getElementById(columnList[i]);
+          let elt = document.getElementById(columnList[i].toString());
           if(elt.nodeName === "INPUT") valueList.push(elt.value);
           else if(elt.nodeName === "SELECT") value.list.push(elt.options[elt.selectedIndex].text);
         }
