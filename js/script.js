@@ -481,7 +481,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
 
     tempCol = "["+columnList.toString()+"]";
     tempVal = "["+valueList.toString()+"]";
-    console.log(tempCocolumnList.toString()l);
+    console.log(columnList.toString());
     console.log(tempVal);
 
     columnListParse = JSON.parse('["test" , "test"]');
