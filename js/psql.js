@@ -161,8 +161,9 @@ module.exports = {
           for(j=0; j<valueList.length; j++)
             values += valueList[j]+",";
 
-          columns.replace(/.$/,"");
-          values.replace(/.$/,"");
+          columns.replace(/.$/,'');
+          values.replace(/.$/,'');
+
           console.log("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");");
 
           client.query("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");" , function(err,result) {
