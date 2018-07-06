@@ -242,6 +242,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.checkIfIsReference = function(att){
     var ret = false;
+    console.log(att);
 
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
