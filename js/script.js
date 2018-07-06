@@ -67,6 +67,20 @@ app.factory('postgresqlFactory', function(){
   };
 });
 
+app.factory('buttonAreaFactory', function(){
+  var theScope;
+
+  return{
+    setScope : function(scope){
+      theScope = scope;
+    },
+
+    getScope : function(){
+      return theScope;
+    }
+  };
+});
+
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
   $scope.databases = [];
   var postgresScope = postgresqlFactory.getScope();
@@ -101,8 +115,9 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
 });
 
-app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
+app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
+  buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
 
   document.getElementById("displayButton").disabled = true;
@@ -213,10 +228,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   };
 });
 
-app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
+app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
+  var buttonAreaScope = buttonAreaFactory.getScope();
 
   $scope.attributes = [];
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
@@ -276,8 +292,10 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         }
 
         postgresqlScope.addRecord(db, table, columnList, valueList, function(){
-          if(postgresqlScope.insertSucess)
+          if(postgresqlScope.insertSucess){
             console.log(postgresqlScope.insertSucess);
+            buttonAreaScope.display();
+          }
         });
       }
     }
