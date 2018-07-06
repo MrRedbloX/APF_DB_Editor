@@ -122,7 +122,7 @@
 				themes : {
 					name : false,
 					dots : false,
-					icons : false,
+					icons : true,
 					ellipsis : false
 				},
 				selected : [],
