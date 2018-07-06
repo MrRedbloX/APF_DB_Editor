@@ -198,25 +198,24 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.delete = function(){
     if(confirm('Do you want to delete this record ?')){
       //Faire requête de suppression
-      var isRecord;
-      var rowSelectedParse = JSON.parse(rowSelected);
-
-      for(var i=0; i<columnsDisplayScope.tuples.length;i++){
-        isRecord = true;
-        for(var j=0; j<columnsDisplayScope.tuples[i].values.length; j++){
-          if(columnsDisplayScope.tuples[i].values[j] !== rowSelectedParse[j]){
-            isRecord = false;
-            break;
+      postgresqlScope.getPrimaryKey(db, table, function(){
+        if(postgresqlScope.primaryKey){
+          for(let i=0; i<$scope.attributes.length; i++){
+            if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
+              var pkValue = JSON.parse(rowSelected)[i];
+              break;
+            }
           }
+          postgresqlScope.delRecord(db, table,postgresqlScope.primaryKey.data[0].attname, pkValue, function(){
+            if(postgresqlScope.modifySuccess){
+              buttonAreaScope.display();
+              valueList.unshift(pkValue);
+              document.getElementById(rowSelected).id = JSON.stringify(valueList);
+              rowSelected = JSON.stringify(valueList);
+            }
+          });
         }
-        if(isRecord){
-          columnsDisplayScope.tuples.splice(i,1);
-          rowSelected = null;
-          document.getElementById("modifyButton").disabled = true;
-          document.getElementById("deleteButton").disabled = true;
-          break;
-        }
-      }
+      });
     }
   };
 
@@ -556,6 +555,22 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
       },
       function errorCallback(data) {
         $scope.primaryKey = false;
+        if(callback) callback();
+    });
+  };
+
+  $scope.delRecord = function(dbName,tableName,pkKey,pkValue,callback){
+    $http({
+      method: 'GET',
+      url: '/db/delRecord?db='+dbName+'&table='+tableName+'&pkKey='+pkKey+'&pkValue='+pkValue
+    })
+    .then(
+      function successCallback(data) {
+        $scope.modifySuccess = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.modifySuccess = false;
         if(callback) callback();
     });
   };
