@@ -201,6 +201,8 @@ module.exports = {
 
           columns = columns.substring(0, columns.length-1);
           values = values.substring(0, values.length-1);
+          columns.replace(' ', '');
+          values.replace(' ', '');
 
           client.query("UPDATE "+req.query.table+"SET ("+columns+") = ("+values+") WHERE "+req.query.pkKey+" = "+req.query.pkValue+";" , function(err,result) {
             client.end(); // closing the connection;
