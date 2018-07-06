@@ -341,7 +341,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
         columnList = [];
         for(let i=0; i<$scope.attributes.length; i++)
-          columnList.push($scope.attributes[i].column_name);
+          columnList.push($scope.attributes[i].name.column_name);
 
         valueList = [];
         for(let j=0; j<columnList.length; j++){
