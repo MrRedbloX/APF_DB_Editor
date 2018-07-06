@@ -362,7 +362,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){
               if(postgresqlScope.modifySuccess){
                 buttonAreaScope.display();
-                rowSelected = null;
+                rowSelected = valueList;
               }
             });
           }
