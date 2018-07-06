@@ -151,7 +151,7 @@ module.exports = {
         }
         else{
           console.log("Connection successful");
-          
+
           columnList = JSON.parse(req.query.column_list);
           valueList = JSON.parse(req.query.value_list);
           columns = "";
@@ -166,6 +166,43 @@ module.exports = {
           values = values.substring(0, values.length-1);
 
           client.query("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");" , function(err,result) {
+            client.end(); // closing the connection;
+            if(err){
+               console.log(err);
+               res.status(400).send(err);
+            }
+            else res.status(200).send(result.rows);
+          });
+        }
+      });
+  },
+
+  modifyRecord: function(req, res) {
+      var pg = require('pg');
+      var client = new pg.Client(conString+req.query.db);
+
+      client.connect(function(err,client) {
+        if(err){
+         console.log("Not able to get connection : "+ err);
+         res.status(400).send(err);
+        }
+        else{
+          console.log("Connection successful");
+
+          columnList = JSON.parse(req.query.column_list);
+          valueList = JSON.parse(req.query.value_list);
+          columns = "";
+          values = "";
+
+          for(i=0; i<columnList.length; i++)
+            columns += columnList[i]+",";
+          for(j=0; j<valueList.length; j++)
+            values += "'"+valueList[j]+"',";
+
+          columns = columns.substring(0, columns.length-1);
+          values = values.substring(0, values.length-1);
+
+          client.query("UPDATE "+req.query.table+"SET ("+columns+") = ("+values+") WHERE "+req.query.pkKey+" = "+req.query.pkValue+";" , function(err,result) {
             client.end(); // closing the connection;
             if(err){
                console.log(err);
