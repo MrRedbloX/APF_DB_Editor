@@ -163,6 +163,7 @@ module.exports = {
 
           columns.replace(/.$/,"");
           values.replace(/.$/,"");
+          console.log("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");");
 
           client.query("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");" , function(err,result) {
             client.end(); // closing the connection;
