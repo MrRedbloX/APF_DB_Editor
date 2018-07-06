@@ -159,7 +159,7 @@ module.exports = {
           for(i=0; i<columnList.length; i++)
             columns += columnList[i]+",";
           for(j=0; j<valueList.length; j++)
-            values += valueList[j]+",";
+            values += "'"+valueList[j]+"',";
 
           columns = columns.substring(0, columns.length-1);
           values = values.substring(0, values.length-1);
