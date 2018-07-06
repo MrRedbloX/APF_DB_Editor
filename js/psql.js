@@ -151,6 +151,7 @@ module.exports = {
         }
         else{
           console.log("Connection successful");
+          
           columnList = JSON.parse(req.query.column_list);
           valueList = JSON.parse(req.query.value_list);
           columns = "";
@@ -163,8 +164,6 @@ module.exports = {
 
           columns = columns.substring(0, columns.length-1);
           values = values.substring(0, values.length-1);
-
-          console.log("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");");
 
           client.query("INSERT INTO "+req.query.table+"("+columns+") VALUES ("+values+");" , function(err,result) {
             client.end(); // closing the connection;
