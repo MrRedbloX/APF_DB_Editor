@@ -1,4 +1,4 @@
-A faire : recopier la table Task Report Utils
+﻿A faire : recopier la table Task Report Utils
 	  Tester pour les created
 	  Faire un compte rendu � Matthieu
 
@@ -16,3 +16,4 @@ array scrud js
 	V�rifier pourquoi requ�te cl� �trang�re ne fonctionne pas quand on renseigne la table
 
 	Tester le addRecord
+Verifier delete
