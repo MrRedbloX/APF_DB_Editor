@@ -480,7 +480,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
   $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
     $http({
       method: 'GET',
-      url: '/db/getValuesOf?db='+dbName+'&table='+tableName+'&column_list='+columnList.toString()+'&value_list='+valueList.toString()
+      url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+columnList.toString()+'&value_list='+valueList.toString()
     })
     .then(
       function successCallback(data) {
