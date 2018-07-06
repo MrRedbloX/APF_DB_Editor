@@ -354,7 +354,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
           if(postgresqlScope.primaryKey){
             for(let i=0; i<$scope.attributes.length; i++){
               if(postgresqlScope.primaryKey.data[0] === $scope.attributes[i].name.column_name){
-                pkValue = $scope.attributes[i].name.column_name;
+                var pkValue = $scope.attributes[i].name.column_name;
                 break;
               }
             }
