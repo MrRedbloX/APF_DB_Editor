@@ -353,7 +353,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         postgresqlScope.getPrimaryKey(db, table, function(){
           if(postgresqlScope.primaryKey){
             console.log(postgresqlScope.primaryKey);
-            console.log(postgresqlScope.columnValues);
+            console.log(rowSelected);
             postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0], function(){
               if(postgresqlScope.insertSucess){
                 buttonAreaScope.display();
