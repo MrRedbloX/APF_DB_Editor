@@ -644,7 +644,7 @@
 			_temp1.setAttribute('href','#');
 			_temp1.setAttribute('tabindex','-1');
 			_temp2 = document.createElement('I');
-			_temp2.className = 'jstree-icon';
+			_temp2.className = 'jstree-icon jstree-themeicon';
 			_temp2.setAttribute('role', 'presentation');
 			_temp1.appendChild(_temp2);
 			_node.appendChild(_temp1);
@@ -2536,13 +2536,13 @@
 					node.childNodes[1].childNodes[0].className += ' jstree-themeicon-hidden';
 				}
 				else if(obj.icon.indexOf('/') === -1 && obj.icon.indexOf('.') === -1) {
-					node.childNodes[1].childNodes[0].className += ' ' + obj.icon + ' jstree-themeicon-custom';
+					node.childNodes[1].childNodes[0].className += ' ' + obj.icon + ' jstree-themeicon-test';
 				}
 				else {
 					node.childNodes[1].childNodes[0].style.backgroundImage = 'url("'+obj.icon+'")';
 					node.childNodes[1].childNodes[0].style.backgroundPosition = 'center center';
 					node.childNodes[1].childNodes[0].style.backgroundSize = 'auto';
-					node.childNodes[1].childNodes[0].className += ' jstree-themeicon-custom';
+					node.childNodes[1].childNodes[0].className += ' jstree-themeicon-test';
 				}
 			}
 
