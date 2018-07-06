@@ -364,7 +364,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
                 buttonAreaScope.display();
                 valueList.unshift(pkValue);
                 document.getElementById(rowSelected).id = JSON.stringify(valueList);
-                isRowSelected(JSON.stringify(valueList););
+                isRowSelected(JSON.stringify(valueList));
                 console.log(rowSelected);
               }
             });
