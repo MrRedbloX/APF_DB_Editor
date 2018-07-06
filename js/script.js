@@ -203,10 +203,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
         let temp = tableSelected.split(';');
         let db = temp[0];
         let table = temp[1];
-        
+
         postgresScope.getPrimaryKey(db, table, function(){
           if(postgresScope.primaryKey){
-            for(let i=0; i<$scope.attributes.length; i++){
+            for(let i=0; i<columnsDisplayScope.columns.length; i++){
               if(postgresScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
                 var pkValue = JSON.parse(rowSelected)[i];
                 break;
@@ -359,7 +359,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
         postgresqlScope.getPrimaryKey(db, table, function(){
           if(postgresqlScope.primaryKey){
-            for(let i=0; i<$scope.attributes.length; i++){
+            for(let i=0; icolumnsDisplayScope.columns.length; i++){
               if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
                 var pkValue = JSON.parse(rowSelected)[i];
                 break;
