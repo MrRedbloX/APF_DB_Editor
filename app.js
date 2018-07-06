@@ -33,6 +33,9 @@ app.get('/db/addRecord', function(req,res){
 app.get('/db/modifyRecord', function(req,res){
     dbOperations.modifyRecord(req,res);
 });
+app.get('/db/getPrimaryKey', function(req,res){
+    dbOperations.getPrimaryKey(req,res);
+});
 /*app.get('/db/delRecord', function(req,res){
     dbOperations.delRecord(req,res);
 });
