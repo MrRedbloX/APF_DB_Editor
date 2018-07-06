@@ -293,7 +293,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
         postgresqlScope.addRecord(db, table, columnList, valueList, function(){
           if(postgresqlScope.insertSucess){
-            console.log(postgresqlScope.insertSucess);
             buttonAreaScope.display();
           }
         });
