@@ -333,6 +333,29 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
       window.location = "#!";
       document.getElementById('addButton').disabled = false;
       document.getElementById('modifyButton').disabled = false;
+
+      if(tableSelected != null){
+        let temp = tableSelected.split(';');
+        let db = temp[0];
+        let table = temp[1];
+
+        columnList = [];
+        for(let i=0; i<$scope.attributes.length; i++)
+          columnList.push($scope.attributes[i].column_name);
+
+        valueList = [];
+        for(let j=0; j<columnList.length; j++){
+          let elt = document.getElementById(columnList[j]/*.toString()*/);
+          if(elt.nodeName === "INPUT") valueList.push(elt.value);
+          else if(elt.nodeName === "SELECT") value.list.push(elt.options[elt.selectedIndex].text);
+        }
+
+        postgresqlScope.addRecord(db, table, columnList, valueList, function(){
+          if(postgresqlScope.insertSucess){
+            buttonAreaScope.display();
+          }
+        });
+      }
     }
   }
 
@@ -486,7 +509,23 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.valuesOf = false;
+        $scope.insertSucess = false;
+        if(callback) callback();
+    });
+  };
+
+  $scope.modifyRecord = function(dbName,tableName,columnList,valueList,pkKey,pkValue,callback){
+    $http({
+      method: 'GET',
+      url: '/db/modifyRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)+'$pkKey='+pkKey+'&pkValue='+pkValue
+    })
+    .then(
+      function successCallback(data) {
+        $scope.modifySuccess = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.modifySuccess = false;
         if(callback) callback();
     });
   };
