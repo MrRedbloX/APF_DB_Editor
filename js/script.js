@@ -363,6 +363,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
               if(postgresqlScope.modifySuccess){
                 buttonAreaScope.display();
                 rowSelected = valueList;
+                console.log(rowSelected);
               }
             });
           }
