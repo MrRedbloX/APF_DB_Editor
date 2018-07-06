@@ -479,7 +479,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
 
   $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
 
-    tempCol = "["+columnList.toString()+"]";
+  /*  tempCol = "["+columnList.toString()+"]";
     tempVal = "["+valueList.toString()+"]";
     console.log(columnList);
     console.log(tempVal);
@@ -498,11 +498,11 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     values.replace(/.$/,"");
 
     console.log(columns);
-    console.log(values);
+    console.log(values);*/
 
     $http({
       method: 'GET',
-      url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list=['+columnList.toString()+']&value_list=['+valueList.toString()+']'
+      url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+columnList+'&value_list='+valueList
     })
     .then(
       function successCallback(data) {
