@@ -478,6 +478,23 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
   };
 
   $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
+
+    columnListParse = JSON.parse("["+columnList.toString()+"]");
+    valueListParse = JSON.parse("["+valueList.toString()+"]");
+    columns = "";
+    values = "";
+
+    for(col in columnListParse)
+      columns += col+",";
+    for(val in valueListParse)
+      values += val+",";
+
+    columns.replace(/.$/,"");
+    values.replace(/.$/,"");
+
+    console.log(columns);
+    console.log(values);
+
     $http({
       method: 'GET',
       url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list=['+columnList.toString()+']&value_list=['+valueList.toString()+']'
