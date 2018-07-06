@@ -527,7 +527,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
   $scope.modifyRecord = function(dbName,tableName,columnList,valueList,pkKey,pkValue,callback){
     $http({
       method: 'GET',
-      url: '/db/modifyRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)+'$pkKey='+pkKey+'&pkValue='+pkValue
+      url: '/db/modifyRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)+'&pkKey='+pkKey+'&pkValue='+pkValue
     })
     .then(
       function successCallback(data) {
