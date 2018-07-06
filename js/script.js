@@ -352,9 +352,14 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
           else if(elt.nodeName === "SELECT") value.list.push(elt.options[elt.selectedIndex].text);
         }
 
-        postgresqlScope.addRecord(db, table, columnList, valueList, function(){
-          if(postgresqlScope.insertSucess){
-            buttonAreaScope.display();
+        postgresqlScope.getPrimaryKey(db, table, function(){
+          if(postgresqlScope.primaryKey){
+            console.log(postgresqlScope.primaryKey);
+            /*postgresqlScope.modifyRecord(db, table, columnList, valueList, function(){
+              if(postgresqlScope.insertSucess){
+                buttonAreaScope.display();
+              }
+            });*/
           }
         });
       }
@@ -528,6 +533,22 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
       },
       function errorCallback(data) {
         $scope.modifySuccess = false;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getPrimaryKey = function(dbName,tableName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getPrimaryKey?db='+dbName+'&table='+tableName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.primaryKey = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.primaryKey = false;
         if(callback) callback();
     });
   };
