@@ -202,9 +202,7 @@ module.exports = {
           columns = columns.substring(0, columns.length-1);
           values = values.substring(0, values.length-1);
 
-          console.log("UPDATE "+req.query.table+"SET ("+columns+") = ("+values+") WHERE "+req.query.pkKey+" = "+req.query.pkValue+";");
-
-          client.query("UPDATE "+req.query.table+"SET ("+columns+") = ("+values+") WHERE "+req.query.pkKey+" = "+req.query.pkValue+";" , function(err,result) {
+          client.query("UPDATE "+req.query.table+" SET ("+columns+") = ("+values+") WHERE "+req.query.pkKey+" = "+req.query.pkValue+";" , function(err,result) {
             client.end(); // closing the connection;
             if(err){
                console.log(err);
