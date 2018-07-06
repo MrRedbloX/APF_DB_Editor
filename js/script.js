@@ -198,17 +198,17 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.delete = function(){
     if(confirm('Do you want to delete this record ?')){
       //Faire requête de suppression
-      postgresqlScope.getPrimaryKey(db, table, function(){
-        if(postgresqlScope.primaryKey){
+      postgresScope.getPrimaryKey(db, table, function(){
+        if(postgresScope.primaryKey){
           for(let i=0; i<$scope.attributes.length; i++){
-            if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
+            if(postgresScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
               var pkValue = JSON.parse(rowSelected)[i];
               break;
             }
           }
-          postgresqlScope.delRecord(db, table,postgresqlScope.primaryKey.data[0].attname, pkValue, function(){
-            if(postgresqlScope.modifySuccess){
-              buttonAreaScope.display();
+          postgresScope.delRecord(db, table,postgresScope.primaryKey.data[0].attname, pkValue, function(){
+            if(postgresScope.modifySuccess){
+              display();
               valueList.unshift(pkValue);
               document.getElementById(rowSelected).id = JSON.stringify(valueList);
               rowSelected = JSON.stringify(valueList);
