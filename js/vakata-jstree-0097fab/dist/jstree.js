@@ -636,7 +636,7 @@
 			var _node = document.createElement('LI'), _temp1, _temp2;
 			_node.setAttribute('role', 'treeitem');
 			_temp1 = document.createElement('I');
-			_temp1.className = 'jstree-ocl';
+			_temp1.className = 'jstree-icon jstree-ocl';
 			_temp1.setAttribute('role', 'presentation');
 			_node.appendChild(_temp1);
 			_temp1 = document.createElement('A');
