@@ -360,7 +360,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
         postgresqlScope.getPrimaryKey(db, table, function(){
           if(postgresqlScope.primaryKey){
-            for(let i=0; icolumnsDisplayScope.columns.length; i++){
+            for(let i=0; columnsDisplayScope.columns.length; i++){
               if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
                 var pkValue = JSON.parse(rowSelected)[i];
                 break;
