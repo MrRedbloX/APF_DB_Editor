@@ -312,10 +312,11 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 });
 
-app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
+app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
+  var buttonAreaScope = buttonAreaFactory.getScope();
 
   $scope.attributes = [];
   let parseRowSelected = JSON.parse(rowSelected);
