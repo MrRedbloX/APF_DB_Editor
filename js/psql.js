@@ -59,7 +59,7 @@ module.exports = {
           }
           else{
             console.log("Connection successful");
-            client.query("SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '"+req.query.table+"';", function(err,result){
+            client.query("SELECT column_name, data_type, is_identity, is_nullable FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '"+req.query.table+"';", function(err,result){
               client.end(); // closing the connection;
               if(err){
                  console.log(err);
@@ -239,5 +239,3 @@ module.exports = {
 
 
 };
-
-//column_name, data_type, is_identity, is_nullable
