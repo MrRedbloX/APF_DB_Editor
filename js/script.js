@@ -478,7 +478,6 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
   };
 
   $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
-    console.log('/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+columnList.toString()+'&value_list='+valueList.toString());
     $http({
       method: 'GET',
       url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list=['+columnList.toString()+']&value_list=['+valueList.toString()+']'
