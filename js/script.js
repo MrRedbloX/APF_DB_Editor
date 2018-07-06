@@ -362,6 +362,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){
               if(postgresqlScope.modifySuccess){
                 buttonAreaScope.display();
+                valueList.unshift(pkValue);
                 rowSelected = valueList;
                 console.log(rowSelected);
               }
