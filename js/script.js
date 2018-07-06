@@ -359,6 +359,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
               }
             });*/
           }
+          else console.log("ko");
         });
       }
     }
