@@ -4857,9 +4857,9 @@
 			obj = this.get_node(obj);
 			if(!obj || obj === $.jstree.root) { return false; }
 			dom = this.get_node(obj, true);
-			obj.icon = dom.length ? dom.children(".jstree-anchor").children("").attr('rel') : true;
+			obj.icon = dom.length ? dom.children(".jstree-anchor").children(".jstree-themeicon").attr('rel') : true;
 			if(!obj.icon) { obj.icon = true; }
-			dom.children(".jstree-anchor").children("").removeClass('jstree-themeicon-hidden');
+			dom.children(".jstree-anchor").children(".jstree-themeicon").removeClass('jstree-themeicon-hidden');
 			return true;
 		}
 	};
