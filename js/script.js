@@ -353,8 +353,8 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         postgresqlScope.getPrimaryKey(db, table, function(){
           if(postgresqlScope.primaryKey){
             for(let i=0; i<$scope.attributes.length; i++){
-              console.log($scope.attributes[i].name.column_name)
-              if(postgresqlScope.primaryKey.data[0].attname === $scope.attributes[i].name.column_name){
+              console.log(columnsDisplayScope.columns[i].column_name)
+              if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
                 console.log('wtf');
                 var pkValue = $scope.attributes[i].name.column_name;
                 break;
