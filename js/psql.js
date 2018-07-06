@@ -237,6 +237,7 @@ module.exports = {
         });
   },
 
+
 };
 
 //column_name, data_type, is_identity, is_nullable

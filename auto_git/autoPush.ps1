@@ -1,8 +1,7 @@
 ﻿cd ..
-pwd
 while (1){
-    git pull > $void
-    git add * > $void
-    git commit -m (Get-Date).ToString() > $void
-    git push > $void
+    git pull
+    git add *
+    git commit -m (Get-Date).ToString()
+    git push
 }
