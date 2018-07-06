@@ -320,6 +320,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   var postgresqlScope = postgresqlFactory.getScope();
 
   $scope.attributes = [];
+  console.log(rowSelected);
   let parseRowSelected = JSON.parse(rowSelected);
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
     if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
