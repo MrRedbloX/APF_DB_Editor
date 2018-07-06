@@ -281,12 +281,12 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         let table = temp[1];
 
         columnList = [];
-        for(att in $scope.attributes)
-          columnList.push(att.column_name);
+        for(let i=0; i<$scope.attributes.length; i++)
+          columnList.push($scope.attributes[i].column_name);
 
         valueList = [];
         for(col in columnList){
-          console.log($scope.attributes[0].column_name);
+          console.log(col);
           let elt = document.getElementById(col);
           if(elt.nodeName === "INPUT") valueList.push(elt.value);
           else if(elt.nodeName === "SELECT") value.list.push(elt.options[elt.selectedIndex].text);
