@@ -156,10 +156,10 @@ module.exports = {
           columns = "";
           values = "";
 
-          for(col in columnList)
-            columns += col+",";
-          for(val in valueList)
-            values += val+",";
+          for(let i=0; i<columnList.length; i++)
+            columns += columnList[i]+",";
+          for(let j=0; j<valueList.length; j++)
+            values += valueList[j]+",";
 
           columns.replace(/.$/,"");
           values.replace(/.$/,"");
