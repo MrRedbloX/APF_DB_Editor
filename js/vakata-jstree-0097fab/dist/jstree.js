@@ -4837,7 +4837,7 @@
 			obj = this.get_node(obj);
 			if(!obj || obj === $.jstree.root) { return false; }
 			obj.icon = false;
-			this.get_node(obj, true).children(".jstree-anchor").children(".jstree-themeicon").addClass('jstree-themeicon-hidden');
+			this.get_node(obj, true).children(".jstree-anchor").children("").addClass('jstree-themeicon-hidden');
 			return true;
 		},
 		/**
