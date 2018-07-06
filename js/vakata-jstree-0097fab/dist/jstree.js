@@ -392,7 +392,7 @@
 			 * a boolean indicating if node icons are shown
 			 * @name $.jstree.defaults.core.themes.icons
 			 */
-			icons			: false,
+			icons			: true,
 			/**
 			 * a boolean indicating if node ellipsis should be shown - this only works with a fixed with on the container
 			 * @name $.jstree.defaults.core.themes.ellipsis
