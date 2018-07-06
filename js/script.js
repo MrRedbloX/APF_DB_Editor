@@ -280,6 +280,9 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         let db = temp[0];
         let table = temp[1];
 
+        for(att in $scope.attributes)
+          console.log(att.column_name);
+
         columnList = [];
         for(let i=0; i<$scope.attributes.length; i++)
           columnList.push($scope.attributes[i].column_name);
