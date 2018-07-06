@@ -499,6 +499,7 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
 
     console.log(columns);
     console.log(values);*/
+    console.log(JSON.stringify(columnList));
 
     $http({
       method: 'GET',
