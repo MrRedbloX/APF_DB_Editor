@@ -1,8 +1,8 @@
 <div id="modifyRowArea" ng-controller="modifyRowAreaController">
   <div>
-    <div ng-repeat="att in attributes">
+    <div ng-repeat="att in attributes" class="form-group">
       <div ng-if="!checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
-        {{att.name.column_name}} : <input type="text" id="{{att.name.column_name}}" value="{{att.value}}"/> <i style="font-size: small">{{att.data_type}}</i>
+        {{att.name.column_name}} : <input type="text" id="{{att.name.column_name}}" value="{{att.value}}" class="form-control"/> <i style="font-size: small">{{att.data_type}}</i>
       </div>
       <div ng-if="checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
         {{att.name.column_name}} : <select id="{{att.name.column_name}}">
