@@ -312,41 +312,45 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     return ret;
   };
 
-  //
+  //When we want to save a new tuple
   $scope.saveRecord = function(){
 
     if(confirm("Are you sure you want to save this record ?")){
-
-      window.location = "#!";
-      document.getElementById('addButton').disabled = false;
-      if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
 
       if(tableSelected != null){
         let temp = tableSelected.split(';');
         let db = temp[0];
         let table = temp[1];
 
-        columnList = [];
+        columnList = []; //The list of columns for the request
         for(let i=0; i<$scope.attributes.length; i++)
           columnList.push($scope.attributes[i].column_name);
 
-        valueList = [];
+        valueList = []; //The values to save
         for(let j=0; j<columnList.length; j++){
-          let elt = document.getElementById(columnList[j]/*.toString()*/);
+          let elt = document.getElementById(columnList[j]);
           if(elt.nodeName === "INPUT") valueList.push(elt.value);
           else if(elt.nodeName === "SELECT") value.list.push(elt.options[elt.selectedIndex].text);
         }
 
-        postgresqlScope.addRecord(db, table, columnList, valueList, function(){
-          if(postgresqlScope.insertSucess){
+        postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
+          if(postgresqlScope.successRequest){
             buttonAreaScope.display();
             if(rowSelected != null){
               if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
               if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
             }
           }
+          else{
+            console.log(postgresScope.addRequest);
+            alert("Error on addRecord request, check console logs.");
+          }
         });
       }
+
+      window.location = "#!";
+      document.getElementById('addButton').disabled = false;
+      if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
     }
   };
 
@@ -585,11 +589,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
-        $scope.insertSucess = data;
+        $scope.successRequest = true;
+        $scope.addRequest = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.insertSucess = false;
+        $scope.successRequest = false;
+        $scope.addRequest = data;
         if(callback) callback();
     });
   };
