@@ -177,15 +177,17 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 let temp = [];
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){ //And we get their values
                   if(postgresScope.successRequest){
-                    postgresScope.valuesOfConstraint.push({
-                      name : postgresScope.columnConstraint.data[i].column_name,
-                      values : postgresScope.valuesOf.data
-                    });
+                    for(val in postgresScope.valuesOf.data)
+                      temp.push(val);
                   }
                   else{
                     console.log(postgresScope.valuesOf);
                     alert("Error on getValuesOf request, check console logs.");
                   }
+                });
+                postgresScope.valuesOfConstraint.push({
+                  name : postgresScope.columnConstraint.data[i].column_name,
+                  values : temp
                 });
               }
             }
@@ -471,7 +473,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         if(att === postgresqlScope.valuesOfConstraint[i].name){
           $scope.references = postgresqlScope.valuesOfConstraint[i].values;
           $scope.references.splice($scope.references.indexOf(val), 1);
-          console.log(postgresqlScope.valuesOfConstraint[i].values);
+          console.log(postgresqlScope.valuesOfConstraint[i]);
           break;
         }
       }
