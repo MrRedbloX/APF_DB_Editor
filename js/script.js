@@ -407,7 +407,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
           }
           else if(elt.nodeName === "SELECT"){
              if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
-             else else valueList.push(elt.options[elt.selectedIndex].text);
+             else valueList.push(elt.options[elt.selectedIndex].text);
            }
         }
 
