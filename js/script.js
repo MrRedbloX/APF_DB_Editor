@@ -24,6 +24,7 @@ var isRowSelected = function(row){
     document.getElementById('deleteButton').disabled = true;
     rowSelected = null;
   }
+  console.log(rowSelected);
 }
 
 //The application
