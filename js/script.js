@@ -150,7 +150,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById('addButton').disabled = false;
 
       postgresScope.getColumnName(db, table, function(){
-        if(postgresScope.columnsArray){
+        if(postgresScope.successRequest){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
           postgresScope.getAllValues(db, table, function(){
             if(postgresScope.columnValues){
@@ -184,7 +184,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               }
             };
           });
-        };
+        }
+        else{
+          console.log(postgresScope.columnsArray)
+          alert("Error on getColumnName request, check console logs.");
+        }
       });
     }
   }
@@ -512,11 +516,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
+        $scope.successRequest = true;
         $scope.columnValues = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.columnValues = false;
+        $scope.successRequest = false;
+        $scope.columnValues = data;
         if(callback) callback();
     });
   };
