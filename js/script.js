@@ -101,12 +101,18 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                 $('#treeDatabaseArea').jstree(); //Activating jtree
               });
             }
-            else console.log(postgresScope.tableArray);
+            else{
+              console.log(postgresScope.tableArray)
+              alert("Error on getTableName request, check console logs.");
+            }
           });
         }
       }
     }
-    else console.log(postgresScope.dbArray);
+    else{
+      console.log(postgresScope.dbArray)
+      alert("Error on getDBName request, check console logs.");
+    }
 
   });
 });
