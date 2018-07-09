@@ -383,6 +383,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         value : parseRowSelected[i]
       });
   };
+  $scope.references = [];
 
   $scope.saveRecord = function(){
     if(confirm("Are you sure you want to save this record ?")){
@@ -465,12 +466,12 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   };
 
   $scope.getReferences = function(att, val){
-    ret = [];
+
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if(att === postgresqlScope.valuesOfConstraint[i].name){
-          ret = postgresqlScope.valuesOfConstraint[i].values;
-          ret.splice(ret.indexOf(val), 1);
+          $scope.references = postgresqlScope.valuesOfConstraint[i].values;
+          $scope.references.splice($scope.references.indexOf(val), 1);
           break;
         }
       }
