@@ -86,7 +86,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
   var postgresScope = postgresqlFactory.getScope();
 
   postgresScope.getDBName(function(){
-    if(postgresScope.dbArray){
+    if(postgresScope.successRequest){
       for(let i=0;i<postgresScope.dbArray.data.length;i++){
         if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
           postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){
