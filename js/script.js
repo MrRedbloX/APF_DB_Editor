@@ -1,12 +1,14 @@
-var exceptionDB = ['postgres', 'template0', 'template1'];
-var exceptionColumns = ['uuid'];
+var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
+var exceptionColumns = ['uuid']; //The columns that will not be displayed
 
+//When the user clicks on a table
 var tableSelected = null;
 var isTableSelected = function (table){
   tableSelected = table;
   document.getElementById('displayButton').disabled = false;
 }
 
+//When the user clicks on a row
 var rowSelected = null;
 var isRowSelected = function(row){
   document.getElementById('modifyButton').disabled = false;
@@ -24,8 +26,10 @@ var isRowSelected = function(row){
   }
 }
 
+//The application
 var app = angular.module('DBEditorAPF', ["ngRoute"]);
 
+//Here we configure the routes with the views
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -39,14 +43,13 @@ app.config(function($routeProvider) {
     });
 });
 
+//The following factories allow to access an element in a controller when you are in another controller
 app.factory('columnsDisplayFactory', function(){
   var theScope;
-
   return{
     setScope : function(scope){
       theScope = scope;
     },
-
     getScope : function(){
       return theScope;
     }
@@ -55,12 +58,10 @@ app.factory('columnsDisplayFactory', function(){
 
 app.factory('postgresqlFactory', function(){
   var theScope;
-
   return{
     setScope : function(scope){
       theScope = scope;
     },
-
     getScope : function(){
       return theScope;
     }
@@ -69,28 +70,23 @@ app.factory('postgresqlFactory', function(){
 
 app.factory('buttonAreaFactory', function(){
   var theScope;
-
   return{
     setScope : function(scope){
       theScope = scope;
     },
-
     getScope : function(){
       return theScope;
     }
   };
 });
 
+//Each controller manage a view in the html
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
   $scope.databases = [];
   var postgresScope = postgresqlFactory.getScope();
-  $scope.ready = false;
 
   postgresScope.getDBName(function(){
-    if(!postgresScope.dbArray){
-      alert('The request has failed, contact your administrator')
-    }
-    else{
+    if(postgresScope.dbArray){
       for(let i=0;i<postgresScope.dbArray.data.length;i++){
         if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
           postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){
@@ -107,6 +103,9 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
           });
         }
       }
+    }
+    else{
+      alert()
     }
   });
 });
@@ -434,11 +433,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
+        $scope.successRequest = true;
         $scope.dbArray = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.dbArray = false;
+        $scope.successRequest = false;
+        $scope.dbArray = data;
         if(callback) callback();
     });
   };
