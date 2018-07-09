@@ -1,3 +1,4 @@
+//Here we construct the various requests on the databases
 var express = require('express'),
     http = require('http'),
     request = require('request'),
