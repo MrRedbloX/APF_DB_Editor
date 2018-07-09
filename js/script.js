@@ -90,7 +90,8 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       for(let i=0;i<postgresScope.dbArray.data.length;i++){
         if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
           postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){//We do the same thing for this request
-            if(postgresScope.tableArray){
+            if(postgresScope.successRequest){
+              alert('wtf');
               $scope.databases.push({
                 name : postgresScope.dbArray.data[i].datname,
                 table : postgresScope.tableArray.data
