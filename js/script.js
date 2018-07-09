@@ -213,7 +213,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
             }
             postgresScope.delRecord(db, table,postgresScope.primaryKey.data[0].attname, pkValue, function(){
               if(postgresScope.modifySuccess){
-                display();
+                $scope.display();
                 valueList.unshift(pkValue);
                 document.getElementById(rowSelected).id = JSON.stringify(valueList);
                 rowSelected = JSON.stringify(valueList);
