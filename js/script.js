@@ -369,6 +369,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
+  //Same process as add, except we need to retrieve the existing primary key
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
@@ -407,15 +408,15 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         }
 
         postgresqlScope.getPrimaryKey(db, table, function(){
-          if(postgresqlScope.primaryKey){
+          if(postgresqlScope.successRequest){
             for(let i=0; columnsDisplayScope.columns.length; i++){
-              if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
+              if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){ //The difference is here
                 var pkValue = JSON.parse(rowSelected)[i];
                 break;
               }
             }
-            postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){
-              if(postgresqlScope.modifySuccess){
+            postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){ //Request to modify a tuple
+              if(postgresqlScope.successRequest){
                 buttonAreaScope.display();
                 valueList.unshift(pkValue);
                 document.getElementById(rowSelected).id = JSON.stringify(valueList);
@@ -425,7 +426,15 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
                   if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
                 }
               }
+              else{
+                console.log(postgresScope.modifyRequest);
+                alert("Error on getPrimaryKey request, check console logs.");
+              }
             });
+          }
+          else{
+            console.log(postgresScope.primaryKey);
+            alert("Error on getPrimaryKey request, check console logs.");
           }
         });
       }
