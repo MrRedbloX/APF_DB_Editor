@@ -82,22 +82,21 @@ app.factory('buttonAreaFactory', function(){
 
 //Each controller manage a view in the html
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
-  $scope.databases = [];
+  $scope.databases = []; //This array will be use to by jtree
   var postgresScope = postgresqlFactory.getScope();
 
-  postgresScope.getDBName(function(){
+  postgresScope.getDBName(function(){ //We do the request and we define the callback function
     if(postgresScope.successRequest){
       for(let i=0;i<postgresScope.dbArray.data.length;i++){
         if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
-          postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){
-            if(postgresScope.tableArray){
+          postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){//We do the same thing for this request
+            if(postgresScope.successRequest){
               $scope.databases.push({
                 name : postgresScope.dbArray.data[i].datname,
                 table : postgresScope.tableArray.data
               });
-              $scope.ready = true;
               $(function() {
-                $('#treeDatabaseArea').jstree();
+                $('#treeDatabaseArea').jstree(); //Activating jtree
               });
             }
           });
@@ -451,11 +450,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
+        $scope.successRequest = true;
         $scope.tableArray = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.tableArray = false;
+        $scope.successRequest = false;
+        $scope.tableArray = data;
         if(callback) callback();
     });
   };
