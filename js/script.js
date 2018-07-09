@@ -13,16 +13,18 @@ var rowSelected = null;
 var isRowSelected = function(row){
   document.getElementById('modifyButton').disabled = false;
   document.getElementById('deleteButton').disabled = false;
-  if(rowSelected != row){
-    document.getElementById(row).style.backgroundColor = "gray";
-    if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
-    rowSelected = row;
-  }
-  else{
-    document.getElementById(row).style.backgroundColor = "";
-    document.getElementById('modifyButton').disabled = true;
-    document.getElementById('deleteButton').disabled = true;
-    rowSelected = null;
+  if(rowSelected != null){
+    if(rowSelected != row){
+      document.getElementById(row).style.backgroundColor = "gray";
+      if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+      rowSelected = row;
+    }
+    else{
+      document.getElementById(row).style.backgroundColor = "";
+      document.getElementById('modifyButton').disabled = true;
+      document.getElementById('deleteButton').disabled = true;
+      rowSelected = null;
+    }
   }
 }
 
@@ -428,7 +430,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){ //Request to modify a tuple
               if(postgresqlScope.successRequest){
                 buttonAreaScope.display();
-                rowSelected = null;
+                isRowSelected(currentRowSelected);
               }
               else{
                 console.log(postgresqlScope.modifyRequest);
