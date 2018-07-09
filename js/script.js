@@ -198,8 +198,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.delete = function(){
     if(confirm('Do you want to delete this record ?')){
-      //Faire requête de suppression
-
       if(tableSelected != null){
         let temp = tableSelected.split(';');
         let db = temp[0];
