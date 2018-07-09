@@ -223,7 +223,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     document.getElementById("modifyButton").disabled = true;
     document.getElementById("deleteButton").disabled = true;
 
-    document.getElementsByTagName("TR").className = "";
+    document.getElementsByTagName("TR").className = null;
 
   }
 
