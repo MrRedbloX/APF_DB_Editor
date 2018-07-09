@@ -61,12 +61,6 @@ h1, h2{
   display:inline;
 }
 
-h1.topLeft{
-  position: absolute;
-  top: 8px;
-  left: 16px;
-}
-
 img.topRight{
   position: absolute;
   top: 8px;
