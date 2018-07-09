@@ -208,19 +208,23 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   //When we want to add a tuple
   $scope.add = function(){
 
+    //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
     document.getElementById('addButton').disabled = true;
     document.getElementById("modifyButton").disabled = true;
     document.getElementById("deleteButton").disabled = true;
 
   };
 
+  //When we want to modify a tuple
   $scope.modify = function(){
 
+    //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
     document.getElementById('addButton').disabled = true;
     document.getElementById("modifyButton").disabled = true;
     document.getElementById("deleteButton").disabled = true;
   }
 
+  //When we want to delete a tuple
   $scope.delete = function(){
     if(confirm('Do you want to delete this record ?')){
       if(tableSelected != null){
@@ -228,20 +232,28 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
         let db = temp[0];
         let table = temp[1];
 
-        postgresScope.getPrimaryKey(db, table, function(){
-          if(postgresScope.primaryKey){
+        postgresScope.getPrimaryKey(db, table, function(){ //We retrieve the primary key of the table (for now we only handle a single pk)
+          if(postgresScope.successRequest){
             for(let i=0; i<columnsDisplayScope.columns.length; i++){
               if(postgresScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
                 var pkValue = JSON.parse(rowSelected)[i];
                 break;
               }
             }
-            postgresScope.delRecord(db, table,postgresScope.primaryKey.data[0].attname, pkValue, function(){
-              if(postgresScope.deleteSuccess){
+            postgresScope.delRecord(db, table,postgresScope.primaryKey.data[0].attname, pkValue, function(){ //The request of deletion
+              if(postgresScope.successRequest){
                 $scope.display();
                 rowSelected = null;
               }
+              else{
+                console.log(postgresScope.deleteRequest);
+                alert("Error on getPrimaryKey request, check console logs.");
+              }
             });
+          }
+          else{
+            console.log(postgresScope.primaryKey);
+            alert("Error on getPrimaryKey request, check console logs.");
           }
         });
       }
@@ -599,11 +611,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
+        $scope.successRequest = true;
         $scope.primaryKey = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.primaryKey = false;
+        $scope.successRequest = false;
+        $scope.primaryKey = data;
         if(callback) callback();
     });
   };
