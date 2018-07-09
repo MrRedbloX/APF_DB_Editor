@@ -301,6 +301,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         postgresqlScope.addRecord(db, table, columnList, valueList, function(){
           if(postgresqlScope.insertSucess){
             buttonAreaScope.display();
+            if(rowSelected != null)
           }
         });
       }
