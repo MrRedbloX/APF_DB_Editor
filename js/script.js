@@ -438,7 +438,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             });
           }
           else{
-            console.log(postgresScope.primaryKey);
+            console.log(postgresqlScope.primaryKey);
             alert("Error on getPrimaryKey request, check console logs.");
           }
         });
