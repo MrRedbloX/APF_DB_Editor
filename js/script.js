@@ -84,7 +84,7 @@ app.factory('buttonAreaFactory', function(){
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
   $scope.databases = []; //This array will be use to by jtree
   var postgresScope = postgresqlFactory.getScope();
-  $scope.ready = false;
+  $scope.ready = false; //Wait to load page
 
   postgresScope.getDBName(function(){ //We do the request and we define the callback function
     if(postgresScope.successRequest){
