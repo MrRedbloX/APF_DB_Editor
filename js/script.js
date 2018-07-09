@@ -127,22 +127,24 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
 
+  //Here we manage the displayability of the buttons
   document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
   if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
   if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
   document.getElementById("clearButton").disabled = false;
 
+  //When we click on display
   $scope.display = function(){
 
     var columnsDisplayScope = columnsDisplayFactory.getScope();
-    window.location = "#!";
+    window.location = "#!"; //we make sure that no view is displayed
 
     document.getElementById("columnsDisplayArea").style.display = "block";
     if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
     if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
     if(tableSelected != null){
-      let temp = tableSelected.split(';');
+      let temp = tableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
       let table = temp[1];
       document.getElementById('addButton').disabled = false;
@@ -476,11 +478,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
+        $scope.successRequest = true;
         $scope.columnsArray = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.columnsArray = false;
+        $scope.successRequest = false;
+        $scope.columnsArray = data;
         if(callback) callback();
     });
   };
