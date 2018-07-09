@@ -401,7 +401,10 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         valueList = [];
         for(let j=0; j<columnList.length; j++){
           let elt = document.getElementById(columnList[j]);
-          if(elt.nodeName === "INPUT") valueList.push(parseInt(elt.value));
+          if(elt.nodeName === "INPUT" ){
+            if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
+            else valueList.push(elt.value);
+          }
           else if(elt.nodeName === "SELECT") valueList.push(parseInt(elt.options[elt.selectedIndex].text));
         }
 
