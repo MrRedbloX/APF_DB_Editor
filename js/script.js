@@ -182,7 +182,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                   else{
                     console.log(postgresScope.valuesOf);
-                    alert("Error on getColumnConstraint request, check console logs.");
+                    alert("Error on getValuesOf request, check console logs.");
                   }
                 });
                 postgresScope.valuesOfConstraint.push({
@@ -548,11 +548,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
+        $scope.successRequest = true;
         $scope.valuesOf = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.valuesOf = false;
+        $scope.successRequest = false;
+        $scope.valuesOf = data;
         if(callback) callback();
     });
   };
