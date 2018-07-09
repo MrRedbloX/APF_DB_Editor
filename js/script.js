@@ -242,12 +242,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
             }
             postgresScope.delRecord(db, table,postgresScope.primaryKey.data[0].attname, pkValue, function(){ //The request of deletion
               if(postgresScope.successRequest){
-                $scope.display();
+                $scope.display(); // We call the display function to refresh the table (the most secure method but it can be a little heavy)
                 rowSelected = null;
               }
               else{
                 console.log(postgresScope.deleteRequest);
-                alert("Error on getPrimaryKey request, check console logs.");
+                alert("Error on delRecord request, check console logs.");
               }
             });
           }
@@ -629,11 +629,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
-        $scope.deleteSuccess = data;
+        $scope.successRequest = true;
+        $scope.deleteRequest = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.deleteSuccess = false;
+        $scope.successRequest = false;
+        $scope.deleteRequest = data;
         if(callback) callback();
     });
   };
