@@ -237,7 +237,7 @@ module.exports = {
       });
   },
 
-  deleteRecord: function(req, res) {
+  delRecord: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(conString+req.query.db);
 
