@@ -354,6 +354,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     }
   };
 
+  //If we want to cancel
   $scope.cancelRecord = function(){
 
     if(confirm("Are you sure you want to cancel ?")){
