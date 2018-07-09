@@ -419,6 +419,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
                 valueList.unshift(pkValue);
                 document.getElementById(rowSelected).id = JSON.stringify(valueList);
                 rowSelected = JSON.stringify(valueList);
+                console.log(rowSelected);
                 if(rowSelected != null){
                   if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
                   if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
