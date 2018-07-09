@@ -374,6 +374,8 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
 
+  $scope.references = [];
+
   $scope.attributes = [];
   let parseRowSelected = JSON.parse(rowSelected);
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
@@ -465,17 +467,17 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   };
 
   $scope.getReferences = function(att, val){
-    ret = [];
+    $scope.references.length = 0;
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if(att === postgresqlScope.valuesOfConstraint[i].name){
-          ret = postgresqlScope.valuesOfConstraint[i].values;
-          ret.splice(ret.indexOf(val), 1);
+          $scope.references = postgresqlScope.valuesOfConstraint[i].values;
+          $scope.references.splice($scope.references.indexOf(val), 1);
           break;
         }
       }
     }
-    return ret;
+    return $scope.references;
   };
 });
 
