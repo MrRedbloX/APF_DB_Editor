@@ -268,6 +268,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     document.getElementById("addButton").disabled = true;
     document.getElementById("modifyButton").disabled = true;
     document.getElementById("deleteButton").disabled = true;
+    rowSelected = null;
   };
 });
 
