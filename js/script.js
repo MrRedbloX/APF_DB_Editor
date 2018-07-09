@@ -471,8 +471,8 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if(att === postgresqlScope.valuesOfConstraint[i].name){
-          $scope.references = postgresqlScope.valuesOfConstraint[i];
-          $scope.references.values.splice($scope.references.values.indexOf(val), 1);
+          $scope.references = postgresqlScope.valuesOfConstraint[i].values;
+          $scope.references.splice($scope.references.indexOf(val), 1);
           console.log(postgresqlScope.valuesOfConstraint[i]);
           break;
         }
