@@ -149,10 +149,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       let table = temp[1];
       document.getElementById('addButton').disabled = false;
 
-      postgresScope.getColumnName(db, table, function(){
+      postgresScope.getColumnName(db, table, function(){ //We get the name of all columns
         if(postgresScope.successRequest){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
-          postgresScope.getAllValues(db, table, function(){
+          postgresScope.getAllValues(db, table, function(){ //And we get their values
             if(postgresScope.successRequest){
               columnsDisplayScope.tuples = [];
               for(let i=0;i<postgresScope.columnValues.data.length;i++){
@@ -170,12 +170,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               alert("Error on getAllValues request, check console logs.");
             }
           });
-          postgresScope.getColumnConstraint(db, table, function(){
+          postgresScope.getColumnConstraint(db, table, function(){ //We get the foreign key of the table
             if(postgresScope.successRequest){
               postgresScope.valuesOfConstraint = [];
               for(let i=0; i<postgresScope.columnConstraint.data.length; i++){
                 let temp = [];
-                postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){
+                postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){ //And we get their values
                   if(postgresScope.successRequest){
                     for(val in postgresScope.valuesOf.data)
                       temp.push(val);
@@ -205,6 +205,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     }
   }
 
+  //When we want to add a tuple
   $scope.add = function(){
 
     document.getElementById('addButton').disabled = true;
