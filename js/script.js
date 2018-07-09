@@ -428,13 +428,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){ //Request to modify a tuple
               if(postgresqlScope.successRequest){
                 buttonAreaScope.display();
-                valueList.unshift(pkValue);
-                document.getElementById(currentRowSelected).id = JSON.stringify(valueList);
-                rowSelected = JSON.stringify(valueList);
-                if(rowSelected != null){
-                  if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
-                  if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
-                }
+                rowSelected = null;
               }
               else{
                 console.log(postgresqlScope.modifyRequest);
