@@ -248,6 +248,7 @@ module.exports = {
         }
         else{
           console.log("Connection successful");
+          console.log("DELETE FROM "+req.query.table+" WHERE "+req.query.pkKey+" = "+req.query.pkValue+";");
 
           client.query("DELETE FROM "+req.query.table+" WHERE "+req.query.pkKey+" = "+req.query.pkValue+";" , function(err,result) {
             client.end(); // closing the connection;
