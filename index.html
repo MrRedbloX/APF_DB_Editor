@@ -52,9 +52,9 @@
       </table>
     </div>
     <div id="secondButtonsArea" ng-controller='buttonAreaController'>
-      <button id="addButton" ng-click="add()" onclick="location.href='#!add';" class="paddingRigth"><a>Add</button>
-      <button id="modifyButton" ng-click="modify()" onclick="location.href='#!modify';" class="paddingRigth">Modify</button>
-      <button id="deleteButton" ng-click="delete()">Delete</button>
+      <button id="addButton" ng-click="add()" onclick="location.href='#!add';" class="paddingRigth btn btn-success" type="button"><a>Add</button>
+      <button id="modifyButton" ng-click="modify()" onclick="location.href='#!modify';" class="paddingRigth btn btn-warning" type="button">Modify</button>
+      <button id="deleteButton" ng-click="delete()" class="btn btn-danger" type="button">Delete</button>
     </div>
   </div>
   <div class="ngViewArea" ng-view></div>
