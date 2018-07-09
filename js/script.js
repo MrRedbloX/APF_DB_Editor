@@ -428,7 +428,9 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){ //Request to modify a tuple
               if(postgresqlScope.successRequest){
                 buttonAreaScope.display();
-                isRowSelected(currentRowSelected);
+                if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+                if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
+                rowSelected = null;
               }
               else{
                 console.log(postgresqlScope.modifyRequest);
