@@ -177,17 +177,15 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 let temp = [];
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){ //And we get their values
                   if(postgresScope.successRequest){
-                    for(val in postgresScope.valuesOf.data)
-                      temp.push(val);
+                    postgresScope.valuesOfConstraint.push({
+                      name : postgresScope.columnConstraint.data[i].column_name,
+                      values : postgresScope.valuesOf.data
+                    });
                   }
                   else{
                     console.log(postgresScope.valuesOf);
                     alert("Error on getValuesOf request, check console logs.");
                   }
-                });
-                postgresScope.valuesOfConstraint.push({
-                  name : postgresScope.columnConstraint.data[i].column_name,
-                  values : temp
                 });
               }
             }
