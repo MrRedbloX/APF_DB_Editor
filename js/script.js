@@ -330,7 +330,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         for(let j=0; j<columnList.length; j++){
           let elt = document.getElementById(columnList[j]);
           if(elt.nodeName === "INPUT") valueList.push(elt.value);
-          else if(elt.nodeName === "SELECT") value.list.push(elt.options[elt.selectedIndex].text);
+          else if(elt.nodeName === "SELECT") valueList.push(elt.options[elt.selectedIndex].text);
         }
 
         postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
