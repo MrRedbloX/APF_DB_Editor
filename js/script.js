@@ -102,7 +102,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
               });
             }
             else{
-              console.log(postgresScope.tableArray)
+              console.log(postgresScope.tableArray);
               alert("Error on getTableName request, check console logs.");
             }
           });
@@ -110,7 +110,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       }
     }
     else{
-      console.log(postgresScope.dbArray)
+      console.log(postgresScope.dbArray);
       alert("Error on getDBName request, check console logs.");
     }
 
@@ -153,7 +153,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
         if(postgresScope.successRequest){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
           postgresScope.getAllValues(db, table, function(){
-            if(postgresScope.columnValues){
+            if(postgresScope.successRequest){
               columnsDisplayScope.tuples = [];
               for(let i=0;i<postgresScope.columnValues.data.length;i++){
                 temp = [];
@@ -165,16 +165,24 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 });
               }
             }
+            else{
+              console.log(postgresScope.columnValues);
+              alert("Error on getAllValues request, check console logs.");
+            }
           });
           postgresScope.getColumnConstraint(db, table, function(){
-            if(postgresScope.columnConstraint){
+            if(postgresScope.successRequest){
               postgresScope.valuesOfConstraint = [];
               for(let i=0; i<postgresScope.columnConstraint.data.length; i++){
                 let temp = [];
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){
-                  if(postgresScope.valuesOf){
+                  if(postgresScope.successRequest){
                     for(val in postgresScope.valuesOf.data)
                       temp.push(val);
+                  }
+                  else{
+                    console.log(postgresScope.valuesOf);
+                    alert("Error on getColumnConstraint request, check console logs.");
                   }
                 });
                 postgresScope.valuesOfConstraint.push({
@@ -182,11 +190,15 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   values : temp
                 });
               }
-            };
+            }
+            else{
+              console.log(postgresScope.columnConstraint);
+              alert("Error on getColumnConstraint request, check console logs.");
+            }
           });
         }
         else{
-          console.log(postgresScope.columnsArray)
+          console.log(postgresScope.columnsArray);
           alert("Error on getColumnName request, check console logs.");
         }
       });
@@ -500,11 +512,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
+        $scope.successRequest = true;
         $scope.columnConstraint = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.columnConstraint = false;
+        $scope.successRequest = false;
+        $scope.columnConstraint = data;
         if(callback) callback();
     });
   };
