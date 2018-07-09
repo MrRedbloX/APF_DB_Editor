@@ -7,7 +7,7 @@
       <div ng-if="checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
         {{att.column_name}}: <select id="{{att.column_name}}">
                    <option ng-repeat="ref in getReferences(att.column_name) track by $index" value="{{ref}}">{{ref}}</option>
-                 </select> <i>{{att.data_type}}</i>
+                 </select> <i style="font-size: small">{{att.data_type}}</i>
       </div>
     </div>
     <button id="saveButton" ng-click="saveRecord()" class="paddingRigth">Save</button>
