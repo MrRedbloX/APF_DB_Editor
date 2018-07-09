@@ -154,7 +154,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
           postgresScope.getAllValues(db, table, function(){ //And we get their values
             if(postgresScope.successRequest){
-              columnsDisplayScope.tuples = [];
+              columnsDisplayScope.tuples = []; //This will be use to display all the value of the table
               for(let i=0;i<postgresScope.columnValues.data.length;i++){
                 temp = [];
                 for(let j=0;j<columnsDisplayScope.columns.length;j++){
@@ -260,7 +260,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     }
   };
 
+  //When we want to clear the table display
   $scope.clear = function(){
+
+    //We just hide the table display
     document.getElementById("columnsDisplayArea").style.display = "none";
     document.getElementById("addButton").disabled = true;
     document.getElementById("modifyButton").disabled = true;
@@ -274,12 +277,13 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
 
-  $scope.attributes = [];
+  $scope.attributes = []; //This will be use to display the name of columns
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
     if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
       $scope.attributes.push(columnsDisplayScope.columns[i]);
   };
 
+  //Check if an attribute is a foreign key
   $scope.checkIfIsReference = function(att){
     var ret = false;
 
@@ -294,6 +298,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     return ret;
   };
 
+  //Return all the value contains in the reference table
   $scope.getReferences = function(att){
     ret = [];
     if(tableSelected != null){
@@ -307,6 +312,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     return ret;
   };
 
+  //
   $scope.saveRecord = function(){
 
     if(confirm("Are you sure you want to save this record ?")){
