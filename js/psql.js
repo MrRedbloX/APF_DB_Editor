@@ -1,4 +1,4 @@
-var conString = "postgres://postgres:postgres@10.239.238.69:5432/";
+var conString = "postgres://postgres:postgres@10.239.238.69:54321/";
 
 module.exports = {
   getDBName: function(req, res) {
