@@ -301,7 +301,10 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         postgresqlScope.addRecord(db, table, columnList, valueList, function(){
           if(postgresqlScope.insertSucess){
             buttonAreaScope.display();
-            if(rowSelected != null)
+            if(rowSelected != null){
+              if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
+              if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
+            }
           }
         });
       }
@@ -373,6 +376,10 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
                 valueList.unshift(pkValue);
                 document.getElementById(rowSelected).id = JSON.stringify(valueList);
                 rowSelected = JSON.stringify(valueList);
+                if(rowSelected != null){
+                  if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
+                  if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
+                }
               }
             });
           }
