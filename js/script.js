@@ -99,13 +99,12 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                 $('#treeDatabaseArea').jstree(); //Activating jtree
               });
             }
+            else alert(postgresScope.tableArray);
           });
         }
       }
     }
-    else{
-      alert()
-    }
+    else alert(postgresScope.dbArray);
   });
 });
 
