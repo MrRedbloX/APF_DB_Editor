@@ -223,8 +223,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     document.getElementById("modifyButton").disabled = true;
     document.getElementById("deleteButton").disabled = true;
 
-    document.getElementsByTagName("TR").className = null;
-
   }
 
   //When we want to delete a tuple
@@ -281,6 +279,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
 
+  var currentTableSelected = tableSelected;
+
   $scope.attributes = []; //This will be use to display the name of columns
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
     if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
@@ -291,7 +291,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   $scope.checkIfIsReference = function(att){
     var ret = false;
 
-    if(tableSelected != null){
+    if(currentTableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
         if(att === postgresqlScope.columnConstraint.data[i].column_name){
           ret = true;
@@ -305,7 +305,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   //Return all the value contains in the reference table
   $scope.getReferences = function(att){
     ret = [];
-    if(tableSelected != null){
+    if(currentTableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if(att === postgresqlScope.valuesOfConstraint[i].name){
           ret = postgresqlScope.valuesOfConstraint[i].values;
@@ -321,8 +321,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     if(confirm("Are you sure you want to save this record ?")){
 
-      if(tableSelected != null){
-        let temp = tableSelected.split(';');
+      if(currentTableSelected != null){
+        let temp = currentTableSelected.split(';');
         let db = temp[0];
         let table = temp[1];
 
@@ -378,8 +378,11 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
 
+  var currentRowSelected = rowSelected;
+  var currentTableSelected = tableSelected;
+
   $scope.attributes = [];
-  let parseRowSelected = JSON.parse(rowSelected);
+  let parseRowSelected = JSON.parse(currentRowSelected);
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
     if(!exceptionColumns.includes(columnsDisplayScope.columns[i].column_name))
       $scope.attributes.push({
@@ -392,8 +395,8 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   $scope.saveRecord = function(){
     if(confirm("Are you sure you want to save this record ?")){
 
-      if(tableSelected != null){
-        let temp = tableSelected.split(';');
+      if(currentTableSelected != null){
+        let temp = currentTableSelected.split(';');
         let db = temp[0];
         let table = temp[1];
 
@@ -418,7 +421,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
           if(postgresqlScope.successRequest){
             for(let i=0; columnsDisplayScope.columns.length; i++){
               if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){ //The difference is here
-                var pkValue = JSON.parse(rowSelected)[i];
+                var pkValue = JSON.parse(currentRowSelected)[i];
                 break;
               }
             }
@@ -426,7 +429,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
               if(postgresqlScope.successRequest){
                 buttonAreaScope.display();
                 valueList.unshift(pkValue);
-                document.getElementById(rowSelected).id = JSON.stringify(valueList);
+                document.getElementById(currentRowSelected).id = JSON.stringify(valueList);
                 rowSelected = JSON.stringify(valueList);
                 if(rowSelected != null){
                   if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
@@ -448,7 +451,6 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         window.location = "#!";
         document.getElementById('addButton').disabled = false;
         document.getElementById('modifyButton').disabled = false;
-        document.getElementsByTagName("TR").className = "hoverTable";
       }
     }
   }
@@ -465,7 +467,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   $scope.checkIfIsReference = function(att){
     var ret = false;
 
-    if(tableSelected != null){
+    if(currentTableSelected != null){
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
         if(att === postgresqlScope.columnConstraint.data[i].column_name){
           ret = true;
@@ -478,7 +480,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
   $scope.getReferences = function(att, val){
 
-    if(tableSelected != null){
+    if(currentTableSelected != null){
       $scope.references.splice(0, $scope.references.length);
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if(att === postgresqlScope.valuesOfConstraint[i].name){
