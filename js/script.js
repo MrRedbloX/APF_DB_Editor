@@ -105,9 +105,9 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
 
   });
 
-  $(function() {
+  /*$(function() {
     $('#treeDatabaseArea').jstree(); //Activating jtree
-  });
+  });*/
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
