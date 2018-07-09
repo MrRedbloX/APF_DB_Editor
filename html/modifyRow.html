@@ -7,7 +7,7 @@
       <div ng-if="checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
         {{att.name.column_name}} : <select id="{{att.name.column_name}}">
                         <option value="{{att.value}}" selected="selected">{{att.value}}</option>
-                        <option ng-repeat="ref in getReferences(att.name.column_name,att.value).values track by $index" value="{{ref}}">{{ref}}</option>
+                        <option ng-repeat="ref in getReferences(att.name.column_name,att.value) track by $index" value="{{ref}}">{{ref}}</option>
                       </select> <i style="font-size: small">{{att.data_type}}</i>
       </div>
     </div>
