@@ -222,6 +222,9 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     document.getElementById('addButton').disabled = true;
     document.getElementById("modifyButton").disabled = true;
     document.getElementById("deleteButton").disabled = true;
+
+    document.getElementsByTagName("TR").className = "";
+
   }
 
   //When we want to delete a tuple
@@ -445,6 +448,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         window.location = "#!";
         document.getElementById('addButton').disabled = false;
         document.getElementById('modifyButton').disabled = false;
+        document.getElementsByTagName("TR").className = "hoverTable";
       }
     }
   }
