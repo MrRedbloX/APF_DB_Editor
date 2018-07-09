@@ -67,12 +67,6 @@ img.topRight{
   right: 5%;
 }
 
-h1.topLeft{
-  position: absolute;
-  top: 2%;
-  left: 5%;
-}
-
 .container {
   position:relative;
   padding-bottom: 50px;
