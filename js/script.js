@@ -405,7 +405,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         for(let j=0; j<columnList.length; j++){
           let elt = document.getElementById(columnList[j]);
           if(elt.nodeName === "INPUT") valueList.push(elt.value);
-          else if(elt.nodeName === "SELECT") valueLlist.push(elt.options[elt.selectedIndex].text);
+          else if(elt.nodeName === "SELECT") valueList.push(elt.options[elt.selectedIndex].text);
         }
 
         postgresqlScope.getPrimaryKey(db, table, function(){
