@@ -24,9 +24,9 @@
   <div id="databasesArea" class="treeArea" ng-controller="treeDatabaseAreaController">
     <div id="treeDatabaseArea" ng-if="ready" class="relative">
       <ul ng-repeat="db in databases">
-         <li data-jstree='{"icon":"/db.png"}'><a class="inactiveLink">{{db.name}}</a>
+         <li data-jstree='{"icon":"/css/img/db.png"}'><a class="inactiveLink">{{db.name}}</a>
            <ul ng-repeat="tab in db.table">
-             <li id="{{db.name}};{{tab.table_name}}" onclick="isTableSelected(id)" data-jstree='{"icon":"/table.png"}'>{{tab.table_name}}</li>
+             <li id="{{db.name}};{{tab.table_name}}" onclick="isTableSelected(id)" data-jstree='{"icon":"/css/img/table.png"}'>{{tab.table_name}}</li>
            </ul>
          </li>
        </ul>
