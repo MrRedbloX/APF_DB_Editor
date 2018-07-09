@@ -405,7 +405,10 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
             else valueList.push(elt.value);
           }
-          else if(elt.nodeName === "SELECT") valueList.push(parseInt(elt.options[elt.selectedIndex].text));
+          else if(elt.nodeName === "SELECT"){
+             if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
+             else else valueList.push(elt.options[elt.selectedIndex].text);
+           }
         }
 
         postgresqlScope.getPrimaryKey(db, table, function(){
