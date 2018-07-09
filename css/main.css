@@ -98,6 +98,7 @@ button.paddingRigth{
  div.ngViewArea {
    position: absolute;
    bottom: 0;
+   padding-left: 30%;
    overflow: hidden;
    padding-top: 5%;
  }
