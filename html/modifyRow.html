@@ -2,13 +2,13 @@
   <div>
     <div ng-repeat="att in attributes">
       <div ng-if="!checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
-        {{att.name.column_name}}: <input type="text" id="{{att.name.column_name}}" value="{{att.value}}"/> <i style="font-size: 50 %">{{att.data_type}}</i>
+        {{att.name.column_name}}: <input type="text" id="{{att.name.column_name}}" value="{{att.value}}"/> <i>{{att.data_type}}</i>
       </div>
       <div ng-if="checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
         {{att.name}}: <select id="{{att.name.column_name}}">
                         <option value="{{att.value}}" selected="selected">{{att.value}}</option>
                         <option ng-repeat="ref in getReferences(att.name.column_name,att.value) track by $index" value="{{ref}}">{{ref}}</option>
-                      </select> <i style="font-size: 50 %">{{att.data_type}}</i>
+                      </select> <i>{{att.data_type}}</i>
       </div>
     </div>
     <button id="saveButton" ng-click="saveRecord()" class="paddingRigth">Save</button>
