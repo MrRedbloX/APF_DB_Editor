@@ -617,11 +617,13 @@ app.controller('postgresqlController', function($scope,$http, postgresqlFactory)
     })
     .then(
       function successCallback(data) {
-        $scope.modifySuccess = data;
+        $scope.successRequest = true;
+        $scope.modifyRequest = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        $scope.modifySuccess = false;
+        $scope.successRequest = false;
+        $scope.modifyRequest = data;
         if(callback) callback();
     });
   };
