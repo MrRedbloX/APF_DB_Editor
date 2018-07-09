@@ -388,10 +388,6 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   $scope.saveRecord = function(){
     if(confirm("Are you sure you want to save this record ?")){
 
-      window.location = "#!";
-      document.getElementById('addButton').disabled = false;
-      document.getElementById('modifyButton').disabled = false;
-
       if(tableSelected != null){
         let temp = tableSelected.split(';');
         let db = temp[0];
@@ -438,6 +434,10 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             alert("Error on getPrimaryKey request, check console logs.");
           }
         });
+
+        window.location = "#!";
+        document.getElementById('addButton').disabled = false;
+        document.getElementById('modifyButton').disabled = false;
       }
     }
   }
