@@ -96,7 +96,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                 table : postgresScope.tableArray.data
               });
               $(function() {
-                  alert('wtf');
+                  alert($scope.databases.length);
                 $('#treeDatabaseArea').jstree(); //Activating jtree
               });
             }
