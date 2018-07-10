@@ -148,8 +148,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   $scope.checkIfIsReference = function(att){
     var ret = false;
     for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
-      console.log("ok2");
-      if(att === postgresqlScope.columnConstraint.data[i].column_name){
+      if(att === postgresqlScope.columnConstraint.data[i].column_name.toString()){
         ret = true;
         break;
       }
