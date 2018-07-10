@@ -147,7 +147,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   var currentTableSelected = tableSelected;
   var checkIfIsReference = function(att){
     var ret = false;
-
+    console.log(currentTableSelected+" "+tableSelected);
     if(currentTableSelected != null){
       console.log("ok1");
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
