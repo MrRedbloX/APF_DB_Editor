@@ -85,9 +85,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
   $scope.databases = []; //This array will be use to by jtree
   var postgresScope = postgresqlFactory.getScope();
   $scope.ready = false; //Wait to load page
-  var activateJSTree = function() {
-    $('#treeDatabaseArea').jstree(); //Activating jtree
-  };
 
   if(!$scope.ready){
     postgresScope.getDBName(function(){ //We do the request and we define the callback function
@@ -108,7 +105,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
           }
         }
         $scope.ready = true;
-        activateJSTree();
       }
       else{
         console.log(postgresScope.dbArray);
@@ -116,6 +112,9 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       }
     });
   }
+  $(function() {
+    $('#treeDatabaseArea').jstree(); //Activating jtree
+  });
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
