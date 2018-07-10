@@ -46,7 +46,7 @@
         </thead>
         <tbody>
           <tr id="{{tuple.values}}" ng-repeat="tuple in tuples track by $index" onclick="isRowSelected(id)" class="hoverTable">
-            <td ng-repeat="val in tuple.values track by $index" title="{{getReferencesString(val)}}">{{val}}</td>
+            <td ng-repeat="val in tuple.values track by $index" title="{{string}}">{{val}}</td>
           </tr>
         </tbody>
       </table>
