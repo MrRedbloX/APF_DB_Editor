@@ -14,6 +14,11 @@ var checkIfReadOnlyDB = function(db){
   return ret;
 };
 
+//Return the values of the attribute if it's a references
+var getReferencesString = function(val){
+  return val;
+};
+
 //When the user clicks on a table
 var tableSelected = null;
 var isTableSelected = function (table){
