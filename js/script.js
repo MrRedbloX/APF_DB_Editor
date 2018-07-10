@@ -86,10 +86,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
   var postgresScope = postgresqlFactory.getScope();
   $scope.ready = false; //Wait to load page
 
-  $(function() {
-    $('#treeDatabaseArea').jstree(); //Activating jtree
-  });
-
   if(!$scope.ready){
     postgresScope.getDBName(function(){ //We do the request and we define the callback function
       if(postgresScope.successRequest){
@@ -102,6 +98,9 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                   table : postgresScope.tableArray.data
                 });
               }
+              $(function() {
+                $('#treeDatabaseArea').jstree(); //Activating jtree
+              });
               else{
                 alert("Error on getTableName request, check console logs.");
               }
