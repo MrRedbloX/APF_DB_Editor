@@ -150,6 +150,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       for(let j=0; j<$scope.tuples.length; j++){
         console.log(postgresqlScope.columnConstraint.data[i].column_name);
         console.log($scope.tuples[j]);
+        //Continuer ici, essayer identifier td, changer requete fk pour avoir tt les valeurs, set tooltip
       }
     }
     /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
