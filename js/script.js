@@ -141,12 +141,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
 
-  if(tableSelected != null){
-    let temp = tableSelected.split(';');
-    let db = temp[0];
-    var isReadOnly = checkIfReadOnlyDB(db);
-  }
-
   //Here we manage the displayability of the buttons
   document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
@@ -161,6 +155,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     window.location = "#!"; //we make sure that no view is displayed
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
+
+    if(tableSelected != null){
+      let temp = tableSelected.split(';');
+      let db = temp[0];
+      var isReadOnly = checkIfReadOnlyDB(db);
+    }
 
     document.getElementById("columnsDisplayArea").style.display = "block";
 
