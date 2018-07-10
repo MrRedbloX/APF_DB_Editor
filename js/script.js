@@ -164,11 +164,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     window.location = "#!"; //we make sure that no view is displayed
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
+    var isReadOnly = false;
 
     if(tableSelected != null){
       let temp = tableSelected.split(';');
       let db = temp[0];
-      var isReadOnly = checkIfReadOnlyDB(db);
+      isReadOnly = checkIfReadOnlyDB(db);
     }
 
     document.getElementById("columnsDisplayArea").style.display = "block";
