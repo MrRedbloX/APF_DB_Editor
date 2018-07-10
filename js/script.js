@@ -237,7 +237,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.add = function(){
 
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
-    if(!readOnlyDB){
+    if(!readOnly){
       document.getElementById('addButton').disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
@@ -248,7 +248,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.modify = function(){
 
     //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
-    if(!readOnlyDB){
+    if(!readOnly){
       document.getElementById('addButton').disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
@@ -296,9 +296,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     //We just hide the table display
     document.getElementById("columnsDisplayArea").style.display = "none";
-    document.getElementById("addButton").disabled = true;
-    document.getElementById("modifyButton").disabled = true;
-    document.getElementById("deleteButton").disabled = true;
+    if(!isReadOnly){
+      document.getElementById("addButton").disabled = true;
+      document.getElementById("modifyButton").disabled = true;
+      document.getElementById("deleteButton").disabled = true;
+    }
     rowSelected = null;
   };
 });
