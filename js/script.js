@@ -177,7 +177,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       let temp = tableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
       let table = temp[1];
-      document.getElementById('addButton').disabled = false;
+      if(!isReadOnly) document.getElementById('addButton').disabled = false;
 
       postgresScope.getColumnName(db, table, function(){ //We get the name of all columns
         if(postgresScope.successRequest){
