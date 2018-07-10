@@ -146,9 +146,9 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   $scope.setToolTips = function(){
     var ret = false;
-    for(cons in postgresqlScope.columnConstraint.data){
-      for(tuple in $scope.tuples){
-        console.log(cons+" "+tuple);
+    for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+      for(let j=0; j< in $scope.tuples.length){
+        console.log(postgresqlScope.columnConstraint.data[i]+" "+$scope.tuples[j]);
       }
     }
     /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
