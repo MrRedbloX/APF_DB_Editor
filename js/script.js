@@ -5,9 +5,8 @@ var readOnlyDB = ['sonde']; //Contains the read only databases
 //Check if a database is in read only mode
 var checkIfReadOnlyDB = function(db){
   ret = false;
-  for(database in readOnlyDB){
-    alert(bd+" "+database);
-    if(db === database){
+  for(let i=0; i<readOnlyDB.length; i++){
+    if(db === readOnlyDB[i]){
       ret = true;
       alert('je passe');
       break;
