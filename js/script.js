@@ -149,7 +149,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     console.log($scope.tuples);
     for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
       if(att === postgresqlScope.columnConstraint.data[i].column_name.toString()){
-        ret = true;
         break;
       }
     }
