@@ -139,6 +139,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     var columnsDisplayScope = columnsDisplayFactory.getScope();
     window.location = "#!"; //we make sure that no view is displayed
+    if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
 
     document.getElementById("columnsDisplayArea").style.display = "block";
