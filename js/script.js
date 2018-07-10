@@ -8,7 +8,6 @@ var checkIfReadOnlyDB = function(db){
   for(let i=0; i<readOnlyDB.length; i++){
     if(db === readOnlyDB[i]){
       ret = true;
-      alert('je passe');
       break;
     }
   }
@@ -160,12 +159,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       let temp = tableSelected.split(';');
       let db = temp[0];
       var isReadOnly = checkIfReadOnlyDB(db);
-      alert(isReadOnly);
     }
 
     document.getElementById("columnsDisplayArea").style.display = "block";
 
     if(isReadOnly){
+      alert('oui');
       if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
