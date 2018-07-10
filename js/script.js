@@ -144,25 +144,15 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
 
-  var currentTableSelected = tableSelected;
-  $scope.checkIfIsReference = function(att){
+  $scope.setToolTips = function(){
     var ret = false;
+    console.log($scope.tuples);
     for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
       if(att === postgresqlScope.columnConstraint.data[i].column_name.toString()){
         ret = true;
         break;
       }
     }
-    return ret;
-  };
-
-  //Return the values of the attribute if it's a references
-  $scope.getReferencesString = function(val){
-    ret = "KO";
-    if($scope.checkIfIsReference(val)){
-      ret = "OK";
-    }
-    return ret;
   };
 });
 
@@ -253,6 +243,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   name : postgresScope.columnConstraint.data[i].column_name,
                   values : temp
                 });
+                columnsDisplayScope.setToolTips();
               }
             }
             else{
