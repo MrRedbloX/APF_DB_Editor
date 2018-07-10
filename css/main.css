@@ -49,6 +49,7 @@ div.treeArea {
   height: 100%;
   width: 30%;
   float: left;
+  overflow-x: auto;
 
 }
 
