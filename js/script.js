@@ -149,7 +149,9 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     var ret = false;
 
     if(currentTableSelected != null){
+      console.log("ok1");
       for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+        console.log("ok1");
         if(att === postgresqlScope.columnConstraint.data[i].column_name){
           ret = true;
           break;
