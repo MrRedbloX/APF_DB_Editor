@@ -143,7 +143,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
-  
+
   var currentTableSelected = tableSelected;
 
   var checkIfIsReference = function(att){
@@ -166,7 +166,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     if(checkIfIsReference(val)){
       ret = "OK";
     }
-    return val;
+    return ret;
   };
 });
 
