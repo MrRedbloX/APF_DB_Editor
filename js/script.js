@@ -161,7 +161,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   //Return the values of the attribute if it's a references
   $scope.getReferencesString = function(val){
-    ret = "";
+    ret = "KO";
     if(checkIfIsReference(val)){
       ret = "OK";
     }
