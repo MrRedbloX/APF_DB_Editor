@@ -6,9 +6,10 @@ var readOnlyDB = ['sonde']; //Contains the read only databases
 var checkIfReadOnlyDB = function(db){
   ret = false;
   for(database in readOnlyDB){
+    alert(bd+" "+database);
     if(db === database){
       ret = true;
-      alert('wtf');
+      alert('je passe');
       break;
     }
   }
