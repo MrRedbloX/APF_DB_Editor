@@ -159,8 +159,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     if(tableSelected != null){
       let temp = tableSelected.split(';');
       let db = temp[0];
-      alert('ok');
       var isReadOnly = checkIfReadOnlyDB(db);
+      alert(isReadOnly);
     }
 
     document.getElementById("columnsDisplayArea").style.display = "block";
