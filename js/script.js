@@ -335,9 +335,21 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         valueList = []; //The values to save
         for(let j=0; j<columnList.length; j++){
           let elt = document.getElementById(columnList[j]);
-          if(elt.nodeName === "INPUT") valueList.push(elt.value);
-          else if(elt.nodeName === "SELECT") valueList.push(elt.options[elt.selectedIndex].text);
-        }
+          if(elt.nodeName === "INPUT"){
+            if(elt.value == null) valueList.push("");
+            else{
+              if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
+              else valueList.push(elt.value);
+            }
+          }
+          else if(elt.nodeName === "SELECT"){
+            if(elt.selectedIndex == null) valueList.push("");
+            else{
+               if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
+               else valueList.push(elt.options[elt.selectedIndex].text);
+           }
+         }
+       }
 
         postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
           if(postgresqlScope.successRequest){
@@ -409,14 +421,20 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         valueList = [];
         for(let j=0; j<columnList.length; j++){
           let elt = document.getElementById(columnList[j]);
-          if(elt.nodeName === "INPUT" ){
-            if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
-            else valueList.push(elt.value);
+          if(elt.nodeName === "INPUT"){
+            if(elt.value == null) valueList.push("");
+            else{
+              if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
+              else valueList.push(elt.value);
+            }
           }
           else if(elt.nodeName === "SELECT"){
-             if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
-             else valueList.push(elt.options[elt.selectedIndex].text);
+            if(elt.selectedIndex == null) valueList.push("");
+            else{
+               if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
+               else valueList.push(elt.options[elt.selectedIndex].text);
            }
+         }
         }
 
         postgresqlScope.getPrimaryKey(db, table, function(){
