@@ -164,8 +164,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     document.getElementById("columnsDisplayArea").style.display = "block";
 
     if(isReadOnly){
-      alert('oui');
-      if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
+      if(document.getElementById("addButton") != null){
+        document.getElementById("addButton").disabled = true;
+        alert('oui');
+      }
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
     }
