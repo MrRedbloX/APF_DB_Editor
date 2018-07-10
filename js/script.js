@@ -149,7 +149,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
       for(let j=0; j<$scope.tuples.length; j++){
         console.log(postgresqlScope.columnConstraint.data[i]);
-        console.log($scope.tuples[j]);
+        console.log($scope.tuples[j].values);
       }
     }
     /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
