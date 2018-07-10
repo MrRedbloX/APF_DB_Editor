@@ -29,7 +29,7 @@ var isRowSelected = function(row){
     let db = temp[0];
     var isReadOnly = checkIfReadOnlyDB(db);
 
-    if(!readOnly){
+    if(!isReadOnly){
       document.getElementById('modifyButton').disabled = false;
       document.getElementById('deleteButton').disabled = false;
     }
@@ -40,7 +40,7 @@ var isRowSelected = function(row){
     }
     else{
       document.getElementById(row).style.backgroundColor = "";
-      if(!readOnly){
+      if(!isReadOnly){
         document.getElementById('modifyButton').disabled = true;
         document.getElementById('deleteButton').disabled = true;
       }
