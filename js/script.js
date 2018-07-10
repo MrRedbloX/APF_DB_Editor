@@ -422,7 +422,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         for(let j=0; j<columnList.length; j++){
           let elt = document.getElementById(columnList[j]);
           if(elt.nodeName === "INPUT"){
-            if(elt.selectedIndex == null || elt.options[elt.selectedIndex] == null) valueList.push(" ");
+            if(elt.value == null || elt.options[elt.selectedIndex] == null) valueList.push(" ");
             else{
               if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
               else valueList.push(elt.value);
