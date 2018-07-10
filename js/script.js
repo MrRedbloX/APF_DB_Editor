@@ -97,10 +97,10 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                   name : postgresScope.dbArray.data[i].datname,
                   table : postgresScope.tableArray.data
                 });
+                $(function() {
+                  $('#treeDatabaseArea').jstree(); //Activating jtree
+                });
               }
-              $(function() {
-                $('#treeDatabaseArea').jstree(); //Activating jtree
-              });
               else{
                 alert("Error on getTableName request, check console logs.");
               }
