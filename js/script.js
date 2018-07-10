@@ -140,11 +140,33 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
   }
 });
 
-app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
+app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
   columnsDisplayFactory.setScope($scope);
+  var postgresqlScope = postgresqlFactory.getScope();
+  var addRowScope =
+
+  var currentTableSelected = tableSelected;
+
+  var checkIfIsReference = function(att){
+    var ret = false;
+
+    if(currentTableSelected != null){
+      for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+        if(att === postgresqlScope.columnConstraint.data[i].column_name){
+          ret = true;
+          break;
+        }
+      }
+    }
+    return ret;
+  };
 
   //Return the values of the attribute if it's a references
   $scope.getReferencesString = function(val){
+    ret = "";
+    if(checkIfIsReference(val)){
+      ret = "OK";
+    }
     return val;
   };
 });
