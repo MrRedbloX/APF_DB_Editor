@@ -145,7 +145,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   var postgresqlScope = postgresqlFactory.getScope();
 
   var currentTableSelected = tableSelected;
-
   var checkIfIsReference = function(att){
     var ret = false;
 
