@@ -24,18 +24,28 @@ var isTableSelected = function (table){
 //When the user clicks on a row
 var rowSelected = null;
 var isRowSelected = function(row){
-  document.getElementById('modifyButton').disabled = false;
-  document.getElementById('deleteButton').disabled = false;
-  if(rowSelected != row){
-    document.getElementById(row).style.backgroundColor = "gray";
-    if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
-    rowSelected = row;
-  }
-  else{
-    document.getElementById(row).style.backgroundColor = "";
-    document.getElementById('modifyButton').disabled = true;
-    document.getElementById('deleteButton').disabled = true;
-    rowSelected = null;
+  if(tableSelected != null){
+    let temp = tableSelected.split(';');
+    let db = temp[0];
+    var isReadOnly = checkIfReadOnlyDB(db);
+
+    if(!readOnly){
+      document.getElementById('modifyButton').disabled = false;
+      document.getElementById('deleteButton').disabled = false;
+    }
+    if(rowSelected != row){
+      document.getElementById(row).style.backgroundColor = "gray";
+      if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+      rowSelected = row;
+    }
+    else{
+      document.getElementById(row).style.backgroundColor = "";
+      if(!readOnly){
+        document.getElementById('modifyButton').disabled = true;
+        document.getElementById('deleteButton').disabled = true;
+      }
+      rowSelected = null;
+    }
   }
 }
 
