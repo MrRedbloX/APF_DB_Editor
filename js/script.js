@@ -97,9 +97,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                   name : postgresScope.dbArray.data[i].datname,
                   table : postgresScope.tableArray.data
                 });
-                $(function() {
-                  $('#treeDatabaseArea').jstree(); //Activating jtree
-                });
               }
               else{
                 alert("Error on getTableName request, check console logs.");
@@ -108,6 +105,9 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
           }
         }
         $scope.ready = true;
+        $(function() {
+          $('#treeDatabaseArea').jstree(true); //Activating jtree
+        });
       }
       else{
         console.log(postgresScope.dbArray);
