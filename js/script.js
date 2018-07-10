@@ -102,6 +102,10 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
                 alert("Error on getTableName request, check console logs.");
               }
             });
+            $(function() {
+              $('#treeDatabaseArea').jstree();
+              }); //Activating jtree
+            });
           }
         }
         $scope.ready = true;
@@ -112,13 +116,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       }
     });
   }
-  $(function() {
-    $('#treeDatabaseArea').jstree({
-      'core' : {
-        'data' : $scope.databases
-      }
-    }); //Activating jtree
-  });
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
