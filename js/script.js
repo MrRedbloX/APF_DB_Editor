@@ -318,6 +318,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.getReferencesString = function(val){
     alert(val);
+    return val;
   };
 });
 
