@@ -145,7 +145,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   var postgresqlScope = postgresqlFactory.getScope();
 
   var currentTableSelected = tableSelected;
-  var checkIfIsReference = function(att){
+  $scope.checkIfIsReference = function(att){
     var ret = false;
     console.log(currentTableSelected+" "+tableSelected);
     if(currentTableSelected != null){
@@ -164,7 +164,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   //Return the values of the attribute if it's a references
   $scope.getReferencesString = function(val){
     ret = "KO";
-    if(checkIfIsReference(val)){
+    if($scope.checkIfIsReference(val)){
       ret = "OK";
     }
     return ret;
