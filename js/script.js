@@ -308,7 +308,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     //We just hide the table display
     document.getElementById("columnsDisplayArea").style.display = "none";
-    if(!isReadOnly){
+    if(!isreadOnly){
       document.getElementById("addButton").disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
