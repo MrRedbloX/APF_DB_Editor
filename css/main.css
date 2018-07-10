@@ -107,5 +107,5 @@ button.paddingRigth{
  }
 
  .jstree-default a.jstree-loading .jstree-icon {
-    background:url("/css/img/loading.gif") center center no-repeat !important; 
+    background:url("img/loading.gif") center center no-repeat !important; 
 }
