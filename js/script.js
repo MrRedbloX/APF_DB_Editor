@@ -343,7 +343,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             }
           }
           else if(elt.nodeName === "SELECT"){
-            if(elt.selectedIndex == null) valueList.push("");
+            if(elt.options[elt.selectedIndex].text == null) valueList.push("");
             else{
                if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
                else valueList.push(elt.options[elt.selectedIndex].text);
@@ -429,7 +429,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             }
           }
           else if(elt.nodeName === "SELECT"){
-            if(elt.selectedIndex == null) valueList.push("");
+            if(elt.options[elt.selectedIndex].text == null) valueList.push("");
             else{
                if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
                else valueList.push(elt.options[elt.selectedIndex].text);
