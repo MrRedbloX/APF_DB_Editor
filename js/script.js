@@ -149,7 +149,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
-
+  var isreadOnly = false;
   //Here we manage the displayability of the buttons
   document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
@@ -164,7 +164,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     window.location = "#!"; //we make sure that no view is displayed
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
-    var isReadOnly = false;
 
     if(tableSelected != null){
       let temp = tableSelected.split(';');
