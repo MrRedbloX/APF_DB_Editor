@@ -250,7 +250,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.add = function(){
 
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
-    if(!readOnly){
+    if(!isreadOnly){
       document.getElementById('addButton').disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
@@ -261,7 +261,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.modify = function(){
 
     //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
-    if(!readOnly){
+    if(!isreadOnly){
       document.getElementById('addButton').disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
