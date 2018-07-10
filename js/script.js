@@ -14,11 +14,6 @@ var checkIfReadOnlyDB = function(db){
   return ret;
 };
 
-//Return the values of the attribute if it's a references
-var getReferencesString = function(val){
-  return val;
-};
-
 //When the user clicks on a table
 var tableSelected = null;
 var isTableSelected = function (table){
@@ -147,6 +142,11 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory){
   columnsDisplayFactory.setScope($scope);
+
+  //Return the values of the attribute if it's a references
+  $scope.getReferencesString = function(val){
+    return val;
+  };
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
