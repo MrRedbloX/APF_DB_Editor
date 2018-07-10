@@ -146,7 +146,11 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   $scope.setToolTips = function(){
     var ret = false;
-    console.log(postgresqlScope.columnConstraint);
+    for(cons in postgresqlScope.columnConstraint){
+      for(tuple in $scope.tuples){
+        console.log(cons+" "+tuple);
+      }
+    }
     /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
       if(att === postgresqlScope.columnConstraint.data[i].column_name.toString()){
         break;
