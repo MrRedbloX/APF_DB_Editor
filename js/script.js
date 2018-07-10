@@ -315,6 +315,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     }
     rowSelected = null;
   };
+
+  $scope.getReferencesString = function(val){
+    alert(val);
+  };
 });
 
 app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
