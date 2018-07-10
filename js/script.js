@@ -338,14 +338,14 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
           if(elt.nodeName === "INPUT"){
             if(elt.value == null) valueList.push("");
             else{
-              if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
+              if($scope.attributes[j].data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
               else valueList.push(elt.value);
             }
           }
           else if(elt.nodeName === "SELECT"){
             if(elt.options[elt.selectedIndex].text == null) valueList.push("");
             else{
-               if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
+               if($scope.attributes[j].data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
                else valueList.push(elt.options[elt.selectedIndex].text);
            }
          }
