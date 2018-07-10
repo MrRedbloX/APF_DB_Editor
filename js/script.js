@@ -1,5 +1,18 @@
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
+var readOnlyDB = ['sonde']; //Contains the read only databases
+
+//Check if a database is in read only mode
+var checkIfReadOnlyDB = function(db){
+  ret = false;
+  for(database in readOnlyDB){
+    if(db === database){
+      ret = true;
+      break;
+    }
+  }
+  return ret;
+};
 
 //When the user clicks on a table
 var tableSelected = null;
@@ -127,6 +140,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
 
+  let temp = tableSelected.split(';');
+  let db = temp[0];
+  var isReadOnly = checkIfReadOnlyDB(db);
+
   //Here we manage the displayability of the buttons
   document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
@@ -143,8 +160,17 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     rowSelected = null;
 
     document.getElementById("columnsDisplayArea").style.display = "block";
-    if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
-    if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+
+    if(isReadOnly){
+      if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
+      if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+      if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+    }
+    else{
+      if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+      if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+    }
+
     if(tableSelected != null){
       let temp = tableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
@@ -211,20 +237,22 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.add = function(){
 
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
-    document.getElementById('addButton').disabled = true;
-    document.getElementById("modifyButton").disabled = true;
-    document.getElementById("deleteButton").disabled = true;
-
+    if(!readOnlyDB){
+      document.getElementById('addButton').disabled = true;
+      document.getElementById("modifyButton").disabled = true;
+      document.getElementById("deleteButton").disabled = true;
+    }
   };
 
   //When we want to modify a tuple
   $scope.modify = function(){
 
     //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
-    document.getElementById('addButton').disabled = true;
-    document.getElementById("modifyButton").disabled = true;
-    document.getElementById("deleteButton").disabled = true;
-
+    if(!readOnlyDB){
+      document.getElementById('addButton').disabled = true;
+      document.getElementById("modifyButton").disabled = true;
+      document.getElementById("deleteButton").disabled = true;
+    }
   }
 
   //When we want to delete a tuple
