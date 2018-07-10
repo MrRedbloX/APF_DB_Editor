@@ -105,7 +105,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
           }
         }
         $scope.ready = true;
-        $(function() {
+        await $(function() {
           $('#treeDatabaseArea').jstree(); //Activating jtree
         });
       }
