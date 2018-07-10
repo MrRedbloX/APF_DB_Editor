@@ -8,6 +8,7 @@ var checkIfReadOnlyDB = function(db){
   for(database in readOnlyDB){
     if(db === database){
       ret = true;
+      alert('wtf');
       break;
     }
   }
