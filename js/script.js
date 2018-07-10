@@ -140,9 +140,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
 
-  let temp = tableSelected.split(';');
-  let db = temp[0];
-  var isReadOnly = checkIfReadOnlyDB(db);
+  if(tableSelected != null){
+    let temp = tableSelected.split(';');
+    let db = temp[0];
+    var isReadOnly = checkIfReadOnlyDB(db);
+  }
 
   //Here we manage the displayability of the buttons
   document.getElementById("displayButton").disabled = true;
