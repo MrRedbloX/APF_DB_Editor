@@ -259,7 +259,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,"*", function(){ //And we get their values
                   if(postgresScope.successRequest){
                     for(val in postgresScope.valuesOf.data){
-                      postgresScope.columnConstraint.data[i].foreign_column_name;
+                      //postgresScope.columnConstraint.data[i].foreign_column_name;
+                      console.log(val);
                       temp.push(val);
                     }
                   }
