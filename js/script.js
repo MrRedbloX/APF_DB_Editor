@@ -144,20 +144,19 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
 
-  $scope.setToolTips = function(){
-    var ret = false;
-    for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+  $scope.setToolTips = function(id, column_name, val){
+    /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
       for(let j=0; j<$scope.tuples.length; j++){
+        console.log(document.getElementById($scope.tuples[j].column_names[0].column_name+";"+$scope.tuples[j].values))
         console.log(postgresqlScope.columnConstraint.data[i].column_name);
         console.log($scope.tuples[j]);
+        break;
         //Continuer ici, essayer identifier td, changer requete fk pour avoir tt les valeurs, set tooltip
       }
-    }
-    /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
-      if(att === postgresqlScope.columnConstraint.data[i].column_name.toString()){
-        break;
-      }
     }*/
+    console.log(id);
+    console.log(column_name);
+    console.log(val);
   };
 });
 
