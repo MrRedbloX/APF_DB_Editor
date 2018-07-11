@@ -144,7 +144,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
 
-  $scope.setToolTips = function(id, column_name, val){
+  $scope.setToolTips = function(tuple_value, column_name, val){
     /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
       for(let j=0; j<$scope.tuples.length; j++){
         console.log(document.getElementById($scope.tuples[j].column_names[0].column_name+";"+$scope.tuples[j].values))
@@ -154,7 +154,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         //Continuer ici, essayer identifier td, changer requete fk pour avoir tt les valeurs, set tooltip
       }
     }*/
-    console.log(id);
+    console.log(tuple_value);
     //console.log(column_name);
     //console.log(val);
   };
