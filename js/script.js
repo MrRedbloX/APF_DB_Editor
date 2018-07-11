@@ -256,10 +256,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               postgresScope.valuesOfConstraint = [];
               for(let i=0; i<postgresScope.columnConstraint.data.length; i++){
                 let temp = [];
-                postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,postgresScope.columnConstraint.data[i].foreign_column_name, function(){ //And we get their values
+                postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,"*", function(){ //And we get their values
                   if(postgresScope.successRequest){
-                    for(val in postgresScope.valuesOf.data)
+                    for(val in postgresScope.valuesOf.data){
+                      postgresScope.columnConstraint.data[i].foreign_column_name;
                       temp.push(val);
+                    }
                   }
                   else{
                     console.log(postgresScope.valuesOf);
