@@ -154,7 +154,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         //Continuer ici, essayer identifier td, changer requete fk pour avoir tt les valeurs, set tooltip
       }
     }*/
-    var id = column_name+";"+tuple_value+";"+val;
+    var id = column_name+";"+JSON.stringify(tuple_value)+";"+val;
     console.log(document.getElementById(id));
     //console.log(column_name);
     //console.log(val);
