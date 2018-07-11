@@ -180,7 +180,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     ret = "WTF";
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
-        console.log("ok1");
+        console.log(postgresqlScope.valuesOfConstraint[i].values.length);
         for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
           console.log(postgresqlScope.valuesOfConstraint[i].values[j].id+" vs "+value);
           if(postgresqlScope.valuesOfConstraint[i].values[j].id === value){
