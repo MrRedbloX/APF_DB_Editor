@@ -9,7 +9,7 @@
       <div ng-if="checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
         <label>{{att.column_name}} : </label>
         <select id="{{att.column_name}}" class="form-control">
-          <option id="add{{ref}}" ng-repeat="ref in getReferences(att.column_name) track by $index" value="{{ref}}" title="{{setIdForToolTips(ref, att.column_name)}}">{{ref}}</option>
+          <option id="add{{ref}}" ng-repeat="ref in getReferences(att.column_name) onclick="alert(id)" track by $index" value="{{ref}}" title="{{setIdForToolTips(ref, att.column_name)}}">{{ref}}</option>
         </select>
         <i style="font-size: small">{{att.data_type}}</i>
       </div>
