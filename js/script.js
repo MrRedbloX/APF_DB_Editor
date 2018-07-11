@@ -177,7 +177,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     }
   }
   $scope.getInfoForFK = function(column_name, value){
-    ret = "OK";
+    ret = column_name+" "+value;
 
     return ret;
   };
