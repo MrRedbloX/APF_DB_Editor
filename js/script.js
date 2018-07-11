@@ -177,7 +177,15 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     }
   }
   $scope.getInfoForFK = function(column_name, value){
-    ret = column_name+" "+value;
+    ret = "";
+    for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
+      if(column_name === postgresqlScope.valuesOfConstraint[i].name){
+        for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
+          if(postgresqlScope.valuesOfConstraint[i].values[j].id === value.toString()) ret = postgresqlScope.valuesOfConstraint[i].values[j].records);
+        }
+        break;
+      }
+    }
 
     return ret;
   };
