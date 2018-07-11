@@ -178,11 +178,11 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   }
   $scope.getInfoForFK = function(column_name, value){
     ret = "WTF";
-    //console.log(postgresqlScope.valuesOfConstraint);
+    console.log(postgresqlScope.valuesOfConstraint);
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
         console.log(postgresqlScope.valuesOfConstraint[i].values);
-        console.log(postgresqlScope.valuesOfConstraint[i].length);
+        console.log(postgresqlScope.valuesOfConstraint[i].values.length);
         for(val in postgresqlScope.valuesOfConstraint[i].values){//let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++
           console.log(postgresqlScope.valuesOfConstraint[i].values[val].id+" vs "+value);
           if(postgresqlScope.valuesOfConstraint[i].values[val].id === value){
