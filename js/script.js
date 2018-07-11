@@ -138,12 +138,11 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       }
     });
   }
-
   $scope.$on('$viewContentLoaded', function(){
     $(function() {
       $('#treeDatabaseArea').jstree(); //Activating jtree
     });
-  }
+  });
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
