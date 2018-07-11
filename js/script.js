@@ -121,12 +121,12 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
                   table : postgresScope.tableArray.data
                 });
               }
-              $(function() {
-                $('#treeDatabaseArea').jstree(); //Activating jtree
-              });
               else{
                 alert("Error on getTableName request, check console logs.");
               }
+              $(function() {
+                $('#treeDatabaseArea').jstree(); //Activating jtree
+              });
             });
           }
         }
@@ -139,6 +139,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
     });
   }
   $rootScope.$on('$viewContentLoaded', function(){
+    console.log("wtf");
     $(function() {
       $('#treeDatabaseArea').jstree(); //Activating jtree
     });
@@ -383,7 +384,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
 });
 
-app.controller('addRowAreaController', function($scope, $rootScope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
@@ -504,7 +505,8 @@ app.controller('addRowAreaController', function($scope, $rootScope, columnsDispl
     return "test";
   };
 
-  $rootScope.$on('$viewContentLoaded', function(){
+  $scope.$on('$viewContentLoaded', function(){
+    console.log("ok");
     columnsDisplayScope.setToolTips();
   });
 });
