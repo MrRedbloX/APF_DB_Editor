@@ -501,7 +501,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       column_name : column,
       value : val
     });
-    for(let i=0; i<$scope.row_ids.length; i++){
+    for(let i=0; i<columnsDisplayScope.row_ids.length; i++){
       if(columnsDisplayScope.checkIfIsReference(columnsDisplayScope.row_ids[i].column_name)){
         if(document.getElementById(columnsDisplayScope.row_ids[i].id) != null)
           ret = columnsDisplayScope.getInfoForFK(columnsDisplayScope.row_ids[i].column_name,columnsDisplayScope.row_ids[i].value);
