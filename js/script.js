@@ -170,20 +170,17 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setToolTips = function(){
-    console.log($scope.row_ids.length);
     for(let i=0; i<$scope.row_ids.length; i++){
       if($scope.checkIfIsReference($scope.row_ids[i].column_name)){
         if(document.getElementById($scope.row_ids[i].id) != null) {
           document.getElementById($scope.row_ids[i].id).title = $scope.getInfoForFK($scope.row_ids[i].column_name,$scope.row_ids[i].value);
-          console.log("YES");
         }
-        else console.log("NO");
       }
     }
     $scope.row_ids = [];
   }
   $scope.getInfoForFK = function(column_name, value){
-    ret = "WTF";
+    ret = "";
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
         for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
