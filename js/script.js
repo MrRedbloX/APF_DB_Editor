@@ -247,7 +247,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(!isReadOnly) document.getElementById('addButton').disabled = false;
 
       postgresScope.getColumnName(db, table, function(){ //We get the name of all columns
-        console.log(1);
+        console.log("1");
         if(postgresScope.successRequest){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
           postgresScope.getAllValues(db, table, function(){ //And we get their values
@@ -304,7 +304,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           alert("Error on getColumnName request, check console logs.");
         }
       });
-      console.log(2);
+      console.log("2");
       columnsDisplayScope.setToolTips();
     }
   }
