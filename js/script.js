@@ -182,10 +182,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
         var temp = postgresqlScope.valuesOfConstraint[i].values;
-        for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){//
-          //console.log(postgresqlScope.valuesOfConstraint[i].values[val].id+" vs "+value);
+        for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
           if(postgresqlScope.valuesOfConstraint[i].values[j].id === value){
-            //console.log("ok2");
             ret = postgresqlScope.valuesOfConstraint[i].values[j].records.toString();
             break;
           }
@@ -245,7 +243,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(!isReadOnly) document.getElementById('addButton').disabled = false;
 
       postgresScope.getColumnName(db, table, function(){ //We get the name of all columns
-        console.log("1");
         if(postgresScope.successRequest){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
           postgresScope.getAllValues(db, table, function(){ //And we get their values
