@@ -198,7 +198,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         break;
       }
     }
-
+    console.log(ret);
     return ret;
   };
 });
@@ -505,7 +505,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $rootScope.$on('$viewContentLoaded', function(){
-    console.log("ok");
     columnsDisplayScope.setToolTips();
   });
 });
