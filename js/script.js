@@ -195,7 +195,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         break;
       }
     }
-    console.log(ret);
     return ret;
   };
 });
