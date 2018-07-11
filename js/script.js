@@ -139,8 +139,8 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
     });
   }
   $scope.$on('$viewContentLoaded', function(){
-    console.log("okDB");
     $(function() {
+      console.log("okDB");
       $('#treeDatabaseArea').jstree(); //Activating jtree
     });
   });
