@@ -292,7 +292,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 });
                 columnsDisplayScope.setToolTips();
               }
-              console.log(postgresScope.valuesOfConstraint[0].values.length);
+              console.log(postgresScope.valuesOfConstraint[0].values);
             }
             else{
               console.log(postgresScope.columnConstraint);
