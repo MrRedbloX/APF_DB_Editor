@@ -144,6 +144,19 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
 
+  //Check if an attribute is a foreign key
+  $scope.checkIfIsReference = function(att){
+    var ret = false;
+    for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
+      if(att === postgresqlScope.columnConstraint.data[i].column_name){
+        ret = true;
+        break;
+      }
+    }
+    return ret;
+  };
+
+
   $scope.setToolTips = function(tuple_value, column_name, val){
     /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
       for(let j=0; j<$scope.tuples.length; j++){
@@ -154,10 +167,13 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         //Continuer ici, essayer identifier td, changer requete fk pour avoir tt les valeurs, set tooltip
       }
     }*/
-    var id = column_name+";"+JSON.stringify(tuple_value)+";"+val;
-    console.log(document.getElementById(id));
-    //console.log(column_name);
-    //console.log(val);
+    ret = "";
+
+    if($scope.checkIfIsReference(column_name)){
+      let id = column_name+";"+JSON.stringify(tuple_value)+";"+val;
+      if(document.getElementById(id) != null) ret = "OK";
+    }
+    return ret;
   };
 });
 
