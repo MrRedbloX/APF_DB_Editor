@@ -260,7 +260,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   if(postgresScope.successRequest){
                     for(val in postgresScope.valuesOf.data){
                       //postgresScope.columnConstraint.data[i].foreign_column_name;
-                      console.log(val);
+                      console.log(postgresScope.valuesOf.data);
                       temp.push(val);
                     }
                   }
