@@ -188,7 +188,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           //console.log(postgresqlScope.valuesOfConstraint[i].values[val].id+" vs "+value);
           if(postgresqlScope.valuesOfConstraint[i].values[val].id === value){
             //console.log("ok2");
-            ret = postgresqlScope.valuesOfConstraint[i].values[val].records;
+            ret = postgresqlScope.valuesOfConstraint[i].values[val].records.toString();
             break;
           }
         }
