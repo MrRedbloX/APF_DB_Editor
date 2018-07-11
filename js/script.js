@@ -104,7 +104,7 @@ app.factory('buttonAreaFactory', function(){
 });
 
 //Each controller manage a view in the html
-app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
+app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory, $rootScope){
   $scope.databases = []; //This array will be use to by jtree
   var postgresScope = postgresqlFactory.getScope();
   $scope.ready = false; //Wait to load page
@@ -138,7 +138,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
       }
     });
   }
-  $scope.$on('$viewContentLoaded', function(){
+  $rootScope.$on('$viewContentLoaded', function(){
     console.log("wtf");
     $(function() {
       $('#treeDatabaseArea').jstree(); //Activating jtree
