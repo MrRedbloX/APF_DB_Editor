@@ -492,7 +492,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     }
   };
 
-  $scope.setIdForToolTips = function(TheID, column){
+  $scope.setIdForToolTips = function(theID, column){
     columnsDisplayScope.row_ids.push({
       id : "add"+theID,
       column_name : column,
