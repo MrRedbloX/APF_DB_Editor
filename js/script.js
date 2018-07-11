@@ -277,10 +277,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,"*", function(){ //And we get their values
                   if(postgresScope.successRequest){
                     for(let j=0; j<postgresScope.valuesOf.data.length; j++){
+                      console.log("1");
                       temp.push({
                         id : postgresScope.valuesOf.data[j][postgresScope.columnConstraint.data[i].foreign_column_name],
                         records : postgresScope.valuesOf.data[j]});
                     }
+                    console.log("2");
                   }
                   else{
                     console.log(postgresScope.valuesOf);
@@ -304,8 +306,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           alert("Error on getColumnName request, check console logs.");
         }
       });
-      console.log("2");
-      columnsDisplayScope.setToolTips();
     }
   }
 
