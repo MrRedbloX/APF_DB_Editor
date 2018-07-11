@@ -177,7 +177,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     }
   }
   $scope.getInfoForFK = function(column_name, value){
-    ret = "WTF";
+    ret = "";
     //console.log(postgresqlScope.valuesOfConstraint);
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
@@ -185,7 +185,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
           if(postgresqlScope.valuesOfConstraint[i].values[j].id === value){
             console.log(postgresqlScope.valuesOfConstraint[i].values[j].records);
-            ret = postgresqlScope.valuesOfConstraint[i].values[j].records.toString()+"";
+            ret = JSON.stringify(postgresqlScope.valuesOfConstraint[i].values[j].records.toString());
             break;
           }
         }
