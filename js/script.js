@@ -500,6 +500,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $rootScope.$on('$viewContentLoaded', function(){
+    console.log("ok");
     columnsDisplayScope.setToolTips();
   });
 });
