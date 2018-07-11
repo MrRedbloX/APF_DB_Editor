@@ -182,12 +182,12 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
         var temp = postgresqlScope.valuesOfConstraint[i].values;
-        console.log(temp);
+        //console.log(temp);
         //console.log(postgresqlScope.valuesOfConstraint[i].values.records.length);
         for(val in postgresqlScope.valuesOfConstraint[i].values){//let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++
           //console.log(postgresqlScope.valuesOfConstraint[i].values[val].id+" vs "+value);
           if(postgresqlScope.valuesOfConstraint[i].values[val].id === value){
-            console.log("ok2");
+            //console.log("ok2");
             ret = postgresqlScope.valuesOfConstraint[i].values[val].records;
             break;
           }
@@ -247,6 +247,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(!isReadOnly) document.getElementById('addButton').disabled = false;
 
       postgresScope.getColumnName(db, table, function(){ //We get the name of all columns
+        console.log(1);
         if(postgresScope.successRequest){
           columnsDisplayScope.columns = postgresScope.columnsArray.data;
           postgresScope.getAllValues(db, table, function(){ //And we get their values
@@ -303,6 +304,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           alert("Error on getColumnName request, check console logs.");
         }
       });
+      console.log(2);
       columnsDisplayScope.setToolTips();
     }
   }
