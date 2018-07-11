@@ -176,6 +176,11 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       }
     }
   }
+  $scope.getInfoForFK(column_name, value){
+    ret = "OK";
+
+    return ret;
+  }
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
