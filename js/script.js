@@ -488,6 +488,16 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     }
   };
+
+  $scope.setIdForToolTips(TheID, column){
+    columnsDisplayScope.row_ids.push({
+      id : theID,
+      column_name : column,
+      value : theID
+    });
+
+    return "";
+  }
 });
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
