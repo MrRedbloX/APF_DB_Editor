@@ -143,6 +143,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
+  $scope.row_ids = [];
 
   //Check if an attribute is a foreign key
   $scope.checkIfIsReference = function(att){
