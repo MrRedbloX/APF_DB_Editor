@@ -380,7 +380,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
 });
 
-app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+app.controller('addRowAreaController', function($scope, $rootScope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
