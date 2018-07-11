@@ -494,14 +494,20 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $scope.setIdForToolTips = function(val, column){
+    ret = "WTF";
     let theID = "a"+column+val;
     columnsDisplayScope.row_ids.push({
       id : theID,
       column_name : column,
       value : val
     });
-
-    return "";
+    for(let i=0; i<$scope.row_ids.length; i++){
+      if(columnsDisplayScope.checkIfIsReference(columnsDisplayScope.row_ids[i].column_name)){
+        if(document.getElementById(columnsDisplayScope.row_ids[i].id) != null)
+          ret = columnsDisplayScope.getInfoForFK(columnsDisplayScope.row_ids[i].column_name,columnsDisplayScope.row_ids[i].value);
+      }
+    }
+    return ret;
   };
 
   $rootScope.$on('$viewContentLoaded', function(){
