@@ -157,23 +157,16 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
 
-  $scope.setToolTips = function(tuple_value, column_name, val){
-    /*for(let i=0; i<postgresqlScope.columnConstraint.data.length; i++){
-      for(let j=0; j<$scope.tuples.length; j++){
-        console.log(document.getElementById($scope.tuples[j].column_names[0].column_name+";"+$scope.tuples[j].values))
-        console.log(postgresqlScope.columnConstraint.data[i].column_name);
-        console.log($scope.tuples[j]);
-        break;
-        //Continuer ici, essayer identifier td, changer requete fk pour avoir tt les valeurs, set tooltip
-      }
-    }*/
-    ret = "";
+  $scope.setIdForToolTips = function(tuple_value, column, val){
+    let theID = column+";"+JSON.stringify(tuple_value)+";"+val;
 
-    if($scope.checkIfIsReference(column_name)){
-      let id = column_name+";"+JSON.stringify(tuple_value)+";"+val;
-      if(document.getElementById(id) != null) ret = "OK";
-    }
-    return ret;
+    $scope.row_ids.push({
+      id : theID,
+      column_name : column,
+      value : val
+    });
+
+    return "";
   };
 });
 
