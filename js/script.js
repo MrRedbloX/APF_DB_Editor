@@ -176,6 +176,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         if(document.getElementById($scope.row_ids[i].id) != null) {
           document.getElementById($scope.row_ids[i].id).title = $scope.getInfoForFK($scope.row_ids[i].column_name,$scope.row_ids[i].value);
           console.log("YES");
+        }
         else console.log("NO");
       }
     }
