@@ -181,7 +181,10 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
         for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
-          if(postgresqlScope.valuesOfConstraint[i].values[j].id === value.toString()) ret = postgresqlScope.valuesOfConstraint[i].values[j].records;
+          if(postgresqlScope.valuesOfConstraint[i].values[j].id === value.toString()){
+            ret = postgresqlScope.valuesOfConstraint[i].values[j].records;
+            break;
+          }
         }
         break;
       }
