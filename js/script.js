@@ -379,13 +379,15 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
 });
 
-app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, $rootScope){
+app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
 
   var currentTableSelected = tableSelected;
+
+  columnsDisplayScope.row_ids = [];
 
   $scope.attributes = []; //This will be use to display the name of columns
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
@@ -505,10 +507,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     }
     return ret;
   };
-
-  $rootScope.$on('$viewContentLoaded', function(){
-    columnsDisplayScope.setToolTips();
-  });
 });
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
