@@ -181,11 +181,13 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     //console.log(postgresqlScope.valuesOfConstraint);
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
-        var temp = postgresqlScope.valuesOfConstraint[i].values;
         for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
           if(postgresqlScope.valuesOfConstraint[i].values[j].id === value){
             console.log(postgresqlScope.valuesOfConstraint[i].values[j].records);
-            ret = JSON.stringify(postgresqlScope.valuesOfConstraint[i].values[j].records.toString());
+            keys = Object.keys(postgresqlScope.valuesOfConstraint[i].values[j].records);
+            for(let k=0; k<keys.length; k++)
+              ret += postgresqlScope.valuesOfConstraint[i].values[j].records[keys[k]]+" / ";
+            ret = ret.substring(0, ret.length-3);
             break;
           }
         }
