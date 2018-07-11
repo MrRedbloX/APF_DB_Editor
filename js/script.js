@@ -501,7 +501,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       value : val
     });
 
-    return "";
+    return "test";
   };
 
   $scope.$on('$viewContentLoaded', function(){
