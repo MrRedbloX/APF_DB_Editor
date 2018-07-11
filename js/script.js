@@ -155,8 +155,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       }
     }*/
     //console.log(id);
-    console.log(column_name);
-    //console.log(val);
+    //console.log(column_name);
+    console.log(val);
   };
 });
 
