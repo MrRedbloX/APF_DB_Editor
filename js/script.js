@@ -170,6 +170,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setToolTips = function(){
+    console.log($scope.row_ids.length);
     for(let i=0; i<$scope.row_ids.length; i++){
       if($scope.checkIfIsReference($scope.row_ids[i].column_name)){
         if(document.getElementById($scope.row_ids[i].id) != null) document.getElementById($scope.row_ids[i].id).title = $scope.getInfoForFK($scope.row_ids[i].column_name,$scope.row_ids[i].value);
