@@ -498,6 +498,10 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     return "";
   }
+
+  $scope.$on('$viewContentLoaded', function(){
+    columnsDisplayScope.setToolTips();
+  });
 });
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
