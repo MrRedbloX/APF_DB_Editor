@@ -384,7 +384,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
 });
 
-app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, $rootScope){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
@@ -505,8 +505,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     return "test";
   };
 
-  $scope.$on('$viewContentLoaded', function(){
-    console.log("ok");
+  $rootScope.$on('$viewContentLoaded', function(){
     columnsDisplayScope.setToolTips();
   });
 });
@@ -638,7 +637,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   };
 });
 
-app.controller('postgresqlController', function($scope,$http, postgresqlFactory){
+app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
 
   window.location = "#!";
   postgresqlFactory.setScope($scope);
