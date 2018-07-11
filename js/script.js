@@ -155,7 +155,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       }
     }*/
     var id = column_name+";"+tuple_value+";"+val;
-    console.log(id);
+    console.log(document.getElementById(id));
     //console.log(column_name);
     //console.log(val);
   };
