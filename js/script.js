@@ -157,7 +157,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     return ret;
   };
 
-
   $scope.setIdForToolTips = function(tuple_value, column, val){
     let theID = column+";"+JSON.stringify(tuple_value)+";"+val;
 
