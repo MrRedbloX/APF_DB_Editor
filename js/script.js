@@ -177,6 +177,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         else console.log("NO");
       }
     }
+    $scope.row_ids = [];
   }
   $scope.getInfoForFK = function(column_name, value){
     ret = "WTF";
@@ -386,7 +387,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   var buttonAreaScope = buttonAreaFactory.getScope();
 
   var currentTableSelected = tableSelected;
-  columnsDisplayScope.row_ids = [];
 
   $scope.attributes = []; //This will be use to display the name of columns
   for(let i=0;i<columnsDisplayScope.columns.length;i++){
