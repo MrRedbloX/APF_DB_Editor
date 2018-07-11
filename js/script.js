@@ -172,7 +172,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   $scope.setToolTips = function(){
     for(let i=0; i<$scope.row_ids.length; i++){
       if($scope.checkIfIsReference($scope.row_ids[i].column_name)){
-        if(document.getElementById($scope.row_ids[i].id) != null) (document.getElementById($scope.row_ids[i].id).title = "OK";
+        if(document.getElementById($scope.row_ids[i].id) != null) document.getElementById($scope.row_ids[i].id).title = "OK";
       }
     }
   }
