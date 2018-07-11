@@ -17,3 +17,12 @@ array scrud js
 
 	Tester le addRecord
 Verifier delete
+
+Rajouter toutes les infos dans reférences pour add et modify 
+Empécher l'altération sur sonde > fait
+Rajouter un menu (attendre croquis)
+Rajouter colonne customer_name dans tenant_table sonde > fait
+Dashboard (graphique)
+Vérification des règles
+
+Vérifier anomalie tooltips
