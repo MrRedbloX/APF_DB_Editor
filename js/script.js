@@ -256,6 +256,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
   var isreadOnly = false;
+  var currentTableSelected = tableSelected;
+  var currentRowSelected = rowSelected;
 
   //Here we manage the displayability of the buttons
   if(document.getElementById("displayButton") != null) document.getElementById("displayButton").disabled = true;
@@ -271,12 +273,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     treeDatabaseAreaScope.displayNothing = true;
     treeDatabaseAreaScope.displayAdd = false;
     treeDatabaseAreaScope.displayModify = false;
-    if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+    if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
     rowSelected = null;
     columnsDisplayScope.row_ids = [];
     columnsDisplayScope.clearTooltips();
 
-    if(tableSelected != null){
+    if(currentTableSelected != null){
       let temp = tableSelected.split(';');
       let db = temp[0];
       isReadOnly = checkIfReadOnlyDB(db);
@@ -296,7 +298,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
     }
 
-    if(tableSelected != null){
+    if(currentTableSelected != null){
       let temp = tableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
       let table = temp[1];
@@ -397,7 +399,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   //When we want to delete a tuple
   $scope.delete = function(){
     if(confirm('Do you want to delete this record ?')){
-      if(tableSelected != null){
+      if(currentTableSelected != null){
         let temp = tableSelected.split(';');
         let db = temp[0];
         let table = temp[1];
@@ -406,7 +408,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           if(postgresScope.successRequest){
             for(let i=0; i<columnsDisplayScope.columns.length; i++){
               if(postgresScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
-                var pkValue = JSON.parse(rowSelected)[i];
+                var pkValue = JSON.parse(currentRowSelected)[i];
                 break;
               }
             }
@@ -447,9 +449,35 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   $scope.showRelations = function(){
     busy = true;
-    console.log("ok");
-  }
 
+    if(currentTableSelected != null){
+      let temp = tableSelected.split(';'); //We retrieve the db and the table names
+      let db = temp[0];
+      let table = temp[1];
+      var primaryKey;
+
+      postgresScope.getPrimaryKey(db, table, function(){
+        if(postgresScope.successRequest){
+          primaryKey = postgresScope.primaryKey.data[0].attname;
+        }
+        else{
+          console.log(postgresScope.primaryKey);
+          alert("Error on getPrimaryKey request, check console logs.")
+        }
+      });
+
+      for(let i=0; i<treeDatabaseAreaScope.databases.length; i++){
+        if(treeDatabaseAreaScope.databases[i] === db){
+          for(let j=0; j<treeDatabaseAreaScope.databases[i].table.length){
+            if(treeDatabaseAreaScope.databases[i].table !== table){
+
+
+            }
+          }
+        }
+      }
+    }
+  }
 });
 
 app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
