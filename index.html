@@ -21,42 +21,6 @@
     <a href="#!/"><img src="/css/img/logo_DBE.png" /></a>
     <a href="https://www.orange-business.com"><img src="/css/img/logo.png" class="topRight" /></a>
   </header>
-  <div id="databasesArea" class="treeArea" ng-controller="treeDatabaseAreaController">
-    <div id="treeDatabaseArea" ng-if="ready" class="relative">
-      <ul ng-repeat="db in databases">
-         <li data-jstree='{"icon":"/css/img/db.png"}'><a class="inactiveLink">{{db.name}}</a>
-           <ul ng-repeat="tab in db.table">
-             <li id="{{db.name}};{{tab.table_name}}" onclick="isTableSelected(id)" data-jstree='{"icon":"/css/img/table.png"}'>{{tab.table_name}}</li>
-           </ul>
-         </li>
-       </ul>
-    </div>
-    <div id="databasesButtonArea" class="relative" ng-controller="buttonAreaController">
-      <button id="displayButton" ng-click="display()" class="paddingRigth btn btn-primary" type="button">Display</button>
-      <button id="clearButton" ng-click="clear()" onclick="location.href='#!';" type="button" class="btn">Clear</button>
-    </div>
-  </div>
-  <div id="columnsDisplayArea" class="displayArea" style="display:none;">
-    <div id="tableDisplayArea" ng-controller="columnsDisplayAreaController" class="table-responsive">
-      <table id="tableColumnsDisplay" class="table table-bordered">
-        <thead>
-          <tr>
-            <th ng-repeat="col in columns">{{col.column_name}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="{{tuple.values}}" ng-repeat="tuple in tuples track by $index" onclick="isRowSelected(id)" class="hoverTable">
-            <td id="{{tuple.column_names[$index].column_name}};{{tuple.values}};{{val}}" ng-repeat="val in tuple.values track by $index" title={{setIdForToolTips(tuple.values,tuple.column_names[$index].column_name,val)}}>{{val}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div id="secondButtonsArea" ng-controller='buttonAreaController'>
-      <button id="addButton" ng-click="add()" onclick="location.href='#!add';" class="paddingRigth btn btn-success" type="button"><a>Add</button>
-      <button id="modifyButton" ng-click="modify()" onclick="location.href='#!modify';" class="paddingRigth btn btn-warning" type="button">Modify</button>
-      <button id="deleteButton" ng-click="delete()" class="btn btn-danger" type="button">Delete</button>
-    </div>
-  </div>
   <div class="ngViewArea" ng-view></div>
 </body>
 </html>
