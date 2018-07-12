@@ -456,6 +456,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
 
   var currentTableSelected = tableSelected;
+  var currentRowSelected = rowSelected;
 
   columnsDisplayScope.row_ids = [];
 
