@@ -121,6 +121,25 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
   $scope.displayAdd = false;
   $scope.displayModify = false;
 
+  $scope.setDisplayTo(type){
+    if(type === "nothing"){
+      $scope.displayNothing = true;
+      $scope.displayAdd = false;
+      $scope.displayModify = false;
+    }
+    else if(type === "add"){
+      $scope.displayNothing = false;
+      $scope.displayAdd = true;
+      $scope.displayModify = false;
+    }
+    else if(type === "modify"){
+      $scope.displayNothing = false;
+      $scope.displayAdd = false;
+      $scope.displayModify = true;
+    }
+    else console.log("Wrong type for setDisplayTo");
+  }
+
   if(!$scope.ready){
     postgresScope.getDBName(function(){ //We do the request and we define the callback function
       if(postgresScope.successRequest){
