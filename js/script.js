@@ -298,9 +298,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
       if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
     }
-    console.log(currentTableSelected);
     if(currentTableSelected != null){
-      console.log("ok")
       let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
       let table = temp[1];
