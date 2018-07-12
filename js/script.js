@@ -105,7 +105,6 @@ app.factory('postgresqlFactory', function(){
 
 //Each controller manage a view in the html
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
-  console.log("Je passe dans crl");
   $scope.databases = []; //This array will be use to by jtree
   var postgresScope = postgresqlFactory.getScope();
   $scope.ready = false; //Wait to load page
