@@ -469,8 +469,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
             }
           }
           for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
-            console.log(treeDatabaseAreaScope.databases[j]);
-            if(treeDatabaseAreaScope.databases[j] == db){
+            if(treeDatabaseAreaScope.databases[j].name == db){
               console.log("Found db");
               for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
                 if(treeDatabaseAreaScope.databases[j].table[k] !== table){
