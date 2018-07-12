@@ -153,6 +153,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
+  console.log("Col");
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
   $scope.row_ids = [];
