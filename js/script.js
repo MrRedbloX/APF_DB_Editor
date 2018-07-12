@@ -345,7 +345,9 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
 
-
+      treeDatabaseAreaScope.displayNothing = false;
+      treeDatabaseAreaScope.displayAdd = true;
+      treeDatabaseAreaScope.displayModify = false;
     }
   };
 
@@ -357,6 +359,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById('addButton').disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
+
+      treeDatabaseAreaScope.displayNothing = false;
+      treeDatabaseAreaScope.displayAdd = false;
+      treeDatabaseAreaScope.displayModify = true;
     }
   }
 
@@ -405,6 +411,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById("addButton").disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
+
+      treeDatabaseAreaScope.displayNothing = true;
+      treeDatabaseAreaScope.displayAdd = false;
+      treeDatabaseAreaScope.displayModify = false;
     }
     rowSelected = null;
   };
