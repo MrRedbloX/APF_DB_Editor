@@ -58,7 +58,7 @@ app.config(function($routeProvider) {
         templateUrl : "html/defaultDisplay.html"
     })
     .when("/db_management", {
-      templateUrl : "html/db_management.html"
+        templateUrl : "html/db_management.html"
     })
     .otherwise({
         redirectTo: '/'
