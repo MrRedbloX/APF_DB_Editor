@@ -446,6 +446,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $scope.showRelations = function(){
+    busy = true;
     console.log("ok");
   }
 
