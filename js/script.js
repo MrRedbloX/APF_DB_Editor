@@ -463,12 +463,13 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
         if(postgresScope.successRequest){
           for(let i=0; i<columnsDisplayScope.columns.length; i++){
             if(postgresScope.primaryKey.data[0].attname ==  columnsDisplayScope.columns[i]){
+              console.log("Found pk");
               var pkValue = JSON.parse(currentRowSelected)[i];
               break;
             }
           }
           for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
-            if(treeDatabaseAreaScope.databases[j] === db){
+            if(treeDatabaseAreaScope.databases[j] == db){
               console.log("Found db");
               for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
                 if(treeDatabaseAreaScope.databases[j].table[k] !== table){
