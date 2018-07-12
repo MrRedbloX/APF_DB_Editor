@@ -463,7 +463,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
         if(postgresScope.successRequest){
           for(let i=0; i<columnsDisplayScope.columns.length; i++){
             console.log(columnsDisplayScope.columns[i]);
-            if(postgresScope.primaryKey.data[0].attname == columnsDisplayScope.columns[i]){
+            if(postgresScope.primaryKey.data[0].attname == columnsDisplayScope.columns[i].column_name){
               console.log("Found pk");
               var pkValue = JSON.parse(currentRowSelected)[i];
               break;
