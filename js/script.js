@@ -451,6 +451,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   };
 
   $scope.showRelations = function(){
+    currentRowSelected = rowSelected;
     busy = true;
 
     if(currentTableSelected != null){
