@@ -300,7 +300,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     if(currentTableSelected != null){
       console.log("ok")
-      let temp = tableSelected.split(';'); //We retrieve the db and the table names
+      let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
       let table = temp[1];
       if(!isReadOnly) document.getElementById('addButton').disabled = false;
