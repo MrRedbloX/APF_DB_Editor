@@ -4,8 +4,6 @@ var express = require('express'),
     request = require('request'),
     bodyParser = require('body-parser'),
     app = express();
-    var phpExpress = require('php-express')({
-      binPath: 'php'
 });
 var dbOperations = require("./js/psql.js");
 var logFmt = require("logfmt");
@@ -43,12 +41,6 @@ app.get('/db/getPrimaryKey', function(req,res){
 app.get('/db/delRecord', function(req,res){
     dbOperations.delRecord(req,res);
 });
-
-app.engine('php', phpExpress.engine);
-app.set('view engine', 'php');
-
-// routing all .php file to php-express
-app.all(/.+\.php$/, phpExpress.router);
 
 app.set('port', process.env.PORT || 3001);
 app.use(express.static(__dirname));
