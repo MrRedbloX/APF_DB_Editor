@@ -711,7 +711,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
 app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
 
-  window.location = "#!";
+  //window.location = "#!";
   postgresqlFactory.setScope($scope);
 
   $scope.getDBName = function(callback){
