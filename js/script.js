@@ -375,6 +375,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
       treeDatabaseAreaScope.setDisplayTo("add");
+      busy = true;
     }
   };
 
@@ -389,6 +390,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
       treeDatabaseAreaScope.setDisplayTo("modify");
+      busy = true;
     }
   }
 
@@ -450,7 +452,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 });
 
 app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
-  busy = true;
+
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
@@ -588,7 +590,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 });
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
-  busy = true;
+
   //Same process as add, except we need to retrieve the existing primary key
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
