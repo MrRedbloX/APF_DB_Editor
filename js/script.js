@@ -382,9 +382,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
     if(!isreadOnly){
-      document.getElementById('addButton').disabled = true;
-      document.getElementById("modifyButton").disabled = true;
-      document.getElementById("deleteButton").disabled = true;
+      if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
+      if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+      if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+      if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
       treeDatabaseAreaScope.setDisplayTo("modify");
     }
