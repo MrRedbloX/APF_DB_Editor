@@ -673,6 +673,9 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
       treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
       document.getElementById('modifyButton').disabled = false;
+      if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+      if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
+      rowSelected = null;
     }
   }
 
