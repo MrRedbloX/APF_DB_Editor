@@ -1,19 +1,19 @@
 <div ng-controller="treeDatabaseAreaController">
   <div id="databasesArea"  class="treeArea">
-      <div id="treeDatabaseArea" ng-if="ready" class="relative">
-        <ul ng-repeat="db in databases">
-           <li data-jstree='{"icon":"/css/img/db.png"}'><a class="inactiveLink">{{db.name}}</a>
-             <ul ng-repeat="tab in db.table">
-               <li id="{{db.name}};{{tab.table_name}}" onclick="isTableSelected(id)" data-jstree='{"icon":"/css/img/table.png"}'>{{tab.table_name}}</li>
-             </ul>
-           </li>
-         </ul>
-      </div>
-      <div id="databasesButtonArea" class="relative" ng-controller="buttonAreaController">
-        <button id="displayButton" ng-click="display()" class="paddingRigth btn btn-primary" type="button">Display</button>
-        <button id="clearButton" ng-click="clear()" type="button" class="btn">Clear</button>
-      </div>
+    <div id="treeDatabaseArea" ng-if="ready" class="relative">
+      <ul ng-repeat="db in databases">
+         <li data-jstree='{"icon":"/css/img/db.png"}'><a class="inactiveLink">{{db.name}}</a>
+           <ul ng-repeat="tab in db.table">
+             <li id="{{db.name}};{{tab.table_name}}" onclick="isTableSelected(id)" data-jstree='{"icon":"/css/img/table.png"}'>{{tab.table_name}}</li>
+           </ul>
+         </li>
+       </ul>
     </div>
+    <div id="databasesButtonArea" class="relative" ng-controller="buttonAreaController">
+      <button id="displayButton" ng-click="display()" class="paddingRigth btn btn-primary" type="button">Display</button>
+      <button id="clearButton" ng-click="clear()" type="button" class="btn">Clear</button>
+    </div>
+  </div>
   <div id="columnsDisplayArea" class="displayArea" style="display:none;">
     <div id="tableDisplayArea" ng-controller="columnsDisplayAreaController" class="table-responsive">
       <table id="tableColumnsDisplay" class="table table-bordered">
