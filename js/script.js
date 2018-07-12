@@ -472,7 +472,13 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       for(let l=0; l<postgresScope.columnConstraint.length; l++){
                         if(postgresScope.columnConstraint.foreign_table_name == table && postgresScope.columnConstraint.foreign_column_name == postgresScope.primaryKey.data[0].attname){
                           postgresScope.query(db, postgresScope.columnConstraint.table_name, "*", postgresScope.columnConstraint.foreign_column_name, pkValue, function(){
-
+                            if(postgresScope.successRequest){
+                              console.log(postgresScope.queryRequest);
+                            }
+                            else{
+                              console.log(postgresScope.queryRequest);
+                              alert("Error on query request, check console logs.")
+                            }
                           });
                         }
                       }
@@ -980,12 +986,12 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     .then(
       function successCallback(data) {
         $scope.successRequest = true;
-        $scope.deleteRequest = data;
+        $scope.queryRequest = data;
         if(callback) callback();
       },
       function errorCallback(data) {
         $scope.successRequest = false;
-        $scope.deleteRequest = data;
+        $scope.queryRequest = data;
         if(callback) callback();
     });
   };
