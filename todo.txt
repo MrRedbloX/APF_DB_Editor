@@ -23,6 +23,7 @@ Empécher l'altération sur sonde > fait
 Rajouter un menu (attendre croquis) > fait
 Rajouter colonne customer_name dans tenant_table sonde > fait
 Faire la vue pour les vues
+Faire les messages d'erreur pour les mauvaises requêtes
 Gérer les vues > fait
 Dashboard (graphique)
 Vérification des règles
