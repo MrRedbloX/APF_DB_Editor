@@ -18,7 +18,8 @@ var checkIfReadOnlyDB = function(db){
 var tableSelected = null;
 var isTableSelected = function (table){
   tableSelected = table;
-  document.getElementById('displayButton').disabled = false;
+  if(document.getElementById('displayButton') != null) document.getElementById('displayButton').disabled = false;
+  if(document.getElementById('seeRelationButton') != null) document.getElementById('seeRelationButton').disabled = false;
 }
 
 //When the user clicks on a row
