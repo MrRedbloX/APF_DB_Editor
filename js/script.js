@@ -269,7 +269,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we click on display
   $scope.display = function(){
-    console.log("display");
     var columnsDisplayScope = columnsDisplayFactory.getScope();
     treeDatabaseAreaScope.displayNothing = true;
     treeDatabaseAreaScope.displayAdd = false;
@@ -280,7 +279,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     columnsDisplayScope.clearTooltips();
 
     if(currentTableSelected != null){
-      let temp = tableSelected.split(';');
+      let temp = currentTableSelected.split(';');
       let db = temp[0];
       isReadOnly = checkIfReadOnlyDB(db);
     }
