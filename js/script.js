@@ -1,3 +1,55 @@
+var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
+var exceptionColumns = ['uuid']; //The columns that will not be displayed
+var readOnlyDB = ['sonde']; //Contains the read only databases
+
+//Check if a database is in read only mode
+var checkIfReadOnlyDB = function(db){
+  ret = false;
+  for(let i=0; i<readOnlyDB.length; i++){
+    if(db === readOnlyDB[i]){
+      ret = true;
+      break;
+    }
+  }
+  return ret;
+};
+
+//When the user clicks on a table
+var tableSelected = null;
+var isTableSelected = function (table){
+  tableSelected = table;
+  document.getElementById('displayButton').disabled = false;
+}
+
+//When the user clicks on a row
+var rowSelected = null;
+var isRowSelected = function(row){
+  if(tableSelected != null){
+    let temp = tableSelected.split(';');
+    let db = temp[0];
+    var isReadOnly = checkIfReadOnlyDB(db);
+
+    if(!isReadOnly){
+      document.getElementById('modifyButton').disabled = false;
+      document.getElementById('deleteButton').disabled = false;
+    }
+    if(rowSelected != row){
+      document.getElementById(row).style.backgroundColor = "gray";
+      if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+      rowSelected = row;
+    }
+    else{
+      document.getElementById(row).style.backgroundColor = "";
+      if(!isReadOnly){
+        document.getElementById('modifyButton').disabled = true;
+        document.getElementById('deleteButton').disabled = true;
+      }
+      rowSelected = null;
+    }
+  }
+}
+
+
 var app = angular.module('DBEditorAPF', ["ngRoute"]);
 
 app.config(function($routeProvider) {
@@ -49,198 +101,6 @@ app.factory('postgresqlFactory', function(){
     }
   };
 });
-
-app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
-
-  window.location = "#!";
-  postgresqlFactory.setScope($scope);
-
-  $scope.getDBName = function(callback){
-    $http({
-      method: 'GET',
-      url: '/db/getDBName'
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.dbArray = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.dbArray = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.getTableName = function(dbName,callback){
-    $http({
-      method: 'GET',
-      url: '/db/getTableName?db='+dbName
-    })
-    .then(
-      function successCallback(data) {
-        //$scope.successRequest = true;
-        $scope.tableArray = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        //$scope.successRequest = false;
-        $scope.tableArray = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.getColumnName = function(dbName,tableName,callback){
-    $http({
-      method: 'GET',
-      url: '/db/getColumnName?db='+dbName+'&table='+tableName
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.columnsArray = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.columnsArray = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.getColumnConstraint = function(dbName,tableName,callback){
-    $http({
-      method: 'GET',
-      url: '/db/getColumnConstraint?db='+dbName+'&table='+tableName
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.columnConstraint = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.columnConstraint = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.getAllValues = function(dbName,tableName,callback){
-    $http({
-      method: 'GET',
-      url: '/db/getAllValues?db='+dbName+'&table='+tableName
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.columnValues = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.columnValues = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.getValuesOf = function(dbName,tableName,columnName,callback){
-    $http({
-      method: 'GET',
-      url: '/db/getValuesOf?db='+dbName+'&table='+tableName+'&att='+columnName
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.valuesOf = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.valuesOf = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
-    $http({
-      method: 'GET',
-      url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.addRequest = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.addRequest = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.modifyRecord = function(dbName,tableName,columnList,valueList,pkKey,pkValue,callback){
-    $http({
-      method: 'GET',
-      url: '/db/modifyRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)+'&pkKey='+pkKey+'&pkValue='+pkValue
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.modifyRequest = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.modifyRequest = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.getPrimaryKey = function(dbName,tableName,callback){
-    $http({
-      method: 'GET',
-      url: '/db/getPrimaryKey?db='+dbName+'&table='+tableName
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.primaryKey = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.primaryKey = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.delRecord = function(dbName,tableName,pkKey,pkValue,callback){
-    $http({
-      method: 'GET',
-      url: '/db/delRecord?db='+dbName+'&table='+tableName+'&pkKey='+pkKey+'&pkValue='+pkValue
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.deleteRequest = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.deleteRequest = data;
-        if(callback) callback();
-    });
-  };
-});
-
-app.config(function($routeProvider) {
-    $routeProvider
-
-});
-
 
 
 //Each controller manage a view in the html
@@ -800,5 +660,191 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
       }
     }
     return ret;
+  };
+});
+
+app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
+
+  window.location = "#!";
+  postgresqlFactory.setScope($scope);
+
+  $scope.getDBName = function(callback){
+    $http({
+      method: 'GET',
+      url: '/db/getDBName'
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.dbArray = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.dbArray = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getTableName = function(dbName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getTableName?db='+dbName
+    })
+    .then(
+      function successCallback(data) {
+        //$scope.successRequest = true;
+        $scope.tableArray = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        //$scope.successRequest = false;
+        $scope.tableArray = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getColumnName = function(dbName,tableName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getColumnName?db='+dbName+'&table='+tableName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.columnsArray = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.columnsArray = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getColumnConstraint = function(dbName,tableName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getColumnConstraint?db='+dbName+'&table='+tableName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.columnConstraint = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.columnConstraint = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getAllValues = function(dbName,tableName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getAllValues?db='+dbName+'&table='+tableName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.columnValues = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.columnValues = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getValuesOf = function(dbName,tableName,columnName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getValuesOf?db='+dbName+'&table='+tableName+'&att='+columnName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.valuesOf = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.valuesOf = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
+    $http({
+      method: 'GET',
+      url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.addRequest = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.addRequest = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.modifyRecord = function(dbName,tableName,columnList,valueList,pkKey,pkValue,callback){
+    $http({
+      method: 'GET',
+      url: '/db/modifyRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)+'&pkKey='+pkKey+'&pkValue='+pkValue
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.modifyRequest = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.modifyRequest = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getPrimaryKey = function(dbName,tableName,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getPrimaryKey?db='+dbName+'&table='+tableName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.primaryKey = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.primaryKey = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.delRecord = function(dbName,tableName,pkKey,pkValue,callback){
+    $http({
+      method: 'GET',
+      url: '/db/delRecord?db='+dbName+'&table='+tableName+'&pkKey='+pkKey+'&pkValue='+pkValue
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.deleteRequest = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.deleteRequest = data;
+        if(callback) callback();
+    });
   };
 });
