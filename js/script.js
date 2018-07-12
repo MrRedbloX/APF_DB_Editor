@@ -45,7 +45,7 @@ var isRowSelected = function(row){
       if(!isReadOnly){
         if(document.getElementById("modifyButton") != null) document.getElementById('modifyButton').disabled = true;
         if(document.getElementById("deleteButton") != null) document.getElementById('deleteButton').disabled = true;
-        if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
+        if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
       }
       rowSelected = null;
     }
