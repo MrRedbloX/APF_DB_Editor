@@ -119,7 +119,7 @@ app.factory('treeDatabaseAreaFactory', function(){
 
 
 //Each controller manage a view in the html
-app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory, treeDatabaseAreaFactory){
+app.controller('treeDatabaseManagementAreaController', function($scope, postgresqlFactory, treeDatabaseAreaFactory){
   $scope.databases = []; //This array will be use to by jtree
 
   var postgresScope = postgresqlFactory.getScope();
