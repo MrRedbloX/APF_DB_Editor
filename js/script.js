@@ -220,6 +220,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     window.location = "#!"; //we make sure that no view is displayed
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
+    columnsDisplayScope.row_ids = [];
 
     if(tableSelected != null){
       let temp = tableSelected.split(';');
