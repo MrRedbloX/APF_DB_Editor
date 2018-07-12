@@ -42,7 +42,7 @@
       <div>
         <div ng-repeat="att in attributes" class="form-group">
           <div ng-if="!checkIfIsReference(att.column_name)">
-            <label>{{att.column_name}} : </label>
+            <label class="form-control">{{att.column_name}} : </label>
             <input type="text" id="{{att.column_name}}" class="form-control"/>
             <i style="font-size: small">{{att.data_type}}</i>
           </div>
