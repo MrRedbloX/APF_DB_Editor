@@ -401,7 +401,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.delete = function(){
     if(confirm('Do you want to delete this record ?')){
       if(currentTableSelected != null){
-        let temp = tableSelected.split(';');
+        let temp = currentTableSelected.split(';');
         let db = temp[0];
         let table = temp[1];
 
@@ -452,7 +452,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     busy = true;
 
     if(currentTableSelected != null){
-      let temp = tableSelected.split(';'); //We retrieve the db and the table names
+      let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
       let table = temp[1];
       var primaryKey;
