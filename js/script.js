@@ -425,11 +425,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.clear = function(){
 
     //We just hide the table display
-    document.getElementById("columnsDisplayArea").style.display = "none";
+    if(document.getElementById("columnsDisplayArea") != null) document.getElementById("columnsDisplayArea").style.display = "none";
     if(!isreadOnly){
-      document.getElementById("addButton").disabled = true;
-      document.getElementById("modifyButton").disabled = true;
-      document.getElementById("deleteButton").disabled = true;
+      if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
+      if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+      if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
 
       treeDatabaseAreaScope.setDisplayTo("nothing");
     }
