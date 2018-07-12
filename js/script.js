@@ -458,24 +458,36 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
       postgresScope.getPrimaryKey(db, table, function(){
         if(postgresScope.successRequest){
-          primaryKey = postgresScope.primaryKey.data[0].attname;
+          for(let i=0; columnsDisplayScope.columns.length; i++){
+            if(postgresScope.primaryKey.data[0].attname ==  columnsDisplayScope.columns[i]){
+              var pkValue = JSON.parse(currentRowSelected)[i];
+            }
+          }
+          for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
+            if(treeDatabaseAreaScope.databases[j] === db){
+              for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length){
+                if(treeDatabaseAreaScope.databases[j].table[k] !== table){
+                  postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k], function(){
+                    if(postgresScope.successRequest){
+                      for(let l=0; l<postgresScope.columnConstraint.length; l++){
+
+                      }
+                    }
+                    else{
+                      console.log(postgresScope.columnConstraint);
+                      alert("Error on getColumnConstraint request, check console logs.")
+                    }
+                  });
+                }
+              }
+            }
+          }
         }
         else{
           console.log(postgresScope.primaryKey);
           alert("Error on getPrimaryKey request, check console logs.")
         }
       });
-
-      for(let i=0; i<treeDatabaseAreaScope.databases.length; i++){
-        if(treeDatabaseAreaScope.databases[i] === db){
-          for(let j=0; j<treeDatabaseAreaScope.databases[i].table.length){
-            if(treeDatabaseAreaScope.databases[i].table !== table){
-
-
-            }
-          }
-        }
-      }
     }
   }
 });
