@@ -287,10 +287,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+      if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
     }
     else{
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+      if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
     }
 
     if(tableSelected != null){
@@ -366,9 +368,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
     if(!isreadOnly){
-      document.getElementById('addButton').disabled = true;
-      document.getElementById("modifyButton").disabled = true;
-      document.getElementById("deleteButton").disabled = true;
+      if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
+      if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+      if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+      if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
       treeDatabaseAreaScope.setDisplayTo("add");
     }
