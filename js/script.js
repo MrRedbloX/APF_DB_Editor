@@ -356,9 +356,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
 
-      treeDatabaseAreaScope.displayNothing = false;
-      treeDatabaseAreaScope.displayAdd = true;
-      treeDatabaseAreaScope.displayModify = false;
+      treeDatabaseAreaScope.setDisplayTo("add");
     }
   };
 
@@ -371,9 +369,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
 
-      treeDatabaseAreaScope.displayNothing = false;
-      treeDatabaseAreaScope.displayAdd = false;
-      treeDatabaseAreaScope.displayModify = true;
+      treeDatabaseAreaScope.setDisplayTo("modify");
     }
   }
 
@@ -423,20 +419,19 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
 
-      treeDatabaseAreaScope.displayNothing = true;
-      treeDatabaseAreaScope.displayAdd = false;
-      treeDatabaseAreaScope.displayModify = false;
+      treeDatabaseAreaScope.setDisplayTo("nothing");
     }
     rowSelected = null;
   };
 
 });
 
-app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
+  var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
 
   var currentTableSelected = tableSelected;
 
@@ -526,7 +521,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
         });
       }
 
-      window.location = "#!";
+      treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
       if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
     }
@@ -537,7 +532,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
     if(confirm("Are you sure you want to cancel ?")){
 
-      window.location = "#!";
+      treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
       if(rowSelected != null) document.getElementById('modifyButton').disabled = false;
 
