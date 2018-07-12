@@ -473,7 +473,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               console.log("Found db");
               for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
                 if(treeDatabaseAreaScope.databases[j].table[k] != table){
-                  console.log("Found table");
+                  console.log(treeDatabaseAreaScope.databases[j].table[k]);
                   postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k], function(){
                     if(postgresScope.successRequest){
                       for(let l=0; l<postgresScope.columnConstraint.length; l++){
