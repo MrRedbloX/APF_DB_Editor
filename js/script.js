@@ -105,12 +105,30 @@ app.factory('postgresqlFactory', function(){
   };
 });
 
+app.factory('treeDatabaseAreaFactory', function(){
+  var theScope;
+  return{
+    setScope : function(scope){
+      theScope = scope;
+    },
+    getScope : function(){
+      return theScope;
+    }
+  };
+});
+
 
 //Each controller manage a view in the html
-app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
+app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory, treeDatabaseAreaFactory){
   $scope.databases = []; //This array will be use to by jtree
+
   var postgresScope = postgresqlFactory.getScope();
+  treeDatabaseAreaFactory.setScope($scope);
+
   $scope.ready = false; //Wait to load page
+  $scope.displayNothing = true;
+  $scope.displayAdd = false;
+  $scope.displayModify = false;
 
   if(!$scope.ready){
     postgresScope.getDBName(function(){ //We do the request and we define the callback function
@@ -208,11 +226,12 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   }
 });
 
-app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
 
   buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
+  var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
   var isreadOnly = false;
 
   //Here we manage the displayability of the buttons
@@ -325,6 +344,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       document.getElementById('addButton').disabled = true;
       document.getElementById("modifyButton").disabled = true;
       document.getElementById("deleteButton").disabled = true;
+
+
     }
   };
 
