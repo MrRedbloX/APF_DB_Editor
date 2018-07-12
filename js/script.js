@@ -560,8 +560,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
       treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
-      if(rowSelected != null) document.getElementById('modifyButton').disabled = true;
-      if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+      document.getElementById('modifyButton').disabled = true;
+      if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
       if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
       rowSelected = null;
 
