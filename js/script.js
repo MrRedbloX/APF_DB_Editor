@@ -451,6 +451,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     currentTableSelected = tableSelected;
     currentRowSelected = rowSelected;
     busy = true;
+    if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
     if(currentTableSelected != null){
       let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
