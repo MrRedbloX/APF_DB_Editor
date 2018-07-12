@@ -269,6 +269,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we click on display
   $scope.display = function(){
+    currentTableSelected = tableSelected;
     var columnsDisplayScope = columnsDisplayFactory.getScope();
     treeDatabaseAreaScope.displayNothing = true;
     treeDatabaseAreaScope.displayAdd = false;
