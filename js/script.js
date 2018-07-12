@@ -255,7 +255,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
-  var isreadOnly = false;
+  var isReadOnly = false;
   var currentTableSelected = tableSelected;
   var currentRowSelected = rowSelected;
 
