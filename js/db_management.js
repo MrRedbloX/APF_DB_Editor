@@ -50,10 +50,10 @@ var isRowSelected = function(row){
 }
 
 //The application
-var app = angular.module('DBManagement', ["ngRoute"]);
+var dbManagementApp = angular.module('DBManagement', ["ngRoute"]);
 
 //Here we configure the routes with the views
-app.config(function($routeProvider) {
+dbManagementApp.config(function($routeProvider) {
     $routeProvider
     .when("/add", {
         templateUrl : "html/database_management/views/addRow.html"
@@ -64,7 +64,7 @@ app.config(function($routeProvider) {
 });
 
 //The following factories allow to access an element in a controller when you are in another controller
-app.factory('columnsDisplayFactory', function(){
+dbManagementApp.factory('columnsDisplayFactory', function(){
   var theScope;
   return{
     setScope : function(scope){
@@ -76,7 +76,7 @@ app.factory('columnsDisplayFactory', function(){
   };
 });
 
-app.factory('buttonAreaFactory', function(){
+dbManagementApp.factory('buttonAreaFactory', function(){
   var theScope;
   return{
     setScope : function(scope){
@@ -89,7 +89,7 @@ app.factory('buttonAreaFactory', function(){
 });
 
 //Each controller manage a view in the html
-app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
+dbManagementApp.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
   console.log("Je passe dans crl");
   $scope.databases = []; //This array will be use to by jtree
   var postgresScope = postgresqlFactory.getScope();
@@ -126,7 +126,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory)
   }
 });
 
-app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
+dbManagementApp.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
   $scope.row_ids = [];
@@ -191,7 +191,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   }
 });
 
-app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+dbManagementApp.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
@@ -373,7 +373,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
 });
 
-app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+dbManagementApp.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
@@ -503,7 +503,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 });
 
-app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+dbManagementApp.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
 
   //Same process as add, except we need to retrieve the existing primary key
   var columnsDisplayScope = columnsDisplayFactory.getScope();
