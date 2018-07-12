@@ -534,6 +534,9 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             if(rowSelected != null){
               if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
               if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
+              if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+              if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
+              rowSelected = null;
             }
           }
           else{
