@@ -549,7 +549,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
       treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
-      if(currentRowSelected != null) document.getElementById('modifyButton').disabled = false;
+      document.getElementById('modifyButton').disabled = false;
     }
   };
 
