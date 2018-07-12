@@ -31,8 +31,8 @@ var isRowSelected = function(row){
     var isReadOnly = checkIfReadOnlyDB(db);
 
     if(!isReadOnly){
-      document.getElementById('modifyButton').disabled = false;
-      document.getElementById('deleteButton').disabled = false;
+      if(document.getElementById("modifyButton") != null)document.getElementById('modifyButton').disabled = false;
+      if(document.getElementById("deleteButton") != null)document.getElementById('deleteButton').disabled = false;
       if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
     }
     if(rowSelected != row){
@@ -43,8 +43,9 @@ var isRowSelected = function(row){
     else{
       document.getElementById(row).style.backgroundColor = "";
       if(!isReadOnly){
-        document.getElementById('modifyButton').disabled = true;
-        document.getElementById('deleteButton').disabled = true;
+        if(document.getElementById("modifyButton") != null) document.getElementById('modifyButton').disabled = true;
+        if(document.getElementById("deleteButton") != null) document.getElementById('deleteButton').disabled = true;
+        if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
       }
       rowSelected = null;
     }
