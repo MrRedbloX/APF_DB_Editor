@@ -4,7 +4,7 @@ var express = require('express'),
     request = require('request'),
     bodyParser = require('body-parser'),
     app = express();
-
+    phpExpress = require('php-express')
 var dbOperations = require("./js/psql.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
