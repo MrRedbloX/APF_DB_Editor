@@ -4,7 +4,7 @@ var express = require('express'),
     request = require('request'),
     bodyParser = require('body-parser'),
     app = express();
-    
+
 var dbOperations = require("./js/psql.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
@@ -40,6 +40,9 @@ app.get('/db/getPrimaryKey', function(req,res){
 });
 app.get('/db/delRecord', function(req,res){
     dbOperations.delRecord(req,res);
+});
+app.get('/db/query', function(req,res){
+    dbOperations.query(req,res);
 });
 
 app.set('port', process.env.PORT || 3001);
