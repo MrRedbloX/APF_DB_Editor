@@ -63,9 +63,6 @@ app.config(function($routeProvider) {
     .when("/modify", {
         templateUrl : "html/database_management/views/modifyRow.html"
     })
-    .otherwise({
-        redirectTo: '/'
-    });
 });
 
 //The following factories allow to access an element in a controller when you are in another controller
