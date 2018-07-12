@@ -463,6 +463,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           for(let i=0; columnsDisplayScope.columns.length; i++){
             if(postgresScope.primaryKey.data[0].attname ==  columnsDisplayScope.columns[i]){
               var pkValue = JSON.parse(currentRowSelected)[i];
+              break;
             }
           }
           for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
@@ -492,6 +493,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   });
                 }
               }
+              break;
             }
           }
         }
