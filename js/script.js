@@ -19,7 +19,7 @@ var tableSelected = null;
 var isTableSelected = function (table){
   tableSelected = table;
   if(document.getElementById('displayButton') != null) document.getElementById('displayButton').disabled = false;
-  if(document.getElementById('seeRelationButton') != null) document.getElementById('seeRelationButton').disabled = false;
+  if(document.getElementById('seeRelationsButton') != null) document.getElementById('seeRelationButton').disabled = false;
 }
 
 //When the user clicks on a row
