@@ -474,7 +474,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
                 if(treeDatabaseAreaScope.databases[j].table[k].table_name != table){
                   console.log(treeDatabaseAreaScope.databases[j].table[k].table_name);
-                  postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k], function(){
+                  postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){
                     if(postgresScope.successRequest){
                       for(let l=0; l<postgresScope.columnConstraint.length; l++){
                         if(postgresScope.columnConstraint.foreign_table_name == table && postgresScope.columnConstraint.foreign_column_name == postgresScope.primaryKey.data[0].attname){
