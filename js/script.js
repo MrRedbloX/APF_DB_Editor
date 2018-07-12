@@ -442,6 +442,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     rowSelected = null;
   };
 
+  $scope.showRelations = function(){
+    console.log("ok");
+  }
+
 });
 
 app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
