@@ -1,13 +1,13 @@
-var app = angular.module('DBEditorAPF', ["ngRoute"]);
+var mainApp = angular.module('DBEditorAPF', ["ngRoute"]);
 
-app.config(function($routeProvider) {
+mainApp.config(function($routeProvider) {
     $routeProvider
     .when("/", {
         templateUrl : "html/database_management/db_management.html"
     })
 });
 
-app.factory('postgresqlFactory', function(){
+mainApp.factory('postgresqlFactory', function(){
   var theScope;
   return{
     setScope : function(scope){
@@ -19,7 +19,7 @@ app.factory('postgresqlFactory', function(){
   };
 });
 
-app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
+mainApp.controller('postgresqlController', function($scope, $http, postgresqlFactory){
 
   window.location = "#!";
   postgresqlFactory.setScope($scope);
