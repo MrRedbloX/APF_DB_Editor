@@ -461,6 +461,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
       postgresScope.getPrimaryKey(db, table, function(){
         if(postgresScope.successRequest){
+          console.log("get pk success");
           for(let i=0; i<columnsDisplayScope.columns.length; i++){
             if(postgresScope.primaryKey.data[0].attname == columnsDisplayScope.columns[i]){
               console.log("Found pk");
