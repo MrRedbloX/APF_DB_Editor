@@ -532,8 +532,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
           if(postgresqlScope.successRequest){
             buttonAreaScope.display();
             if(rowSelected != null){
-              if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = false;
-              if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = false;
+              if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+              if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
               if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
               if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
               rowSelected = null;
