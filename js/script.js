@@ -62,6 +62,9 @@ app.config(function($routeProvider) {
     })
     .when("/modify", {
         templateUrl : "html/database_management/views/modifyRow.html"
+    })
+    .otherwise({
+        redirectTo: '/'
     });
 });
 
