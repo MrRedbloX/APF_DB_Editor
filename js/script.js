@@ -235,7 +235,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   //When we click on display
   $scope.display = function(){
     var columnsDisplayScope = columnsDisplayFactory.getScope();
-    window.location = "#!"; //we make sure that no view is displayed
+    //window.location = "#!"; //we make sure that no view is displayed
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
     columnsDisplayScope.row_ids = [];
