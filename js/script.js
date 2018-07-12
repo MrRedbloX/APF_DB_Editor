@@ -385,7 +385,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.modify = function(){
 
     //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
-    if(!isreadOnly){
+    if(!isReadOnly){
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
@@ -437,7 +437,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     //We just hide the table display
     if(document.getElementById("columnsDisplayArea") != null) document.getElementById("columnsDisplayArea").style.display = "none";
-    if(!isreadOnly){
+    if(!isReadOnly){
       if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
