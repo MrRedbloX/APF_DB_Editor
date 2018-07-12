@@ -1,5 +1,3 @@
-console.log("Je passe dans crl");
-
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases
@@ -92,6 +90,7 @@ app.factory('buttonAreaFactory', function(){
 
 //Each controller manage a view in the html
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory){
+  console.log("Je passe dans crl");
   $scope.databases = []; //This array will be use to by jtree
   var postgresScope = postgresqlFactory.getScope();
   $scope.ready = false; //Wait to load page
