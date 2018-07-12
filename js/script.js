@@ -557,12 +557,13 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 });
 
-app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
+app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
 
   //Same process as add, except we need to retrieve the existing primary key
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
+  var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
 
   var currentRowSelected = rowSelected;
   var currentTableSelected = tableSelected;
@@ -637,7 +638,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
           }
         });
 
-        window.location = "#!";
+        treeDatabaseAreaScope.setDisplayTo("nothing");
         document.getElementById('addButton').disabled = false;
         document.getElementById('modifyButton').disabled = false;
       }
@@ -647,7 +648,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   $scope.cancelRecord = function(){
     if(confirm("Are you sure you want to cancel ?")){
 
-      window.location = "#!";
+      treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
       document.getElementById('modifyButton').disabled = false;
     }
