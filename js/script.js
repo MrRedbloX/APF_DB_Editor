@@ -465,7 +465,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           }
           for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
             if(treeDatabaseAreaScope.databases[j] === db){
-              for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length){
+              for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
                 if(treeDatabaseAreaScope.databases[j].table[k] !== table){
                   postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k], function(){
                     if(postgresScope.successRequest){
