@@ -254,11 +254,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var isreadOnly = false;
 
   //Here we manage the displayability of the buttons
-  document.getElementById("displayButton").disabled = true;
+  if(document.getElementById("displayButton") != null) document.getElementById("displayButton").disabled = true;
   if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
   if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
   if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
-  document.getElementById("clearButton").disabled = false;
+  if(document.getElementById("clearButton") != null) document.getElementById("clearButton").disabled = false;
+  if(document.getElementById("seelRelationButton") != null) document.getElementById("seelRelationButton").disabled = true;
 
   //When we click on display
   $scope.display = function(){
