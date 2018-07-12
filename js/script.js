@@ -470,7 +470,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k], function(){
                     if(postgresScope.successRequest){
                       for(let l=0; l<postgresScope.columnConstraint.length; l++){
-
+                        if(postgresScope.columnConstraint.foreign_table_name == table && postgresScope.columnConstraint.foreign_column_name == postgresScope.primaryKey.data[0].attname){
+                          postgresScope.query(db, postgresScope.columnConstraint.table_name, "*", postgresScope.columnConstraint.foreign_column_name, pkValue, function(){
+                            
+                          });
+                        }
                       }
                     }
                     else{
