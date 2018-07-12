@@ -199,7 +199,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.clearTooltips = function(){
-    listTD = document.getElementByTagName("TD");
+    listTD = document.getElementsByTagName("TD");
     console.log(listTD);
   }
 });
