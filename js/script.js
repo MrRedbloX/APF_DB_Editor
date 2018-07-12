@@ -1,6 +1,7 @@
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases
+var busy = false;
 
 //Check if a database is in read only mode
 var checkIfReadOnlyDB = function(db){
@@ -25,7 +26,7 @@ var isTableSelected = function (table){
 //When the user clicks on a row
 var rowSelected = null;
 var isRowSelected = function(row){
-  if(tableSelected != null){
+  if(tableSelected != null && !busy){
     let temp = tableSelected.split(';');
     let db = temp[0];
     var isReadOnly = checkIfReadOnlyDB(db);
@@ -449,7 +450,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 });
 
 app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
-
+  busy = true;
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
   var buttonAreaScope = buttonAreaFactory.getScope();
@@ -587,7 +588,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 });
 
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
-
+  busy = true;
   //Same process as add, except we need to retrieve the existing primary key
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var postgresqlScope = postgresqlFactory.getScope();
