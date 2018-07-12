@@ -53,10 +53,10 @@ var isRowSelected = function(row){
 var app = angular.module('DBEditorAPF', ["ngRoute"]);
 
 app.config(function($routeProvider) {
-    /*$routeProvider
+    $routeProvider
     .when("/", {
         templateUrl : "html/database_management/db_management.html"
-    });*/
+    });
 });
 
 //The following factories allow to access an element in a controller when you are in another controller
