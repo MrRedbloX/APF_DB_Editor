@@ -553,6 +553,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
       document.getElementById('modifyButton').disabled = false;
+      busy = false;
     }
   };
 
@@ -567,6 +568,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
       if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
       rowSelected = null;
+      busy = false;
 
     }
   };
