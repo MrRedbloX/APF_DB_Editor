@@ -197,6 +197,11 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     }
     return ret;
   };
+
+  $scope.clearTooltips = function(){
+    listTD = document.getElementByTagName("TD");
+    console.log(listTD);
+  }
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory){
@@ -221,6 +226,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
     columnsDisplayScope.row_ids = [];
+    columnsDisplayScope.clearTooltips();
 
     if(tableSelected != null){
       let temp = tableSelected.split(';');
