@@ -56,13 +56,7 @@ app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
         templateUrl : "html/database_management/db_management.html"
-    })
-    .when("/add", {
-        templateUrl : "html/database_management/views/addRow.html"
-    })
-    .when("/modify", {
-        templateUrl : "html/database_management/views/modifyRow.html"
-    })
+    });
 });
 
 //The following factories allow to access an element in a controller when you are in another controller
