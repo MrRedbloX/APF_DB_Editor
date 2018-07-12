@@ -972,10 +972,10 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     });
   };
 
-  $scope.delRecord = function(dbName,tableName,select,condAtt,condValue,callback){
+  $scope.query = function(dbName,tableName,select,condAtt,condValue,callback){
     $http({
       method: 'GET',
-      url: '/db/delRecord?db='+dbName+'&table='+tableName+'&select='+select+'&condAtt='+condAtt+"&condValue="+condValue
+      url: '/db/query?db='+dbName+'&table='+tableName+'&select='+select+'&condAtt='+condAtt+"&condValue="+condValue
     })
     .then(
       function successCallback(data) {
