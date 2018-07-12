@@ -489,7 +489,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                               alert("Error on query request, check console logs.")
                             }
                           });
-                          break;
                         }
                       }
                     }
