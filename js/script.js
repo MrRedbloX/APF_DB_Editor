@@ -200,7 +200,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   $scope.clearTooltips = function(){
     listTD = document.getElementsByTagName("TD");
-    console.log(listTD);
+    for(let i=0; i<listTD.length; i++)
+      listTD[i].title = "";
   }
 });
 
