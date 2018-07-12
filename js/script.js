@@ -526,6 +526,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
 
   var currentRowSelected = rowSelected;
   var currentTableSelected = tableSelected;
+  columnsDisplayScope.row_ids = [];
 
   $scope.attributes = [];
   let parseRowSelected = JSON.parse(currentRowSelected);
@@ -641,6 +642,23 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
       }
     }
     return $scope.references;
+  };
+
+  $scope.setIdForToolTips = function(val, column){
+    ret = "";
+    let theID = "m"+column+val;
+    columnsDisplayScope.row_ids.push({
+      id : theID,
+      column_name : column,
+      value : val
+    });
+    for(let i=0; i<columnsDisplayScope.row_ids.length; i++){
+      if(columnsDisplayScope.checkIfIsReference(columnsDisplayScope.row_ids[i].column_name)){
+        if(document.getElementById(columnsDisplayScope.row_ids[i].id) != null)
+          ret = columnsDisplayScope.getInfoForFK(columnsDisplayScope.row_ids[i].column_name,columnsDisplayScope.row_ids[i].value);
+      }
+    }
+    return ret;
   };
 });
 
