@@ -50,19 +50,16 @@ var isRowSelected = function(row){
 }
 
 //The application
-var app = angular.module('DBEditorAPF', ["ngRoute"]);
+var app = angular.module('DBManagement', ["ngRoute"]);
 
 //Here we configure the routes with the views
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/", {
-        templateUrl : "html/defaultDisplay.html"
-    })
     .when("/add", {
-        templateUrl : "html/addRow.html"
+        templateUrl : "html/database_management/views/addRow.html"
     })
     .when("/modify", {
-        templateUrl : "html/modifyRow.html"
+        templateUrl : "html/database_management/views/modifyRow.html"
     });
 });
 
