@@ -260,6 +260,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
   if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
   if(document.getElementById("clearButton") != null) document.getElementById("clearButton").disabled = false;
+  if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
 
   //When we click on display
   $scope.display = function(){
