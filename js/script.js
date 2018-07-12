@@ -153,7 +153,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
-  console.log("Col");
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
   $scope.row_ids = [];
@@ -235,7 +234,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we click on display
   $scope.display = function(){
-
+    console.log("display");
     var columnsDisplayScope = columnsDisplayFactory.getScope();
     window.location = "#!"; //we make sure that no view is displayed
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
