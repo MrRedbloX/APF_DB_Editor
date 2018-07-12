@@ -431,7 +431,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
 
-      treeDatabaseAreaScope.setDisplayTo("nothing");
+      if(treeDatabaseAreaScope != null) treeDatabaseAreaScope.setDisplayTo("nothing");
     }
     rowSelected = null;
   };
