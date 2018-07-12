@@ -36,50 +36,52 @@
     </div>
   </div>
   <br>
-  <div ng-if="displayNothing"></div>
-  <div ng-if="displayAdd">
-    <div id="addRowArea" ng-controller="addRowAreaController">
-      <div>
-        <div ng-repeat="att in attributes" class="form-group">
-          <div ng-if="!checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
-            <label>{{att.column_name}} : </label>
-            <input type="text" id="{{att.column_name}}" class="form-control"/>
-            <i style="font-size: small">{{att.data_type}}</i>
+  <div class="displayArea">
+    <div ng-if="displayNothing"></div>
+    <div ng-if="displayAdd">
+      <div id="addRowArea" ng-controller="addRowAreaController">
+        <div>
+          <div ng-repeat="att in attributes" class="form-group">
+            <div ng-if="!checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
+              <label>{{att.column_name}} : </label>
+              <input type="text" id="{{att.column_name}}" class="form-control"/>
+              <i style="font-size: small">{{att.data_type}}</i>
+            </div>
+            <div ng-if="checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
+              <label>{{att.column_name}} : </label>
+              <select id="{{att.column_name}}" class="form-control">
+                <option id="a{{att.column_name}}{{ref}}" ng-repeat="ref in getReferences(att.column_name) track by $index" value="{{ref}}" title="{{setIdForToolTips(ref,att.column_name)}}">{{ref}}</option>
+              </select>
+              <i style="font-size: small">{{att.data_type}}</i>
+            </div>
           </div>
-          <div ng-if="checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
-            <label>{{att.column_name}} : </label>
-            <select id="{{att.column_name}}" class="form-control">
-              <option id="a{{att.column_name}}{{ref}}" ng-repeat="ref in getReferences(att.column_name) track by $index" value="{{ref}}" title="{{setIdForToolTips(ref,att.column_name)}}">{{ref}}</option>
-            </select>
-            <i style="font-size: small">{{att.data_type}}</i>
-          </div>
+          <button id="saveButton" ng-click="saveRecord()" class="paddingRigth btn btn-info" type="button">Save</button>
+          <button id="cancelButton" ng-click="cancelRecord()" class="btn" type="button">Cancel</button>
         </div>
-        <button id="saveButton" ng-click="saveRecord()" class="paddingRigth btn btn-info" type="button">Save</button>
-        <button id="cancelButton" ng-click="cancelRecord()" class="btn" type="button">Cancel</button>
       </div>
     </div>
-  </div>
-  <div ng-if="displayModify">
-    <div id="modifyRowArea" ng-controller="modifyRowAreaController">
-      <div>
-        <div ng-repeat="att in attributes" class="form-group">
-          <div ng-if="!checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
-            <label>{{att.name.column_name}} : </label>
-            <input type="text" id="{{att.name.column_name}}" value="{{att.value}}" class="form-control"/>
-            <i style="font-size: small">{{att.data_type}}</i>
+    <div ng-if="displayModify">
+      <div id="modifyRowArea" ng-controller="modifyRowAreaController">
+        <div>
+          <div ng-repeat="att in attributes" class="form-group">
+            <div ng-if="!checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
+              <label>{{att.name.column_name}} : </label>
+              <input type="text" id="{{att.name.column_name}}" value="{{att.value}}" class="form-control"/>
+              <i style="font-size: small">{{att.data_type}}</i>
+            </div>
+            <div ng-if="checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
+              <label>{{att.name.column_name}} :</label>
+              <select id="{{att.name.column_name}}" class="form-control">
+                <option id="m{{att.name.column_name}}{{att.value}}" value="{{att.value}}" selected="selected" title="{{setIdForToolTips(att.value,att.name.column_name)}}">{{att.value}}</option>
+                <option id="m{{att.name.column_name}}{{ref}}" ng-repeat="ref in getReferences(att.name.column_name,att.value) track by $index" value="{{ref}}" title="{{setIdForToolTips(ref,att.name.column_name)}}">{{ref}}</option>
+              </select>
+              <i style="font-size: small">{{att.data_type}}</i>
+            </div>
           </div>
-          <div ng-if="checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
-            <label>{{att.name.column_name}} :</label>
-            <select id="{{att.name.column_name}}" class="form-control">
-              <option id="m{{att.name.column_name}}{{att.value}}" value="{{att.value}}" selected="selected" title="{{setIdForToolTips(att.value,att.name.column_name)}}">{{att.value}}</option>
-              <option id="m{{att.name.column_name}}{{ref}}" ng-repeat="ref in getReferences(att.name.column_name,att.value) track by $index" value="{{ref}}" title="{{setIdForToolTips(ref,att.name.column_name)}}">{{ref}}</option>
-            </select>
-            <i style="font-size: small">{{att.data_type}}</i>
-          </div>
+          <button id="saveButton" ng-click="saveRecord()" class="paddingRigth btn btn-info" type="button">Save</button>
+          <button id="cancelButton" ng-click="cancelRecord()" class="btn" type="button">Cancel</button>
         </div>
-        <button id="saveButton" ng-click="saveRecord()" class="paddingRigth btn btn-info" type="button">Save</button>
-        <button id="cancelButton" ng-click="cancelRecord()" class="btn" type="button">Cancel</button>
       </div>
     </div>
-  </div>
+  <div>
 </div>
