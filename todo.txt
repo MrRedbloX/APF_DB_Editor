@@ -28,4 +28,4 @@ Gérer les vues > fait
 Dashboard (graphique)
 Vérification des règles
 
-Vérifier anomalie tooltips
+Vérifier pq show relations ne fonctionne pas
