@@ -60,6 +60,9 @@ app.config(function($routeProvider) {
     .when("/db_management", {
         templateUrl : "html/db_management.html"
     })
+    .when("/db_views", {
+        templateUrl : "html/db_views.html"
+    })
     .otherwise({
         redirectTo: '/'
       });
