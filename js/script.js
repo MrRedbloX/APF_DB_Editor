@@ -472,7 +472,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       for(let l=0; l<postgresScope.columnConstraint.length; l++){
                         if(postgresScope.columnConstraint.foreign_table_name == table && postgresScope.columnConstraint.foreign_column_name == postgresScope.primaryKey.data[0].attname){
                           postgresScope.query(db, postgresScope.columnConstraint.table_name, "*", postgresScope.columnConstraint.foreign_column_name, pkValue, function(){
-                            
+
                           });
                         }
                       }
@@ -958,6 +958,24 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     $http({
       method: 'GET',
       url: '/db/delRecord?db='+dbName+'&table='+tableName+'&pkKey='+pkKey+'&pkValue='+pkValue
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.deleteRequest = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.deleteRequest = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.delRecord = function(dbName,tableName,select,condAtt,condValue,callback){
+    $http({
+      method: 'GET',
+      url: '/db/delRecord?db='+dbName+'&table='+tableName+'&select='+select+'&condAtt='+condAtt+"&condValue="+condValue
     })
     .then(
       function successCallback(data) {
