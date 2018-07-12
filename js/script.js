@@ -320,6 +320,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           postgresScope.getColumnConstraint(db, table, function(){ //We get the foreign key of the table
             if(postgresScope.successRequest){
               postgresScope.valuesOfConstraint = [];
+              console.log(postgresScope.columnConstraint);
               for(let i=0; i<postgresScope.columnConstraint.data.length; i++){
                 let temp = [];
                 postgresScope.getValuesOf(db,postgresScope.columnConstraint.data[i].foreign_table_name,"*", function(){ //And we get their values
