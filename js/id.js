@@ -23,6 +23,7 @@ function iden() {
       document.cookie =result;
     }
     window.location="index.html"
+    ok = 1;
   }
   else{
     alert("incorrect password");
