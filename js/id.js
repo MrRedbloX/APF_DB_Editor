@@ -22,16 +22,14 @@ function iden() {
     }
     window.location="index.html";
     localStorage['myKey'] = '1';
-    displayOK();
   }
   else{
     alert("incorrect password");
   }
 
-  console.log(ok);
 }
 
 function verifco(){
   var ok = localStorage['myKey']
-  console.log(ok);
+  console.log("test : " + ok);
 }
