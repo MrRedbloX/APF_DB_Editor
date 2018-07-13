@@ -1011,7 +1011,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                 for(let i=0; i<$scope.relationsData.length; i++)
                                   $scope.tables.push($scope.relationsData[i].table_name);
 
-                                console.log($scope.table.length);
+                                console.log($scope.tables.length);
 
                                 $scope.ready = true;
                               }
