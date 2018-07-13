@@ -505,8 +505,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                           break;
                         }
                       }
-                      busy = false;
-                      treeDatabaseAreaScope.setDisplayTo("relations");
                     }
                     else{
                       console.log(postgresScope.columnConstraint);
@@ -518,6 +516,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               break;
             }
           }
+          busy = false;
+          treeDatabaseAreaScope.setDisplayTo("relations");
         }
         else{
           console.log(postgresScope.primaryKey);
