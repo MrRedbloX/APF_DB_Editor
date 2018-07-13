@@ -33,10 +33,7 @@ function iden() {
 }
 
 function clear(){
-  alert("clear");
-  localStorage['myKey'] = '0';
-  var ok = localStorage['myKey'];
-  console.log("test : " + ok);
+  alert("incorrect password");
 }
 
 function verifco(){
