@@ -517,7 +517,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
               theName = postgresqlScope.valuesOfConstraint[i].values[j].name;
             else
               theName = postgresqlScope.valuesOfConstraint[i].values[j].id;
-
             temp.push( {
               id : postgresqlScope.valuesOfConstraint[i].values[j].id,
               name : theName
