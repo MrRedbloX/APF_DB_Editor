@@ -146,8 +146,6 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
       $scope.displayNothing = false;
       $scope.displayAdd = true;
       $scope.displayModify = false;
-      $scope.displayRelations = false;
-    }
     else if(type === "modify"){
       $scope.displayNothing = false;
       $scope.displayAdd = false;
@@ -974,7 +972,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   currentTableSelected = tableSelected;
   currentRowSelected = rowSelected;
   $scope.relationsData = [];
-  $scope.table = [];
+  $scope.table = ['test'];
   $scope.ready = false;
 
   if(currentTableSelected != null){
