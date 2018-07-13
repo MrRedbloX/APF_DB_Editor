@@ -1,11 +1,7 @@
 var id_ok = "63e780c3f321d13109c71bf81805476e";
 
-function clear(){
-  alert("clear");
-  localStorage['myKey'] = '0';
-  var ok = localStorage['myKey'];
-  console.log("test : " + ok);
-}
+
+
 function verif_cook(){
   if(document.cookie == id_ok){
     window.location="index.html"
@@ -34,6 +30,13 @@ function iden() {
     alert("incorrect password");
   }
 
+}
+
+function clear(){
+  alert("clear");
+  localStorage['myKey'] = '0';
+  var ok = localStorage['myKey'];
+  console.log("test : " + ok);
 }
 
 function verifco(){
