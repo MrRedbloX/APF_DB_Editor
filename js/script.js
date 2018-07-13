@@ -1036,7 +1036,8 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 });
 
-app.controller('relationsAreaController', function($scope, buttonAreaFactory){
+app.controller('relationsAreaController', function($scope, buttonAreaFactory, relationsAreaFactory){
+  relationsAreaFactory.setScope($scope);
   var buttonAreaScope = buttonAreaFactory.getScope();
   $scope.tables = [];
 
