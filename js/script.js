@@ -478,7 +478,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                     if(postgresScope.successRequest){
                       for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
                         console.log("Cons")
-                        if(postgresScope.columnConstraint.data[i].foreign_table_name == table && postgresScope.columnConstraint.data[i].foreign_column_name == postgresScope.primaryKey.data[0].attname){
+                        if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == postgresScope.primaryKey.data[0].attname){
                           console.log("starting query");
                           postgresScope.query(db, postgresScope.columnConstraint.table_name, "*", postgresScope.columnConstraint.foreign_column_name, pkValue, function(){
                             if(postgresScope.successRequest){
