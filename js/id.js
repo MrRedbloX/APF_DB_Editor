@@ -33,10 +33,9 @@ function iden() {
 }
 
 function clear_cache(){
-  alert("clear");
   localStorage['myKey'] = '0';
   var ok = localStorage['myKey'];
-  console.log("test : " + ok);
+  window.location="login.html"
 }
 
 function verifco(){
