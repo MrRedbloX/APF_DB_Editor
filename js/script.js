@@ -121,18 +121,6 @@ app.factory('treeDatabaseAreaFactory', function(){
   };
 });
 
-app.factory('relationsAreaFactory', function(){
-  var theScope;
-  return{
-    setScope : function(scope){
-      theScope = scope;
-    },
-    getScope : function(){
-      return theScope;
-    }
-  };
-});
-
 
 //Each controller manage a view in the html
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory, treeDatabaseAreaFactory){
@@ -271,7 +259,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   }
 });
 
-app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory, relationsAreaFactory){
+app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
 
   buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
@@ -530,7 +518,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           }
           busy = false;
           treeDatabaseAreaScope.setDisplayTo("relations");
-          relationsAreaFactory.getScope().displayTable();
         }
         else{
           console.log(postgresScope.primaryKey);
@@ -1036,7 +1023,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 });
 
-app.controller('relationsAreaController', function($scope, buttonAreaFactory, relationsAreaFactory){
+app.controller('relationsAreaController', function($scope, buttonAreaFactory){
   relationsAreaFactory.setScope($scope);
   var buttonAreaScope = buttonAreaFactory.getScope();
   $scope.tables = [];
