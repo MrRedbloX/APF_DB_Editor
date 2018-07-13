@@ -1,12 +1,9 @@
 var id_ok = "63e780c3f321d13109c71bf81805476e";
-var ok = 0;
 
 function verif_cook(){
   if(document.cookie == id_ok){
-    /*window.location="index.html"*/
-    return 1;
+    window.location="index.html"
   }
-  return 0;
 }
 
 function iden() {
@@ -24,7 +21,7 @@ function iden() {
       document.cookie =result;
     }
     window.location="index.html";
-    ok = 1;
+    localStorage['myKey'] = '1';
     displayOK();
   }
   else{
@@ -35,9 +32,6 @@ function iden() {
 }
 
 function verifco(){
-  console.log(ok);
-}
-function displayOK(){
-  console.log("Dis");
+  var ok = localStorage['myKey']
   console.log(ok);
 }
