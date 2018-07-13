@@ -85,13 +85,13 @@
       </div>
     </div>
     <div ng-if="displayRelations">
-      <table id="tableRelations" class="table table-bordered" ng-controller="relationsAreaController">
-        <thead ng-if="ready">
+      <table id="tableRelations" class="table table-bordered" ng-controller="relationsAreaController" ng-if="ready">
+        <thead>
           <tr>
             <th ng-repeat="table in tables">{{table}}</th>
           </tr>
         </thead>
-        <tbody ng-if="ready">
+        <tbody>
           <tr id="{{tuple.values}}" ng-repeat="tuple in tuples track by $index">
             <td id="{{tuple.column_names[$index].column_name}};{{tuple.values}};{{val}}" ng-repeat="val in tuple.values track by $index" title={{setIdForToolTips(tuple.values,tuple.column_names[$index].column_name,val)}}>{{val}}</td>
           </tr>
