@@ -1,7 +1,7 @@
 var id_ok = "63e780c3f321d13109c71bf81805476e";
 
-function cleat(){
-  
+function clear(){
+  localStorage['myKey'] = '0';
 }
 function verif_cook(){
   if(document.cookie == id_ok){
