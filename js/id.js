@@ -1,11 +1,11 @@
 var id_ok = "63e780c3f321d13109c71bf81805476e";
-ok = 0;
 
 function verif_cook(){
   if(document.cookie == id_ok){
-    window.location="index.html"
-    ok = 1;
+    /*window.location="index.html"*/
+    return 1;
   }
+  return 0;
 }
 
 function iden() {
@@ -31,5 +31,7 @@ function iden() {
 }
 
 function verifco(){
+  var ok;
+  ok = verif_cook();
   console.log(ok);
 }
