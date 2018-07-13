@@ -965,8 +965,10 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 });
 
-app.controller('relationsAreaController', function($scope, postgresqlFactory){
+app.controller('relationsAreaController', function($scope, postgresqlFactory, columnsDisplayFactory, treeDatabaseAreaFactory){
   var postgresScope = postgresqlFactory.getScope();
+  var columnsDisplayScope = columnsDisplayFactory.getScope();
+  var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
 
   currentTableSelected = tableSelected;
   currentRowSelected = rowSelected;
