@@ -27,4 +27,5 @@ Faire les messages d'erreur pour les mauvaises requêtes
 Gérer les vues > fait
 Dashboard (graphique)
 Vérification des règles
-Mettre les noms à la place des uuid
+Mettre les noms à la place des uuid pour tous les fk
+Vérifier les références dans addRow
