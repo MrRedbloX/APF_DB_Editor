@@ -474,25 +474,21 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
         if(postgresScope.successRequest){
           for(let i=0; i<columnsDisplayScope.columns.length; i++){
             if(postgresScope.primaryKey.data[0].attname == columnsDisplayScope.columns[i].column_name){
-              console.log("Found pk");
               var pkValue = JSON.parse(currentRowSelected)[i];
               break;
             }
           }
           for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
             if(treeDatabaseAreaScope.databases[j].name == db){
-              console.log("Found db");
               for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
                 if(treeDatabaseAreaScope.databases[j].table[k].table_name != table){
-                  console.log(treeDatabaseAreaScope.databases[j].table[k].table_name);
                   postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){
                     if(postgresScope.successRequest){
                       for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
-                        console.log("Cons")
                         if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == postgresScope.primaryKey.data[0].attname){
-                          console.log("starting query");
                           postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                             if(postgresScope.successRequest){
+                              postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name)
                               $scope.relationsData.push({
                                 table_name : postgresScope.columnConstraint.data[l].table_name,
                                 values : postgresScope.queryRequest
@@ -1022,4 +1018,15 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
         if(callback) callback();
     });
   };
+});
+
+app.controller('relationsAreaController', function($scope, buttonAreaFactory){
+  var buttonAreaScope = buttonAreaFactory.getScope();
+  $scope.tables = [];
+
+  for(let i=0; i<buttonAreaScope.relationsData.length; i++)
+    $scope.tables.push(buttonAreaScope.relationsData[i].name);
+
+
+
 });
