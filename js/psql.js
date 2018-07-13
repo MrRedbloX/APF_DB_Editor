@@ -272,7 +272,7 @@ module.exports = {
         }
         else{
           console.log("Connection successful");
-
+          console.log("SELECT "+req.query.select+" FROM "+req.query.table+" WHERE "+req.query.condAtt+" = "+req.query.condValue+";");
           client.query("SELECT "+req.query.select+" FROM "+req.query.table+" WHERE "+req.query.condAtt+" = "+req.query.condValue+";" , function(err,result) {
             client.end(); // closing the connection;
             if(err){
