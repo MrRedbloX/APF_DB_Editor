@@ -409,6 +409,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   //When we want to delete a tuple
   $scope.delete = function(){
     currentRowSelected = rowSelected;
+    currentTableSelected = tableSelected;
     if(confirm('Do you want to delete this record ?')){
       if(currentTableSelected != null){
         let temp = currentTableSelected.split(';');
