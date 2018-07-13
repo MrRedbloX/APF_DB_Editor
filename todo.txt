@@ -27,5 +27,4 @@ Faire les messages d'erreur pour les mauvaises requêtes
 Gérer les vues > fait
 Dashboard (graphique)
 Vérification des règles
-
-Vérifier pq show relations ne fonctionne pas
+Mettre les noms à la place des uuid
