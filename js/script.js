@@ -1006,6 +1006,10 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   table_name : postgresScope.columnConstraint.data[l].table_name,
                                   values : postgresScope.queryRequest
                                 });
+                                for(let i=0; i<$scope.relationsData.length; i++){
+                                  if($scope.tables.indexOf($scope.relationsData[i].table_name) > -1) $scope.tables.push($scope.relationsData[i].table_name)
+                                }
+                                $scope.ready = true;
                               }
                               else{
                                 console.log(postgresScope.queryRequest);
@@ -1030,10 +1034,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
         }
         busy = false;
         if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
-        for(let i=0; i<$scope.relationsData.length; i++){
-          if($scope.tables.indexOf($scope.relationsData[i].table_name) > -1) $scope.tables.push($scope.relationsData[i].table_name)
-        }
-        $scope.ready = true;
       }
       else{
         console.log(postgresScope.primaryKey);
