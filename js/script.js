@@ -577,6 +577,9 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
                                valueList.push(parseInt(postgresScope.queryRequest[0][postgresScope.valuesOfConstraint[l].values.id]));
                                break;
                              }
+                             else{
+                               console.log(postgresScope.queryRequest[0][postgresScope.valuesOfConstraint[l].values.id]);
+                             }
                            });
                          }
                          if(!set) valueList.push(elt.options[elt.selectedIndex].text);
