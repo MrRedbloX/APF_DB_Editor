@@ -1032,8 +1032,8 @@ app.controller('relationsAreaController', function($scope, buttonAreaFactory){
   $scope.tables = [];
   var relationsData = buttonAreaScope.getRelationsData();
 
-  for(let i=0; i<buttonAreaScope.getRelationsData().length; i++)
-    $scope.tables.push(buttonAreaScope.relationsData[i].name);
+  for(let i=0; i<relationsData.length; i++)
+    $scope.tables.push(relationsData[i].name);
 
   console.log($scope.tables);
 
