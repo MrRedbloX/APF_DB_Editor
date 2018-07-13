@@ -146,6 +146,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
       $scope.displayNothing = false;
       $scope.displayAdd = true;
       $scope.displayModify = false;
+    }
     else if(type === "modify"){
       $scope.displayNothing = false;
       $scope.displayAdd = false;
