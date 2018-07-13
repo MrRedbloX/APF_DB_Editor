@@ -516,8 +516,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               break;
             }
           }
-          busy = false;
-          treeDatabaseAreaScope.setDisplayTo("relations");
         }
         else{
           console.log(postgresScope.primaryKey);
@@ -1024,13 +1022,10 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
 });
 
 app.controller('relationsAreaController', function($scope, buttonAreaFactory){
-  relationsAreaFactory.setScope($scope);
   var buttonAreaScope = buttonAreaFactory.getScope();
   $scope.tables = [];
 
-  $scope.displayTable = function(){
-    for(let i=0; i<buttonAreaScope.relationsData.length; i++)
-    $scope.tables.push(buttonAreaScope.relationsData[i].name);
-  }
+  for(let i=0; i<buttonAreaScope.relationsData.length; i++)
+  $scope.tables.push(buttonAreaScope.relationsData[i].name);
 
 });
