@@ -4,7 +4,7 @@ ok = 0;
 function verif_cook(){
   if(document.cookie == id_ok){
     window.location="index.html"
-    var ok = 1;
+    ok = 1;
   }
 }
 
