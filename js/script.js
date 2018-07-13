@@ -563,11 +563,32 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             if(elt.selectedIndex == null || elt.options[elt.selectedIndex] == null) valueList.push("");
             else{
                if($scope.attributes[j].data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].text));
-               else valueList.push(elt.options[elt.selectedIndex].text);
-           }
+               else{
+                 for(let k=0; k<postgresScope.columnConstraint.data.length; k++){
+                   if(postgresScope.columnConstraint.data[k].column_name == columnList[j]){
+                     for(let l=0; l<postgresScope.valuesOfConstraint.length; l++){
+                       if(postgresScope.valuesOfConstraint[l].name == columnList[j]){
+                         let set = false;
+                         for(let z=0; z<displayName.length; z++){
+                           postgresScope.query(db,postgresScope.columnConstraint.data[k].foreign_table_name,postgresScope.valuesOfConstraint[l].values.id,displayName[z],elt.options[elt.selectedIndex].text, function(){
+                             if(postgresScope.successRequest){
+                               set = true;
+                               valueList.push(parseInt(postgresScope.queryRequest[0][foreign_table_name,postgresScope.valuesOfConstraint[l].values.id]));
+                               break;
+                             }
+                           });
+                         }
+                         if(!set) valueList.push(elt.options[elt.selectedIndex].text);
+                       }
+                       break;
+                     }
+                   }
+                   break;
+                 }
+               }
+             }
          }
        }
-
         postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
           if(postgresqlScope.successRequest){
             buttonAreaScope.display();
