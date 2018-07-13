@@ -1,5 +1,5 @@
 var id_ok = "63e780c3f321d13109c71bf81805476e";
-var ok = 0;
+static var ok = 0;
 
 function verif_cook(){
   if(document.cookie == id_ok){
