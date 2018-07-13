@@ -258,6 +258,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var isReadOnly = false;
   var currentTableSelected = tableSelected;
   var currentRowSelected = rowSelected;
+  $scope.relationsData = [];
 
   //Here we manage the displayability of the buttons
   if(document.getElementById("displayButton") != null) document.getElementById("displayButton").disabled = true;
@@ -506,6 +507,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               break;
             }
           }
+          busy = false;
+          treeDatabaseAreaScope.setDisplayTo("relations");
         }
         else{
           console.log(postgresScope.primaryKey);
