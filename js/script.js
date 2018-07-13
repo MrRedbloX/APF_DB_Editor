@@ -149,6 +149,13 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
       $scope.displayNothing = false;
       $scope.displayAdd = false;
       $scope.displayModify = true;
+      $scope.displayRelations = false;
+    }
+    else if(type === "relations"){
+      $scope.displayNothing = false;
+      $scope.displayAdd = false;
+      $scope.displayModify = false;
+      $scope.displayRelations = true;
     }
     else console.log("Wrong type for setDisplayTo");
   }
