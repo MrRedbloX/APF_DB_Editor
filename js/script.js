@@ -1030,6 +1030,6 @@ app.controller('relationsAreaController', function($scope, buttonAreaFactory){
   for(let i=0; i<buttonAreaScope.relationsData.length; i++)
     $scope.tables.push(buttonAreaScope.relationsData[i].name);
 
-
+  console.log($scope.tables.length);
 
 });
