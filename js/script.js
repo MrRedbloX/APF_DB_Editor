@@ -573,6 +573,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
                            postgresScope.query(db,postgresScope.columnConstraint.data[k].foreign_table_name,postgresScope.valuesOfConstraint[l].values.id,displayName[z],elt.options[elt.selectedIndex].text, function(){
                              if(postgresScope.successRequest){
                                set = true;
+                               console.log(postgresScope.queryRequest[0][postgresScope.valuesOfConstraint[l].values.id]);
                                valueList.push(parseInt(postgresScope.queryRequest[0][postgresScope.valuesOfConstraint[l].values.id]));
                                break;
                              }
