@@ -38,5 +38,6 @@ function verifco(){
   console.log(ok);
 }
 function displayOK(){
-  console.log("Display : "+str(ok));
+  console.log("Dis");
+  console.log(ok);
 }
