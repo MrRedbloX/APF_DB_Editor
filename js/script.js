@@ -70,6 +70,9 @@ app.config(function($routeProvider) {
     .when("/dashboard", {
         templateUrl : "html/dashboard.html"
     })
+    .when("/help", {
+        templateUrl : "html/help.html"
+    })
     .otherwise({
         redirectTo: '/'
       });
