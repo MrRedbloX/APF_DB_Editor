@@ -972,7 +972,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   currentTableSelected = tableSelected;
   currentRowSelected = rowSelected;
   $scope.relationsData = [];
-  $scope.table = ['test'];
+  $scope.tables = [];
   $scope.ready = false;
 
   if(currentTableSelected != null){
