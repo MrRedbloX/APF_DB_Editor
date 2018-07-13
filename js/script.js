@@ -67,6 +67,9 @@ app.config(function($routeProvider) {
     .when("/db_views", {
         templateUrl : "html/db_views.html"
     })
+    .when("/dashboard", {
+        templateUrl : "html/dashboard.html"
+    })
     .otherwise({
         redirectTo: '/'
       });
