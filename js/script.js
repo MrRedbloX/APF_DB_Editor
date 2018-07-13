@@ -526,6 +526,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       });
     }
   }
+
+  $scope.getRelationsData( = function(){
+    return $scope.relationsData;
+  }
 });
 
 app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
@@ -1027,7 +1031,7 @@ app.controller('relationsAreaController', function($scope, buttonAreaFactory){
   var buttonAreaScope = buttonAreaFactory.getScope();
   $scope.tables = [];
 
-  for(let i=0; i<buttonAreaScope.relationsData.length; i++)
+  for(let i=0; i<buttonAreaScope.getRelationsData().length; i++)
     $scope.tables.push(buttonAreaScope.relationsData[i].name);
 
   console.log($scope.tables);
