@@ -1031,6 +1031,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
         }
         busy = false;
         if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
+        console.log("ok");
         for(let i=0; i<$scope.relationsData.length; i++)
           $scope.table.push($scope.relationsData[i].table_name);
 
