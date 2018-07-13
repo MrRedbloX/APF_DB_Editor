@@ -527,7 +527,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     }
   }
 
-  $scope.getRelationsData( = function(){
+  $scope.getRelationsData = function(){
     return $scope.relationsData;
   }
 });
