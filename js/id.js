@@ -1,5 +1,5 @@
 var id_ok = "63e780c3f321d13109c71bf81805476e";
-global ok = 0;
+var ok = 0;
 
 function verif_cook(){
   if(document.cookie == id_ok){
@@ -25,6 +25,7 @@ function iden() {
     }
     window.location="index.html";
     ok = 1;
+    displayOK();
   }
   else{
     alert("incorrect password");
@@ -35,4 +36,7 @@ function iden() {
 
 function verifco(){
   console.log(ok);
+}
+function displayOK(){
+  console.log("Display : "+str(ok));
 }
