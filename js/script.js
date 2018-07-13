@@ -1024,6 +1024,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory){
           }
         }
         busy = false;
+        if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
         console.log($scope.relationsData);
       }
       else{
