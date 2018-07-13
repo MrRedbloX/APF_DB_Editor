@@ -55,7 +55,9 @@ var isRowSelected = function(row){
 }
 
 
-var app = angular.module('DBEditorAPF', ["ngRoute"]);
+var app = angular.module('DBEditorAPF', ["ngRoute"], function($rootScopeProvider){
+  $rootScopeProvider.digestTtl(15);
+});
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -77,6 +79,8 @@ app.config(function($routeProvider) {
     .otherwise({
         redirectTo: '/'
     });
+});
+
 });
 
 //The following factories allow to access an element in a controller when you are in another controller
