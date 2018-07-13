@@ -488,10 +488,14 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                         if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == postgresScope.primaryKey.data[0].attname){
                           postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                             if(postgresScope.successRequest){
-                              postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name)
-                              $scope.relationsData.push({
-                                table_name : postgresScope.columnConstraint.data[l].table_name,
-                                values : postgresScope.queryRequest
+                              postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
+                                if(postgresScope.successRequest){
+                                  $scope.relationsData.push({
+                                    table_name : postgresScope.columnConstraint.data[l].table_name,
+                                    pk : postgresScope.primaryKey.data[0].attname,
+                                    values : postgresScope.queryRequest
+                                  });
+                                }
                               });
                             }
                             else{
