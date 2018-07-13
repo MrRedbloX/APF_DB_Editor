@@ -505,6 +505,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                           break;
                         }
                       }
+                      busy = false;
+                      treeDatabaseAreaScope.setDisplayTo("relations");
                     }
                     else{
                       console.log(postgresScope.columnConstraint);
@@ -521,8 +523,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           console.log(postgresScope.primaryKey);
           alert("Error on getPrimaryKey request, check console logs.")
         }
-        busy = false;
-        treeDatabaseAreaScope.setDisplayTo("relations");
       });
     }
   }
@@ -1028,6 +1028,6 @@ app.controller('relationsAreaController', function($scope, buttonAreaFactory){
   $scope.tables = [];
 
   for(let i=0; i<buttonAreaScope.relationsData.length; i++)
-  $scope.tables.push(buttonAreaScope.relationsData[i].name);
+    $scope.tables.push(buttonAreaScope.relationsData[i].name);
 
 });
