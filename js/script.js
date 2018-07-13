@@ -526,18 +526,15 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if(att === postgresqlScope.valuesOfConstraint[i].name){
           for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
-            if(postgresqlScope.valuesOfConstraint[i].values[j].name != null){
-              $scope.references.push({
-                id : postgresqlScope.valuesOfConstraint[i].values[j].id,
-                name : postgresqlScope.valuesOfConstraint[i].values[j].name
-              });
-            }
-            else{
-              $scope.references.push({
-                id : postgresqlScope.valuesOfConstraint[i].values[j].id,
-                name : postgresqlScope.valuesOfConstraint[i].values[j].id
-              });
-            }
+            if(postgresqlScope.valuesOfConstraint[i].values[j].name != null)
+              theName = postgresqlScope.valuesOfConstraint[i].values[j].name;
+            else
+              theName = postgresqlScope.valuesOfConstraint[i].values[j].id;
+
+            $scope.references.push({
+              id : postgresqlScope.valuesOfConstraint[i].values[j].id,
+              name : theName
+            });
           }
           break;
         }
