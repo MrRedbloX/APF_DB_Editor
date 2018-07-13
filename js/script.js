@@ -509,6 +509,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
 
   if(currentTableSelected != null){
     for(let z=0; z<$scope.attributes.length; z++){
+      let temp =
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         if($scope.attributes[z] === postgresqlScope.valuesOfConstraint[i].name){
           for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
@@ -517,8 +518,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             else
               theName = postgresqlScope.valuesOfConstraint[i].values[j].id;
 
-            $scope.references.push(
-              $scope.attributes[z] : {
+            temp.push( {
                 id : postgresqlScope.valuesOfConstraint[i].values[j].id,
                 name : theName
               });
