@@ -22,7 +22,7 @@ function iden() {
     if(rm.checked == true){
       document.cookie =result;
     }
-    window.location="index.html"
+    window.location="index.html";
     ok = 1;
   }
   else{
