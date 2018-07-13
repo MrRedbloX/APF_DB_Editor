@@ -22,8 +22,6 @@ function iden() {
     if(rm.checked == true){
       document.cookie =result;
     }
-    else{
-    }
     window.location="index.html"
   }
   else{
