@@ -1008,11 +1008,9 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                 });
                                 busy = false;
                                 if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
-                                for(let i=0; i<$scope.relationsData.length; i++)
-                                  $scope.tables.push($scope.relationsData[i].table_name);
-
-                                console.log($scope.tables.length);
-
+                                for(let i=0; i<$scope.relationsData.length; i++){
+                                  if($scope.tables.indexOf($scope.relationsData[i].table_name) > -1) $scope.tables.push($scope.relationsData[i].table_name)
+                                }
                                 $scope.ready = true;
                               }
                               else{
