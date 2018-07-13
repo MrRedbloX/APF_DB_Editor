@@ -482,7 +482,10 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                           console.log("starting query");
                           postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                             if(postgresScope.successRequest){
-                              console.log(postgresScope.queryRequest);
+                              $scope.relationsData.push({
+                                table_name : postgresScope.columnConstraint.data[l].table_name,
+                                values : postgresScope.queryRequest
+                              });
                             }
                             else{
                               console.log(postgresScope.queryRequest);
