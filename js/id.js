@@ -30,6 +30,6 @@ function iden() {
   }
 }
 
-function verif-co(){
+function verifco(){
   console.log(ok);
 }
