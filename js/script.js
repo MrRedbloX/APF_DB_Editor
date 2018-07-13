@@ -972,6 +972,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   currentTableSelected = tableSelected;
   currentRowSelected = rowSelected;
   $scope.relationsData = [];
+  $scope.table = [];
 
   if(currentTableSelected != null){
     let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
@@ -1027,7 +1028,8 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
         }
         busy = false;
         if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
-        console.log($scope.relationsData);
+        for(let i=0; i<$scope.relationsData.length; i++)
+          $scope.table.push($scope.relationsData[i].table_name);
       }
       else{
         console.log(postgresScope.primaryKey);
