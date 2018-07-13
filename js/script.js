@@ -521,6 +521,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
           console.log(postgresScope.primaryKey);
           alert("Error on getPrimaryKey request, check console logs.")
         }
+        busy = false;
+        treeDatabaseAreaScope.setDisplayTo("relations");
       });
     }
   }
