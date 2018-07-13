@@ -19,6 +19,12 @@
 
       var id_ok = "63e780c3f321d13109c71bf81805476e";
 
+        function verif(){
+          if(document.cookie == id_ok){
+            window.location="index.html"
+          }
+        }
+
         function iden() {
 
 
@@ -33,11 +39,11 @@
 
           if(result == id_ok){
             if(rm.checked == true){
-              document.cookie = result;
+              document.cookie =result;
             }
             else{
             }
-            window.location="index.html";
+            window.location="index.html"
           }
         	else{
             alert("incorrect password");
@@ -46,7 +52,7 @@
         }
     </script>
 </head>
-<body ng-controller="postgresqlController" onload="no_display()">
+<body ng-controller="postgresqlController" onload="verif()">
   <header class="container">
     <a href="/"><img src="/css/img/logo_DBE.png" /></a>
     <a target="_blank" href="https://www.orange-business.com"><img src="/css/img/logo.png" class="topRight" /></a>
