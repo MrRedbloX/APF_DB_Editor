@@ -507,6 +507,28 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       $scope.attributes.push(columnsDisplayScope.columns[i]);
   };
 
+  if(currentTableSelected != null){
+    for(let z=0; z<$scope.attributes.length; z++){
+      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
+        if($scope.attributes[z] === postgresqlScope.valuesOfConstraint[i].name){
+          for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
+            if(postgresqlScope.valuesOfConstraint[i].values[j].name != null)
+              theName = postgresqlScope.valuesOfConstraint[i].values[j].name;
+            else
+              theName = postgresqlScope.valuesOfConstraint[i].values[j].id;
+
+            $scope.references.push(
+              $scope.attributes[z] : {
+                id : postgresqlScope.valuesOfConstraint[i].values[j].id,
+                name : theName
+              });
+          }
+          break;
+        }
+      }
+    }
+  }
+
   //Check if an attribute is a foreign key
   $scope.checkIfIsReference = function(att){
     var ret = false;
