@@ -29,3 +29,7 @@ function iden() {
     alert("incorrect password");
   }
 }
+
+function verif-co(){
+  console.log(ok);
+}
