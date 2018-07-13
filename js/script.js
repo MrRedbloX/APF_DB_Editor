@@ -133,17 +133,20 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
   $scope.displayNothing = true;
   $scope.displayAdd = false;
   $scope.displayModify = false;
+  $scope.displayRelations = false;
 
   $scope.setDisplayTo = function(type){
     if(type === "nothing"){
       $scope.displayNothing = true;
       $scope.displayAdd = false;
       $scope.displayModify = false;
+      $scope.displayRelations = false;
     }
     else if(type === "add"){
       $scope.displayNothing = false;
       $scope.displayAdd = true;
       $scope.displayModify = false;
+      $scope.displayRelations = false;
     }
     else if(type === "modify"){
       $scope.displayNothing = false;
