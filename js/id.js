@@ -32,8 +32,8 @@ function iden() {
 
 }
 
-function clear(){
-  alert("incorrect password");
+function clear() {
+  console.log("ok");
 }
 
 function verifco(){
