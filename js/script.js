@@ -1024,6 +1024,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory){
           }
         }
         busy = false;
+        console.log($scope.relationsData);
       }
       else{
         console.log(postgresScope.primaryKey);
@@ -1031,6 +1032,4 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory){
       }
     });
   }
-
-  console.log($scope.relationsData);
 });
