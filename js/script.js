@@ -1031,4 +1031,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory){
       }
     });
   }
+
+  console.log($scope.relationsData);
 });
