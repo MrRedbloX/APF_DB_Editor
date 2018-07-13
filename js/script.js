@@ -268,7 +268,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   var isReadOnly = false;
   var currentTableSelected = tableSelected;
   var currentRowSelected = rowSelected;
-  $scope.relationsData = [];
 
   //Here we manage the displayability of the buttons
   if(document.getElementById("displayButton") != null) document.getElementById("displayButton").disabled = true;
@@ -972,6 +971,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
 
   currentTableSelected = tableSelected;
   currentRowSelected = rowSelected;
+  $scope.relationsData = [];
 
   if(currentTableSelected != null){
     let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
