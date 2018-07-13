@@ -75,7 +75,7 @@ app.config(function($routeProvider) {
     })
     .otherwise({
         redirectTo: '/'
-      });
+    });
 });
 
 //The following factories allow to access an element in a controller when you are in another controller
