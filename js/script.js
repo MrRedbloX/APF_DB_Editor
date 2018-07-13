@@ -56,7 +56,7 @@ var isRowSelected = function(row){
 
 
 var app = angular.module('DBEditorAPF', ["ngRoute"], function($rootScopeProvider){
-  $rootScopeProvider.digestTtl(100);
+  $rootScopeProvider.digestTtl(1000);
 });
 
 app.config(function($routeProvider) {
