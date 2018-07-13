@@ -525,9 +525,9 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
           break;
         }
       }
-      $scope.references.push({
-        $scope.attributes[z] : temp
-      });
+      let obj = {};
+      obj[$scope.attributes[z]] = temp;
+      $scope.references.push(obj);
     }
   }
 
