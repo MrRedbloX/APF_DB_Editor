@@ -1030,6 +1030,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
 app.controller('relationsAreaController', function($scope, buttonAreaFactory){
   var buttonAreaScope = buttonAreaFactory.getScope();
   $scope.tables = [];
+  var relationsData = buttonAreaScope.getRelationsData();
 
   for(let i=0; i<buttonAreaScope.getRelationsData().length; i++)
     $scope.tables.push(buttonAreaScope.relationsData[i].name);
