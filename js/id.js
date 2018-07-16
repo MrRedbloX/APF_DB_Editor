@@ -30,13 +30,14 @@ function iden() {
 
 }
 
-getDBName: function(req, res) {
-    var pg = require('pg');
+function sqlfun(){
 
-    var client = new pg.Client(conString+"postgres");
+        var pg = require('pg');
 
+        var client = new pg.Client(conString+"postgres");
+
+  }
 }
-
 
 function clear_cache(){
   localStorage['myKey'] = '0';
