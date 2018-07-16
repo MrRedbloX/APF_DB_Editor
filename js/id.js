@@ -32,10 +32,8 @@ function iden() {
 
 function sqlfun(){
 
-    var connectionString = "postgres://userName:password@serverName/ip:port/nameOfDatabase";
-    var pgClient = new pg.Client(connectionString);
-    pgClient.connect();
-    var query = pgClient.query("SELECT * from test");
+    var result="<?php ../test.php; ?>";
+    alert(result);
 }
 
 function clear_cache(){
