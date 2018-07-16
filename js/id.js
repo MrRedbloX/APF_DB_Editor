@@ -10,9 +10,6 @@ function verif_cook(){
 }
 
 function iden() {
-  var fileSystem=new ActiveXObject("Scripting.FileSystemObject");
-  var monfichier=fileSystem.OpenTextFile("../id.txt", 1 ,true);
-  //alert(monfichier.read());
   var tab="azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789_$&#@";
   var user= document.getElementById("user").value;
   var pass= document.getElementById("pass").value;
