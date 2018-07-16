@@ -52,7 +52,5 @@ function sql(){
   var pgClient = new pg.Client(connectionString);
   pgClient.connect();
   var query = pgClient.query("SELECT * from test");
-  query.on("row", function(row,result){
-      result.addRow(row);
-  });
+  console.log(query);
 }
