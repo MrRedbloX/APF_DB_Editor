@@ -30,7 +30,6 @@ function iden() {
 
 }
 
-
 function sqlfun(){
   var pg = require(‘pg’);
   var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
@@ -39,7 +38,6 @@ function sqlfun(){
   var query = pgClient.query("SELECT * from test");
   console.log(query);
 }
-
 
 function clear_cache(){
   localStorage['myKey'] = '0';
