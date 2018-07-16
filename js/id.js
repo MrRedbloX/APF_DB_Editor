@@ -34,7 +34,7 @@ function sqlfun(){
 
         var pg = require('pg');
 
-  }
+  
 }
 
 function clear_cache(){
