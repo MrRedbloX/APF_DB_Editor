@@ -32,9 +32,10 @@ function iden() {
 
 function sqlfun(){
 
-        var pg = require('pg');
-
-  
+    var connectionString = "postgres://userName:password@serverName/ip:port/nameOfDatabase";
+    var pgClient = new pg.Client(connectionString);
+    pgClient.connect();
+    var query = pgClient.query("SELECT * from test");
 }
 
 function clear_cache(){
