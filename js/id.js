@@ -45,3 +45,8 @@ function verifco(){
   }
   console.log("test : " + ok);
 }
+
+function sql(){
+  var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
+
+}
