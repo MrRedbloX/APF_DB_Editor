@@ -45,12 +45,3 @@ function verifco(){
   }
   console.log("test : " + ok);
 }
-
-function sql(){
-  var pg = require(‘pg’);
-  var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
-  var pgClient = new pg.Client(connectionString);
-  pgClient.connect();
-  var query = pgClient.query("SELECT * from test");
-  console.log(query);
-}
