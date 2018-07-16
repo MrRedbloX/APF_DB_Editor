@@ -30,12 +30,6 @@ function iden() {
 
 }
 
-function sqlfun(){
-
-    var result="<?php ../test.php; ?>";
-    alert(result);
-}
-
 function clear_cache(){
   localStorage['myKey'] = '0';
   var ok = localStorage['myKey'];
