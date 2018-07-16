@@ -34,8 +34,6 @@ function sqlfun(){
 
         var pg = require('pg');
 
-        var client = new pg.Client(conString+"postgres");
-
   }
 }
 
