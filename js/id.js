@@ -31,7 +31,9 @@ function iden() {
 }
 
 function sqlfun(){
-
+  var pg = require(‘pg’);
+  var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
+  
 }
 
 function clear_cache(){
