@@ -56,7 +56,7 @@ function sqlfun(){
               });
             }
           });
-    }
+    }}
 }
 
 function clear_cache(){
