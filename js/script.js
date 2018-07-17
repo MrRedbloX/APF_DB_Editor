@@ -298,24 +298,30 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   $scope.setName = function(column_name, tuple, val){
     id = column_name+";"+JSON.stringify(tuple)+";"+val;
-    console.log($scope.elementsNameToSet.length);
-    for(let i=0; i<$scope.elementsNameToSet.length; i++){
-      if($scope.elementsNameToSet[i][id] != null && $scope.elementsNameToSet[i][id].set == false){
-        postgresqlScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
-          if(postgresqlScope.successRequest){
-            console.log("WTF");
-            document.getElementById(id).value = postgresqlScope.successRequest[0][$scope.elementsNameToSet[i][id].select];
-            $scope.elementsNameToSet[i][id].set = true;
-            console.log($scope.elementsNameToSet[i][id].set);
-          }
-          else{
-            console.log(postgresqlScope.queryRequest);
-            alert("Error on query request, check console logs.");
-          }
-        });
+    $scope.elementIdToSet.push(id);
+
+  };
+
+  $scope.setNameWithId = function(){
+    for(let j=0; j<$scope.elementIdToSet.length; j++){
+      for(let i=0; i<$scope.elementsNameToSet.length; i++){
+        if($scope.elementsNameToSet[i][id] != null && $scope.elementsNameToSet[i][id].set == false){
+          postgresqlScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
+            if(postgresqlScope.successRequest){
+              console.log("WTF");
+              document.getElementById(id).value = postgresqlScope.successRequest[0][$scope.elementsNameToSet[i][id].select];
+              $scope.elementsNameToSet[i][id].set = true;
+              console.log($scope.elementsNameToSet[i][id].set);
+            }
+            else{
+              console.log(postgresqlScope.queryRequest);
+              alert("Error on query request, check console logs.");
+            }
+          });
+        }
       }
     }
-  };
+  }
 
   /*angular.element(document).ready(function(){
     console.log("Table fully loaded");
