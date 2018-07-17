@@ -287,7 +287,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           select : theName,
           condAtt : pk,
           condValue : $scope.tuples[i].values[j],
-          eltId : str
+          eltId : str,
+          set : false
         };
         $scope.elementsNameToSet.push(obj);
       }
