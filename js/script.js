@@ -276,12 +276,12 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   }
 
   $scope.setNameForReferences = function(fk_column_name, pk, theName, db, table){
-    console.log($scope.tuples);
+    //console.log($scope.tuples);
     for(let i=0; i<$scope.tuples.length; i++){
       for(let j=0; j<$scope.tuples[i].values.length; j++){
         str = fk_column_name+JSON.stringify($scope.tuples[i].values)+$scope.tuples[i].values[j];
         console.log(str);
-        /*postgresqlScope.query(db, table, theName, pk, $scope.tuples[i].values[j], function(){
+        postgresqlScope.query(db, table, theName, pk, $scope.tuples[i].values[j], function(){
           if(postgresqlScope.successRequest){
             $scope.elementsNameToSet.push({
               eltId : str,
