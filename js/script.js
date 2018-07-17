@@ -280,19 +280,15 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<$scope.tuples.length; i++){
       for(let j=0; j<$scope.tuples[i].values.length; j++){
         str = fk_column_name+JSON.stringify($scope.tuples[i].values)+$scope.tuples[i].values[j];
-        console.log(str);
-        postgresqlScope.query(db, table, theName, pk, $scope.tuples[i].values[j], function(){
-          if(postgresqlScope.successRequest){
-            $scope.elementsNameToSet.push({
-              eltId : str,
-              name : postgresqlScope.queryRequest.data[0][theName]
-            });
-          }
-          else{
-            console.log(postgresScope.queryRequest);
-            alert("Error on query request, check console logs.");
-          }
-        });
+        obj = {
+          db : db,
+          foreign_table : table,
+          select : theName,
+          condAtt : pk,
+          condValue : $scope.tuples[i].values[j],
+          eltId : str
+        };
+        if($scope.elementsNameToSet.indexOf(obj) > -1) $scope.elementsNameToSet.push(obj);
       }
     }
     console.log($scope.elementsNameToSet);
