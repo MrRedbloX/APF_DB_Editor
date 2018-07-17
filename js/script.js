@@ -279,6 +279,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<$scope.tuples.length; i++){
       for(let j=0; j<$scope.tuples[i].values.length; j++){
         str = fk_column_name+JSON.stringify($scope.tuples[i].values)+$scope.tuples[i].values[j];
+        if(document.getElementById(str) != null) console.log("YES");
         postgresqlScope.query(db, table, theName, pk, $scope.tuples[i].values[j], function(){
           if(postgresqlScope.successRequest){
             console.log(postgresqlScope.queryRequest);
