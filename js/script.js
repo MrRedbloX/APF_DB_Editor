@@ -1214,9 +1214,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
         console.log(postgresScope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
       }
-<<<<<<< HEAD
-=======
-      console.log($scope.id_exist);
+
       if($scope.id_exist == true){
         if(rm.checked == true){
           document.cookie = md5;
@@ -1227,9 +1225,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
       else{
         alert("incorrect password");
       }
->>>>>>> eb4f3bfc58db341d2a70d5a06bdb35d6852036f5
     });
-    console.log($scope.id_exist);
   }
 });
 
