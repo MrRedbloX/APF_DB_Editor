@@ -1133,13 +1133,13 @@ app.controller('loginController', function($scope){
 
   }
 
-  function clear_cache(){
+  $scope.clear_cache = function(){
     localStorage['myKey'] = '0';
     var ok = localStorage['myKey'];
     window.location="#!/login"
   }
 
-  function verifco(){
+  $scope.verifco = function(){
     var ok = localStorage['myKey']
     if(ok != 1){
       window.location="#!/login";
