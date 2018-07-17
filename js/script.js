@@ -280,7 +280,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<$scope.tuples.length; i++){
       for(let j=0; j<$scope.tuples[i].values.length; j++){
         str = fk_column_name+JSON.stringify($scope.tuples[i].values)+$scope.tuples[i].values[j];
-        obj = {
+        obj = {};
+        obj[str] = {
           db : db,
           foreign_table : table,
           select : theName,
@@ -288,10 +289,14 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           condValue : $scope.tuples[i].values[j],
           eltId : str
         };
-        /*if($scope.elementsNameToSet.indexOf(obj) > -1)*/ $scope.elementsNameToSet.push(obj);
+        $scope.elementsNameToSet.push(obj);
       }
     }
     console.log($scope.elementsNameToSet);
+  };
+
+  $scope.setName = function(){
+
   };
 
   /*angular.element(document).ready(function(){
