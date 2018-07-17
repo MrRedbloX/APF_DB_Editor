@@ -1187,7 +1187,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
         console.log(postgresScope.queryLogin);
-        if(postgresScope.queryLogin.length > 0){
+        if(postgresScope.queryLogin.data.length > 0){
           ret = true;
           console.log("ok");
         }
