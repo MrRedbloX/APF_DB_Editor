@@ -19,7 +19,7 @@
   <script>
     function sqlfun(){
       var x = '<?php ex(); ?>';
-      alert('test' + x);
+      alert(x);
     }
   </script>
 
