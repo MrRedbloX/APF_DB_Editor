@@ -1,5 +1,5 @@
 var mainConString = "postgres://postgres:postgres@10.237.169.132:5432/";
-var loginConString = "postgres://postgres:postgres@10.237.169.202:5432/";
+var loginConString = "postgres://postgres:postgres@10.237.169.202:5432/APF_ID";
 
 module.exports = {
   getDBName: function(req, res) {
@@ -288,7 +288,7 @@ module.exports = {
   getIdFromMD5: function(req, res){
     var pg = require('pg');
 
-    var client = new pg.Client(loginConString+"login_db");
+    var client = new pg.Client(loginConString);
 
     client.connect(function(err,client) {
       if(err){
@@ -312,7 +312,7 @@ module.exports = {
   addLogin: function(req, res){
     var pg = require('pg');
 
-    var client = new pg.Client(loginConString+"login_db");
+    var client = new pg.Client(loginConString);
 
     client.connect(function(err,client) {
       if(err){
