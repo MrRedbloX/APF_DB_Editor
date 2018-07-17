@@ -535,8 +535,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       obj[$scope.attributes[z].column_name] = temp;
       $scope.references.push(obj);
     }
-    for(let i=0; i<$scope.references.length; i++)
-      console.log($scope.references[i]["id_ressource"]);
+    for(ref in $scope.references["id_ressource"])
+      console.log(ref);
   }
 
   //Check if an attribute is a foreign key
