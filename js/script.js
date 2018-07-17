@@ -1146,7 +1146,7 @@ app.controller('loginController', function($scope){
     }
   }
 
-  $scope.isLoggedIn(){
+  $scope.isLoggedOn(){
     ret = false;
 
     return ret;
