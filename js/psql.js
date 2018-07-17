@@ -297,7 +297,7 @@ module.exports = {
       }
       else{
         console.log("Connection successful");
-        client.query("SELECT id FROM login_table ORDER BY datname;" ,function(err,result) {
+        client.query("SELECT id FROM login_table WHERE md5 = "+req.query.md5+";" ,function(err,result) {
           client.end(); // closing the connection;
           if(err){
              console.log(err);
