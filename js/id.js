@@ -30,7 +30,6 @@ function iden() {
 
 }
 
-
 function clear_cache(){
   localStorage['myKey'] = '0';
   var ok = localStorage['myKey'];
