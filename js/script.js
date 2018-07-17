@@ -301,12 +301,12 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     for(let i=0; i<$scope.elementsNameToSet.length; i++){
       if($scope.elementsNameToSet[i][id] != null){
         console.log("YES");
-        postgresScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
-          if(postgresScope.successRequest){
-            document.getElementById(id).text = postgresScope.successRequest.data[0][$scope.elementsNameToSet[i][id].select];
+        postgresqlScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
+          if(postgresqlScope.successRequest){
+            document.getElementById(id).text = postgresqlScope.successRequest.data[0][$scope.elementsNameToSet[i][id].select];
           }
           else{
-            console.log(postgresScope.queryRequest);
+            console.log(postgresqlScope.queryRequest);
             alert("Error on query request, check console logs.");
           }
         });
