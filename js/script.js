@@ -1182,7 +1182,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   $scope.check_login = function(md5) {
     var ret = false;
-    var ret1 = postgresScope.getIdFromMD5(md5, function(){
+    ret = postgresScope.getIdFromMD5(md5, function(){
       var ret = false;
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
@@ -1198,7 +1198,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
       console.log("ret : " + ret);
       return ret;
     });
-    console.log("retour " + ret1);
+    console.log("retour " + ret);
     return ret;
 
   }
