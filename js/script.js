@@ -381,7 +381,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       name : postgresScope.columnConstraint.data[i].column_name,
                       values : temp
                     });
-                    //columnsDisplayScope.setToolTips();
+                    columnsDisplayScope.setToolTips();
                     //columnsDisplayScope.setNameForReferences();
                   }
                   else{
@@ -390,7 +390,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                 });
               }
-              columnsDisplayScope.setToolTips();
             }
             else{
               console.log(postgresScope.columnConstraint);
