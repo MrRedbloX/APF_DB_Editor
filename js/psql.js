@@ -307,7 +307,7 @@ module.exports = {
         });
       }
     });
-  }
+  },
 
   addLogin: function(req, res){
     var pg = require('pg');
@@ -332,5 +332,4 @@ module.exports = {
       }
     });
   }
-
 };
