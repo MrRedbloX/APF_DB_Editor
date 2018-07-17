@@ -1121,7 +1121,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   }
 });
 
-app.controller('loginController', function($scope){
+app.controller('loginController', function($scope, postgresqlFactory){
   var id_ok = "63e780c3f321d13109c71bf81805476e";
 
   $scope.verif_cook = function(){
@@ -1174,13 +1174,8 @@ app.controller('loginController', function($scope){
 
     return ret;
   }
-});
 
-app.controller('signupController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
-
-
-  var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
 
   $scope.check_login = function(md5) {
     var ret = false;
@@ -1201,4 +1196,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
     });
     return ret;
   }
+});
+
+app.controller('signupController', function($scope, postgresqlFactory){
+
 });
