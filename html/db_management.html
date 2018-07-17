@@ -51,7 +51,7 @@
             <div ng-if="checkIfIsReference(att.column_name)" class="spaceBetweenAtt">
               <label>{{att.column_name}} : </label>
               <select id="{{att.column_name}}" class="form-control">
-                <option id="a{{att.column_name}}{{ref}}" ng-repeat="ref in references[$index][att] track by $index" value="{{ref.id}}" title="{{setIdForToolTips(ref.id,att.column_name)}}">{{ref}}</option>
+                <option id="a{{att.column_name}}{{ref}}" ng-repeat="ref in references[$index][att.column_name] track by $index" value="{{ref.id}}" title="{{setIdForToolTips(ref.id,att.column_name)}}">{{ref.name}}</option>
               </select>
               <i style="font-size: small">{{att.data_type}}</i>
             </div>
