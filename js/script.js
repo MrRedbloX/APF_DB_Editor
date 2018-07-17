@@ -1194,6 +1194,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
         alert("Error on getIdFromMD5 request, check console logs.");
         ret = false;
       }
+      console.log("ret : " + ret);
       return ret;
     });
     console.log("retour " + ret);
