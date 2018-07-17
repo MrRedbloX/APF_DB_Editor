@@ -1184,7 +1184,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           $scope.id_exist = true;
-          console.log("existe : " + $scope.id_exist);
+          console.log("existe1 : " + $scope.id_exist);
         }
         else {
           $scope.id_exist = false;
@@ -1194,6 +1194,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
         console.log(postgresScope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
       }
+      console.log("existe2 : " + $scope.id_exist);
     });
     console.log("existe : " + $scope.id_exist);
     return false;
