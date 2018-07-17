@@ -1156,13 +1156,3 @@ app.controller('loginController', function($scope){
     return ret;
   }
 });
-
-app.controller('signupController', function($scope){
-  var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
-
-  $scope.getDBName_id = function() {
-
-  }
-
-
-});
