@@ -274,7 +274,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       listTD[i].title = "";
   }
 
-  $scope.setNameForReferences = function(fk_column_name, pk){
+  $scope.setNameForReferences = function(fk_column_name, pk, theName){
     for(let i=0; i<$scope.tuples.length; i++){
       for(let j=0; j<$scope.tuples[i].values.length){
         str = fk_column_name+JSON.stringify($scope.tuples[i].values)+($scope.tuples[i].values[j];
