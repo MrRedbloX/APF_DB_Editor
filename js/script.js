@@ -785,23 +785,6 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
     return ret;
   };
 
-  $scope.getReferences = function(att, val){
-
-    if(currentTableSelected != null){
-      $scope.references.splice(0, $scope.references.length);
-      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        if(att === postgresqlScope.valuesOfConstraint[i].name){
-          for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
-            if(postgresqlScope.valuesOfConstraint[i].values[j].id != val)
-              $scope.references.push(postgresqlScope.valuesOfConstraint[i].values[j].id);
-          }
-          break;
-        }
-      }
-    }
-    return $scope.references;
-  };
-
   $scope.setIdForToolTips = function(val, column){
     ret = "";
     let theID = "m"+column+val;
