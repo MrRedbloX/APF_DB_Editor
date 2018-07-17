@@ -392,7 +392,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                         name : theName,
                         records : postgresScope.valuesOf.data[j]
                       });
-                      //columnsDisplayScope.setNameForReferences(postgresScope.columnConstraint.data[i].column_name, postgresScope.columnConstraint.data[i].foreign_column_name, theName, db, table);
+                      columnsDisplayScope.setNameForReferences(postgresScope.columnConstraint.data[i].column_name, postgresScope.columnConstraint.data[i].foreign_column_name, theName, db, table);
                     }
                     postgresScope.valuesOfConstraint.push({
                       name : postgresScope.columnConstraint.data[i].column_name,
