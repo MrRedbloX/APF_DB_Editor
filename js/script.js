@@ -279,14 +279,15 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     id = column_name+";"+JSON.stringify(tuple)+";"+val;
     $scope.elementIdToSet.push({
       id : id,
-      column : column_name
+      column : column_name,
+      set : false
     });
   };
 
   $scope.setNameWithId = function(){
     for(let i=0; i<$scope.elementIdToSet.length; i++){
       for(let j=0; j<postgresqlScope.valuesOfConstraint.length; j++){
-        if($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name){
+        if(($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name) && $scope.elementIdToSet[i].column == false){
           console.log($scope.elementIdToSet[i].id);
         }
       }
