@@ -384,9 +384,11 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   if(postgresScope.successRequest){
                     for(let j=0; j<postgresScope.valuesOf.data.length; j++){
                       let theName = null;
+                      let queryName = null;
                       for(let k=0; k<displayName.length; k++){
                         if(postgresScope.valuesOf.data[j][displayName[k]] != null){
                           theName = postgresScope.valuesOf.data[j][displayName[k]];
+                          queryName = displayName[k];
                           break;
                         }
                       }
