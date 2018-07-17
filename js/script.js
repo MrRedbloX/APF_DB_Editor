@@ -554,30 +554,6 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     return ret;
   };
 
-  //Return all the value contains in the reference table
-  $scope.getReferences = function(att){
-    $scope.references.splice(0, $scope.references.length);
-    if(currentTableSelected != null){
-      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        if(att === postgresqlScope.valuesOfConstraint[i].name){
-          for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
-            if(postgresqlScope.valuesOfConstraint[i].values[j].name != null)
-              theName = postgresqlScope.valuesOfConstraint[i].values[j].name;
-            else
-              theName = postgresqlScope.valuesOfConstraint[i].values[j].id;
-
-            $scope.references.push({
-              id : postgresqlScope.valuesOfConstraint[i].values[j].id,
-              name : theName
-            });
-          }
-          break;
-        }
-      }
-    }
-    return $scope.references;
-  };
-
   //When we want to save a new tuple
   $scope.saveRecord = function(){
 
