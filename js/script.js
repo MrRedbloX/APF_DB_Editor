@@ -1156,16 +1156,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     var result = MD5(userpass);
 
     $scope.check_login(result, rm);
-    /*if(result == id_ok){
-      if(rm.checked == true){
-        document.cookie =result;
-      }
-      window.location="/";
-      localStorage['apf_project_db_editor_login'] = '1';
-    }
-    else{
-      alert("incorrect password");
-    }*/
+
 
   }
 
@@ -1192,7 +1183,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   var postgresScope = postgresqlFactory.getScope();
 
-  $scope.check_login = function(md5) {
+  $scope.check_login = function(md5, rm) {
     postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
@@ -1207,8 +1198,17 @@ app.controller('loginController', function($scope, postgresqlFactory){
         alert("Error on getIdFromMD5 request, check console logs.");
       }
       console.log($scope.id_exist);
+      if($scope.id_exist == true){
+        if(rm.checked == true){
+          document.cookie =result;
+        }
+        window.location="/";
+        localStorage['apf_project_db_editor_login'] = '1';
+      }
+      else{
+        alert("incorrect password");
+      }
     });
-
   }
 });
 
