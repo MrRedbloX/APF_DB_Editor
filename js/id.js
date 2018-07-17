@@ -1,22 +1,5 @@
 var id_ok = "63e780c3f321d13109c71bf81805476e";
 
-<?php
-  function ex(){
-    $host        = "host = 10.237.169.202";
-    $port        = "port = 5432";
-    $dbname      = "";
-    $credentials = "user = postgres password=postgres";
-
-    $db = pg_connect( "$host $port $dbname $credentials"  );
-    if(!$db) {
-       echo "Error : Unable to open database\n";
-    } else {
-       echo "Opened database successfully\n";
-    }
-  }
-?>
-
-
 function verif_cook(){
   if(document.cookie == id_ok){
     window.location="index.html";
