@@ -1150,7 +1150,11 @@ app.controller('loginController', function($scope){
     ret = false;
     if(localStorage['apf_project_db_editor_login'] == 1)
       ret = true;
-      
+
     return ret;
   }
+});
+
+app.controller('signupController', function($scope){
+
 });
