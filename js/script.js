@@ -367,6 +367,13 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
               for(let i=0;i<postgresScope.columnValues.data.length;i++){
                 temp = [];
                 for(let j=0;j<columnsDisplayScope.columns.length;j++){
+                  let theName = null;
+                  for(let k=0; k<displayName.length; k++){
+                    if(postgresScope.columnValues.data[i][displayName[k]] != null){
+                      theName = postgresScope.valuesOf.data[j][displayName[k]];
+                      break;
+                    }
+                  }
                   temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
                 }
                 columnsDisplayScope.tuples.push({
