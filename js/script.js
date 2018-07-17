@@ -295,7 +295,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     console.log($scope.elementsNameToSet);
   };
 
-  $scope.setName = function(id){
+  $scope.setName = function(column_name, tuple, val){
+    id = column_name+";"+JSON.stringify(tuple)+";"+val;
     for(let i=0; i<$scope.elementsNameToSet.length; i++){
       if($scope.elementsNameToSet[i][id] != null){
         postgresScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
