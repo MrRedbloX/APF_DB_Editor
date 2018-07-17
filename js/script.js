@@ -213,6 +213,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
   $scope.row_ids = [];
+  $scope.elementsNameToSet = [];
 
   //Check if an attribute is a foreign key
   $scope.checkIfIsReference = function(att){
@@ -282,6 +283,10 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         if(document.getElementById(str) != null) console.log("YES");
         postgresqlScope.query(db, table, theName, pk, $scope.tuples[i].values[j], function(){
           if(postgresqlScope.successRequest){
+            $scope.elementsNameToSet.push({
+              eltId : str,
+              name : postgresqlScope.queryRequest[0][theName]
+            });
             console.log(postgresqlScope.queryRequest);
           }
           else{
@@ -291,6 +296,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         });
       }
     }
+    console.log($scope.elementsNameToSet);
   };
 
   angular.element(document).ready(function(){
