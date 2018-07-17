@@ -1193,7 +1193,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
         alert("Error on getIdFromMD5 request, check console logs.");
       }
     });
-    console.log("retour" + ret);
+    console.log("retour " + ret);
     return ret;
   }
 });
