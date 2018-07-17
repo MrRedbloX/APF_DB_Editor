@@ -42,5 +42,4 @@ function verifco(){
   if(ok != 1){
     window.location="/login";
   }
-  console.log("test : " + ok);
 }
