@@ -77,7 +77,7 @@ app.config(function($routeProvider) {
         templateUrl : "html/help.html"
     })
     .when("/login", {
-        templateUrl : "html/help.html"
+        templateUrl : "html/login.html"
     })
     .otherwise({
         redirectTo: '/'
