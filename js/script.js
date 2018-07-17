@@ -345,6 +345,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   column_names : columnsDisplayScope.columns,
                   values : temp
                 });
+                console.log(columnsDisplayScope.columns);
               }
             }
             else{
