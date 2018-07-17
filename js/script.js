@@ -1205,6 +1205,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           id_exist =  true;
+          console.log("entre");
         }
         else {
           id_exist = false;
