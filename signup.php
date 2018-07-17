@@ -37,6 +37,19 @@
          echo "Opened database successfully";
       }
     }
+
+    function ecriture(){
+      $conn = new PDO('pgsql:host=10.237.169.202;port=5432', 'postgres', 'postgres');
+      $sql = "INSERT INTO test VALUES ('bretagne', '1999-01-26')";
+      $result = $conn->prepare($sql);
+      $result->execute();
+
+      if($result){
+        echo "ok";
+      }
+      else{echo "erreur";}
+      $connexion=null;
+    }
   ?>
 
 </head>
