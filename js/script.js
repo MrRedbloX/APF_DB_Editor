@@ -288,7 +288,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           condValue : $scope.tuples[i].values[j],
           eltId : str
         };
-        if($scope.elementsNameToSet.indexOf(obj) > -1) $scope.elementsNameToSet.push(obj);
+        /*if($scope.elementsNameToSet.indexOf(obj) > -1)*/ $scope.elementsNameToSet.push(obj);
       }
     }
     console.log($scope.elementsNameToSet);
