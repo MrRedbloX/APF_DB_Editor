@@ -376,7 +376,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                   temp.push({
                     id : postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)],
-                    name : theName
+                    name : "test"
                   });
                 }
                 columnsDisplayScope.tuples.push({
