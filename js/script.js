@@ -381,8 +381,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       name : postgresScope.columnConstraint.data[i].column_name,
                       values : temp
                     });
-                    columnsDisplayScope.setToolTips();
-                    columnsDisplayScope.setNameForReferences();
+                    //columnsDisplayScope.setToolTips();
+                    //columnsDisplayScope.setNameForReferences();
                   }
                   else{
                     console.log(postgresScope.valuesOf);
@@ -390,6 +390,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                 });
               }
+              columnsDisplayScope.setToolTips();
             }
             else{
               console.log(postgresScope.columnConstraint);
@@ -1205,7 +1206,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           id_exist =  true;
-          console.log("entre");
         }
         else {
           id_exist = false;
