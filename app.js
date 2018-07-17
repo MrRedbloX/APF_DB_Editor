@@ -44,6 +44,12 @@ app.get('/db/delRecord', function(req,res){
 app.get('/db/query', function(req,res){
     dbOperations.query(req,res);
 });
+app.get('/db/getIdFromMD5', function(req,res){
+    dbOperations.getIdFromMD5(req,res);
+});
+app.get('/db/addLogin', function(req,res){
+    dbOperations.addLogin(req,res);
+});
 
 app.set('port', process.env.PORT || 3001);
 app.use(express.static(__dirname));
