@@ -279,7 +279,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     //console.log($scope.tuples);
     for(let i=0; i<$scope.tuples.length; i++){
       for(let j=0; j<$scope.tuples[i].values.length; j++){
-        str = fk_column_name+JSON.stringify($scope.tuples[i].values)+$scope.tuples[i].values[j];
+        str = fk_column_name+";"+JSON.stringify($scope.tuples[i].values)+";"+$scope.tuples[i].values[j];
         obj = {};
         obj[str] = {
           db : db,
