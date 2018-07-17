@@ -300,11 +300,12 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     id = column_name+";"+JSON.stringify(tuple)+";"+val;
     console.log(id);
     for(let i=0; i<$scope.elementsNameToSet.length; i++){
-      if($scope.elementsNameToSet[i][id] != null){
+      if($scope.elementsNameToSet[i][id] != null && !$scope.elementsNameToSet[i][id].set){
         console.log("YES");
         postgresqlScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
           if(postgresqlScope.successRequest){
             document.getElementById(id).text = postgresqlScope.successRequest.data[0][$scope.elementsNameToSet[i][id].select];
+            $scope.elementsNameToSet[i][id].set = true;
           }
           else{
             console.log(postgresqlScope.queryRequest);
