@@ -1021,6 +1021,24 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
         if(callback) callback();
     });
   };
+
+  $scope.getIdFromMD5 = function(md5,callback){
+    $http({
+      method: 'GET',
+      url: '/db/getIdFromMD5?md5='+md5
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.queryLogin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.queryLogin = data;
+        if(callback) callback();
+    });
+  };
 });
 
 app.controller('relationsAreaController', function($scope, postgresqlFactory, columnsDisplayFactory, treeDatabaseAreaFactory){
