@@ -671,7 +671,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
     for(let z=0; z<$scope.attributes.length; z++){
       let temp = [];
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        if($scope.attributes[z].column_name == postgresqlScope.valuesOfConstraint[i].name){
+        if($scope.attributes[z].name.column_name == postgresqlScope.valuesOfConstraint[i].name){
           for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
             if(postgresqlScope.valuesOfConstraint[i].values[j].name != null)
               theName = postgresqlScope.valuesOfConstraint[i].values[j].name;
@@ -686,7 +686,7 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
         }
       }
       let obj = {};
-      obj[$scope.attributes[z].column_name] = temp;
+      obj[$scope.attributes[z].name.column_name] = temp;
       $scope.references.push(obj);
     }
   }
