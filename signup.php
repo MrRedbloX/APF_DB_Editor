@@ -19,7 +19,7 @@
   <script>
     function sqlfun(){
       var x="<?php ex(); ?>";
-      alert(x);
+      alert("uhu" + x);
     }
   </script>
   <?php
