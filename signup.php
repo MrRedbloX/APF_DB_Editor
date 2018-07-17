@@ -18,10 +18,10 @@
   <script src="js/id.js"></script>
   <script>
     function sqlfun(){
-      var x="<?php ex(); ?>";
-      alert("uhu" + x);
+      
     }
   </script>
+
   <?php
     function ex(){
       $host        = "host = 10.237.169.202";
