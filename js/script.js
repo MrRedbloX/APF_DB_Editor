@@ -1199,7 +1199,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
           $scope.id_exist =  true;
         }
         else {
-          $scope.id_exist =  false;
+          $scope.id_exist =  false; 
         }
       }
       else {
