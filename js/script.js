@@ -287,7 +287,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   $scope.setNameWithId = function(){
     for(let i=0; i<$scope.elementIdToSet.length; i++){
       for(let j=0; j<postgresqlScope.valuesOfConstraint.length; j++){
-        if(($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name) && $scope.elementIdToSet[i].column == false){
+        if(($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name) && $scope.elementIdToSet[i].set == false){
+          $scope.elementIdToSet[i].set = true;
           console.log($scope.elementIdToSet[i].id);
         }
       }
