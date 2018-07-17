@@ -345,7 +345,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   column_names : columnsDisplayScope.columns,
                   values : temp
                 });
-                console.log(columnsDisplayScope.columns);
               }
             }
             else{
@@ -1143,7 +1142,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     var result = MD5(userpass);
 
     var id_exist = $scope.check_login(result);
-    console.log("id_exist : " + id_exist );
+    console.log("id_exist : " + id_exist);
     /*if(result == id_ok){
       if(rm.checked == true){
         document.cookie =result;
@@ -1182,25 +1181,19 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   $scope.check_login = function(md5) {
     var ret = false;
-    ret = postgresScope.getIdFromMD5(md5, function(){
-      var ret = false;
+    postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           ret = true;
-          console.log("existe");
         }
+
       }
       else {
         console.log(postgresScope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
-        ret = false;
       }
-      console.log("ret : " + ret);
-      return ret;
     });
-    console.log("retour " + ret);
     return ret;
-
   }
 });
 
