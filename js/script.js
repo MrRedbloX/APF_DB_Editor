@@ -392,7 +392,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                         name : theName,
                         records : postgresScope.valuesOf.data[j]
                       });
-                      columnsDisplayScope.setNameForReferences(postgresScope.columnConstraint.data[i].column_name, postgresScope.columnConstraint.data[i].foreign_column_name, theName, db, table);
+                      //columnsDisplayScope.setNameForReferences(postgresScope.columnConstraint.data[i].column_name, postgresScope.columnConstraint.data[i].foreign_column_name, theName, db, table);
                     }
                     postgresScope.valuesOfConstraint.push({
                       name : postgresScope.columnConstraint.data[i].column_name,
@@ -1179,12 +1179,12 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   $scope.clear_cache = function(){
     localStorage['apf_project_db_editor_login'] = '0';
-    var ok = localStorage['apf_project_db_editor_login'];
+    document.cookie = '';
     window.location="#!/login"
   }
 
   $scope.verifco = function(){
-    var ok = localStorage['apf_project_db_editor_login']
+    var ok = localStorage['apf_project_db_editor_login'];
     if(ok != 1){
       window.location="#!/login";
     }
