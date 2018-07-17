@@ -294,7 +294,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     }
   };
 
-  $scope.$on('$viewContentLoaded', function(){
+  angular.element(document).ready(function(){
     console.log("Table fully loaded");
   });
 });
