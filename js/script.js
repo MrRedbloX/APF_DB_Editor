@@ -282,27 +282,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   };
 
-  $scope.setNameWithId = function(){
-    console.log("ok");
-    for(let j=0; j<$scope.elementIdToSet.length; j++){
-      for(let i=0; i<$scope.elementsNameToSet.length; i++){
-        if($scope.elementsNameToSet[i][$scope.elementIdToSet[i]] != null && $scope.elementsNameToSet[i][$scope.elementIdToSet[i]].set == false){
-          postgresqlScope.query($scope.elementsNameToSet[i][$scope.elementIdToSet[i]].db, $scope.elementsNameToSet[i][$scope.elementIdToSet[i]].foreign_table, $scope.elementsNameToSet[i][$scope.elementIdToSet[i]].select, $scope.elementsNameToSet[i][$scope.elementIdToSet[i]].condAtt, $scope.elementsNameToSet[i][$scope.elementIdToSet[i]].condValue, function(){
-            if(postgresqlScope.successRequest){
-              document.getElementById($scope.elementIdToSet[i]).value = postgresqlScope.successRequest[0][$scope.elementsNameToSet[i][$scope.elementIdToSet[i]].select];
-              $scope.elementsNameToSet[i][$scope.elementIdToSet[i]].set = true;
-              console.log(document.getElementById($scope.elementIdToSet[i]).value);
-            }
-            else{
-              console.log(postgresqlScope.queryRequest);
-              alert("Error on query request, check console logs.");
-            }
-          });
-        }
-      }
-    }
-  }
-
   /*angular.element(document).ready(function(){
     console.log("Table fully loaded");
   });*/
@@ -337,7 +316,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
     rowSelected = null;
     columnsDisplayScope.row_ids = [];
-    columnsDisplayScope.elementsNameToSet = [];
     columnsDisplayScope.elementIdToSet = [];
     columnsDisplayScope.clearTooltips();
 
