@@ -18,7 +18,7 @@
   <script src="js/id.js"></script>
   <script>
     function sqlfun(){
-      var x="e";
+      var x= <?php echo $simple; ?> ;
       alert("uhu");
     }
   </script>
