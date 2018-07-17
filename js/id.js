@@ -34,7 +34,7 @@ function iden() {
 }
 
 sqlfun(){
-  var x="<?php ex(); ?>";
+  
 }
 
 function clear_cache(){
