@@ -1162,7 +1162,7 @@ app.controller('loginController', function($scope){
 app.controller('signupController', function($scope){
   var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
 
-  function getDBName(req, res) {
+  function getDBName() {
     var pg = require('pg');
 
     var client = new pg.Client(conString+"test");
