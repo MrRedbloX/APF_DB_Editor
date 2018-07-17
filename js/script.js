@@ -1039,6 +1039,24 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
         if(callback) callback();
     });
   };
+
+  $scope.addLogin = function(id,md5,email,callback){
+    $http({
+      method: 'GET',
+      url: '/db/addLogin?id='+md5+"&md5="+md5+"&email="+email
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.queryLogin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.queryLogin = data;
+        if(callback) callback();
+    });
+  };
 });
 
 app.controller('relationsAreaController', function($scope, postgresqlFactory, columnsDisplayFactory, treeDatabaseAreaFactory){
