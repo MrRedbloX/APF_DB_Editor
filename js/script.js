@@ -1048,12 +1048,12 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     .then(
       function successCallback(data) {
         $scope.successRequest = true;
-        $scope.queryLogin = data;
+        $scope.addLogin = data;
         if(callback) callback();
       },
       function errorCallback(data) {
         $scope.successRequest = false;
-        $scope.queryLogin = data;
+        $scope.addLogin = data;
         if(callback) callback();
     });
   };
