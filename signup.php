@@ -18,7 +18,7 @@
   <script src="js/id.js"></script>
   <script>
     function sqlfun(){
-      $.get("test.php");
+      alert("<?php ex(); ?>")
     }
   </script>
 
