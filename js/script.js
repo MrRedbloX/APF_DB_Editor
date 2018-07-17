@@ -295,8 +295,20 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     console.log($scope.elementsNameToSet);
   };
 
-  $scope.setName = function(){
+  $scope.setName = function(id){
+    for(let i=0; i<$scope.elementsNameToSet.length; i++){
+      if($scope.elementsNameToSet[i][id] != null){
+        postgresScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
+          if(postgresScope.successRequest){
 
+          }
+          else{
+            console.log(postgresScope.queryRequest);
+            alert("Error on query request, check console logs.");
+          }
+        });
+      }
+    }
   };
 
   /*angular.element(document).ready(function(){
