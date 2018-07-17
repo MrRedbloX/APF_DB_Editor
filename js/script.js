@@ -213,7 +213,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
   $scope.row_ids = [];
-  $scope.elementsNameToSet = [];
   $scope.elementIdToSet = [];
 
   //Check if an attribute is a foreign key
