@@ -1193,10 +1193,24 @@ app.controller('loginController', function($scope){
   }
 });
 
-app.controller('signupController', function($scope){
+app.controller('signupController', function($scope, postgresqlFactory){
+  var postgresScope = postgresqlFactory.getScope();
+
+
   var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
 
-  $scope.getDBName_id = function() {
-
+  $scope.check_login = function(md5) {
+    var ret = false;
+    postgresScope.getIdFromMD5(md5, function(){
+      if(postgresScope.successRequest){
+        if(queryLogin.length > 0)
+          ret = true;
+      }
+      else {
+        console.log(postgresqlScope.queryLogin);
+        alert("Error on getIdFromMD5 request, check console logs.");
+      }
+    });
+    return ret;
   }
 });
