@@ -16,6 +16,12 @@
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
   <script src="js/id.js"></script>
+  <script>
+    function sqlfun(){
+      var x="<?php ex(); ?>";
+      alert(x);
+    }
+  </script>
   <?php
     function ex(){
       $host        = "host = 10.237.169.202";
@@ -29,7 +35,7 @@
       } else {
          echo "Opened database successfully\n";
       }
-    } 
+    }
   ?>
 
 </head>
