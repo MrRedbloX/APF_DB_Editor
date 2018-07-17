@@ -1,10 +1,11 @@
-var conString = "postgres://postgres:postgres@10.237.169.132:5432/";
+var mainConString = "postgres://postgres:postgres@10.237.169.132:5432/";
+var loginConString = "postgres://postgres:postgres@10.237.169.202:5432/";
 
 module.exports = {
   getDBName: function(req, res) {
         var pg = require('pg');
 
-        var client = new pg.Client(conString+"postgres");
+        var client = new pg.Client(mainConString+"postgres");
 
         client.connect(function(err,client) {
           if(err){
@@ -27,7 +28,7 @@ module.exports = {
 
   getTableName: function(req, res) {
         var pg = require('pg');
-        var client = new pg.Client(conString+req.query.db);
+        var client = new pg.Client(mainConString+req.query.db);
 
         client.connect(function(err,client) {
           if(err){
@@ -50,7 +51,7 @@ module.exports = {
 
   getColumnName: function(req, res) {
         var pg = require('pg');
-        var client = new pg.Client(conString+req.query.db);
+        var client = new pg.Client(mainConString+req.query.db);
 
         client.connect(function(err,client) {
           if(err){
@@ -73,7 +74,7 @@ module.exports = {
 
   getColumnConstraint: function(req, res) {
         var pg = require('pg');
-        var client = new pg.Client(conString+req.query.db);
+        var client = new pg.Client(mainConString+req.query.db);
 
         client.connect(function(err,client) {
           if(err){
@@ -96,7 +97,7 @@ module.exports = {
 
   getAllValues: function(req, res) {
         var pg = require('pg');
-        var client = new pg.Client(conString+req.query.db);
+        var client = new pg.Client(mainConString+req.query.db);
 
         client.connect(function(err,client) {
           if(err){
@@ -119,7 +120,7 @@ module.exports = {
 
   getValuesOf: function(req, res) {
       var pg = require('pg');
-      var client = new pg.Client(conString+req.query.db);
+      var client = new pg.Client(mainConString+req.query.db);
 
       client.connect(function(err,client) {
         if(err){
@@ -142,7 +143,7 @@ module.exports = {
 
   addRecord: function(req, res) {
       var pg = require('pg');
-      var client = new pg.Client(conString+req.query.db);
+      var client = new pg.Client(mainConString+req.query.db);
 
       client.connect(function(err,client) {
         if(err){
@@ -179,7 +180,7 @@ module.exports = {
 
   modifyRecord: function(req, res) {
       var pg = require('pg');
-      var client = new pg.Client(conString+req.query.db);
+      var client = new pg.Client(mainConString+req.query.db);
 
       client.connect(function(err,client) {
         if(err){
@@ -216,7 +217,7 @@ module.exports = {
 
   getPrimaryKey: function(req, res) {
       var pg = require('pg');
-      var client = new pg.Client(conString+req.query.db);
+      var client = new pg.Client(mainConString+req.query.db);
 
       client.connect(function(err,client) {
         if(err){
@@ -239,7 +240,7 @@ module.exports = {
 
   delRecord: function(req, res) {
       var pg = require('pg');
-      var client = new pg.Client(conString+req.query.db);
+      var client = new pg.Client(mainConString+req.query.db);
 
       client.connect(function(err,client) {
         if(err){
@@ -263,7 +264,7 @@ module.exports = {
 
   query: function(req, res) {
       var pg = require('pg');
-      var client = new pg.Client(conString+req.query.db);
+      var client = new pg.Client(mainConString+req.query.db);
 
       client.connect(function(err,client) {
         if(err){
@@ -283,5 +284,7 @@ module.exports = {
         }
       });
   },
+
+
 
 };
