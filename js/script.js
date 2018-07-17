@@ -1143,7 +1143,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
     check_login(result);
 
-    if(result == id_ok){
+    /*if(result == id_ok){
       if(rm.checked == true){
         document.cookie =result;
       }
@@ -1152,7 +1152,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     }
     else{
       alert("incorrect password");
-    }
+    }*/
 
   }
 
