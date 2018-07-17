@@ -292,7 +292,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         $scope.elementsNameToSet.push(obj);
       }
     }
-    console.log($scope.elementsNameToSet);
+    //console.log($scope.elementsNameToSet);
   };
 
   $scope.setName = function(column_name, tuple, val){
