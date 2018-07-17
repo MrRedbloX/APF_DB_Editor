@@ -34,13 +34,12 @@ function iden() {
 function clear_cache(){
   localStorage['myKey'] = '0';
   var ok = localStorage['myKey'];
-  window.location="/login.html"
+  window.location="/login"
 }
 
 function verifco(){
   var ok = localStorage['myKey']
   if(ok != 1){
-    window.location="/login.html";
+    window.location="/login";
   }
-  console.log("test : " + ok);
 }
