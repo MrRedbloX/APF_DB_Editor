@@ -73,8 +73,7 @@
             <div ng-if="checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
               <label>{{att.name.column_name}} :</label>
               <select id="{{att.name.column_name}}" class="form-control">
-                <option id="m{{att.name.column_name}}{{att.value}}" value="{{att.value}}" selected="selected" title="{{setIdForToolTips(att.value,att.name.column_name)}}">{{att.value}}</option>
-                <option id="m{{att.name.column_name}}{{ref}}" ng-repeat="ref in getReferences(att.name.column_name,att.value) track by $index" value="{{ref}}" title="{{setIdForToolTips(ref,att.name.column_name)}}">{{ref}}</option>
+                <option id="m{{att.name.column_name}}{{ref.id}}" ng-repeat="ref in references[$index][att.column_name] track by $index" value="{{ref}}" title="{{setIdForToolTips(ref,att.name.column_name)}}">{{ref}}</option>
               </select>
               <i style="font-size: small">{{att.data_type}}</i>
             </div>
