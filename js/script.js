@@ -285,7 +285,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           if(postgresqlScope.successRequest){
             $scope.elementsNameToSet.push({
               eltId : str,
-              name : postgresqlScope.queryRequest[0][theName]
+              name : postgresqlScope.queryRequest.data[0][theName]
             });
             console.log(postgresqlScope.queryRequest);
           }
