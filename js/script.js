@@ -283,6 +283,16 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     });
   };
 
+  $scope.setNameWithId = function(){
+    for(let i=0; i<elementIdToSet.length; i++){
+      for(let j=0; j<postgresScope.valuesOfConstraint.length; j++){
+        if(elementIdToSet[i].column == postgresScope.valuesOfConstraint[j].name){
+          console.log(elementIdToSet[i].id);
+        }
+      }
+    }
+  }
+
 
   /*angular.element(document).ready(function(){
     console.log("Table fully loaded");
