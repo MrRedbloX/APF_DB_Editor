@@ -280,7 +280,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     $scope.elementIdToSet.push({
       id : id,
       column : column_name,
-      set : false
+      set : false,
+      value : val
     });
   };
 
@@ -291,6 +292,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           $scope.elementIdToSet[i].set = true;
           console.log($scope.elementIdToSet[i].id);
           document.getElementById($scope.elementIdToSet[i].id).innerHTML = "test";
+          postgresScope.query("catalogue", $scope.elementIdToSet[i].)
         }
       }
     }
@@ -408,6 +410,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       temp.push({
                         id : postgresScope.valuesOf.data[j][postgresScope.columnConstraint.data[i].foreign_column_name],
                         name : theName,
+                        table : postgresScope.columnConstraint.data[i].foreign_table_name,
                         records : postgresScope.valuesOf.data[j]
                       });
                     }
