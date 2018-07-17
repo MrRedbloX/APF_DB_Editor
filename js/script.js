@@ -1145,4 +1145,10 @@ app.controller('loginController', function($scope){
       window.location="#!/login";
     }
   }
+
+  $scope.isLoggedIn(){
+    ret = false;
+
+    return ret;
+  }
 });
