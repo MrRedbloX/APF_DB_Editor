@@ -18,7 +18,8 @@
   <script src="js/id.js"></script>
   <script>
     function sqlfun(){
-      alert('<?php ex(); ?>');
+      var x = "<?php ex(); ?>";
+      alert('test' + x);
     }
   </script>
 
