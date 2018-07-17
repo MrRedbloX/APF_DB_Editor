@@ -18,7 +18,7 @@
   <script src="js/id.js"></script>
   <script>
     function sqlfun(){
-      $.get("test.php")
+      $.get("test.php");
     }
   </script>
 
