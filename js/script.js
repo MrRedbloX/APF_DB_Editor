@@ -304,6 +304,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setNameWithId = function(){
+    console.log("ok");
     for(let j=0; j<$scope.elementIdToSet.length; j++){
       for(let i=0; i<$scope.elementsNameToSet.length; i++){
         if($scope.elementsNameToSet[i][$scope.elementIdToSet[i]] != null && $scope.elementsNameToSet[i][$scope.elementIdToSet[i]].set == false){
