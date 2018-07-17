@@ -276,27 +276,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       listTD[i].title = "";
   }
 
-  $scope.setNameForReferences = function(fk_column_name, pk, theName, db, table){
-    //console.log($scope.tuples);
-    for(let i=0; i<$scope.tuples.length; i++){
-      for(let j=0; j<$scope.tuples[i].values.length; j++){
-        str = fk_column_name+";"+JSON.stringify($scope.tuples[i].values)+";"+$scope.tuples[i].values[j];
-        obj = {};
-        obj[str] = {
-          db : db,
-          foreign_table : table,
-          select : theName,
-          condAtt : pk,
-          condValue : $scope.tuples[i].values[j],
-          eltId : str,
-          set : false
-        };
-        $scope.elementsNameToSet.push(obj);
-      }
-    }
-    //console.log($scope.elementsNameToSet);
-  };
-
   $scope.setName = function(column_name, tuple, val){
     id = column_name+";"+JSON.stringify(tuple)+";"+val;
     $scope.elementIdToSet.push(id);
@@ -438,7 +417,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                         name : theName,
                         records : postgresScope.valuesOf.data[j]
                       });
-                      columnsDisplayScope.setNameForReferences(postgresScope.columnConstraint.data[i].column_name, postgresScope.columnConstraint.data[i].foreign_column_name, queryName, db, postgresScope.columnConstraint.data[i].foreign_table_name, postgresScope.columnConstraint.data[i].column_name);
                     }
                     postgresScope.valuesOfConstraint.push({
                       name : postgresScope.columnConstraint.data[i].column_name,
