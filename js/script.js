@@ -1214,7 +1214,11 @@ app.controller('loginController', function($scope, postgresqlFactory){
         console.log(postgresScope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
       }
+<<<<<<< HEAD
 
+=======
+      console.log($scope.id_exist);
+>>>>>>> a1fd5254419a246d77a171bac25450284b743ab3
       if($scope.id_exist == true){
         if(rm.checked == true){
           document.cookie = md5;
