@@ -377,10 +377,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       values : temp
                     });
                     columnsDisplayScope.setToolTips();
-<<<<<<< HEAD
                     //columnsDisplayScope.setNameForReferences();
-=======
->>>>>>> 500aa043128d3c4e3386656e096ff3cdaccfcbf4
                   }
                   else{
                     console.log(postgresScope.valuesOf);
