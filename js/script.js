@@ -1106,7 +1106,7 @@ app.controller('loginController', function($scope){
   $scope.verif_cook = function(){
     if(document.cookie == id_ok){
       window.location="/";
-      localStorage['myKey'] = '1';
+      localStorage['apf_project_db_editor_login'] = '1';
     }
   }
 
@@ -1125,7 +1125,7 @@ app.controller('loginController', function($scope){
         document.cookie =result;
       }
       window.location="/";
-      localStorage['myKey'] = '1';
+      localStorage['apf_project_db_editor_login'] = '1';
     }
     else{
       alert("incorrect password");
@@ -1134,13 +1134,13 @@ app.controller('loginController', function($scope){
   }
 
   $scope.clear_cache = function(){
-    localStorage['myKey'] = '0';
-    var ok = localStorage['myKey'];
+    localStorage['apf_project_db_editor_login'] = '0';
+    var ok = localStorage['apf_project_db_editor_login'];
     window.location="#!/login"
   }
 
   $scope.verifco = function(){
-    var ok = localStorage['myKey']
+    var ok = localStorage['apf_project_db_editor_login']
     if(ok != 1){
       window.location="#!/login";
     }
@@ -1148,7 +1148,9 @@ app.controller('loginController', function($scope){
 
   $scope.isLoggedOn = function(){
     ret = false;
-
+    if(localStorage['apf_project_db_editor_login'] == 1)
+      ret = true;
+      
     return ret;
   }
 });
