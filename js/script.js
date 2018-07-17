@@ -1190,7 +1190,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
           ret = true;
       }
       else {
-        console.log(postgreScope.queryLogin);
+        console.log(postgresScope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
       }
     });
