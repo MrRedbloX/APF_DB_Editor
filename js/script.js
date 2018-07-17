@@ -290,6 +290,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
         if(($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name) && $scope.elementIdToSet[i].set == false){
           $scope.elementIdToSet[i].set = true;
           console.log($scope.elementIdToSet[i].id);
+          document.getElementById($scope.elementIdToSet[i].id).innerHTML = "test";
         }
       }
     }
