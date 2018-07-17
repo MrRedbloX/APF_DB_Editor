@@ -669,6 +669,33 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   };
   $scope.references = [];
 
+  if(currentTableSelected != null){
+    for(let z=0; z<$scope.attributes.length; z++){
+      let temp = [];
+      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
+        if($scope.attributes[z].column_name == postgresqlScope.valuesOfConstraint[i].name){
+          for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
+            if(postgresqlScope.valuesOfConstraint[i].values[j].name != null)
+              theName = postgresqlScope.valuesOfConstraint[i].values[j].name;
+            else
+              theName = postgresqlScope.valuesOfConstraint[i].values[j].id;
+            temp.push( {
+              id : postgresqlScope.valuesOfConstraint[i].values[j].id,
+              name : theName
+            });
+          }
+          break;
+        }
+      }
+      let obj = {};
+      obj[$scope.attributes[z].column_name] = temp;
+      $scope.references.push(obj);
+    }
+    for(ref in $scope.references[0]["id_ressource"])
+      console.log(ref);
+  }
+
+
   $scope.saveRecord = function(){
     if(confirm("Are you sure you want to save this record ?")){
 
