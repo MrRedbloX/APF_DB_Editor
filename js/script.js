@@ -303,6 +303,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       if($scope.elementsNameToSet[i][id] != null && $scope.elementsNameToSet[i][id].set == false){
         postgresqlScope.query($scope.elementsNameToSet[i][id].db, $scope.elementsNameToSet[i][id].foreign_table, $scope.elementsNameToSet[i][id].select, $scope.elementsNameToSet[i][id].condAtt, $scope.elementsNameToSet[i][id].condValue, function(){
           if(postgresqlScope.successRequest){
+            console.log("WTF");
             document.getElementById(id).value = postgresqlScope.successRequest.data[0][$scope.elementsNameToSet[i][id].select];
             $scope.elementsNameToSet[i][id].set = true;
             console.log($scope.elementsNameToSet[i][id].set);
