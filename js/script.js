@@ -1200,7 +1200,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
       console.log($scope.id_exist);
       if($scope.id_exist == true){
         if(rm.checked == true){
-          document.cookie =result;
+          document.cookie = md5;
         }
         window.location="/";
         localStorage['apf_project_db_editor_login'] = '1';
