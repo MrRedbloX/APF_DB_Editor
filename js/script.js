@@ -413,6 +413,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       values : temp
                     });
                     columnsDisplayScope.setToolTips();
+                    columnsDisplayScope.setNameWithId();
                   }
                   else{
                     console.log(postgresScope.valuesOf);
