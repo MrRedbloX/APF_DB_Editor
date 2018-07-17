@@ -1142,7 +1142,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     var result = MD5(userpass);
 
     $scope.id_exist = $scope.check_login(result);
-    console.log("id_exist : " + id_exist);
+    console.log("id_exist : " + $scope.id_exist);
     /*if(result == id_ok){
       if(rm.checked == true){
         document.cookie =result;
