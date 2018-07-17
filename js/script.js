@@ -1181,10 +1181,10 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   $scope.check_login = function(md5) {
     var ret = false;
-    postgresScope.getIdFromMD5(md5, function(){
+    ret = postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
-          ret = true;
+          return true;
           console.log("existe");
         }
       }
@@ -1192,10 +1192,10 @@ app.controller('loginController', function($scope, postgresqlFactory){
         console.log(postgresScope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
       }
-      console.log("retour " + ret);
-      return ret;
-    });
 
+    });
+    console.log("retour " + ret);
+    return ret;
 
   }
 });
