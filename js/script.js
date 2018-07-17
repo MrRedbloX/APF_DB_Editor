@@ -1160,6 +1160,7 @@ app.controller('loginController', function($scope){
 app.controller('signupController', function($scope){
   var conString = "postgres://postgres:postgres@10.237.169.202:5432/";
 
+<<<<<<< HEAD
   module.exports = {
     getDBName: function(req, res) {
           var pg = require('pg');
@@ -1186,5 +1187,10 @@ app.controller('signupController', function($scope){
     }
 
   };
+=======
+  $scope.getDBName_id = function() {
+
+  }
+>>>>>>> 7f76adb2a72e78931b096a70d47e799cff74b007
 
 });
