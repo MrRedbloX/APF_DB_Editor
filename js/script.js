@@ -1184,15 +1184,16 @@ app.controller('loginController', function($scope, postgresqlFactory){
     ret = postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
-          return true;
+          ret = true;
           console.log("existe");
         }
       }
       else {
         console.log(postgresScope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
+        ret = false;
       }
-
+      return ret;
     });
     console.log("retour " + ret);
     return ret;
