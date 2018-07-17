@@ -20,6 +20,8 @@
     function sqlfun(){
       var x = '<?php ex(); ?>';
       alert(x);
+      var y = '<?php ecriture(); ?>';
+      alert(y);
     }
   </script>
 
