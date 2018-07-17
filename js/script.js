@@ -1183,6 +1183,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
   $scope.check_login = function(md5) {
     var ret = false;
     ret = postgresScope.getIdFromMD5(md5, function(){
+      ret = false;
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           ret = true;
