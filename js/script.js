@@ -1180,6 +1180,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
 
   $scope.check_login = function(md5) {
+    console.log("ok1");
     var ret = false;
     postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
