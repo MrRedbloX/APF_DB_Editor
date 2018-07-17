@@ -285,6 +285,28 @@ module.exports = {
       });
   },
 
+  getIdFromMD5: function(req, res){
+    var pg = require('pg');
 
+    var client = new pg.Client(loginConString+"login_db");
+
+    client.connect(function(err,client) {
+      if(err){
+       console.log("Not able to get connection : "+ err);
+       res.status(400).send(err);
+      }
+      else{
+        console.log("Connection successful");
+        client.query("SELECT id FROM login_table ORDER BY datname;" ,function(err,result) {
+          client.end(); // closing the connection;
+          if(err){
+             console.log(err);
+             res.status(400).send(err);
+          }
+          else res.status(200).send(result.rows);
+        });
+      }
+    });
+  }
 
 };
