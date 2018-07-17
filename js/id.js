@@ -2,7 +2,7 @@ var id_ok = "63e780c3f321d13109c71bf81805476e";
 
 function verif_cook(){
   if(document.cookie == id_ok){
-    window.location="index.html";
+    window.location="/";
     localStorage['myKey'] = '1';
   }
 }
@@ -21,7 +21,7 @@ function iden() {
     if(rm.checked == true){
       document.cookie =result;
     }
-    window.location="index.html";
+    window.location="/";
     localStorage['myKey'] = '1';
   }
   else{
@@ -34,13 +34,13 @@ function iden() {
 function clear_cache(){
   localStorage['myKey'] = '0';
   var ok = localStorage['myKey'];
-  window.location="login.html"
+  window.location="/login.html"
 }
 
 function verifco(){
   var ok = localStorage['myKey']
   if(ok != 1){
-    window.location="login.html";
+    window.location="/login.html";
   }
   console.log("test : " + ok);
 }
