@@ -357,6 +357,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
     rowSelected = null;
     columnsDisplayScope.row_ids = [];
+    columnsDisplayScope.elementsNameToSet = [];
+    columnsDisplayScope.elementIdToSet = [];
     columnsDisplayScope.clearTooltips();
 
     if(currentTableSelected != null){
