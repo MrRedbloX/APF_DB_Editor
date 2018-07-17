@@ -411,6 +411,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                 });
               }
+              console.log("Finish query");
             }
             else{
               console.log(postgresScope.columnConstraint);
