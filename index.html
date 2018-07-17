@@ -18,7 +18,12 @@
 </head>
 <body ng-controller="postgresqlController" onload="verifco()">
   <header class="container" ng-controller="loginController">
-    <a href="/"><img src="/css/img/logo_DBE.png" /></a>
+    <div ng-if="isLoggedOn">
+      <a href="/"><img src="/css/img/logo_DBE.png" /></a>
+    </div>
+    <div ng-if="!isLoggedOn">
+      <img src="/css/img/logo_DBE.png" />
+    </div>
     <a target="_blank" href="https://www.orange-business.com"><img src="/css/img/logo.png" class="topRight" /></a>
   </header>
   <div class="ngViewArea" ng-view></div>
