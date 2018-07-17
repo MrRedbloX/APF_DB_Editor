@@ -277,9 +277,12 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   $scope.setName = function(column_name, tuple, val){
     id = column_name+";"+JSON.stringify(tuple)+";"+val;
-    $scope.elementIdToSet.push(id);
-
+    $scope.elementIdToSet.push({
+      id : id,
+      column : column_name
+    });
   };
+
 
   /*angular.element(document).ready(function(){
     console.log("Table fully loaded");
