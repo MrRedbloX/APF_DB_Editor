@@ -297,9 +297,9 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     console.log($scope.elementsNameToSet);
   };
 
-  angular.element(document).ready(function(){
+  /*angular.element(document).ready(function(){
     console.log("Table fully loaded");
-  });
+  });*/
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
@@ -375,8 +375,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                     }
                   }
                   temp.push({
-                    id : postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)],
-                    name : theName
+                    id : postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]
                   });
                 }
                 columnsDisplayScope.tuples.push({
