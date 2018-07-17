@@ -535,7 +535,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
       obj[$scope.attributes[z].column_name] = temp;
       $scope.references.push(obj);
     }
-    for(ref in $scope.references["id_ressource"])
+    for(ref in $scope.references[0]["id_ressource"])
       console.log(ref);
   }
 
