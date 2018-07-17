@@ -1185,8 +1185,8 @@ app.controller('loginController', function($scope, postgresqlFactory){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           ret = true;
+          console.log("existe");
         }
-
       }
       else {
         console.log(postgresScope.queryLogin);
