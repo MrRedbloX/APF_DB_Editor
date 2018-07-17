@@ -292,7 +292,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
             console.log(postgresScope.queryRequest);
             alert("Error on query request, check console logs.");
           }
-        });*/
+        });
       }
     }
     console.log($scope.elementsNameToSet);
