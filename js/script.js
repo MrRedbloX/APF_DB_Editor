@@ -1260,11 +1260,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
     });
   }
 
-  $scope.readCookie = function(pname) {
-
-
-}
-
   $scope.createCookie = function(name,value,days) {
 	if (days) {
 		var date = new Date();
