@@ -169,6 +169,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     var prenom= document.getElementById("prenom").value;
 
     var lien = "";
+    var mail_lien = "";
 
     var userpass = user + pass;
 
@@ -177,10 +178,11 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     nom = nom.replace(" ", "+");
     prenom = prenom.replace(" ", "+");
+    mail_lien = mail.replace("@", "%40");
 
-    lien="http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn=lecalvez&personCriteria.snSelect=STARTSWITH&personCriteria.givenName=gilles&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail=gilles1.lecalvez%40orange.com&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=";
+    lien="http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn="+nom+"&personCriteria.snSelect=STARTSWITH&personCriteria.givenName="+prenom"&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail="+mail+"&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=*";
 
-    console.log(nom + " pre " + prenom);
+    console.log(lien);
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
     postgresScope.addLogin(user,result,mail,function(){
