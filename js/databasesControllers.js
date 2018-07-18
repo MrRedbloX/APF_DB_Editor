@@ -932,10 +932,10 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     });
   };
 
-  $scope.addLogin = function(id,md5,email,callback){
+  $scope.addLogin = function(user,md5,email,callback){
     $http({
       method: 'GET',
-      url: '/db/addLogin?username='+id+"&md5="+md5+"&email="+email
+      url: '/db/addLogin?username='+user+"&md5="+md5+"&email="+email
     })
     .then(
       function successCallback(data) {
