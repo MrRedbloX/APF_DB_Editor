@@ -41,7 +41,7 @@
     <br>
     <div class="displayArea">
       <div ng-if="displayNothing"></div>
-      <div ng-controller="loginController" ng-init="verifco()" ng-if="displayAdd">
+      <div ng-if="displayAdd">
         <div id="addRowArea" ng-controller="addRowAreaController">
           <div>
             <div ng-repeat="att in attributes" class="form-group">
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div ng-controller="loginController" ng-init="verifco()" ng-if="displayModify">
+      <div ng-if="displayModify">
         <div id="modifyRowArea" ng-controller="modifyRowAreaController">
           <div>
             <div ng-repeat="att in attributes" class="form-group">
@@ -86,7 +86,7 @@
           </div>
         </div>
       </div>
-      <div ng-controller="loginController" ng-init="verifco()" ng-if="displayRelations">
+      <div ng-if="displayRelations">
         <div ng-controller="relationsAreaController" class="displayArea">
           <div ng-if="ready" class="table-responsive">
             <table id="tableRelations" class="table table-bordered">
