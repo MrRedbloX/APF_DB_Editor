@@ -286,9 +286,35 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setNameWithId = function(){
-    if(tableSelected != null){
+    console.log(postgresqlScope.valuesOfConstraint);
+    /*if(tableSelected != null){
+      let temp = tableSelected.split(';');
+      let db = temp[0];
+
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        postgresqlScope.getValuesOf()
+        postgresqlScope.getValuesOf(db,postgresqlScope.valuesOfConstraint[i].values[0].table, postgresqlScope.valuesOfConstraint[i].values[0].id, function(){
+          if(postgresqlScope.successRequest){
+            let theName = null;
+            for(let k=0; k<displayName.length; k++){
+              if(postgresqlScope.valuesOf.data[0][displayName[k]] != null){
+                theName = displayName[k];
+                break;
+              }
+            }
+            if(theName != null){
+              for(let j=0; j<$scope.elementIdToSet.length; j++){
+                if(postgresqlScope.valuesOfConstraint[i].name == $scope.elementIdToSet[j].column)
+              }
+              for(let j=0; j<postgresqlScope.valuesOf.data.length; j++){
+
+              }
+            }
+          }
+          else{
+            console.log(postgresqlScope.valuesOf);
+            alert("Error on getValuesOf request, check console logs.");
+          }
+        });
       }
     }
     /*for(let i=0; i<$scope.elementIdToSet.length; i++){
@@ -1239,7 +1265,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
           document.cookie = "id="+md5;
         }
         window.location="/";
-        $scope.createCookie('date', '1', 0.0001157407);
+        $scope.createCookie('date', '1', 1/(24*3600));
       }
       else{
         alert("incorrect password");
@@ -1247,24 +1273,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     });
   }
 
-  $scope.readCookie = function() {
-    var name = "date" + "=";
-    var cook = "rien";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            cook = c.substring(name.length, c.length);
-        }
-    }
-	alert(cook);
-}
-
-  $scope.createCookie = function(name,value,days) {
+  $scope.createCookie = createCookie(name,value,days) {
 	if (days) {
 		var date = new Date();
 		date.setTime(date.getTime()+(days*24*60*60*1000));
