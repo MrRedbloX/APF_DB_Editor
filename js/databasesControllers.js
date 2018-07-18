@@ -1022,8 +1022,13 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
             break;
           }
         }
+        let maxLength = 0;
+        for(let i=0; i<$scope.relationsData.length; i++){
+          if($scope.relationsData[i].values.length > maxLength) maxLength = $scope.relationsData[i].values.length
+        }
         for(let i=0; i<$scope.relationsData.length; i++){
           for(let j=0; j<$scope.relationsData[i].values.length; j++){
+          }
         }
         busy = false;
         //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
