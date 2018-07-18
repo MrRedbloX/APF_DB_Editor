@@ -989,31 +989,10 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
                                 $scope.relationsData.push({
-                                  table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
+                                  table_name : postgresScope.columnConstraint.data[l].table_name,
                                   values : postgresScope.queryRequest.data
                                 });
                                 console.log($scope.relationsData);
-                                /*console.log($scope.relationsData);
-                                let maxLength = 0;
-                                for(let i=0; i<$scope.relationsData.length; i++){
-                                  if($scope.relationsData[i].values.length > maxLength) maxLength = $scope.relationsData[i].values.length
-                                }
-                                console.log($scope.relationsData.length);
-                                for(let j=0; j<maxLength; j++){
-                                  let temp = [];
-                                  for(let i=0; i<$scope.relationsData.length; i++){
-                                    try{
-                                      temp.push($scope.relationsData[i].values[j]);
-                                    }
-                                    catch (e){
-                                      temp.push("");
-                                    }
-                                  }
-                                  $scope.tuples.push({
-                                    values : temp
-                                  });
-                                }
-                                console.log($scope.tuples);*/
                               }
                               else{
                                 console.log(postgresScope.queryRequest);
