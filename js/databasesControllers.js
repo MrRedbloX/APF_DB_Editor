@@ -999,7 +999,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1){
                                      $scope.tables.push($scope.relationsData[i].table_name);
                                      $scope.tuples.push({
-                                       values : $scope.relationsData[i].values
+                                       values : $scope.relationsData[i].values.data
                                      });
                                    }
                                 }
