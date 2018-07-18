@@ -1,5 +1,6 @@
 app.controller('loginController', function($scope, postgresqlFactory){
   var id_ok = "63e780c3f321d13109c71bf81805476e";
+  var postgresScope = postgresqlFactory.getScope();
 
   $scope.iden = function() {
     var tab="azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789_$&#@";
@@ -92,8 +93,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
     return ret;
   }
 
-  var postgresScope = postgresqlFactory.getScope();
-
   $scope.check_login = function(md5, rm) {
     postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
@@ -139,14 +138,14 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.createCookie = function(name,value,days) {
-	if (days) {
-		var date = new Date();
-		date.setTime(date.getTime()+(days*24*60*60*1000));
-		var expires = "; expires="+date.toGMTString();
-	}
-	else var expires = "";
-	document.cookie = name+"="+value+expires+"; path=/";
-  }
+  	if (days) {
+  		var date = new Date();
+  		date.setTime(date.getTime()+(days*24*60*60*1000));
+  		var expires = "; expires="+date.toGMTString();
+  	}
+  	else var expires = "";
+  	document.cookie = name+"="+value+expires+"; path=/";
+    }
 });
 
 app.controller('signupController', function($scope, postgresqlFactory){
