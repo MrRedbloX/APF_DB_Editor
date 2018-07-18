@@ -1,5 +1,5 @@
 var mainConString = "postgres://postgres:postgres@10.237.169.132:5432/";
-var loginConString = "postgres://postgres:postgres@10.237.169.202:5432/postgres";
+var loginConString = "postgres://postgres:postgres@10.237.169.202:5432/";
 
 module.exports = {
   getDBName: function(req, res) {
