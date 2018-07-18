@@ -186,6 +186,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
       }
 
     });
+
+    window.location="#!/login"
   }
 
 });
