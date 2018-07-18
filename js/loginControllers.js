@@ -180,7 +180,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     }
 
     for(var i = 0; i<prenom.length; i++){
-      console.log(i + " vaut " + prenim[i]);
+      console.log(i + " vaut " + prenom[i]);
       if(prenom[i] == " "){
         prenom[i] = "+";
       }
