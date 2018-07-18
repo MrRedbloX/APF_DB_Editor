@@ -1252,13 +1252,31 @@ app.controller('loginController', function($scope, postgresqlFactory){
           document.cookie = "id="+md5;
         }
         window.location="/";
-        $scope.createCookie('date', '1', 0.014);
+        $scope.createCookie('date', '1', 0.0001157407);
       }
       else{
         alert("incorrect password");
       }
     });
   }
+
+  $scope.readCookie = function() {
+    var name = "date" + "=";
+    var cook = "";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            cook = c.substring(name.length, c.length);
+        }
+    }
+    ret = false;
+
+}
 
   $scope.createCookie = function(name,value,days) {
 	if (days) {
