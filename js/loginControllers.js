@@ -1,13 +1,6 @@
 app.controller('loginController', function($scope, postgresqlFactory){
   var id_ok = "63e780c3f321d13109c71bf81805476e";
 
-  $scope.verif_cook = function(){
-    if(document.cookie == id_ok){
-      window.location="/";
-      localStorage['apf_project_db_editor_login'] = '1';
-    }
-  }
-
   $scope.iden = function() {
     var tab="azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789_$&#@";
     var user= document.getElementById("user").value;
