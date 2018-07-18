@@ -936,7 +936,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     console.log("addlog : " + user);
     $http({
       method: 'GET',
-      url: "/db/addLogin?"+"&username="+user+"&md5="+md5+"&email="+email
+      url: "/db/addLogin?username="+user+"&md5="+md5+"&email="+email
     })
     .then(
       function successCallback(data) {
