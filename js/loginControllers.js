@@ -55,6 +55,9 @@ app.controller('loginController', function($scope, postgresqlFactory){
     if(cook == "" && cookid == ""){
       window.location="#!/login";
     }
+    else{
+      $scope.createCookie('date', '1', 0.01157407);
+    }
   }
 
   $scope.isLoggedOn = function(){
@@ -150,4 +153,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
 app.controller('signupController', function($scope, postgresqlFactory){
 
+  $scope.create_login  = function(){
+
+  }
 });
