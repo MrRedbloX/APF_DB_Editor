@@ -101,7 +101,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.readCookie = function() {
-    var name = cname + "=";
+    var name ="date=";
     cook = "";
     var ca = document.cookie.split(';');
     for(var i = 0; i < ca.length; i++) {
