@@ -961,7 +961,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   currentRowSelected = rowSelected;
   $scope.relationsData = [];
   $scope.tables = [];
-  $scope.tuples = [];
   $scope.ready = false;
 
   if(currentTableSelected != null){
@@ -994,11 +993,11 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
                                   values : postgresScope.queryRequest.data
                                 });
-                                for(let i=0; i<$scope.relationsData.length; i++){
+                                /*for(let i=0; i<$scope.relationsData.length; i++){
                                   if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1)
                                      $scope.tables.push($scope.relationsData[i].table_name);
                                 }
-                                console.log($scope.relationsData);
+                                /*console.log($scope.relationsData);
                                 let maxLength = 0;
                                 for(let i=0; i<$scope.relationsData.length; i++){
                                   if($scope.relationsData[i].values.length > maxLength) maxLength = $scope.relationsData[i].values.length
@@ -1018,7 +1017,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                     values : temp
                                   });
                                 }
-                                console.log($scope.tuples);
+                                console.log($scope.tuples);*/
                               }
                               else{
                                 console.log(postgresScope.queryRequest);
