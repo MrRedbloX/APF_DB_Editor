@@ -1000,7 +1000,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                      $scope.tables.push($scope.relationsData[i].table_name);
                                      $scope.tuples.push({
                                        values : $scope.relationsData[i].values)
-                                     }
+                                     });
                                    }
                                 }
                                 console.log($scope.relationsData);
