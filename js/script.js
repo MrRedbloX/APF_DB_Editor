@@ -1247,7 +1247,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     });
   }
 
-  $scope.readCookie = function(name) {
+  $scope.readCookie = function(cname) {
     var name = cname + "=";
     var cook = "rien";
     var decodedCookie = decodeURIComponent(document.cookie);
