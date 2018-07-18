@@ -90,17 +90,10 @@
         <div ng-controller="relationsAreaController" class="displayArea">
           <div ng-if="ready" class="table-responsive">
             <table id="tableRelations" class="table table-bordered">
-              <thead>
-                <tr>
-                  <th ng-repeat="table in tables track by $index">{{table}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="{{tuple.values}}" ng-repeat="tuple in tuples track by $index">
-                  <!-- <td id="{{tuple.column_names[$index].column_name}};{{tuple.values}};{{val.id}}" ng-repeat="val in tuple.values track by $index" title={{setIdForToolTips(tuple.values,tuple.column_names[$index].column_name,val.id)}}>{{val.name}}</td>-->
-                  <td ng-repeat="val in tuple.values track by $index">{{val.uuid}}</td>
-                </tr>
-              </tbody>
+              <tr ng-repeat="table in tables track by $index">
+                <th>{{table}}</th>
+                <td ng-repeat="val in tables[$index].tables track by $index">{{val.name}}</td>
+              </tr>
             </table>
           </div>
         </div>
