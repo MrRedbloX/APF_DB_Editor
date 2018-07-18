@@ -1210,7 +1210,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.isLoggedOn = function(){
-    var name = pname + "=";
+    var name = "date" + "=";
     var cook = "";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
