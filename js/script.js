@@ -1234,7 +1234,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
           document.cookie = "id="+md5;
         }
         window.location="/";
-        $scope.createCookie('date', '1', 1/(24*3600));
+        $scope.createCookie('date', '1', 1);
       }
       else{
         alert("incorrect password");
