@@ -175,7 +175,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
   console.log(nom + " " + prenom);
 
-/*  $scope.create_login  = function(){
+  $scope.create_login  = function(){
 
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
@@ -205,5 +205,4 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     window.location="#!/login"
   }
-*/
 });
