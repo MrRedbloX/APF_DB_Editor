@@ -1196,14 +1196,14 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.verifco = function(){
-    var ok = localStorage['apf_project_db_editor_login'];
+  //  var ok = localStorage['apf_project_db_editor_login'];
     if(ok != 1){
       window.location="#!/login";
     }
   }
 
   $scope.isLoggedOn = function(){
-    ret = false;
+    ret = true;
     if(localStorage['apf_project_db_editor_login'] == 1)
       ret = true;
 
