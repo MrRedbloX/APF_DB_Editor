@@ -55,13 +55,14 @@ app.controller('loginController', function($scope, postgresqlFactory){
             cookid = c.substring(name.length, c.length);
         }
     }
-
-    if(cook == "" && cookid == "" && connexion_page == null){
-      console.log("redirection");
-      window.location="#!/login";
-    }
-    else{
-      $scope.createCookie('date', '1', time_to_expire);
+    if(connexion_page == null){
+      if(cook == "" && cookid == ""){
+        console.log("redirection");
+        window.location="#!/login";
+      }
+      else{
+        $scope.createCookie('date', '1', time_to_expire);
+      }
     }
   }
 
