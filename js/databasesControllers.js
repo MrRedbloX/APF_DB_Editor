@@ -960,59 +960,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   currentTableSelected = tableSelected;
   currentRowSelected = rowSelected;
   $scope.relationsData = [];
-  $scope.tables = [
-    {
-      name : "Table1",
-      values : [
-        {
-          id : "ID11",
-          name : "Nom11"
-        },
-        {
-          id : "ID12",
-          name : "Nom12"
-        },
-        {
-          id : "ID13",
-          name : "Nom13"
-        }
-      ]
-    },
-    {
-      name : "Table2",
-      values : [
-        {
-          id : "ID21",
-          name : "Nom21"
-        },
-        {
-          id : "ID22",
-          name : "Nom22"
-        },
-        {
-          id : "ID23",
-          name : "Nom23"
-        }
-      ]
-    },
-    {
-      name : "Table3",
-      values : [
-        {
-          id : "ID31",
-          name : "Nom31"
-        },
-        {
-          id : "ID32",
-          name : "Nom32"
-        },
-        {
-          id : "ID33",
-          name : "Nom33"
-        }
-      ]
-    }
-  ];
   $scope.ready = false;
 
   if(currentTableSelected != null){
