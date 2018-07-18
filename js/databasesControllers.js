@@ -1026,9 +1026,19 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
         for(let i=0; i<$scope.relationsData.length; i++){
           if($scope.relationsData[i].values.length > maxLength) maxLength = $scope.relationsData[i].values.length
         }
-        for(let i=0; i<$scope.relationsData.length; i++){
-          for(let j=0; j<$scope.relationsData[i].values.length; j++){
+        for(let j=0; j<maxLength; j++){
+          let temp = [];
+          for(let i=0; i<$scope.relationsData.length; i++){
+            try{
+              temp.push($scope.relationsData[i].values[j]);
+            }
+            catch (e){
+              break;
+            }
           }
+          $scope.tuples.push({
+            values : temp
+          });
         }
         busy = false;
         //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
