@@ -90,10 +90,8 @@
         <div ng-controller="relationsAreaController" class="displayArea">
           <div ng-if="ready" class="table-responsive">
             <table id="tableColumnsDisplay" class="table table-bordered">
-                <tr>
-                  <th ng-repeat="rel in relationsData track by $index">{{rel.table_name}}</th>
-                </tr>
                 <tr ng-repeat="rel in relationsData track by $index">
+                  <th >{{rel.table_name}}</th>
                   <td ng-repeat="val in rel.values track by $index">{{val[$index].uuid}}</td>
                 </tr>
             </table>
