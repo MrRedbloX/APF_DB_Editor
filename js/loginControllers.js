@@ -185,16 +185,6 @@ app.controller('signupController', function($scope, postgresqlFactory){
         alert("Error on addLogin request, check console logs.");
       }
 
-      /*if($scope.id_exist == true){
-        if(rm.checked == true){
-          $scope.createCookie('identifiant', md5, 31);
-        }
-        window.location="/";
-        $scope.createCookie('date', '1', time_to_expire);
-      }
-      else{
-        alert("incorrect password");
-      }*/
     });
   }
 
