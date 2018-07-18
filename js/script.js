@@ -1248,14 +1248,19 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.readCookie = function(name) {
-	var nameEQ = name + "=";
-  var cook = "";
-	var ca = document.cookie.split(';');
-	for(var i=0;i < ca.length;i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-		if (c.indexOf(nameEQ) == 0) cook = c.substring(nameEQ.length,c.length);
-	}
+    var name = cname + "=";
+    var cook = "rien";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            cook = c.substring(name.length, c.length);
+        }
+    }
 	alert(cook);
 }
 
