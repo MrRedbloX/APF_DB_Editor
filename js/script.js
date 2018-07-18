@@ -1232,7 +1232,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
           document.cookie = "id="+md5;
         }
         window.location="/";
-        document.cookie = "connexion_date="+;
+        document.cookie = "connexion_date="+connexion_date;
       }
       else{
         alert("incorrect password");
