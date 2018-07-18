@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div ng-if="displayModify">
+      <div ng-controller="loginController" ng-init="verifco()" ng-if="displayModify">
         <div id="modifyRowArea" ng-controller="modifyRowAreaController">
           <div>
             <div ng-repeat="att in attributes" class="form-group">
