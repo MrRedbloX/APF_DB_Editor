@@ -989,6 +989,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                             console.log("Query on : "+postgresScope.columnConstraint.data[l].table_name);
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
+                                console.log(postgresScope.queryRequest);
                                 $scope.relationsData.push({
                                   table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
                                   values : postgresScope.queryRequest
