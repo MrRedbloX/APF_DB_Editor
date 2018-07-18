@@ -110,10 +110,10 @@ app.controller('loginController', function($scope, postgresqlFactory){
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+            cook = c.substring(name.length, c.length);
         }
     }
-    return "";
+    alert(cook);
   }
 
   $scope.createCookie = function(name,value,days) {
