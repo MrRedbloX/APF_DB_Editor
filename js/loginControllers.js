@@ -26,8 +26,8 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   $scope.verifco = function(){
 
-    var page = document.getElementByClasseName("login");
-    console.log("verifco " + page); 
+    var page = document.getElementById("login");
+    console.log("verifco " + page);
     var name = "date=";
     var cook = "";
     var decodedCookie = decodeURIComponent(document.cookie);
