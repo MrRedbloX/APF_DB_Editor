@@ -79,7 +79,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
           document.cookie = "id="+md5;
         }
         window.location="/";
-        $scope.createCookie('date', '1', 0.0001157407);
+        $scope.createCookie('date', '1', 0.01157407);
       }
       else{
         alert("incorrect password");
@@ -95,7 +95,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 	}
 	else var expires = "";
 	document.cookie = name+"="+value+expires+"; path=/";
-}
+  }
 });
 
 app.controller('signupController', function($scope, postgresqlFactory){
