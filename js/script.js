@@ -87,7 +87,6 @@ app.config(function($routeProvider) {
     });
 });
 
-
 //The following factories allow to access an element in a controller when you are in another controller
 app.factory('columnsDisplayFactory', function(){
   var theScope;
