@@ -388,6 +388,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
     busy = false;
+    treeDatabaseAreaScope.setDisplayTo("nothing");
   };
 
   $scope.showRelations = function(){
