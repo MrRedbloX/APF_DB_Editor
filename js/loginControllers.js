@@ -159,9 +159,9 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
-    var rm= document.getElementById("check").value;
+    var mail= document.getElementById("mail").value;
 
-    
+
     /*postgresScope.addLogin(id, md5, email, function(){
 
     });*/
