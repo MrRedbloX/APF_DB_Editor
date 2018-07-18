@@ -92,7 +92,7 @@
             <table id="tableColumnsDisplay" class="table table-bordered">
               <thead>
                 <tr>
-                  <th ng-repeat="table in tables">{{table.name}}</th>
+                  <th ng-repeat="table in tables track by $index">{{table.name}}</th>
                 </tr>
               </thead>
               <tbody>
