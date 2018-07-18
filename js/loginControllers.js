@@ -50,7 +50,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
             cookid = c.substring(name.length, c.length);
         }
     }
-    console.log(cookid);
+
     if(cook == "" && cookid == ""){
       window.location="#!/login";
     }
@@ -84,7 +84,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
             cookid = c.substring(name.length, c.length);
         }
     }
-    console.log(cookid);
+
     ret = false;
     if(cook != "" || cookid != "")
       ret = true;
