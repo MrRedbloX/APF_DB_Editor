@@ -56,7 +56,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
             cookid = c.substring(name.length, c.length);
         }
     }
-    if(login_page == null){
+    if(login_page == null or signup_page == null){
       if(cook == "" && cookid == ""){
         console.log("redirection");
         window.location="#!/login";
