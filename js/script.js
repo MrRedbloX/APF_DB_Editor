@@ -1203,8 +1203,21 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.verifco = function(){
-    var ok = localStorage['apf_project_db_editor_login'];
-    if(ok != 1){
+    var name = "date=";
+    var cook = "";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            cook = c.substring(name.length, c.length);
+        }
+    }
+
+    if(cook != ""){
       window.location="#!/login";
     }
   }
