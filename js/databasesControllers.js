@@ -1011,7 +1011,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                       temp.push($scope.relationsData[i].values[j]);
                                     }
                                     catch (e){
-                                      break;
+                                      temp.push("");
                                     }
                                   }
                                   $scope.tuples.push({
