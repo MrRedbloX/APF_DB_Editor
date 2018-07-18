@@ -993,7 +993,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                               if(postgresScope.successRequest){
                                 $scope.relationsData.push({
                                   table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
-                                  values : postgresScope.queryRequest
+                                  values : postgresScope.queryRequest.data
                                 });
                                 for(let i=0; i<$scope.relationsData.length; i++){
                                   if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1)
@@ -1022,8 +1022,11 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
             break;
           }
         }
+        for(let i=0; i<$scope.relationsData.length; i++){
+          for(let j=0; j<$scope.relationsData[i].values.length; j++){
+        }
         busy = false;
-        if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
+        //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
         $scope.ready = true;
       }
       else{
