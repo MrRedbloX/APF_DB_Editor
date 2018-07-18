@@ -1,3 +1,4 @@
+"use strict";
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases

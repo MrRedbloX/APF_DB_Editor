@@ -936,7 +936,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     console.log("addlog : " + user);
     $http({
       method: 'GET',
-      url: "/db/addLogin?id="+user+"&md5="+md5+"&email="+email
+      url: "/db/addLogin?id="+user+"&md5="+md5+"&mail="+email
     })
     .then(
       function successCallback(data) {
@@ -995,7 +995,9 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   values : postgresScope.queryRequest
                                 });
                                 for(let i=0; i<$scope.relationsData.length; i++){
-                                  if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1) $scope.tables.push($scope.relationsData[i].table_name)
+                                  if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1){
+                                     $scope.tables.push($scope.relationsData[i].table_name);
+                                   }
                                 }
                                 console.log($scope.relationsData);
                               }
