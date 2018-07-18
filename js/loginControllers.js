@@ -23,7 +23,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   }
 
-  $scope.clear_cache = function(){
+  $scope.clear_cook = function(){
     localStorage['apf_project_db_editor_login'] = '0';
     document.cookie = '';
     window.location="#!/login"
