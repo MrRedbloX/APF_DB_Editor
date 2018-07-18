@@ -26,8 +26,9 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   $scope.verifco = function(){
 
-    var connexion_page = document.getElementById("connexion");
-    console.log("verifco " + connexion_page);
+    var login_page = document.getElementById("connexion");
+    var signup_page = document.getElementById("inscription");
+    console.log("verifco " + login_page);
     var name = "date=";
     var cook = "";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -55,7 +56,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
             cookid = c.substring(name.length, c.length);
         }
     }
-    if(connexion_page == null){
+    if(login_page == null){
       if(cook == "" && cookid == ""){
         console.log("redirection");
         window.location="#!/login";
