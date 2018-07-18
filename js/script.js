@@ -1274,7 +1274,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
             cook = c.substring(name.length, c.length);
         }
     }
-    ret = false;
+    alert(cook);
 
 }
 
