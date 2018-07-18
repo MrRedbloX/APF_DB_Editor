@@ -989,7 +989,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                             console.log("Query on : "+postgresScope.columnConstraint.data[l].table_name);
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
-                                console.log(postgresScope.queryRequest);
                                 $scope.relationsData.push({
                                   table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
                                   values : postgresScope.queryRequest
@@ -997,6 +996,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                 for(let i=0; i<$scope.relationsData.length; i++){
                                   if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1) $scope.tables.push($scope.relationsData[i].table_name)
                                 }
+                                console.log($scope.relationsData);
                               }
                               else{
                                 console.log(postgresScope.queryRequest);
@@ -1022,7 +1022,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
         busy = false;
         if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
         $scope.ready = true;
-        console.log($scope.relationsData);
       }
       else{
         console.log(postgresScope.primaryKey);
