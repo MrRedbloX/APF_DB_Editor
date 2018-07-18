@@ -1256,7 +1256,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 		while (c.charAt(0)==' ') c = c.substring(1,c.length);
 		if (c.indexOf(nameEQ) == 0) cook = c.substring(nameEQ.length,c.length);
 	}
-	alerte
+	alert(cook);
 }
 
   $scope.createCookie = function(name,value,days) {
