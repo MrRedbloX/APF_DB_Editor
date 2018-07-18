@@ -282,7 +282,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       values : temp
                     });
                     columnsDisplayScope.setToolTips();
-                    columnsDisplayScope.setNameWithId();
                   }
                   else{
                     console.log(postgresScope.valuesOf);
@@ -290,6 +289,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                 });
               }
+              columnsDisplayScope.setNameWithId();
             }
             else{
               console.log(postgresScope.columnConstraint);
