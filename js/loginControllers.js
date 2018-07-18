@@ -185,7 +185,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
       }
     }
 
-    Console.log(nom + " pre " + prenom);
+    console.log(nom + " pre " + prenom);
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
     postgresScope.addLogin(user,result,mail,function(){
