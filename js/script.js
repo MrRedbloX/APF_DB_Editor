@@ -1233,7 +1233,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
         if(rm.checked == true){
           document.cookie = "id=md5";
         }
-        window.location="/";
+        //window.location="/";
         localStorage['apf_project_db_editor_login'] = '1';
       }
       else{
