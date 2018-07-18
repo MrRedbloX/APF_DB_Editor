@@ -286,34 +286,21 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setNameWithId = function(){
-    if(tableSelected != null){
-      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        for(let j=0; j<$scope.elementIdToSet.length; j++){
-          if(postgresqlScope.valuesOfConstraint[i].name == $scope.elementIdToSet[j].column && !$scope.elementIdToSet[j].set){
-            for(let k=0; k<postgresqlScope.valuesOfConstraint[i].values.length; k++){
-              if(postgresqlScope.valuesOfConstraint[i].values[k].id == $scope.elementIdToSet[j].val){
-                if(document.getElementById($scope.elementIdToSet[j].id) != null){
-                  document.getElementById($scope.elementIdToSet[j].id).innerHTML = postgresqlScope.valuesOfConstraint[i].values[k].name;
-                  $scope.elementIdToSet[j].set = true;
-                }
+    for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
+      for(let j=0; j<$scope.elementIdToSet.length; j++){
+        if(postgresqlScope.valuesOfConstraint[i].name == $scope.elementIdToSet[j].column && !$scope.elementIdToSet[j].set){
+          for(let k=0; k<postgresqlScope.valuesOfConstraint[i].values.length; k++){
+            if(postgresqlScope.valuesOfConstraint[i].values[k].id == $scope.elementIdToSet[j].val){
+              if(document.getElementById($scope.elementIdToSet[j].id) != null){
+                document.getElementById($scope.elementIdToSet[j].id).innerHTML = postgresqlScope.valuesOfConstraint[i].values[k].name;
+                $scope.elementIdToSet[j].set = true;
               }
             }
           }
         }
       }
     }
-    /*for(let i=0; i<$scope.elementIdToSet.length; i++){
-      for(let j=0; j<postgresqlScope.valuesOfConstraint.length; j++){
-        if(($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name) && $scope.elementIdToSet[i].set == false){
-          $scope.elementIdToSet[i].set = true;
-          console.log($scope.elementIdToSet[i].id);
-          document.getElementById($scope.elementIdToSet[i].id).innerHTML = "test";
-          postgresqlScope.query("catalogue", postgresqlScope.valuesOfConstraint[j].values[0].table, postgresqlScope.valuesOfConstraint[j].values[0].name)
-        }
-      }
-    }*/
   }
-
 
   /*angular.element(document).ready(function(){
     console.log("Table fully loaded");
