@@ -1,7 +1,7 @@
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases
-var displayName = ['name', 'tenant_name', 'sg_name'];
+var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name'];
 var busy = false;
 
 //Check if a database is in read only mode
