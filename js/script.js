@@ -286,8 +286,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setNameWithId = function(){
-    console.log(postgresqlScope.valuesOfConstraint);
-    /*if(tableSelected != null){
+    if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         postgresqlScope.getValuesOf()
       }
@@ -1211,8 +1210,21 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.isLoggedOn = function(){
-    ret = true;
-    if(localStorage['apf_project_db_editor_login'] == 1)
+    var name = pname + "=";
+    var cook = "";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            cook = c.substring(name.length, c.length);
+        }
+    }
+    ret = false;
+    if(cook != "")
       ret = true;
 
     return ret;
@@ -1248,21 +1260,9 @@ app.controller('loginController', function($scope, postgresqlFactory){
     });
   }
 
-  $scope.readCookie = function() {
-    var name = "date" + "=";
-    var cook = "rien";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            cook = c.substring(name.length, c.length);
-        }
-    }
-	alert(cook);
+  $scope.readCookie = function(pname) {
+
+
 }
 
   $scope.createCookie = function(name,value,days) {
