@@ -1203,7 +1203,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.verifco = function(){
-    console.log("verifco");
     var name = "date=";
     var cook = "";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -1218,7 +1217,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
         }
     }
 
-    console.log("cook" + cook);
     if(cook == ""){
       window.location="#!/login";
     }
