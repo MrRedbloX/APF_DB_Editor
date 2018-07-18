@@ -961,6 +961,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   currentRowSelected = rowSelected;
   $scope.relationsData = [];
   $scope.tables = [];
+  $scope.tuples = [];
   $scope.ready = false;
 
   if(currentTableSelected != null){
@@ -995,7 +996,8 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   values : postgresScope.queryRequest
                                 });
                                 for(let i=0; i<$scope.relationsData.length; i++){
-                                  if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1) $scope.tables.push($scope.relationsData[i].table_name)
+                                  if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1)
+                                     $scope.tables.push($scope.relationsData[i].table_name);
                                 }
                                 console.log($scope.relationsData);
                               }
