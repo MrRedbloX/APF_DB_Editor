@@ -1019,9 +1019,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   });
                                 }
                                 console.log($scope.tuples);
-                                busy = false;
-                                //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
-                                $scope.ready = true;
                               }
                               else{
                                 console.log(postgresScope.queryRequest);
@@ -1044,6 +1041,9 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
             break;
           }
         }
+        busy = false;
+        //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
+        $scope.ready = true;
       }
       else{
         console.log(postgresScope.primaryKey);
