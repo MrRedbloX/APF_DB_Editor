@@ -158,8 +158,24 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
 app.controller('signupController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
+  var nom= document.getElementById("nom").value;
+  var prenom= document.getElementById("prenom").value;
 
-  $scope.create_login  = function(){
+  for(var i = 0; i<nom.lenght){
+    if (nom[i] == " ") {
+      nom[i] = "+";
+    }
+  }
+
+  for(var i = 0; i<prenom.lenght){
+    if (prenom[i] == " ") {
+      prenom[i] = "+";
+    }
+  }
+
+  console.log(nom + " " + prenom);
+
+/*  $scope.create_login  = function(){
 
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
@@ -189,5 +205,5 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     window.location="#!/login"
   }
-
+*/
 });
