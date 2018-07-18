@@ -147,6 +147,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 
   $scope.setNameWithId = function(){
     if(postgresqlScope.valuesOfConstraint != null){
+      console.log("PAS NULL");
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         for(let j=0; j<$scope.elementIdToSet.length; j++){
           if(postgresqlScope.valuesOfConstraint[i].name == $scope.elementIdToSet[j].column && !$scope.elementIdToSet[j].set){
