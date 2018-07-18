@@ -990,7 +990,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                               if(postgresScope.successRequest){
                                 let theName = null
                                 for(let m=0; m<displayName.length; m++){
-                                  if(postgresScope.columnValues.data[0][displayName[m]] != null){
+                                  if(postgresScope.queryRequest.data[0][displayName[m]] != null){
                                     theName = displayName[m];
                                     break;
                                   }
