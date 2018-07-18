@@ -288,7 +288,10 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   $scope.setNameWithId = function(){
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        postgresqlScope.getValuesOf()
+        for(let j=0; j<$scope.elementIdToSet.length; j++){
+          if(postgresqlScope.valuesOfConstraint[i].name == )
+        }
+
       }
     }
     /*for(let i=0; i<$scope.elementIdToSet.length; i++){
@@ -1259,24 +1262,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
       }
     });
   }
-
-  $scope.readCookie = function() {
-    var name = "date" + "=";
-    var cook = "";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            cook = c.substring(name.length, c.length);
-        }
-    }
-    alert(cook);
-
-}
 
   $scope.createCookie = function(name,value,days) {
 	if (days) {
