@@ -171,9 +171,31 @@ app.controller('signupController', function($scope, postgresqlFactory){
     var result = MD5(userpass);
 
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result)
-    /*postgresScope.addLogin(id, md5, email, function(){
+    postgresScope.addLogin(id, md5, email, function(){
+      if(postgresScope.successRequest){
+        if(postgresScope.addLogin.data.length > 0){
+          $scope.success =  true;
+        }
+        else {
+          $scope.success =  false;
+        }
+      }
+      else {
+        console.log(postgresScope.queryLogin);
+        alert("Error on addLogin request, check console logs.");
+      }
 
-    });*/
+      /*if($scope.id_exist == true){
+        if(rm.checked == true){
+          $scope.createCookie('identifiant', md5, 31);
+        }
+        window.location="/";
+        $scope.createCookie('date', '1', time_to_expire);
+      }
+      else{
+        alert("incorrect password");
+      }*/
+    });
   }
 
 });
