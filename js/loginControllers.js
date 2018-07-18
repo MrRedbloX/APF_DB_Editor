@@ -26,7 +26,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
   $scope.verifco = function(){
 
-    var page = document.getElementById("login");
+    var page = document.getElementById("connexion");
     console.log("verifco " + page);
     var name = "date=";
     var cook = "";
