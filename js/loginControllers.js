@@ -30,7 +30,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.verifco = function(){
-    var name = "date" + "=";
+    var name = "date=";
     var cook = "";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
