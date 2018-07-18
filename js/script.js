@@ -1213,7 +1213,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   var postgresScope = postgresqlFactory.getScope();
-  var connexion_date = Date.now();
+
   $scope.check_login = function(md5, rm) {
     postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
@@ -1234,13 +1234,23 @@ app.controller('loginController', function($scope, postgresqlFactory){
           document.cookie = "id="+md5;
         }
         window.location="/";
-        createCookie('date', '1', 1/(24*3600));
+        $scope.createCookie('date', '1', 1/(24*3600));
       }
       else{
         alert("incorrect password");
       }
     });
   }
+
+  $scope.createCookie = createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
 });
 
 app.controller('signupController', function($scope, postgresqlFactory){
