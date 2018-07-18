@@ -1040,6 +1040,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
             values : temp
           });
         }
+        console.log($scope.tuples);
         busy = false;
         //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
         $scope.ready = true;
