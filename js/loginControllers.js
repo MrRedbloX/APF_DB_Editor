@@ -24,8 +24,8 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.clear_cook = function(){
-    localStorage['apf_project_db_editor_login'] = '0';
-    document.cookie = '';
+    $scope.createCookie('identifiant', "", -1);
+    $scope.createCookie('date', "", -1);
     window.location="#!/login"
   }
 
@@ -89,7 +89,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
       if($scope.id_exist == true){
         if(rm.checked == true){
-          document.cookie = "id="+md5;
+          $scope.createCookie('identifiant', md5, 31);
         }
         window.location="/";
         $scope.createCookie('date', '1', 0.01157407);
