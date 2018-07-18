@@ -286,11 +286,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setNameWithId = function(){
-    if(tableSelected != null){
-      for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        postgresqlScope.getValuesOf()
-      }
-    }
     /*for(let i=0; i<$scope.elementIdToSet.length; i++){
       for(let j=0; j<postgresqlScope.valuesOfConstraint.length; j++){
         if(($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name) && $scope.elementIdToSet[i].set == false){
@@ -1239,7 +1234,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
           document.cookie = "id="+md5;
         }
         window.location="/";
-        $scope.createCookie('date', '1', 1/(24*3600));
+        $scope.createCookie('date', '1', 0.014);
       }
       else{
         alert("incorrect password");
@@ -1247,7 +1242,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     });
   }
 
-  $scope.createCookie = createCookie(name,value,days) {
+  $scope.createCookie = function(name,value,days) {
 	if (days) {
 		var date = new Date();
 		date.setTime(date.getTime()+(days*24*60*60*1000));
