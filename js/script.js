@@ -1211,7 +1211,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   var postgresScope = postgresqlFactory.getScope();
-
+  var connexion_date = Date.now();
   $scope.check_login = function(md5, rm) {
     postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
