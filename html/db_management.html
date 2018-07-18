@@ -91,8 +91,8 @@
           <div ng-if="ready" class="table-responsive">
             <table id="tableRelations" class="table table-bordered">
               <tr ng-repeat="table in tables track by $index">
-                <th>{{table}}</th>
-                <td ng-repeat="val in tables[$index].tables track by $index">{{val.name}}</td>
+                <th>{{table.name}}</th>
+                <td ng-repeat="val in tables[$index][tables.name] track by $index">{{val.name}}</td>
               </tr>
             </table>
           </div>
