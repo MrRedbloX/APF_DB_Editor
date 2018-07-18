@@ -148,9 +148,9 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   $scope.setNameWithId = function(){
     if(postgresqlScope.valuesOfConstraint != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        console.log($scope.elementIdToSet.length);
         for(let j=0; j<$scope.elementIdToSet.length; j++){
           if(postgresqlScope.valuesOfConstraint[i].name == $scope.elementIdToSet[j].column && !$scope.elementIdToSet[j].set){
+            console.log("OK");
             for(let k=0; k<postgresqlScope.valuesOfConstraint[i].values.length; k++){
               if(postgresqlScope.valuesOfConstraint[i].values[k].id == $scope.elementIdToSet[j].val){
                 if(document.getElementById($scope.elementIdToSet[j].id) != null){
