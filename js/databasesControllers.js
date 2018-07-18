@@ -1025,6 +1025,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
         for(let i=0; i<$scope.relationsData.length; i++){
           if($scope.relationsData[i].values.length > maxLength) maxLength = $scope.relationsData[i].values.length
         }
+        console.log(maxLength);
         for(let j=0; j<maxLength; j++){
           let temp = [];
           for(let i=0; i<$scope.relationsData.length; i++){
