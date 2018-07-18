@@ -153,8 +153,18 @@ app.controller('loginController', function($scope, postgresqlFactory){
 });
 
 app.controller('signupController', function($scope, postgresqlFactory){
+  var postgresScope = postgresqlFactory.getScope();
 
   $scope.create_login  = function(){
 
+    var user= document.getElementById("user").value;
+    var pass= document.getElementById("pass").value;
+    var rm= document.getElementById("check").value;
+
+    
+    /*postgresScope.addLogin(id, md5, email, function(){
+
+    });*/
   }
+
 });
