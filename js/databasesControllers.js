@@ -192,9 +192,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     currentTableSelected = tableSelected;
     currentRowSelected = rowSelected;
     var columnsDisplayScope = columnsDisplayFactory.getScope();
-    treeDatabaseAreaScope.displayNothing = true;
-    treeDatabaseAreaScope.displayAdd = false;
-    treeDatabaseAreaScope.displayModify = false;
+    treeDatabaseAreaScope.setDisplayTo("nothing");
     if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
     rowSelected = null;
     columnsDisplayScope.row_ids = [];
