@@ -1229,10 +1229,10 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
       if($scope.id_exist == true){
         if(rm.checked == true){
-          document.cookie = md5;
+          document.cookie = "id="+md5;
         }
         window.location="/";
-        localStorage['apf_project_db_editor_login'] = '1';
+        document.cookie = "connexion_date="+;
       }
       else{
         alert("incorrect password");
