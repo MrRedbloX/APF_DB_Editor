@@ -1273,7 +1273,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     });
   }
 
-  $scope.createCookie = createCookie(name,value,days) {
+  $scope.createCookie = createCookie(name,value,days) { 
 	if (days) {
 		var date = new Date();
 		date.setTime(date.getTime()+(days*24*60*60*1000));
