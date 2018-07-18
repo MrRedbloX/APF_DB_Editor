@@ -999,7 +999,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
                                   values : postgresScope.queryRequest.data,
                                   id : postgresScope.primaryKey.data[0].attname,
-                                  theName : theName
+                                  name : theName
                                 });
                                 console.log($scope.relationsData);
                               }
