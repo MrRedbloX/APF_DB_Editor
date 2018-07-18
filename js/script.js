@@ -286,7 +286,8 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setNameWithId = function(){
-    if(tableSelected != null){
+    console.log(postgresqlScope.valuesOfConstraint);
+    /*if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
         postgresqlScope.getValuesOf()
       }
