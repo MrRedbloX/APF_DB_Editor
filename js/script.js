@@ -286,7 +286,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   };
 
   $scope.setNameWithId = function(){
-    for(let i=0; i<$scope.elementIdToSet.length; i++){
+    /*for(let i=0; i<$scope.elementIdToSet.length; i++){
       for(let j=0; j<postgresqlScope.valuesOfConstraint.length; j++){
         if(($scope.elementIdToSet[i].column == postgresqlScope.valuesOfConstraint[j].name) && $scope.elementIdToSet[i].set == false){
           $scope.elementIdToSet[i].set = true;
@@ -295,7 +295,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           postgresqlScope.query("catalogue", postgresqlScope.valuesOfConstraint[j].values[0].table, postgresqlScope.valuesOfConstraint[j].values[0].name)
         }
       }
-    }
+    }*/
   }
 
 
