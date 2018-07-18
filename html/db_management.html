@@ -91,7 +91,7 @@
           <div ng-if="ready" class="table-responsive">
             <table id="tableColumnsDisplay" class="table table-bordered">
                 <tr ng-repeat="rel in relationsData track by $index">
-                  <th>{{rel.table_name}}</th>
+                  <th ng-repeat="rel in relationsData track by $index">{{rel.table_name}}</th>
                   <tr ng-repeat="value in relationsData[$index].values track by $index">
                     <td ng-repeat="val in value track by $index">{{val.uuid}}</td>
                   </tr>
