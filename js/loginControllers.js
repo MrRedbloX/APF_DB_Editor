@@ -44,7 +44,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
         }
     }
 
-    if(cook == 1){
+    if(cook == ""){
       window.location="#!/login";
     }
   }
