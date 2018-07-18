@@ -292,7 +292,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           $scope.elementIdToSet[i].set = true;
           console.log($scope.elementIdToSet[i].id);
           document.getElementById($scope.elementIdToSet[i].id).innerHTML = "test";
-          postgresScope.query("catalogue", $scope.elementIdToSet[i])
+          postgresqlScope.query("catalogue", postgresqlScope.valuesOfConstraint[j].values[0].table, postgresqlScope.valuesOfConstraint[j].values[0].name)
         }
       }
     }
@@ -1213,8 +1213,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
 
   $scope.check_login = function(md5, rm) {
-    var connexion_date = Date.now();
-    console.log("heure de co : " + connexion_date);
     postgresScope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
@@ -1231,9 +1229,9 @@ app.controller('loginController', function($scope, postgresqlFactory){
 
       if($scope.id_exist == true){
         if(rm.checked == true){
-          document.cookie = "id=md5";
+          document.cookie = md5;
         }
-        //window.location="/";
+        window.location="/";
         localStorage['apf_project_db_editor_login'] = '1';
       }
       else{
