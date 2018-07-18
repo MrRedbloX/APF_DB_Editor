@@ -1009,6 +1009,30 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                         break;
                       }
                     }
+                    console.log($scope.relationsData);
+                    let maxLength = 0;
+                    for(let i=0; i<$scope.relationsData.length; i++){
+                      if($scope.relationsData[i].values.length > maxLength) maxLength = $scope.relationsData[i].values.length
+                    }
+                    console.log($scope.relationsData.length);
+                    for(let j=0; j<maxLength; j++){
+                      let temp = [];
+                      for(let i=0; i<$scope.relationsData.length; i++){
+                        try{
+                          temp.push($scope.relationsData[i].values[j]);
+                        }
+                        catch (e){
+                          break;
+                        }
+                      }
+                      $scope.tuples.push({
+                        values : temp
+                      });
+                    }
+                    console.log($scope.tuples);
+                    busy = false;
+                    //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
+                    $scope.ready = true;
                   }
                   else{
                     console.log(postgresScope.columnConstraint);
@@ -1020,30 +1044,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
             break;
           }
         }
-        console.log($scope.relationsData);
-        let maxLength = 0;
-        for(let i=0; i<$scope.relationsData.length; i++){
-          if($scope.relationsData[i].values.length > maxLength) maxLength = $scope.relationsData[i].values.length
-        }
-        console.log($scope.relationsData.length);
-        for(let j=0; j<maxLength; j++){
-          let temp = [];
-          for(let i=0; i<$scope.relationsData.length; i++){
-            try{
-              temp.push($scope.relationsData[i].values[j]);
-            }
-            catch (e){
-              break;
-            }
-          }
-          $scope.tuples.push({
-            values : temp
-          });
-        }
-        console.log($scope.tuples);
-        busy = false;
-        //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
-        $scope.ready = true;
       }
       else{
         console.log(postgresScope.primaryKey);
