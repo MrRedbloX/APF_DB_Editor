@@ -94,7 +94,7 @@
                   <th ng-repeat="rel in relationsData track by $index">{{rel.table_name}}</th>
                 </tr>
                 <tr ng-repeat="rel in relationsData track by $index">
-                  <td ng-repeat="val in rel.values track by $index">{{val.uuid}}</td>
+                  <td ng-repeat="val in rel.values track by $index">{{val[$index].uuid}}</td>
                 </tr>
             </table>
           </div>
