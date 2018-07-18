@@ -321,7 +321,7 @@ module.exports = {
       }
       else{
         console.log("Connection successful");
-        client.query("INSERT INTO APF_ID (username,md5,mail) VALUES ("+req.query.id+","+req.query.md5+","+req.query.email+");" ,function(err,result) {
+        client.query("INSERT INTO APF_ID (username,md5,mail) VALUES ('"+req.query.id+"','"+req.query.md5+"','"+req.query.email+"');" ,function(err,result) {
           client.end(); // closing the connection;
           if(err){
              console.log(err);
