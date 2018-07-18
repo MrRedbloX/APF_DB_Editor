@@ -161,13 +161,13 @@ app.controller('signupController', function($scope, postgresqlFactory){
   var nom= document.getElementById("nom").value;
   var prenom= document.getElementById("prenom").value;
 
-  for(var i = 0; i<nom.lenght){
+  for(var i = 0; i<nom.lenght; i++){
     if (nom[i] == " ") {
       nom[i] = "+";
     }
   }
 
-  for(var i = 0; i<prenom.lenght){
+  for(var i = 0; i<prenom.lenght; i++){
     if (prenom[i] == " ") {
       prenom[i] = "+";
     }
@@ -175,7 +175,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
   console.log(nom + " " + prenom);
 
-  $scope.create_login  = function(){
+/*  $scope.create_login  = function(){
 
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
@@ -205,4 +205,5 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     window.location="#!/login"
   }
+*/
 });
