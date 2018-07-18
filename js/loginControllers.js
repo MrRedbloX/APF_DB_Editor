@@ -171,7 +171,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     var result = MD5(userpass);
 
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result)
-    postgresScope.addLogin(id, md5, email, function(){
+    postgresScope.addLogin(user, result, mail, function(){
       if(postgresScope.successRequest){
         if(postgresScope.addLogin.data.length > 0){
           $scope.success =  true;
