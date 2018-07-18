@@ -174,14 +174,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
     var result = MD5(userpass);
 
     nom = nom.replace(" ", "+");
-
-    for(var i = 0; i<prenom.length; i++){
-      console.log(i + " vaut " + prenom[i]);
-      if(prenom[i] == ""){
-        prenom[i] = "+";
-      }
-    }
-
+    prenom = prenom.replace(" ", "+");
+    
     console.log(nom + " pre " + prenom);
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
