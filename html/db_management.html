@@ -73,7 +73,7 @@
                 <i style="font-size: small">{{att.data_type}}</i>
               </div>
               <div ng-if="checkIfIsReference(att.name.column_name)" class="spaceBetweenAtt">
-                <label>{{att.name.column_name}} :</label>
+                <label>{{att.name.column_name}} : </label>
                 <select id="{{att.name.column_name}}" class="form-control">
                   <option id="m{{att.name.column_name}}{{ref.id}}" ng-repeat="ref in references[$index][att.name.column_name] track by $index" value="{{ref.id}}" title="{{setIdForToolTips(ref.id,att.name.column_name)}}">{{ref.name}}</option>
                 </select>
