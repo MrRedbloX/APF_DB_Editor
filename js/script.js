@@ -288,7 +288,18 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   $scope.setNameWithId = function(){
     if(tableSelected != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
-        postgresqlScope.getValuesOf()
+        for(let j=0; j<$scope.elementIdToSet.length; j++){
+          if(postgresqlScope.valuesOfConstraint[i].name == $scope.elementIdToSet[j].column && !$scope.elementIdToSet[j].set){
+            for(let k=0; k<postgresqlScope.valuesOfConstraint[i].values.length; k++){
+              if(postgresqlScope.valuesOfConstraint[i].values[k].id == $scope.elementIdToSet[j].val){
+                if(document.getElementById($scope.elementIdToSet[j].id) != null){
+                  document.getElementById($scope.elementIdToSet[j].id).innerHTML = postgresqlScope.valuesOfConstraint[i].values[k].name;
+                  $scope.elementIdToSet[j].set = true;
+                }
+              }
+            }
+          }
+        }
       }
     }
     /*for(let i=0; i<$scope.elementIdToSet.length; i++){
@@ -1203,21 +1214,8 @@ app.controller('loginController', function($scope, postgresqlFactory){
   }
 
   $scope.verifco = function(){
-    var name = "date=";
-    var cook = "";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            cook = c.substring(name.length, c.length);
-        }
-    }
-
-    if(cook == ""){
+    var ok = localStorage['apf_project_db_editor_login'];
+    if(ok != 1){
       window.location="#!/login";
     }
   }
@@ -1272,24 +1270,6 @@ app.controller('loginController', function($scope, postgresqlFactory){
       }
     });
   }
-
-  $scope.readCookie = function() {
-    var name = "date" + "=";
-    var cook = "";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            cook = c.substring(name.length, c.length);
-        }
-    }
-    alert(cook);
-
-}
 
   $scope.createCookie = function(name,value,days) {
 	if (days) {
