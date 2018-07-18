@@ -1045,10 +1045,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
                                   values : postgresScope.queryRequest.data
                                 });
-                                /*for(let i=0; i<$scope.relationsData.length; i++){
-                                  if($scope.tables.indexOf($scope.relationsData[i].table_name) <= -1)
-                                     $scope.tables.push($scope.relationsData[i].table_name);
-                                }
+                                console.log($scope.relationsData);
                                 /*console.log($scope.relationsData);
                                 let maxLength = 0;
                                 for(let i=0; i<$scope.relationsData.length; i++){
