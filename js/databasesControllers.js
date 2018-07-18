@@ -988,9 +988,18 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                           if(postgresScope.successRequest){
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
+                                let theName = null
+                                for(let m=0; m<displayName.length; m++){
+                                  if(postgresScope.columnValues.data[0][displayName[m]] != null){
+                                    theName = displayName[m];
+                                    break;
+                                  }
+                                }
                                 $scope.relationsData.push({
-                                  table_name : postgresScope.columnConstraint.data[l].table_name,
-                                  values : postgresScope.queryRequest.data
+                                  table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
+                                  values : postgresScope.queryRequest.data,
+                                  id : postgresScope.primaryKey.data[0].attname,
+                                  theName : theName
                                 });
                                 console.log($scope.relationsData);
                               }
