@@ -963,7 +963,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   $scope.tables = [
     {
       name : "Table1",
-      Table1 : [
+      values : [
         {
           id : "ID11",
           name : "Nom11"
@@ -980,7 +980,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
     },
     {
       name : "Table2",
-      Table1 : [
+      values : [
         {
           id : "ID21",
           name : "Nom21"
@@ -997,7 +997,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
     },
     {
       name : "Table3",
-      Table1 : [
+      values : [
         {
           id : "ID31",
           name : "Nom31"
