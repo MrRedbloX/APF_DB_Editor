@@ -292,7 +292,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
           $scope.elementIdToSet[i].set = true;
           console.log($scope.elementIdToSet[i].id);
           document.getElementById($scope.elementIdToSet[i].id).innerHTML = "test";
-          postgresScope.query("catalogue", $scope.elementIdToSet[i])
+          postgresScope.query("catalogue", $scope.elementIdToSet[i]);
         }
       }
     }
