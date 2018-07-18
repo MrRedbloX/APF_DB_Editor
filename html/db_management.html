@@ -39,9 +39,9 @@
       </div>
     </div>
     <br>
-    <div ng-controller="loginController" ng-init="verifco()" class="displayArea">
+    <div class="displayArea">
       <div ng-if="displayNothing"></div>
-      <div ng-if="displayAdd">
+      <div ng-controller="loginController" ng-init="verifco()" ng-if="displayAdd">
         <div id="addRowArea" ng-controller="addRowAreaController">
           <div>
             <div ng-repeat="att in attributes" class="form-group">
