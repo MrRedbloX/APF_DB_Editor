@@ -96,7 +96,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr id="{{tuple.values}}" ng-repeat="tuple in tuples track by $index">
+                <tr id="{{tuple.values}}" ng-repeat="tuple in tuples track by $index" style="display: block; float: left;">
                   <!-- <td id="{{tuple.column_names[$index].column_name}};{{tuple.values}};{{val.id}}" ng-repeat="val in tuple.values track by $index" title={{setIdForToolTips(tuple.values,tuple.column_names[$index].column_name,val.id)}}>{{val.name}}</td>-->
                   <td ng-repeat="val in tuple.values track by $index" >{{val}}</td>
                 </tr>
