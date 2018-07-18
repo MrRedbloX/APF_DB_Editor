@@ -181,7 +181,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
         }
       }
       else {
-        console.log(postgresScope.queryLogin);
+        console.log(postgresScope.addLogin);
         alert("Error on addLogin request, check console logs.");
       }
 
