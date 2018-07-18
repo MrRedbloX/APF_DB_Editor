@@ -39,7 +39,7 @@
       </div>
     </div>
     <br>
-    <div class="displayArea">
+    <div ng-controller="loginController" ng-init="verifco()" class="displayArea">
       <div ng-if="displayNothing"></div>
       <div ng-if="displayAdd">
         <div id="addRowArea" ng-controller="addRowAreaController">
