@@ -37,7 +37,21 @@ app.controller('loginController', function($scope, postgresqlFactory){
         }
     }
 
-    if(cook == ""){
+    name = "identifiant=";
+    var cookid = "";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            cookid = c.substring(name.length, c.length);
+        }
+    }
+    console.log(cookid);
+    if(cook == "" && cookid == ""){
       window.location="#!/login";
     }
   }
@@ -56,8 +70,23 @@ app.controller('loginController', function($scope, postgresqlFactory){
             cook = c.substring(name.length, c.length);
         }
     }
+
+    name = "identifiant=";
+    var cookid = "";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            cookid = c.substring(name.length, c.length);
+        }
+    }
+    console.log(cookid);
     ret = false;
-    if(cook != "")
+    if(cook != "" || cookid != "")
       ret = true;
 
     return ret;
