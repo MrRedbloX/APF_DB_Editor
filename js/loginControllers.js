@@ -241,7 +241,11 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
         method: 'GET',
         url: lien,
         dataType: 'jsonp',
-        headers: {'Access-Control-Allow-Origin': '*'}
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods' : 'GET',
+          'Access-Control-Allow-Headers' : 'Origin, Content-Type, X-Auth-Token'
+        }
       })
       .then(
         function successCallback(data) {
