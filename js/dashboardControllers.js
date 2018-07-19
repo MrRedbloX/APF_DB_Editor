@@ -48,7 +48,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
       temp = 'rgba(';
-      for(let j=0; j<2;j++)
+      for(let j=0; j<3; j++)
         temp += (Math.floor(Math.random()*256))+', ';
       console.log(temp);
       backgroundColor.push(temp+'0.2)');
