@@ -3,7 +3,7 @@ module.exports{
 
     $http({
       method: 'GET',
-      url: lien,
+      url: req.lien,
       dataType: 'jsonp',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -13,14 +13,11 @@ module.exports{
     })
     .then(
       function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.annuaire = data;
-        if(callback) callback();
+        res.status(200).send(data);
       },
       function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.annuaire = data;
-        if(callback) callback();
+        console.log(data);
+        res.status(400).send(data);
     });
   }
 }
