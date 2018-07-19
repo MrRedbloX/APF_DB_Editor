@@ -214,6 +214,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     $scope.verif_user = function(){
       console.log("verif");
+      $scope.sleep(5000);
       console.log(document.getElementsByTagName("h3"));
       for(var i = 0; i < document.getElementsByTagName("h3").length; i++){
           console.log("recup " + document.getElementsByTagName("h3")[i]);
