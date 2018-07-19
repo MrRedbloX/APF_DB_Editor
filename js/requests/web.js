@@ -1,15 +1,25 @@
+var xmlhttp;
 
 module.exports = {
   getAnnuaire: function(req, res){
-
-    var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.getElementById("demo").innerHTML = this.responseText;
+    if (window.XMLHttpRequest) {
+        // code for modern browsers
+        xmlhttp = new XMLHttpRequest();
+     } else {
+        // code for old IE browsers
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-  };
-  xhttp.open("GET", "ajax_info.txt", true);
-  xhttp.send();
+
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        res.status(200).send(this.responseText);
+      }
+      else{
+        res.status(400).send(this.responseText);
+      }
+    };
+    xhttp.open("GET", req.lien , true);
+    xhttp.send();
 
     /*$.ajax({
       method: 'GET',
