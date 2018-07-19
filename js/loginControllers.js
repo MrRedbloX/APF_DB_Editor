@@ -186,7 +186,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="0" height="0"></iframe>';
     var recup_annuaire = document.getElementsByTagName("h3");
     for(var i = 0; i < recup_annuaire.length; i++){
-        console.log(recup_annuaire[i]);
+        console.log("recup : "recup_annuaire[i]);
     }
 
 /*
