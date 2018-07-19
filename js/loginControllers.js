@@ -184,10 +184,10 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
+    var time = 2000;
 
-    
     console.log(document.getElementsByTagName("p"));
-    $scope.verif_user();
+    $scope.verif_user(2000);
 
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
@@ -212,8 +212,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
 */
   }
 
-    $scope.verif_user  = function(){
-
+    $scope.verif_user = function(time){
+      $scope.sleep(time);
       console.log("verif");
       console.log(document.getElementsByTagName("h3"));
       console.log(document.getElementsByTagName("p"));
