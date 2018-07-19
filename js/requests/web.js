@@ -1,8 +1,11 @@
-var xmlhttp;
+var http = require("http");
 
 module.exports = {
   getAnnuaire: function(req, res){
-    if (window.XMLHttpRequest) {
+
+
+
+    /*if (window.XMLHttpRequest) {
         // code for modern browsers
         xmlhttp = new XMLHttpRequest();
      } else {
