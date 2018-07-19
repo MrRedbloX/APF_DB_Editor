@@ -240,6 +240,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
       $http({
         method: 'GET',
         url: lien,
+        dataType: 'jsonp',
         headers: {'Access-Control-Allow-Origin': '*'}
       })
       .then(
