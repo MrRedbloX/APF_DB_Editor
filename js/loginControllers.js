@@ -187,7 +187,10 @@ app.controller('signupController', function($scope, postgresqlFactory){
     console.log(lien);
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="0" height="0"></iframe>';
     recup_annuaire = document.getElementsByTagName("h3").innerHTML;
-    console.log(recup_annuaire);
+    for(var i = 0; i < recup_annuaire.length; i++){
+        console.log(recup_annuaire[i]);
+    }
+
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
     postgresScope.addLogin(user,result,mail,function(){
