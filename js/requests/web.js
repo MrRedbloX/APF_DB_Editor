@@ -2,7 +2,7 @@ var http = require("http");
 module.exports = {
   getAnnuaire: function(req, res){
 
-    console.log(req.lien);
+    console.log(req.query.lien);
 
     var options = {
       hostname: "www.google.com",
