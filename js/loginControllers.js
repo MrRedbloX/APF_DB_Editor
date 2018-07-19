@@ -184,9 +184,9 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-    var x = '<iframe src="' + lien + '" width="640" height="480" ></iframe>';
+    document.getElementById('annuaire').innerHTML = '<div src="' + lien + '></div>';
 
-    $('#annuaire1').load(x, function(){console.log("chager")});
+    $('#annuaire1').load('#annuaire', function(){console.log("chager")});
     //$scope.verif_user(2000);
 
 /*
