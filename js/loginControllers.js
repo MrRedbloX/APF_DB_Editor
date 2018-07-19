@@ -211,14 +211,6 @@ app.controller('signupController', function($scope, postgresqlFactory){
 */
     }
 
-    $scope.chgt = function(url){
-      var test = document.getElementById("annuaire");
-      console.log("url");
-
-
-
-    }
-
     $scope.verif_user = function(){
       $scope.sleep(5000);
       console.log("verif");
