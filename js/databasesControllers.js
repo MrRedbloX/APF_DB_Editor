@@ -1022,6 +1022,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                         });
                         break;
                       }
+                      break;
                     }
                   }
                   else{
