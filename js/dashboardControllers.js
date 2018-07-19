@@ -23,6 +23,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               });
             }
             if(i == postgresScope.dbArray.data.length-1) $scope.ready = true;
+            console.log($scope.databases.length);
           }
         }
         else{
@@ -38,14 +39,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var labels = [];
     var data = [];
 
+    console.log($scope.databases.length);
+    console.log(labels);
+    console.log(data);
+
     for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
     }
-
-    console.log($scope.databases.length);
-    console.log(labels);
-    console.log(data);
 
     var myChart = new Chart(ctx, {
       type: 'bar',
