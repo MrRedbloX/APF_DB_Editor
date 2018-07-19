@@ -3,7 +3,7 @@ module.exports = {
   getAnnuaire: function(req, res){
 
     var options = {
-      host: req.lien,
+      hostname: 'www.google.com',
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
