@@ -192,6 +192,9 @@ app.controller('signupController', function($scope, postgresqlFactory){
         else if (mutation.type == 'attributes') {
             console.log("L'attribut '" + mutation.attributeName + "' a été modifié.");
         }
+        else if (mutation.type == 'subtree') {
+            console.log("L'attribut '");
+        }
       }
     };
 
