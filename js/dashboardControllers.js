@@ -46,10 +46,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: labels,
           datasets: [{
               label: 'Number of table(s)',
-              data: [12, 19, 3, 5, 2, 3],
+              data: data,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
