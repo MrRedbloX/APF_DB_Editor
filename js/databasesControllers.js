@@ -1047,4 +1047,10 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
       }
     });
   }
+
+  $scope.clear = function(){
+    $scope.relationsData = [];
+    $scope.ready = false;
+    treeDatabaseAreaScope.setDisplayTo("nothing");
+  };
 });
