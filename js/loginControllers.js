@@ -184,7 +184,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-      document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
+    document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480" ng-init="verif_user"></iframe>';
 
     //$scope.verif_user(2000);
 
@@ -212,7 +212,6 @@ app.controller('signupController', function($scope, postgresqlFactory){
     }
 
     $scope.verif_user = function(){
-      $scope.sleep(5000);
       console.log("verif");
       console.log(document.getElementsByTagName("h3"));
       for(var i = 0; i < document.getElementsByTagName("h3").length; i++){
