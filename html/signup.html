@@ -1,12 +1,4 @@
-<script>
-  $(function() {
-    $(document).on("DOMSubtreeModified", function(event){
-      verif_user();
-    })
-  })
-</script>
-
-<div id="inscription" ng-controller="signupController">
+<div id="inscription" ng-controller="signupController" ng-init="annuaire">
   <center>
     <form>
       <p class="petit_titre">Inscription</p>
