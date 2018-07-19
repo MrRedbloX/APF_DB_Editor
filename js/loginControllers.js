@@ -210,7 +210,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 */
   }
 
-    $scope.create_login  = function(){
+    $scope.verif_user  = function(){
       for(var i = 0; i < document.getElementsByTagName("h3").length; i++){
           console.log("recup " + document.getElementsByTagName("h3")[i]);
       }
