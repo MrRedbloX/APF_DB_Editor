@@ -73,8 +73,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                       beginAtZero:true
                   }
               }]
-          },
-          events: ['click']
+          }
       }
     });
   };
