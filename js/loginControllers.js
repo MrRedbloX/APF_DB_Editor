@@ -180,7 +180,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     var config = {
       attributes: true,
-      childlist: ture
+      childlist: true
     };
 
     var callback = function(mutationsList) {
@@ -195,7 +195,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     };
 
     var observer = new MutationObserver(callback);
-    
+
     nom = nom.replace(" ", "+");
     prenom = prenom.replace(" ", "+");
     mail_lien = mail.replace("@", "%40");
