@@ -195,6 +195,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
         else if (mutation.type == 'subtree') {
             console.log("L'attribut '");
         }
+        else{console.log("rien");}
       }
     };
 
