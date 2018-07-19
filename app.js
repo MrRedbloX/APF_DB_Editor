@@ -6,6 +6,7 @@ var express = require('express'),
     app = express();
 
 var dbOperations = require("./js/psql.js");
+var webOperations = require("./js/web.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
@@ -49,6 +50,9 @@ app.get('/db/getIdFromMD5', function(req,res){
 });
 app.get('/db/addLogin', function(req,res){
     dbOperations.addLogin(req,res);
+});
+app.get('/web/getAnnuaire', function(req, res){
+    webOperations.getAnnuaire(req,res);
 });
 
 app.set('port', process.env.PORT || 3001);
