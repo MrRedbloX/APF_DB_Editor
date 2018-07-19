@@ -32,6 +32,8 @@ module.exports = {
       res.status(400).send(err);
     });
 
+    req.end();
+
     /*if (window.XMLHttpRequest) {
         // code for modern browsers
         xmlhttp = new XMLHttpRequest();
