@@ -31,6 +31,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             else{
               index--;
               console.log(index);
+              console.log(i);
               if(i >= index-1) $scope.ready = true;
             }
           }
