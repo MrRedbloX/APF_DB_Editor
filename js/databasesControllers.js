@@ -957,96 +957,98 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
 
-  currentTableSelected = tableSelected;
-  currentRowSelected = rowSelected;
-  $scope.relationsData = [];
-  $scope.ready = false;
+  $scope.displayRel = function(){
+    currentTableSelected = tableSelected;
+    currentRowSelected = rowSelected;
+    $scope.relationsData = [];
+    $scope.ready = false;
 
-  if(currentTableSelected != null){
-    let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
-    let db = temp[0];
-    let table = temp[1];
+    if(currentTableSelected != null){
+      let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
+      let db = temp[0];
+      let table = temp[1];
 
-    postgresScope.getPrimaryKey(db, table, function(){
-      if(postgresScope.successRequest){
-        var pkName = postgresScope.primaryKey.data[0].attname;
-        for(let i=0; i<columnsDisplayScope.columns.length; i++){
-          if(pkName == columnsDisplayScope.columns[i].column_name){
-            var pkValue = JSON.parse(currentRowSelected)[i];
-            break;
+      postgresScope.getPrimaryKey(db, table, function(){
+        if(postgresScope.successRequest){
+          var pkName = postgresScope.primaryKey.data[0].attname;
+          for(let i=0; i<columnsDisplayScope.columns.length; i++){
+            if(pkName == columnsDisplayScope.columns[i].column_name){
+              var pkValue = JSON.parse(currentRowSelected)[i];
+              break;
+            }
           }
-        }
-        for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
-          if(treeDatabaseAreaScope.databases[j].name == db){
-            for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
-              if(treeDatabaseAreaScope.databases[j].table[k].table_name != table){
-                postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){
-                  if(postgresScope.successRequest){
-                    //console.log(treeDatabaseAreaScope.databases[j].table[k].table_name);
-                    //console.log(postgresScope.columnConstraint);
-                    for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
-                      //console.log(postgresScope.columnConstraint.data[l].foreign_table_name+" vs "+table);
-                      //console.log(postgresScope.columnConstraint.data[l].foreign_column_name+" vs "+pkName)
-                      if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == pkName){
-                        col = postgresScope.columnConstraint.data[l].column_name;
-                        //console.log("Conditions vérifiées");
-                        //console.log("Get pk de : "+postgresScope.columnConstraint.data[l].table_name);
-                        postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
-                          if(postgresScope.successRequest){
-                            //console.log("PK : "+postgresScope.primaryKey.data[0].attname);
-                            //console.log("SELECT * FROM "+treeDatabaseAreaScope.databases[j].table[k].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
-                            postgresScope.query(db, treeDatabaseAreaScope.databases[j].table[k].table_name, "*", col, pkValue, function(){
-                              if(postgresScope.successRequest){
-                                //console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
-                                //console.log(postgresScope.queryRequest.data);
-                                let theName = postgresScope.primaryKey.data[0].attname;
-                                if(postgresScope.queryRequest.data.length > 0){
-                                  for(let m=0; m<displayName.length; m++){
-                                    if(postgresScope.queryRequest.data[0][displayName[m]] != null){
-                                      theName = displayName[m];
-                                      break;
+          for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
+            if(treeDatabaseAreaScope.databases[j].name == db){
+              for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
+                if(treeDatabaseAreaScope.databases[j].table[k].table_name != table){
+                  postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){
+                    if(postgresScope.successRequest){
+                      //console.log(treeDatabaseAreaScope.databases[j].table[k].table_name);
+                      //console.log(postgresScope.columnConstraint);
+                      for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
+                        //console.log(postgresScope.columnConstraint.data[l].foreign_table_name+" vs "+table);
+                        //console.log(postgresScope.columnConstraint.data[l].foreign_column_name+" vs "+pkName)
+                        if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == pkName){
+                          col = postgresScope.columnConstraint.data[l].column_name;
+                          //console.log("Conditions vérifiées");
+                          //console.log("Get pk de : "+postgresScope.columnConstraint.data[l].table_name);
+                          postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
+                            if(postgresScope.successRequest){
+                              //console.log("PK : "+postgresScope.primaryKey.data[0].attname);
+                              //console.log("SELECT * FROM "+treeDatabaseAreaScope.databases[j].table[k].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
+                              postgresScope.query(db, treeDatabaseAreaScope.databases[j].table[k].table_name, "*", col, pkValue, function(){
+                                if(postgresScope.successRequest){
+                                  //console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
+                                  //console.log(postgresScope.queryRequest.data);
+                                  let theName = postgresScope.primaryKey.data[0].attname;
+                                  if(postgresScope.queryRequest.data.length > 0){
+                                    for(let m=0; m<displayName.length; m++){
+                                      if(postgresScope.queryRequest.data[0][displayName[m]] != null){
+                                        theName = displayName[m];
+                                        break;
+                                      }
                                     }
                                   }
+                                  $scope.relationsData.push({
+                                    table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
+                                    values : postgresScope.queryRequest.data,
+                                    id : postgresScope.primaryKey.data[0].attname,
+                                    name : theName
+                                  });
+                                  //console.log($scope.relationsData);
                                 }
-                                $scope.relationsData.push({
-                                  table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
-                                  values : postgresScope.queryRequest.data,
-                                  id : postgresScope.primaryKey.data[0].attname,
-                                  name : theName
-                                });
-                                //console.log($scope.relationsData);
-                              }
-                              else{
-                                console.log(postgresScope.queryRequest);
-                                alert("Error on query request, check console logs.")
-                              }
-                            });
-                          }
-                        });
+                                else{
+                                  console.log(postgresScope.queryRequest);
+                                  alert("Error on query request, check console logs.")
+                                }
+                              });
+                            }
+                          });
+                          break;
+                        }
                         break;
                       }
-                      break;
                     }
-                  }
-                  else{
-                    console.log(postgresScope.columnConstraint);
-                    alert("Error on getColumnConstraint request, check console logs.")
-                  }
-                });
+                    else{
+                      console.log(postgresScope.columnConstraint);
+                      alert("Error on getColumnConstraint request, check console logs.")
+                    }
+                  });
+                }
               }
+              break;
             }
-            break;
           }
+          busy = false;
+          //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
+          $scope.ready = true;
         }
-        busy = false;
-        //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
-        $scope.ready = true;
-      }
-      else{
-        console.log(postgresScope.primaryKey);
-        alert("Error on getPrimaryKey request, check console logs.")
-      }
-    });
+        else{
+          console.log(postgresScope.primaryKey);
+          alert("Error on getPrimaryKey request, check console logs.")
+        }
+      });
+    }
   }
 
   $scope.clear = function(){
