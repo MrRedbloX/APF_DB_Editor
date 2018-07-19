@@ -195,7 +195,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
       throw new Error("Could not create HTTP request object.");
     }
     var request = makeHttpObject();
-    request.open("GET", "your_url", true);
+    request.open("GET", lien, true);
     request.send(null);
     request.onreadystatechange = function() {
       if (request.readyState == 4)
