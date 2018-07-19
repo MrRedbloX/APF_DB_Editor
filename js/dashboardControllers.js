@@ -34,7 +34,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadChart = function(){
-    var ctx = $("#myChart");
+    var ctx = $("#nbTablesInDB");
     var labels = [];
     var data = [];
 
