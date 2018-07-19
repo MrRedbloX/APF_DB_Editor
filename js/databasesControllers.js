@@ -52,6 +52,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
                   });
                 }
                 else{
+                  console.log(postgresScope.tableArray);
                   alert("Error on getTableName request, check console logs.");
                 }
                 $(function() {
