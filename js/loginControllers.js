@@ -218,6 +218,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
         if (document.readyState === "interactive") {
             console.log("complet");
         }
+        else {console.log("nop");}
       }
     }
 
