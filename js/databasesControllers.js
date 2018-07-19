@@ -986,7 +986,9 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                     //console.log(postgresScope.columnConstraint);
                     for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
                       console.log(postgresScope.columnConstraint.data[l].foreign_table_name+" vs "+table);
+                      console.log(postgresScope.columnConstraint.data[l].foreign_column_name+" vs "+pkName)
                       if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == pkName){
+                        console.log("Conditions vérifiées");
                         postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
                           if(postgresScope.successRequest){
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
