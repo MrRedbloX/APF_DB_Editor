@@ -50,7 +50,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           datasets: [{
               label: 'Number of table(s)',
               data: data,
-              backgroundColor: [
+              /*backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 206, 86, 0.2)',
@@ -65,7 +65,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   'rgba(75, 192, 192, 1)',
                   'rgba(153, 102, 255, 1)',
                   'rgba(255, 159, 64, 1)'
-              ],
+              ],*/
               borderWidth: 1
           }]
       },
