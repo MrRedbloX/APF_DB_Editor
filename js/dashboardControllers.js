@@ -7,10 +7,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     if(!$scope.ready){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
-          index = 0;
           for(let i=0;i<postgresScope.dbArray.data.length;i++){
             if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
-              index++;
               postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
                 if(postgresScope.successRequest){
                   $scope.databases.push({
@@ -20,7 +18,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   console.log(i.toString());
                   console.log(index.toString());
                   console.log(postgresScope.dbArray.data);
-                  if(index == postgresScope.dbArray.data.length-1) $scope.ready = true;
+
                 }
                 else{
                   console.log(postgresScope.tableArray);
@@ -28,6 +26,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 }
               });
             }
+            if(i == postgresScope.dbArray.data.length-1) $scope.ready = true;
           }
         }
         else{
