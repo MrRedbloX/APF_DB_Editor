@@ -966,7 +966,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
     let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
     let db = temp[0];
     let table = temp[1];
-    var primaryKey;
 
     postgresScope.getPrimaryKey(db, table, function(){
       if(postgresScope.successRequest){
@@ -983,13 +982,15 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
               if(treeDatabaseAreaScope.databases[j].table[k].table_name != table){
                 postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){
                   if(postgresScope.successRequest){
+                    console.log(treeDatabaseAreaScope.databases[j].table[k].table_name);
+                    console.log(postgresScope.columnConstraint);
                     for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
                       if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == pkName){
                         postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
                           if(postgresScope.successRequest){
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
-                                console.log(postgresScope.queryRequest.data);
+                                //console.log(postgresScope.queryRequest.data);
                                 let theName = null
                                 for(let m=0; m<displayName.length; m++){
                                   if(postgresScope.queryRequest.data[0][displayName[m]] != null){
@@ -1003,7 +1004,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                   id : postgresScope.primaryKey.data[0].attname,
                                   name : theName
                                 });
-                                console.log($scope.relationsData);
+                                //console.log($scope.relationsData);
                               }
                               else{
                                 console.log(postgresScope.queryRequest);
