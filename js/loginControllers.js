@@ -185,7 +185,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     console.log(lien.innerHTML);
 
     window.location = lien;
-    console.log(document.getElementsByTagName("h3"));
+    //console.log(document.getElementsByTagName("h3"));
   //  document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480" ></iframe>';
 
     //$scope.verif_user(2000);
