@@ -182,7 +182,6 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn="+nom+"&personCriteria.snSelect=STARTSWITH&personCriteria.givenName="+prenom+"&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail="+mail_lien+"&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=*";
 
-    console.log(lien);
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="0" height="0"></iframe>';
     var recup_annuaire = document.getElementsByTagName("h3");
     for(var i = 0; i < recup_annuaire.length; i++){
