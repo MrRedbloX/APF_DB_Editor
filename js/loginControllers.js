@@ -186,7 +186,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480" id="frame"></iframe>';
 
-    $('#annuaire1').load('#frame', function(){console.log("chager")});
+    $('#annuaire1').load('#frame', function(){$scope.verif_user();});
     //$scope.verif_user(2000);
 
 /*
