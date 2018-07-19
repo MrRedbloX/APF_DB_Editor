@@ -216,8 +216,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
       document.getElementById('annuaire').innerHTML = '<iframe src="' + url + '" width="640" height="480"></iframe>';
       document.onreadystatechange = function () {
         if (document.readyState === "interactive") {
-            initApplication();
-        } 
+            console.log("complet");
+        }
       }
     }
 
