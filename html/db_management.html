@@ -92,7 +92,7 @@
             <table id="tableColumnsDisplay" class="table table-bordered">
                 <tr ng-repeat="rel in relationsData track by $index">
                   <th >{{rel.table_name}}</th>
-                  <td ng-repeat="val in rel.values track by $index">{{rel.name}}</td>
+                  <td ng-repeat="val in rel.values track by $index">{{val[rel.name]}}</td>
                 </tr>
             </table>
           </div>
