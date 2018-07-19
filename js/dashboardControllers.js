@@ -43,6 +43,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       data.push($scope.databases[i].table.length);
     }
 
+    console.log($scope.databases);
     console.log(labels);
     console.log(data);
 
