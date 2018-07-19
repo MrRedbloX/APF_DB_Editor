@@ -205,10 +205,10 @@ app.controller('signupController', function($scope, postgresqlFactory){
   	xhr.send();
 
 
-  };
+    };
 
     console.log("HTML" + getHTML);
-    
+
     //$scope.verif_user(2000);
 
 /*
