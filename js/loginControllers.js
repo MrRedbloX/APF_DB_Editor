@@ -180,7 +180,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     var config = {
       attributes: true,
-      childlist: true
+      childlist: true,
+      subtree: true
     };
 
     var callback = function(mutationsList) {
