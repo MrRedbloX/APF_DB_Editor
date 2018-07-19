@@ -1,6 +1,7 @@
 app.controller('chartDisplayController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
   $scope.ready = false;
+  $scope.databases = [];
 
   $scope.loadDB = function(){
     if(!$scope.ready){
