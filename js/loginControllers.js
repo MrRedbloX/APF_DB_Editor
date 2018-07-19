@@ -184,31 +184,23 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-    var getHTML = function(lien, callback){
+    function makeHttpObject() {
+      try {return new XMLHttpRequest();}
+      catch (error) {}
+      try {return new ActiveXObject("Msxml2.XMLHTTP");}
+      catch (error) {}
+      try {return new ActiveXObject("Microsoft.XMLHTTP");}
+      catch (error) {}
 
-  	// Feature detection
-  	if ( !window.XMLHttpRequest ) return;
-
-  	// Create new request
-  	var xhr = new XMLHttpRequest();
-
-  	// Setup callback
-  	xhr.onload = function() {
-  		if ( callback && typeof( callback ) === 'function' ) {
-  			callback( this.responseXML );
-  		}
-  	}
-
-  	// Get the HTML
-  	xhr.open( 'GET', lien );
-  	xhr.responseType = 'document';
-  	xhr.send();
-
-    return "ij";
+      throw new Error("Could not create HTTP request object.");
+    }
+    var request = makeHttpObject();
+    request.open("GET", "your_url", true);
+    request.send(null);
+    request.onreadystatechange = function() {
+      if (request.readyState == 4)
+        alert(request.responseText);
     };
-
-    console.log("HTML" + getHTML);
-
     //$scope.verif_user(2000);
 
 /*
