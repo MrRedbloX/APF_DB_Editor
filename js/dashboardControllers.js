@@ -40,14 +40,18 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var ctx = $("#nbTablesInDB");
     var labels = [];
     var data = [];
+    var backgroundColor = [];
+    var borderColor = [];
 
-    console.log($scope.databases.length);
-    console.log(labels);
-    console.log(data);
 
     for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
+      temp = 'rgba(';
+      for(let j=0; j<2;j++)
+        temp += (Math.floor(Math.random()*256))+', ';
+      backgroundColor.push(temp+'0.2)');
+      borderColor.push(temp+'1)');
     }
 
     var myChart = new Chart(ctx, {
