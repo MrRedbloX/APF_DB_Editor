@@ -2,10 +2,8 @@ var http = require("http");
 module.exports = {
   getAnnuaire: function(req, res){
 
-    console.log(req.query.lien);
-
     var options = {
-      hostname: "www.google.com",
+      hostname: req.query.lien,
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
