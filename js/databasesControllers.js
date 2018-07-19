@@ -998,8 +998,8 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                               if(postgresScope.successRequest){
                                 //console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
                                 console.log(postgresScope.queryRequest.data);
+                                let theName = postgresScope.primaryKey.data[0].attname;
                                 if(postgresScope.queryRequest.data.length > 0){
-                                  let theName = null
                                   for(let m=0; m<displayName.length; m++){
                                     if(postgresScope.queryRequest.data[0][displayName[m]] != null){
                                       theName = displayName[m];
