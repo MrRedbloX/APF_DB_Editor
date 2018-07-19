@@ -332,4 +332,11 @@ module.exports = {
       }
     });
   }
+
+  getAnnuaire: function(){
+    var wget = require('wget');
+    var source = 'http://www.devdungeon.com/archive';
+    var test = "";
+    wget.download(source, test);
+  }
 };
