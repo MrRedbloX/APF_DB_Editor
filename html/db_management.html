@@ -1,5 +1,5 @@
 <div ng-controller="loginController" ng-init="verifco()">
-  <div ng-controller="treeDatabaseAreaController">
+  <div ng-controller="treeDatabaseAreaController" ng-init="loadDB()">
     <div id="databasesArea"  class="treeArea">
       <div id="treeDatabaseArea" ng-if="ready" class="relative">
         <ul ng-repeat="db in databases">
