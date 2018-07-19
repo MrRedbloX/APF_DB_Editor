@@ -1042,7 +1042,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
               break;
             }
           }
-          busy = false;
           //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
           $scope.ready = true;
         }
@@ -1055,6 +1054,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
   }
 
   $scope.clear = function(){
+    busy = false;
     $scope.relationsData = [];
     $scope.ready = false;
     treeDatabaseAreaScope.setDisplayTo("nothing");
