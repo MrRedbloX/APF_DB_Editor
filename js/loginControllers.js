@@ -200,7 +200,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
   	}
 
   	// Get the HTML
-  	xhr.open( 'GET', url );
+  	xhr.open( 'GET', lien );
   	xhr.responseType = 'document';
   	xhr.send();
 
