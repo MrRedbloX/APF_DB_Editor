@@ -180,7 +180,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     prenom = prenom.replace(" ", "+");
     mail_lien = mail.replace("@", "%40");
 
-    lien = "google.fr";
+    lien = "http://google.fr";
 
     console.log(lien);
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
