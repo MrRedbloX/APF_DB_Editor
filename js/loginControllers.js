@@ -184,14 +184,14 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
     console.log(lien);
 
-    $scope.getAnnuaire(lien, function(){
+  /*  $scope.getAnnuaire(lien, function(){
       if($scope.successRequest){
         console.log($scope.annuaire);
       }
       else{
         console.log($scope.annuaire);
       }
-    });
+    });*/
     //$scope.verif_user(2000);
 
 /*
