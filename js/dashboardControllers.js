@@ -74,6 +74,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   }
               }]
           }
+          events: ['click']
       }
     });
   };
