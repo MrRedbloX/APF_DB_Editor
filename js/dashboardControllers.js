@@ -17,7 +17,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                     name : postgresScope.dbArray.data[i].datname,
                     table : postgresScope.tableArray.data
                   });
-                  if(i == index-1){
+                  if(i >= index-1){
                     $scope.ready = true;
                     console.log($scope.databases.length);
                   }
@@ -30,8 +30,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             }
             else{
               index--;
-              console.log(index);
-              if(i == index-1) $scope.ready = true;
+              //console.log(index);
+              if(i >= index-1) $scope.ready = true;
             }
           }
         }
