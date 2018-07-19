@@ -1,7 +1,35 @@
-app.controller('chartDisplayController', function($scope){
+app.controller('chartDisplayController', function($scope, postgresqlFactory){
+  var postgresScope = postgresqlFactory.getScope();
+  $scope.ready = false;
 
-  $scope.loadChart = function(){
+  $scope.loadDB = function(){
     var ctx = $("#myChart");
+
+    postgresScope.getDBName(function(){ //We do the request and we define the callback function
+      if(postgresScope.successRequest){
+        for(let i=0;i<postgresScope.dbArray.data.length;i++){
+          if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
+            postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
+              if(postgresScope.successRequest){
+                $scope.databases.push({
+                  name : postgresScope.dbArray.data[i].datname,
+                  table : postgresScope.tableArray.data
+                });
+              }
+              else{
+                console.log(postgresScope.tableArray);
+                alert("Error on getTableName request, check console logs.");
+              }
+            });
+          }
+        }
+        $scope.ready = true;
+      }
+      else{
+        console.log(postgresScope.dbArray);
+        alert("Error on getDBName request, check console logs.");
+      }
+    });
 
     var myChart = new Chart(ctx, {
       type: 'bar',
