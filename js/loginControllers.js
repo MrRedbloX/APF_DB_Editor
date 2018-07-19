@@ -186,7 +186,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="0" height="0"></iframe>';
-    recup_annuaire = document.getElementById("annuaire").innerHTML;
+    recup_annuaire = document.getElementsByTagName("h3").innerHTML;
     console.log(recup_annuaire);
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
