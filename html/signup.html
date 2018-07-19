@@ -1,3 +1,16 @@
+<script>
+  $(function() {
+
+    $(document).on("DOMSubtreeModified", function(event){
+      console.log(event.target);
+    })
+
+    $(document).on("click", function(){
+      $('#inscription').html("<span>Test</span>");  
+    })
+  })
+</script>
+
 <div id="inscription" ng-controller="signupController">
   <center>
     <form>
