@@ -7,33 +7,27 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     if(!$scope.ready){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
-          index = postgresScope.dbArray.data.length;
+          temp = [];
           for(let i=0;i<postgresScope.dbArray.data.length;i++){
-            if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
-              postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function($scope.loadChart){ //We do the same thing for this request
-                if(postgresScope.successRequest){
-                  //console.log(index);
-                  $scope.databases.push({
-                    name : postgresScope.dbArray.data[i].datname,
-                    table : postgresScope.tableArray.data
-                  });
-                  if(i == index-1){
-                    $scope.ready = true;
-                    console.log($scope.databases.length);
-                  }
+            if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname))
+              temp.push(postgresScope.dbArray.data[i].datname);
+          }
+          for(let i=0; i<temp.length; i++){
+            postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
+              if(postgresScope.successRequest){
+                //console.log(index);
+                $scope.databases.push({
+                  name : postgresScope.dbArray.data[i].datname,
+                  table : postgresScope.tableArray.data
+                });
+                if(i == temp.length-1) $scope.ready = true;
                 }
-                else{
-                  console.log(postgresScope.tableArray);
-                  alert("Error on getTableName request, check console logs.");
-                }
-              });
-            }
-            else{
-              index--;
-              console.log(index);
-              console.log(i);
-              if(i >= index-1) $scope.ready = true;
-            }
+              }
+              else{
+                console.log(postgresScope.tableArray);
+                alert("Error on getTableName request, check console logs.");
+              }
+            });
           }
         }
         else{
