@@ -11,12 +11,12 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
               postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
                 if(postgresScope.successRequest){
-                  console.log("1");
                   $scope.databases.push({
                     name : postgresScope.dbArray.data[i].datname,
                     table : postgresScope.tableArray.data
                   });
                 }
+                $scope.ready = true;
                 else{
                   console.log(postgresScope.tableArray);
                   alert("Error on getTableName request, check console logs.");
@@ -24,8 +24,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               });
             }
           }
-          console.log("2");
-          $scope.ready = true;
         }
         else{
           console.log(postgresScope.dbArray);
