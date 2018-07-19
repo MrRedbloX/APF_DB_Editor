@@ -38,35 +38,38 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
     else console.log("Wrong type for setDisplayTo");
   }
 
-  if(!$scope.ready){
-    postgresScope.getDBName(function(){ //We do the request and we define the callback function
-      if(postgresScope.successRequest){
-        for(let i=0;i<postgresScope.dbArray.data.length;i++){
-          if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
-            postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
-              if(postgresScope.successRequest){
-                $scope.databases.push({
-                  name : postgresScope.dbArray.data[i].datname,
-                  table : postgresScope.tableArray.data
+  $scope.loadDB = function(){
+    if(!$scope.ready){
+      postgresScope.getDBName(function(){ //We do the request and we define the callback function
+        if(postgresScope.successRequest){
+          for(let i=0;i<postgresScope.dbArray.data.length;i++){
+            if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
+              postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
+                if(postgresScope.successRequest){
+                  $scope.databases.push({
+                    name : postgresScope.dbArray.data[i].datname,
+                    table : postgresScope.tableArray.data
+                  });
+                }
+                else{
+                  alert("Error on getTableName request, check console logs.");
+                }
+                $(function() {
+                  $('#treeDatabaseArea').jstree(); //Activating jtree
                 });
-              }
-              else{
-                alert("Error on getTableName request, check console logs.");
-              }
-              $(function() {
-                $('#treeDatabaseArea').jstree(); //Activating jtree
               });
-            });
+            }
           }
+          $scope.ready = true;
         }
-        $scope.ready = true;
-      }
-      else{
-        console.log(postgresScope.dbArray);
-        alert("Error on getDBName request, check console logs.");
-      }
-    });
+        else{
+          console.log(postgresScope.dbArray);
+          alert("Error on getDBName request, check console logs.");
+        }
+      });
+    }
   }
+}
 });
 
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
