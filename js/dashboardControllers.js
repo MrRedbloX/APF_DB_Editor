@@ -10,7 +10,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           index = postgresScope.dbArray.data.length;
           for(let i=0;i<postgresScope.dbArray.data.length;i++){
             if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
-              postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
+              postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function($scope.loadChart){ //We do the same thing for this request
                 if(postgresScope.successRequest){
                   //console.log(index);
                   $scope.databases.push({
