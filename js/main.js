@@ -1,4 +1,4 @@
-var exceptionDB = ['template0', 'template1']; //The databases that will not be displayed
+var exceptionDB = ['postgres', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases
 var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid'];
