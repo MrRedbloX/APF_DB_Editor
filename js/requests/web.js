@@ -1,7 +1,17 @@
+
 module.exports = {
   getAnnuaire: function(req, res){
 
-    $.ajax({
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+
+    /*$.ajax({
       method: 'GET',
       url: req.lien,
       dataType: 'jsonp',
@@ -19,6 +29,6 @@ module.exports = {
       function errorCallback(data) {
         console.log(data);
         res.status(400).send(data);
-    });
+    });*/
   }
 }
