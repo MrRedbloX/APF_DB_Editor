@@ -15,10 +15,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                     name : postgresScope.dbArray.data[i].datname,
                     table : postgresScope.tableArray.data
                   });
-                  console.log(i.toString());
-                  console.log(index.toString());
-                  console.log(postgresScope.dbArray.data);
-
                 }
                 else{
                   console.log(postgresScope.tableArray);
