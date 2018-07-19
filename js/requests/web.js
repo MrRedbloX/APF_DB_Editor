@@ -11,7 +11,7 @@ module.exports = {
           'Access-Control-Allow-Methods' : 'GET',
           'Access-Control-Allow-Headers' : 'Origin, Content-Type, X-Auth-Token'
       }
-};
+    };
 
     var req = http.request(options, function(result){
 
