@@ -52,7 +52,7 @@ app.get('/db/addLogin', function(req,res){
 });
 
 app.set('port', process.env.PORT || 3001);
-//app.use(express.static(__dirname));
+app.use(express.static(__dirname));
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
