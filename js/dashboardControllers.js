@@ -50,7 +50,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       temp = 'rgba(';
       for(let j=0; j<3; j++)
         temp += (Math.floor(Math.random()*256))+', ';
-      console.log(temp);
       backgroundColor.push(temp+'0.2)');
       borderColor.push(temp+'1)');
     }
