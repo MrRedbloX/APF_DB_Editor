@@ -2,6 +2,17 @@ var http = require("http");
 module.exports = {
   getAnnuaire: function(req, res){
 
+    var options = {
+      host: req.lien,
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods' : 'GET',
+          'Access-Control-Allow-Headers' : 'Origin, Content-Type, X-Auth-Token'
+      }
+};
+
     var req = http.request(options, function(result){
 
       var output = '';
