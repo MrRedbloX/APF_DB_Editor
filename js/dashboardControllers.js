@@ -18,7 +18,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                     table : postgresScope.tableArray.data
                   });
                   console.log(i.toString());
-                  //console.log(index.toString());
+                  console.log(index.toString());
                   console.log(postgresScope.dbArray.data);
                   if(index == postgresScope.dbArray.data.length-1) $scope.ready = true;
                 }
