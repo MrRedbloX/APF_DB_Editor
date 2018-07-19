@@ -212,6 +212,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     }
 
     $scope.chgt = function(url){
+      console.log("url")
       document.getElementById('annuaire').innerHTML = '<iframe src="' + url + '" width="640" height="480"></iframe>';
       console.log(document.getElementsByTagName("p"));
       $scope.verif_user();
@@ -221,7 +222,6 @@ app.controller('signupController', function($scope, postgresqlFactory){
       $scope.sleep(5000);
       console.log("verif");
       console.log(document.getElementsByTagName("h3"));
-      console.log(document.getElementsByTagName("p"));
       for(var i = 0; i < document.getElementsByTagName("h3").length; i++){
           console.log("recup " + document.getElementsByTagName("h3")[i]);
       }
