@@ -970,8 +970,9 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
 
     postgresScope.getPrimaryKey(db, table, function(){
       if(postgresScope.successRequest){
+        var pkName = postgresScope.primaryKey.data[0].attname;
         for(let i=0; i<columnsDisplayScope.columns.length; i++){
-          if(postgresScope.primaryKey.data[0].attname == columnsDisplayScope.columns[i].column_name){
+          if(pkName == columnsDisplayScope.columns[i].column_name){
             var pkValue = JSON.parse(currentRowSelected)[i];
             break;
           }
@@ -983,11 +984,12 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                 postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){
                   if(postgresScope.successRequest){
                     for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
-                      if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == postgresScope.primaryKey.data[0].attname){
+                      if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == pkName){
                         postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
                           if(postgresScope.successRequest){
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
+                                console.log(postgresScope.queryRequest.data);
                                 let theName = null
                                 for(let m=0; m<displayName.length; m++){
                                   if(postgresScope.queryRequest.data[0][displayName[m]] != null){
