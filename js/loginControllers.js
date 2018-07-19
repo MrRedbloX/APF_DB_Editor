@@ -204,7 +204,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
   	xhr.responseType = 'document';
   	xhr.send();
 
-
+    return "ij";
     };
 
     console.log("HTML" + getHTML);
