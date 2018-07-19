@@ -189,6 +189,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we click on display
   $scope.display = function(){
+    busy = false;
     currentTableSelected = tableSelected;
     currentRowSelected = rowSelected;
     var columnsDisplayScope = columnsDisplayFactory.getScope();
