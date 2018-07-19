@@ -1,4 +1,4 @@
-module.exports{
+module.exports = {
   getAnnuaire: function(req, res){
 
     $http({
