@@ -183,12 +183,11 @@ app.controller('signupController', function($scope, postgresqlFactory){
     lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn="+nom+"&personCriteria.snSelect=STARTSWITH&personCriteria.givenName="+prenom+"&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail="+mail_lien+"&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=*";
 
     console.log(lien);
+    document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
     var time = 2000;
 
     console.log(document.getElementsByTagName("p"));
-    $scope.verif_user(2000, function(){
-      document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
-    });
+    $scope.verif_user(2000);
 
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
@@ -213,8 +212,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 */
   }
 
-    $scope.verif_user = function(time, rm){
-      rm;
+    $scope.verif_user = function(time){
       $scope.sleep(time);
       console.log("verif");
       console.log(document.getElementsByTagName("h3"));
