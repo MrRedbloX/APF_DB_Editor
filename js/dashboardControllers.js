@@ -13,7 +13,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               temp.push(postgresScope.dbArray.data[i].datname);
           }
           for(let i=0; i<temp.length; i++){
-            postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
+            postgresScope.getTableName(temp[i], function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
                 $scope.databases.push({
                   name : temp[i],
