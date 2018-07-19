@@ -1042,7 +1042,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
               break;
             }
           }
-          //if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
           $scope.ready = true;
         }
         else{
@@ -1058,5 +1057,6 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
     $scope.relationsData = [];
     $scope.ready = false;
     treeDatabaseAreaScope.setDisplayTo("nothing");
+    if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = false;
   };
 });
