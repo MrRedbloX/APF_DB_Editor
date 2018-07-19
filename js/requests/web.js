@@ -28,6 +28,10 @@ module.exports = {
 
     })
 
+    req.on('error', function(err){
+      res.status(400).send(err);
+    });
+
     /*if (window.XMLHttpRequest) {
         // code for modern browsers
         xmlhttp = new XMLHttpRequest();
