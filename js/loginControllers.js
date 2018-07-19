@@ -239,13 +239,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
       $http({
         method: 'GET',
-        url: '/web/getAnnuaire?lien='+lien,
-        dataType: 'jsonp',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods' : 'GET',
-          'Access-Control-Allow-Headers' : 'Origin, Content-Type, X-Auth-Token'
-        }
+        url: '/web/getAnnuaire?lien='+lien
       })
       .then(
         function successCallback(data) {
