@@ -184,7 +184,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-    
+    postgresScope.getAnnuaire();
     //$scope.verif_user(2000);
 
 /*
