@@ -95,6 +95,7 @@
                   <td ng-repeat="val in rel.values track by $index">{{val[rel.name]}}</td>
                 </tr>
             </table>
+            <div ng-if="relationsData.length == 0">No relation found</div>
           </div>
           <button id="clearButtonRel" ng-click="clear()" type="button" class="btn">Clear</button>
         </div>
