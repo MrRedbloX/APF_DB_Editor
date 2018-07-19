@@ -185,9 +185,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
     console.log(lien);
     document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
     console.log(document.getElementsByTagName("p"));
-    for(var i = 0; i < document.getElementsByTagName("p").length; i++){
-        console.log("recup " + document.getElementsByTagName("p")[i]);
-    }
+    $scope.verif_user();
+
 /*
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
     postgresScope.addLogin(user,result,mail,function(){
@@ -210,4 +209,11 @@ app.controller('signupController', function($scope, postgresqlFactory){
   }
 */
   }
+
+    $scope.create_login  = function(){
+      for(var i = 0; i < document.getElementsByTagName("h3").length; i++){
+          console.log("recup " + document.getElementsByTagName("h3")[i]);
+      }
+    }
+
 });
