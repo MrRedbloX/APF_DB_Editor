@@ -22,8 +22,7 @@ module.exports = {
       });
 
       result.on('end', function() {
-          var obj = JSON.parse(output);
-          res.status(200).send(obj);
+          res.status(200).send(output);
       });
 
     })
