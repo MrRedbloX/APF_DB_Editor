@@ -184,7 +184,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-    $scope.chgt(lien);
+      document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
 
     //$scope.verif_user(2000);
 
@@ -214,14 +214,8 @@ app.controller('signupController', function($scope, postgresqlFactory){
     $scope.chgt = function(url){
       var test = document.getElementById("annuaire");
       console.log("url");
-      test.addEventListener("changed", function() {
-          if(activities.value == "addNew")
-          {
-              console.log("change");
-          }
-          console.log(activities.value);
-      });
-      document.getElementById('annuaire').innerHTML = '<iframe src="' + url + '" width="640" height="480"></iframe>';
+
+
 
     }
 
