@@ -13,7 +13,7 @@ module.exports = {
       }
     };
 
-    var req = http.request(options, function(result){
+    var request = http.request(options, function(result){
 
       var output = '';
 
@@ -27,11 +27,11 @@ module.exports = {
 
     })
 
-    req.on('error', function(err){
+    request.on('error', function(err){
       res.status(400).send(err);
     });
 
-    req.end();
+    request.end();
 
     /*if (window.XMLHttpRequest) {
         // code for modern browsers
