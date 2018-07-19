@@ -986,7 +986,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                     //console.log(postgresScope.columnConstraint);
                     for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
                       //console.log(postgresScope.columnConstraint.data[l].foreign_table_name+" vs "+table);
-                      console.log(postgresScope.columnConstraint.data[l].foreign_column_name+" vs "+pkName)
+                      //console.log(postgresScope.columnConstraint.data[l].foreign_column_name+" vs "+pkName)
                       if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == pkName){
                         col = postgresScope.columnConstraint.data[l].column_name;
                         //console.log("Conditions vérifiées");
@@ -994,11 +994,11 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                         postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
                           if(postgresScope.successRequest){
                             //console.log("PK : "+postgresScope.primaryKey.data[0].attname);
-                            console.log("SELECT * FROM "+treeDatabaseAreaScope.databases[j].table[k].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
+                            //console.log("SELECT * FROM "+treeDatabaseAreaScope.databases[j].table[k].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
                             postgresScope.query(db, treeDatabaseAreaScope.databases[j].table[k].table_name, "*", col, pkValue, function(){
                               if(postgresScope.successRequest){
                                 //console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
-                                console.log(postgresScope.queryRequest.data);
+                                //console.log(postgresScope.queryRequest.data);
                                 let theName = postgresScope.primaryKey.data[0].attname;
                                 if(postgresScope.queryRequest.data.length > 0){
                                   for(let m=0; m<displayName.length; m++){
