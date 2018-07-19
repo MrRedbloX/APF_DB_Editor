@@ -996,6 +996,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                             //console.log("SELECT * FROM "+postgresScope.columnConstraint.data[l].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
+                                console.log(l);
                                 console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
                                 console.log(postgresScope.queryRequest.data);
                                 let theName = null
