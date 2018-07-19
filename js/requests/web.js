@@ -1,9 +1,21 @@
 var http = require("http");
-
 module.exports = {
   getAnnuaire: function(req, res){
 
+    var req = http.request(options, function(result){
 
+      var output = '';
+
+      result.on('data', function (chunk) {
+          output += chunk;
+      });
+
+      result.on('end', function() {
+          var obj = JSON.parse(output);
+          res.status(200).send(obj);
+      });
+
+    })
 
     /*if (window.XMLHttpRequest) {
         // code for modern browsers
