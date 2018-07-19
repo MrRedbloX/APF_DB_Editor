@@ -184,10 +184,28 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-    //window.location = lien;
-    //console.log(document.getElementsByTagName("h3"));
-  //  document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480" ></iframe>';
+    var getHTML = function ( lien, callback ) {
 
+  	// Feature detection
+  	if ( !window.XMLHttpRequest ) return;
+
+  	// Create new request
+  	var xhr = new XMLHttpRequest();
+
+  	// Setup callback
+  	xhr.onload = function() {
+  		if ( callback && typeof( callback ) === 'function' ) {
+  			callback( this.responseXML );
+  		}
+  	}
+
+  	// Get the HTML
+  	xhr.open( 'GET', url );
+  	xhr.responseType = 'document';
+  	xhr.send();
+
+    console.log(getHTML);
+  };
     //$scope.verif_user(2000);
 
 /*
