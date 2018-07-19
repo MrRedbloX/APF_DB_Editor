@@ -22,8 +22,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 }
               });
             }
-            if(i == postgresScope.dbArray.data.length-1) $scope.ready = true;
-            console.log($scope.databases.length);
+            if(i == postgresScope.dbArray.data.length-1){
+              $scope.ready = true;
+              console.log($scope.databases.length);
+            }
           }
         }
         else{
