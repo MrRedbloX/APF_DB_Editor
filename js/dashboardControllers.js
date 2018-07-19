@@ -15,8 +15,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                     name : postgresScope.dbArray.data[i].datname,
                     table : postgresScope.tableArray.data
                   });
+                  $scope.ready = true;
                 }
-                $scope.ready = true;
                 else{
                   console.log(postgresScope.tableArray);
                   alert("Error on getTableName request, check console logs.");
