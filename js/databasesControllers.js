@@ -993,11 +993,10 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                         postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
                           if(postgresScope.successRequest){
                             //console.log("PK : "+postgresScope.primaryKey.data[0].attname);
-                            console.log("SELECT * FROM "+treeDatabaseAreaScope.databases[j].table[k].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
+                            //console.log("SELECT * FROM "+treeDatabaseAreaScope.databases[j].table[k].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
                             postgresScope.query(db, treeDatabaseAreaScope.databases[j].table[k].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
-                                console.log(l);
-                                console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
+                                //console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
                                 console.log(postgresScope.queryRequest.data);
                                 let theName = null
                                 for(let m=0; m<displayName.length; m++){
