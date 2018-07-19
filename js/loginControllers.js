@@ -213,7 +213,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     $scope.annuaire = function(){
       $(document).on("DOMSubtreeModified", function(event){
-        verif_user();
+        $scope.verif_user();
       })
     }
 
