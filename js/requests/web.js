@@ -1,7 +1,7 @@
 module.exports = {
   getAnnuaire: function(req, res){
 
-    $http({
+    $.ajax({
       method: 'GET',
       url: req.lien,
       dataType: 'jsonp',
