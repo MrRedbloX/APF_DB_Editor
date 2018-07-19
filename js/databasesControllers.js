@@ -992,11 +992,12 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                         //console.log("Get pk de : "+postgresScope.columnConstraint.data[l].table_name);
                         postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
                           if(postgresScope.successRequest){
-                            console.log("PK : "+postgresScope.primaryKey.data[0].attname);
-                            console.log("SELECT * FROM "+postgresScope.columnConstraint.data[l].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
+                            //console.log("PK : "+postgresScope.primaryKey.data[0].attname);
+                            //console.log("SELECT * FROM "+postgresScope.columnConstraint.data[l].table_name+" WHERE "+postgresScope.columnConstraint.data[l].column_name+" = "+pkValue);
                             postgresScope.query(db, postgresScope.columnConstraint.data[l].table_name, "*", postgresScope.columnConstraint.data[l].column_name, pkValue, function(){
                               if(postgresScope.successRequest){
-                                //console.log(postgresScope.queryRequest.data);
+                                console.log("Table : "+postgresScope.columnConstraint.data[l].table_name);
+                                console.log(postgresScope.queryRequest.data);
                                 let theName = null
                                 for(let m=0; m<displayName.length; m++){
                                   if(postgresScope.queryRequest.data[0][displayName[m]] != null){
