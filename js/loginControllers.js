@@ -159,7 +159,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
 app.controller('signupController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
 
-  $scope.create_login  = function(){
+  $scope.create_login  = async function(){
 
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
@@ -183,7 +183,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn="+nom+"&personCriteria.snSelect=STARTSWITH&personCriteria.givenName="+prenom+"&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail="+mail_lien+"&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=*";
 
     console.log(lien);
-    document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
+    await document.getElementById('annuaire').innerHTML = '<iframe src="' + lien + '" width="640" height="480"></iframe>';
     var time = 2000;
 
     console.log(document.getElementsByTagName("p"));
