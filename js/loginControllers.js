@@ -214,8 +214,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     $scope.chgt = function(url){
       console.log("url");
       document.getElementById('annuaire').innerHTML = '<iframe src="' + url + '" width="640" height="480"></iframe>';
-      console.log(document.getElementsByTagName("p"));
-      $scope.verif_user();
+      document.readyState === "complete";
     }
 
     $scope.verif_user = function(){
