@@ -184,7 +184,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-    var getHTML = function ( lien, callback ) {
+    var getHTML = function( lien, callback ){
 
   	// Feature detection
   	if ( !window.XMLHttpRequest ) return;
