@@ -199,6 +199,10 @@ app.controller('signupController', function($scope, postgresqlFactory){
       }
     };
 
+    document.on("DOMSubtreeModified", function(event){
+      console.log(event.target);
+    })
+
     var observer = new MutationObserver(callback);
 
     nom = nom.replace(" ", "+");
