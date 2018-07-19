@@ -219,6 +219,7 @@ app.controller('signupController', function($scope, postgresqlFactory){
     }
 
     $scope.verif_user = function(){
+      sleep(5000);
       console.log("verif");
       console.log(document.getElementsByTagName("h3"));
       for(var i = 0; i < document.getElementsByTagName("h3").length; i++){
