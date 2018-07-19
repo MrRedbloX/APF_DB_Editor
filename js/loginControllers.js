@@ -239,7 +239,8 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
       $http({
         method: 'GET',
-        url: lien
+        url: lien,
+        headers: {'Access-Control-Allow-Origin': '*'}
       })
       .then(
         function successCallback(data) {
