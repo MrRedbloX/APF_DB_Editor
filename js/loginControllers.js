@@ -156,7 +156,7 @@ app.controller('loginController', function($scope, postgresqlFactory){
     }
 });
 
-app.controller('signupController', function($scope, postgresqlFactory){
+app.controller('signupController', function($scope, $http, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
 
   $scope.create_login  = function(){
@@ -184,7 +184,14 @@ app.controller('signupController', function($scope, postgresqlFactory){
 
     console.log(lien);
 
-    postgresScope.getAnnuaire();
+    $scope.getAnnuaire(lien, function(){
+      if($scope.successRequest){
+        console.log($scope.annuaire);
+      }
+      else{
+        console.log($scope.annuaire);
+      }
+    });
     //$scope.verif_user(2000);
 
 /*
@@ -223,8 +230,27 @@ app.controller('signupController', function($scope, postgresqlFactory){
       for (var i = 0; i < 1e7; i++) {
         if ((new Date().getTime() - start) > milliseconds){
           break;
+        }
+      }
     }
-  }
-}
+
+    $scope.getAnnuaire = function(lien, callback){
+
+      $http({
+        method: 'GET',
+        url: lien
+      })
+      .then(
+        function successCallback(data) {
+          $scope.successRequest = true;
+          $scope.annuaire = data;
+          if(callback) callback();
+        },
+        function errorCallback(data) {
+          $scope.successRequest = false;
+          $scope.annuaire = data;
+          if(callback) callback();
+      });
+    }
 
 });
