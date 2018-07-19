@@ -88,7 +88,7 @@
       </div>
       <div ng-if="displayRelations">
         <div ng-controller="relationsAreaController" class="displayArea">
-          <div ng-if="ready" class="table-responsive" on-load="{{displayRel()}}">
+          <div ng-if="ready" class="table-responsive" ng-init="displayRel()">
             <table id="tableColumnsDisplay" class="table table-bordered">
                 <tr ng-repeat="rel in relationsData track by $index">
                   <th >{{rel.table_name}}</th>
