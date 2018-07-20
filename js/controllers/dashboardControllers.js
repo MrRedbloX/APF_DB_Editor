@@ -32,7 +32,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 tables = postgresScope.tableArray.data;
                 console.log(tables);
                 for(let j=0; j<tables.length; j++){
-                  postgresScope.getAllValues(db[i], tables[j], function(){
+                  postgresScope.getAllValues(db[i], tables[j].table_name, function(){
                     if(postgresScope.successRequest){
                       tables[j]['nbValues'] = postgresScope.columnValues.data.length;
                       if(j == tables.length-1){
