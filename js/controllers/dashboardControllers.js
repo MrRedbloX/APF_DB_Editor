@@ -89,7 +89,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       backgroundColor.push(rgba[0]);
       borderColor.push(rgba[1]);
       $scope.dbColors.push({
-        db : $scope.databases[i].name,
+        db_name : $scope.databases[i].name,
         color : rgba
       });
     }
@@ -130,7 +130,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
     for(let i=0; i<$scope.tables.length; i++){
       for(let j=0; j<$scope.dbColors.length; j++){
-        if($scope.tables[i].db == $scope.dbColors[j].db)
+        if($scope.tables[i].db == $scope.dbColors[j].db_name)
           color = $scope.dbColors[i].color;
       }
       labels.push($scope.tables[i].name);
