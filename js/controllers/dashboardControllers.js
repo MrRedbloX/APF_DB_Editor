@@ -2,6 +2,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
   $scope.readyDB = false;
   $scope.readyValues = false;
+  $scope.dbColors = [];
   $scope.databases = [];
   $scope.tables = [];
 
@@ -85,6 +86,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       rgba = $scope.getRGBA();
       backgroundColor.push(rgba[0]);
       borderColor.push(rgba[1]);
+      $scope.dbColors.push({
+        db : $scope.databases[i].name,
+        color : rgba
+      });
     }
 
     var myChart = new Chart(ctx, {
