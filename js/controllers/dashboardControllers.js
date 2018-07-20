@@ -15,8 +15,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     else console.log("Wrong mode in getRGBA");
 
     return ret;
-    backgroundColor.push(temp+'0.2)');
-    borderColor.push(temp+'1)');
   };
 
   $scope.loadDB = function(){
