@@ -3,15 +3,8 @@ module.exports = {
   getAnnuaire: function(req, res){
 
     var options = {
-    //  hostname: req.query.lien,
-      url: "http://annuaire.sso.infra.ftgroup/persons?"
+      hostname: req.query.lien,
       method: 'GET',
-      qs:{
-        'searchType':'PERSON_COMPLEX',
-        'personCriteria.sn' : 'guitton',
-        'personCriteria.givenName' : 'alois',
-        'personCriteria.mail': 'alois.guitton@orange.com'
-      }
       headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
