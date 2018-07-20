@@ -2,6 +2,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
   $scope.readyDB = false;
   $scope.readyValues = false;
+  $scope.readyDBChart = false;
+
   $scope.dbColors = [];
   $scope.databases = [];
   $scope.tables = [];
@@ -114,6 +116,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           }
       }
     });
+
+    $scope.readyDBChart = true;
   };
 
   $scope.loadChartNbTuplesInTable = function(){
