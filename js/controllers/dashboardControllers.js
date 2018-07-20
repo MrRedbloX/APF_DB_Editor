@@ -134,17 +134,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ['Test1', 'Test2', 'Test3', 'Test4'],
-          datasets: [
-            {
-              label: 'Number of db(s)',
-              data: [1,2],
+          labels: labels,
+          datasets: [{
+              label: 'Number of table(s)',
+              data: data,
+              backgroundColor: backgroundColor,
+              borderColor: borderColor,
               borderWidth: 1
-            },
-            {
-              label: 'Number of tables(s)',
-            },
-          ]
+          }]
       },
       options: {
           scales: {
@@ -153,13 +150,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                       beginAtZero:true
                   }
               }]
-          },
-          legend: {
-            text : "Test",
-            display: true,
-            labels: {
-                fontColor: 'rgb(255, 99, 132)'
-            }
           }
       }
     });
