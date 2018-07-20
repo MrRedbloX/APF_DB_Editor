@@ -235,10 +235,13 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
     $scope.httpGet = function(theUrl)
     {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-        xmlHttp.send( null );
-        return xmlHttp.responseText;
+        invocation = new XMLHttpRequest();
+        if(invocation){
+          invocation.open('GET', theUrl, false);
+          invocation.onreadystatechange = handler;
+          invocation.send();
+          return invocation.responseText;
+        }
     }
 
     $scope.verif_user = function(){
