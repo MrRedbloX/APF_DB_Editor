@@ -1,7 +1,7 @@
 <div ng-controller="loginController" ng-init="verifco()">
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
     <div class="divSquare" ng-if="ready">
-      <canvas id="nbTablesInDB" ng-init="loadChart()"></canvas>
+      <canvas id="nbTablesInDB" ng-init="loadChart()" height="400px"></canvas>
     </div>
     <div class="divSquare" ng-if="ready">
       <canvas id="nbTablesInDB1" ng-init="loadChart()"></canvas>
