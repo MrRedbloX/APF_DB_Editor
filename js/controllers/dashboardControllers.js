@@ -88,8 +88,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
-      backgroundColor.push($scope.getRGBA("background"));
-      borderColor.push($scope.getRGBA("border"));
+      rgba = $scope.getRGBA();
+      backgroundColor.push(rgba[0]);
+      borderColor.push(rgba[1]);
     }
 
     var myChart = new Chart(ctx, {
