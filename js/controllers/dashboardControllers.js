@@ -122,13 +122,17 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var data = [];
     var backgroundColor = [];
     var borderColor = [];
-    var knowingDB = [];
     var color = $scope.getRGBA();
-    console.log($scope.tables);
+
     for(let i=0; i<$scope.tables.length; i++){
-      if(knowingDB.indexOf($scope.tables[i].db) > -1){
-        knowingDB.push($scope.tables[i].db);
+      for(let j=0; j<$scope.dbColors.length; j++){
+        if($scope.tables[i].db == $scope.dbColors[i].db)
+          color = $scope.dbColors[i].color;
       }
+      labels.push($scope.tables[i].name);
+      data.push($scope.tables[i].values.length);
+      backgroundColor.push(color[0]);
+      borderColor.push(color[1]);
     }
 
     var myChart = new Chart(ctx, {
