@@ -39,10 +39,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                       //console.log(tables.length);
                       //console.log(tables[j]);
                       tables[j]['nbValues'] = postgresScope.columnValues.data.length;
-                      if(j == postgresScope.tableArray.data.length-1){
+                      if(j == tables.length-1){
                         $scope.databases.push({
                           name : db[i],
-                          table : postgresScope.tableArray.data
+                          table : tables
                         });
                       }
                       if(i == db.length-1) $scope.ready = true;
