@@ -138,7 +138,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             },
             {
               label: 'Number of tables(s)',
-              data: [],
               borderWidth: 1
             },
           ]
