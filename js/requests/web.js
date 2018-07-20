@@ -4,7 +4,7 @@ module.exports = {
 
     var options = {
     //  hostname: req.query.lien,
-      url: "http://annuaire.sso.infra.ftgroup/persons?"
+      url: "http://annuaire.sso.infra.ftgroup/persons?",
       method: 'GET',
       qs:{
         'searchType':'PERSON_COMPLEX',
