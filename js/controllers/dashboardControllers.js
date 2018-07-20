@@ -139,7 +139,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       borderColor.push(color[1]);
     }
 
-    var myChart = new Chart(ctx, {
+    /*var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
               labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -156,8 +156,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 }
               ]
             }
-    });
-    /*var myChart = new Chart(ctx, {
+    });*/
+    var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: labels,
@@ -178,7 +178,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               }]
           }
       }
-    });*/
+    });
 
   };
 });
