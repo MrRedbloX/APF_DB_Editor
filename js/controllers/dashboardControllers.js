@@ -29,20 +29,19 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           for(let i=0; i<db.length; i++){
             postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
-                tables = postgresScope.tableArray.data;
                 //console.log(tables);
-                for(let j=0; j<tables.length; j++){
+                for(let j=0; j<postgresScope.tableArray.data.length; j++){
                   console.log(j);
-                  postgresScope.getAllValues(db[i], tables[j].table_name, function(){
+                  postgresScope.getAllValues(db[i], postgresScope.tableArray.data[j].table_name, function(){
                     if(postgresScope.successRequest){
                       //console.log(j);
                       //console.log(tables.length);
                       //console.log(tables[j]);
-                      tables[j]['nbValues'] = postgresScope.columnValues.data.length;
-                      if(j == tables.length-1){
+                      postgresScope.tableArray.data[j]['nbValues'] = postgresScope.columnValues.data.length;
+                      if(j == postgresScope.tableArray.data.length-1){
                         $scope.databases.push({
                           name : db[i],
-                          table : tables
+                          table : postgresScope.tableArray.data
                         });
                       }
                       if(i == db.length-1) $scope.ready = true;
