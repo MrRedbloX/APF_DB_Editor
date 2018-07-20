@@ -3,7 +3,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.ready = false;
   $scope.databases = [];
 
-  $scope.getRGBA(mode){
+  $scope.getRGBA = function(mode){
     ret = 'rgba(';
     for(let j=0; j<3; j++)
       ret += (Math.floor(Math.random()*256))+', ';
