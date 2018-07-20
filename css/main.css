@@ -117,5 +117,5 @@ button.paddingRigth{
   border: 1px
   solid: black;
   float: left;
-  overflow-x: auto;
+  overflow-x: scroll;
 }
