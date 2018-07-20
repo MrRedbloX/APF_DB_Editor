@@ -11,7 +11,7 @@ module.exports = {
         'personCriteria.sn' : 'guitton',
         'personCriteria.givenName' : 'alois',
         'personCriteria.mail': 'alois.guitton@orange.com'
-      }
+      },
       headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
