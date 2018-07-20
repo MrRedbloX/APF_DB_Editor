@@ -155,6 +155,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       }
     });
 
+    console.log(myChart);
+
     /*for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
