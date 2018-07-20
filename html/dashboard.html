@@ -2,10 +2,10 @@
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
     <div class="divSquare" ng-if="readyDB">
       <a ng-init="loadTableValues()" />
-      <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
+      <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="100%"></canvas>
     </div>
     <div class="divSquare" ng-if="readyValues && readyDBChart">
-      <canvas id="nbTuplesInTable" ng-init="loadChartNbTuplesInTable()" height="200%"></canvas>
+      <canvas id="nbTuplesInTable" ng-init="loadChartNbTuplesInTable()" height="100%" width="200%"></canvas>
     </div>
     <div style='clear:both'></div>
     <div class="divSquare" ng-if="ready">
