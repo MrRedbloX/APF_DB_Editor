@@ -118,7 +118,7 @@ module.exports = {
         });
   },
 
-  async getValuesOf: function(req, res) {
+  getValuesOf: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+req.query.db);
 
