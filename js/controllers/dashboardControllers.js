@@ -77,8 +77,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
   $scope.loadChartNbTablesInDB = function(){
     var ctx = $("#nbTablesInDB");
-    var labels = ['Test1', 'Test2'];
-    var data = [5,6];
+    var labels = ['Test1', 'Test2', 'Test3', 'Test4'];
+    var data = [5,6, 20, 15];
     var backgroundColor = [];
     var borderColor = [];
 
