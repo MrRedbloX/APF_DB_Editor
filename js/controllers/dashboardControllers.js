@@ -29,6 +29,16 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           for(let i=0; i<temp.length; i++){
             postgresScope.getTableName(temp[i], function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
+                for(let j=0; j<postgresScope.tableArray.data.length; j++){
+                  postgresScope.getAllValues(temp[i], postgresScope.tableArray.data[j].table_name, function(){
+                    if(postgresScope.successRequest){
+                    }
+                    else {
+                      console.log(postgresScope.tableArray);
+                      alert("Error on getAllValues request, check console logs.");
+                    }
+                  });
+                }
                 $scope.databases.push({
                   name : temp[i],
                   table : postgresScope.tableArray.data
