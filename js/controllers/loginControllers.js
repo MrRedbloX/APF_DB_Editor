@@ -184,7 +184,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
     prenom = prenom.replace(" ", "+");
     mail_lien = mail.replace("@", "%40");
 
-    lien1 = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.sn="+nom+"&personCriteria.givenName="+prenom+"&personCriteria.mail="+mail_lien;
+    lien1 = "http://annuaire.sso.infra.ftgroup/persons";
 
 
 
