@@ -193,18 +193,21 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
     console.log(lien);
     //console.log(lien);
 
+    var test = $scope.httpGet(lien);
+    console.log(test);
+
 
   //  document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
     //document.getElementById("annuaire1").load(lien);
 
-    $scope.getAnnuaire(lien, function(){
+    /*$scope.getAnnuaire(lien, function(){
       if($scope.successRequest){
         console.log($scope.annuaire);
       }
       else{
         console.log($scope.annuaire);
       }
-    });
+    });*/
     //$scope.verif_user(2000);
 
 /*
@@ -228,6 +231,14 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
     window.location="#!/login";
   }
 */
+    }
+
+    $scope.httpGet = function(theUrl)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
     }
 
     $scope.verif_user = function(){
