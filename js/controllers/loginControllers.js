@@ -190,14 +190,14 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
 
     lien = "www.google.com";
-    console.log(lien);
+    console.log(lien1);
     //console.log(lien);
 
 
   //  document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
     //document.getElementById("annuaire1").load(lien);
 
-    $scope.getAnnuaire(lien, function(){
+    $scope.getAnnuaire(lien1, function(){
       if($scope.successRequest){
         console.log($scope.annuaire);
       }
