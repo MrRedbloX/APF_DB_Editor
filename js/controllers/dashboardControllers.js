@@ -4,19 +4,17 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.databases = [];
 
   $scope.getRGBA(mode){
-    temp = 'rgba(';
+    ret = 'rgba(';
     for(let j=0; j<3; j++)
-      temp += (Math.floor(Math.random()*256))+', ';
+      ret += (Math.floor(Math.random()*256))+', ';
 
-    if(mode == "background"){
-      temp += '0.2)';
-    }
-    else if(mode == "border"){
-      temp += '1)';
-    }
+    if(mode == "background")
+      ret += '0.2)';
+    else if(mode == "border")
+      ret += '1)';
     else console.log("Wrong mode in getRGBA");
 
-
+    return ret;
     backgroundColor.push(temp+'0.2)');
     borderColor.push(temp+'1)');
   };
