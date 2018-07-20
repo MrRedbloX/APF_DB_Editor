@@ -106,7 +106,7 @@ button.paddingRigth{
    white-space: nowrap;
  }
 
- .jstree-default ul.jstree-loading .jstree-icon {
+.jstree-default ul.jstree-loading .jstree-icon {
     background:url("/css/img/loading.gif") center center no-repeat !important;
 }
 
