@@ -43,7 +43,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var backgroundColor = [];
     var borderColor = [];
 
-
+    console.log($scope.databases[0].table);
     for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
