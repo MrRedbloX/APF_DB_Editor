@@ -26,7 +26,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname))
               db.push(postgresScope.dbArray.data[i].datname);
           }
-          for(let i=0; i<temp.length; i++){
+          for(let i=0; i<db.length; i++){
             postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
                 tables = postgresScope.tableArray.data;
