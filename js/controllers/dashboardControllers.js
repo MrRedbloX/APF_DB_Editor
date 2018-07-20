@@ -138,12 +138,34 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       backgroundColor.push(color[0]);
       borderColor.push(color[1]);
     }
-    console.log(labels);
-    console.log(data);
-    console.log(backgroundColor);
-    console.log(borderColor);
 
+    Check your sold1 and sold2.
+
+    console.log(sold1);
+    console.log(sold2);
+    For example this is working:
     var myChart = new Chart(ctx, {
+        {
+            type: 'bar',
+            data: {
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+              // labels: month,
+              datasets: [
+                {
+                  label: 'this year',
+                  backgroundColor: '#26B99A',
+                  data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  label: 'previous year',
+                  backgroundColor: '#03586A',
+                  data: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+                }
+              ]
+            }
+        }
+    });
+    /*var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: labels,
@@ -164,41 +186,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               }]
           }
       }
-    });
-
-    console.log(myChart);
-
-    /*for(let i=0; i<$scope.databases.length; i++){
-      labels.push($scope.databases[i].name);
-      data.push($scope.databases[i].table.length);
-      temp = 'rgba(';
-      for(let j=0; j<3; j++)
-        temp += (Math.floor(Math.random()*256))+', ';
-      backgroundColor.push(temp+'0.2)');
-      borderColor.push(temp+'1)');
-    }
-
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: labels,
-          datasets: [{
-              label: 'Number of table(s)',
-              data: data,
-              backgroundColor: backgroundColor,
-              borderColor: borderColor,
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
-      }
     });*/
+
   };
 });
