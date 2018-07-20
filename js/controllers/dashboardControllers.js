@@ -146,6 +146,12 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                       beginAtZero:true
                   }
               }]
+          },
+          legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 99, 132)'
+            }
           }
       }
     });
