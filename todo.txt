@@ -22,10 +22,10 @@ Rajouter toutes les infos dans reférences pour add et modify > fait
 Empécher l'altération sur sonde > fait
 Rajouter un menu (attendre croquis) > fait
 Rajouter colonne customer_name dans tenant_table sonde > fait
-Faire la vue pour les vues (relations) > A faire P1
+Faire la vue pour les vues (relations) > Fait
 Faire les messages d'erreur pour les mauvaises requêtes
 Gérer les vues > fait
-Dashboard (graphique)
+Dashboard (graphique) > En cours, trouver une solution pour l'affichage des graphes
 Vérification des règles
 Mettre les noms à la place des uuid pour tous les fk > Fait
 Vérifier les références dans addRow > Fait
