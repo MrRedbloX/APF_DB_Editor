@@ -138,6 +138,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       backgroundColor.push(color[0]);
       borderColor.push(color[1]);
     }
+    console.log(labels.length);
+    console.log(data.length);
+    console.log(backgroundColor.length);
+    console.log(borderColor.length);
 
     var myChart = new Chart(ctx, {
       type: 'bar',
