@@ -190,7 +190,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
 
     lien = "www.google.com";
-    console.log(lien1);
+    console.log(lien);
     //console.log(lien);
 
 
