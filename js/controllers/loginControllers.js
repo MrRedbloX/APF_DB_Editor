@@ -197,7 +197,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
   //  document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
     //document.getElementById("annuaire1").load(lien);
 
-    $scope.getAnnuaire(lien1, function(){
+    $scope.getAnnuaire(lien, function(){
       if($scope.successRequest){
         console.log($scope.annuaire);
       }
