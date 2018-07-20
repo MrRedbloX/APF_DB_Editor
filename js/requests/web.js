@@ -4,7 +4,7 @@ module.exports = {
 
     var options = {
       hostname: req.query.lien,
-      method: 'POST',
+      method: 'GET',
       headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
