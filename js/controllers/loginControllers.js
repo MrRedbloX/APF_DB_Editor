@@ -180,7 +180,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
     prenom = prenom.replace(" ", "+");
     mail_lien = mail.replace("@", "%40");
 
-  //  lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn="+nom+"&personCriteria.snSelect=STARTSWITH&personCriteria.givenName="+prenom+"&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail="+mail_lien+"&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=*";
+    lien1 = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn="+nom+"&personCriteria.snSelect=STARTSWITH&personCriteria.givenName="+prenom+"&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail="+mail_lien+"&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=*";
 
 
 
@@ -190,7 +190,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
     //console.log(lien);
 
 
-    document.getElementById("annuaire").innerHTML='<object data="'+lien+'" ></object>';
+    document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
 
     $scope.getAnnuaire(lien, function(){
       if($scope.successRequest){
