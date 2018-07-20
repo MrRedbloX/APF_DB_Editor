@@ -3,8 +3,8 @@ module.exports = {
   getAnnuaire: function(req, res){
 
     var options = {
-    //  hostname: req.query.lien,
-      url: "http://annuaire.sso.infra.ftgroup/persons",
+      hostname: req.query.lien,
+      //url: "http://annuaire.sso.infra.ftgroup/persons",
       method: 'GET',
       qs:{
         'searchType':'PERSON_COMPLEX',
