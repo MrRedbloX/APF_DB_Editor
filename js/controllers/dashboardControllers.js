@@ -9,7 +9,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     ret = [];
     temp = 'rgba(';
     for(let j=0; j<3; j++)
-      temp += (Math.floor(Math.random()*256))+', ';  
+      temp += (Math.floor(Math.random()*256))+', ';
     ret.push(temp+'0.2)');
     ret.push(temp+'1)');
     return ret;
@@ -59,6 +59,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 name : $scope.databases[i].table[j].table_name,
                 values : postgresScope.columnValues
               });
+              console.log(i);
               if(i == $scope.databases.length-1){
                  $scope.readyValues = true;
                  console.log("ok");
