@@ -238,7 +238,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
         invocation = new XMLHttpRequest();
         if(invocation){
           invocation.open('GET', theUrl, false);
-          invocation.onreadystatechange = handler;
+          //invocation.onreadystatechange = handler;
           invocation.send();
           return invocation.responseText;
         }
