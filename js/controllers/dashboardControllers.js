@@ -32,7 +32,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 //console.log(tables);
                 for(let j=0; j<postgresScope.tableArray.data.length; j++){
                   console.log("fonction "+j);
-                  postgresScope.getAllValues(db[i], postgresScope.tableArray.data[j].table_name, function(){
+                  await postgresScope.getAllValues(db[i], postgresScope.tableArray.data[j].table_name, function(){
                     console.log("callback "+j);
                     if(postgresScope.successRequest){
                       //console.log(j);
