@@ -3,6 +3,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.readyDB = false;
   $scope.readyValues = false;
   $scope.databases = [];
+  $scope.tables = [];
 
   $scope.getRGBA = function(mode){
     ret = 'rgba(';
@@ -19,7 +20,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadDB = function(){
-    if(!$scope.readyDB && $scope.readyDB){
+    if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
           db = [];
@@ -52,8 +53,23 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadTableValues = function(){
-    if(!scope.readyValues){
-      for
+    if(!scope.readyValues && $scope.readyDB){
+      for(let i=0; i>$scope.databases.length; i++){
+        for(let j=0; j<$scope.databases[i].table.length; j++){
+          postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, function(){
+            if($scope.successRequest){
+              $scope.tables.push({
+                name : $scope.databases[i].table[j].table_name,
+                values : postgresScope.columnValues
+              });
+            }
+            else{
+              console.log(postgresScope.columnValues);
+              alert("Error on getAllValues request, check console logs.");
+            }
+          });
+        }
+      }
     }
   };
 
