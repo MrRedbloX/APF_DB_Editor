@@ -36,7 +36,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     }
   };
 
-  $scope.loadChart = function(){
+  $scope.loadChartNbTablesInDB = function(){
     var ctx = $("#nbTablesInDB");
     var labels = [];
     var data = [];
@@ -77,4 +77,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       }
     });
   };
+
+
 });
