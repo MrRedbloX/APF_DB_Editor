@@ -161,6 +161,10 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
   $scope.create_login  = function(){
 
+    document.getElementById("annuaire").onchange = function(){
+      console.log("test");
+    }
+
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
     var mail= document.getElementById("mail").value;
