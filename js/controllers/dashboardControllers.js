@@ -122,6 +122,34 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
     console.log($scope.tables);
 
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ['Test1', 'Test2', 'Test3', 'Test4'],
+          datasets: [
+            {
+              label: 'Number of db(s)',
+              data: [1,2],
+              borderWidth: 1
+            },
+            {
+              label: 'Number of tables(s)',
+              data: [3,4],
+              borderWidth: 1
+            },
+          ]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+    });
+
     /*for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
