@@ -4,7 +4,7 @@
       <a ng-init="loadTableValues()" />
       <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
     </div>
-    <div style="overflow-x: auto;" ng-if="readyValues && readyDBChart">
+    <div ng-if="readyValues && readyDBChart">
       <canvas id="nbTuplesInTable" ng-init="loadChartNbTuplesInTable()" height="200%"></canvas>
     </div>
     <div style='clear:both'></div>
