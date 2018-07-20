@@ -21,23 +21,23 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     if(!$scope.ready){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
-          temp = [];
+          db = [];
           for(let i=0;i<postgresScope.dbArray.data.length;i++){
             if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname))
-              temp.push(postgresScope.dbArray.data[i].datname);
+              db.push(postgresScope.dbArray.data[i].datname);
           }
           for(let i=0; i<temp.length; i++){
-            postgresScope.getTableName(temp[i], function(){ //We do the same thing for this request
+            postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
                 tables = postgresScope.tableArray.data;
                 console.log(tables);
                 for(let j=0; j<tables.length; j++){
-                  postgresScope.getAllValues(temp[i], tables[j], function(){
+                  postgresScope.getAllValues(db[i], tables[j], function(){
                     if(postgresScope.successRequest){
                       tables[j]['nbValues'] = postgresScope.columnValues.data.length;
                       if(j == tables.length-1){
                         $scope.databases.push({
-                          name : temp[i],
+                          name : db[i],
                           table : tables
                         });
                       }
