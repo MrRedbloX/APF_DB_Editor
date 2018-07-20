@@ -182,10 +182,15 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
   //  lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.cru=&personCriteria.alphabetical=false&personCriteria.sn="+nom+"&personCriteria.snSelect=STARTSWITH&personCriteria.givenName="+prenom+"&personCriteria.givenNameSelect=STARTSWITH&_personCriteria.usePhonetic=on&personCriteria.telephoneNumber=&personCriteria.mail="+mail_lien+"&personCriteria.ftadmou=&personCriteria.ftsubactivitiescode=&personCriteria.ftactivitiescode=&personCriteria.ftskill=&personCriteria.ftactivities=&personCriteria.siteCriteria.ville=&personCriteria.siteCriteria.site=&personCriteria.siteCriteria.codePostDep=*";
 
+<<<<<<< HEAD:js/loginControllers.js
 
 
     lien = "https://google.com";
     console.log(lien);
+=======
+    lien = "www.google.com";
+    //console.log(lien);
+>>>>>>> d7835f1bbcac10c86bba3da7fe5432d63bf4a680:js/controllers/loginControllers.js
 
     document.getElementById("annuaire").innerHTML='<object data="'+lien+'" ></object>';
 
@@ -240,16 +245,11 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
     }
 
     $scope.getAnnuaire = function(lien, callback){
+      console.log(lien);
 
       $http({
         method: 'GET',
-        url: lien,
-        dataType: 'jsonp',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods' : 'GET',
-          'Access-Control-Allow-Headers' : 'Origin, Content-Type, X-Auth-Token'
-        }
+        url: '/web/getAnnuaire?lien='+lien
       })
       .then(
         function successCallback(data) {
