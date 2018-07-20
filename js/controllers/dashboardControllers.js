@@ -3,6 +3,24 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.ready = false;
   $scope.databases = [];
 
+  $scope.getRGBA(mode){
+    temp = 'rgba(';
+    for(let j=0; j<3; j++)
+      temp += (Math.floor(Math.random()*256))+', ';
+
+    if(mode == "background"){
+      temp += '0.2)';
+    }
+    else if(mode == "border"){
+      temp += '1)';
+    }
+    else console.log("Wrong mode in getRGBA");
+
+
+    backgroundColor.push(temp+'0.2)');
+    borderColor.push(temp+'1)');
+  };
+
   $scope.loadDB = function(){
     if(!$scope.ready){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
@@ -47,11 +65,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
       data.push($scope.databases[i].table.length);
-      temp = 'rgba(';
-      for(let j=0; j<3; j++)
-        temp += (Math.floor(Math.random()*256))+', ';
-      backgroundColor.push(temp+'0.2)');
-      borderColor.push(temp+'1)');
+
     }
 
     var myChart = new Chart(ctx, {
