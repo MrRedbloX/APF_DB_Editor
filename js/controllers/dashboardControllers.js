@@ -144,7 +144,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       data: {
           labels: labels,
           datasets: [{
-              label: 'Number record(s) in a table',
+              label: 'Number of record(s)',
               data: data,
               backgroundColor: backgroundColor,
               borderColor: borderColor,
