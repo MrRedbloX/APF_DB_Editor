@@ -78,5 +78,46 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     });
   };
 
+  $scope.loadChartNbTuplesInTable = function(){
+    var ctx = $("#nbTuplesInTable");
+    var labels = [];
+    var data = [];
+    var backgroundColor = [];
+    var borderColor = [];
+
+
+    for(let i=0; i<$scope.databases.length; i++){
+      labels.push($scope.databases[i].name);
+      data.push($scope.databases[i].table.length);
+      temp = 'rgba(';
+      for(let j=0; j<3; j++)
+        temp += (Math.floor(Math.random()*256))+', ';
+      backgroundColor.push(temp+'0.2)');
+      borderColor.push(temp+'1)');
+    }
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: 'Number of table(s)',
+              data: data,
+              backgroundColor: backgroundColor,
+              borderColor: borderColor,
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+    });
+  };
 
 });
