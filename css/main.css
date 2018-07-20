@@ -109,3 +109,12 @@ button.paddingRigth{
  .jstree-default ul.jstree-loading .jstree-icon {
     background:url("/css/img/loading.gif") center center no-repeat !important;
 }
+
+.divSquare{
+        width: 48%;
+        height: 200px;
+        margin: 4px;
+        border: 1px
+        solid: black; 
+        float: left;
+    }
