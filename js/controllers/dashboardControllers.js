@@ -148,6 +148,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               }]
           },
           legend: {
+            text : "Test",
             display: true,
             labels: {
                 fontColor: 'rgb(255, 99, 132)'
