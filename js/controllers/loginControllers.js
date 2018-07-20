@@ -194,7 +194,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
     //console.log(lien);
 
     var test = $scope.httpGet(lien);
-    console.log(test);
+    console.log("" + test);
 
 
   //  document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
