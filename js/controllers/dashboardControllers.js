@@ -138,12 +138,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       backgroundColor.push(color[0]);
       borderColor.push(color[1]);
     }
-
-    Check your sold1 and sold2.
-
-    console.log(sold1);
-    console.log(sold2);
-    For example this is working:
+    
     var myChart = new Chart(ctx, {
         {
             type: 'bar',
