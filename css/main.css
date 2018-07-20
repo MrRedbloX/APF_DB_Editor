@@ -112,8 +112,8 @@ button.paddingRigth{
 
 .divSquare{
         width: 50%;
-        height: 100%;
-        margin: 4px;
+        height: 120%;
+        margin: 2%;
         border: 1px
         solid: black;
         float: left;
