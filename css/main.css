@@ -118,8 +118,4 @@ button.paddingRigth{
   solid: black;
   float: left;
   overflow-x: auto;
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events:none;
 }
