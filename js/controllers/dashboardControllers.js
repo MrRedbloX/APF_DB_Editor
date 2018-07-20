@@ -33,7 +33,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 for(let j=0; j<tables.length; j++){
                   postgresScope.getAllValues(temp[i], postgresScope.tableArray.data[j].table_name, function(){
                     if(postgresScope.successRequest){
-                      tables['nbValues'] = postgresScope.columnValues.data.length;
+                      tables[j]['nbValues'] = postgresScope.columnValues.data.length;
+                      if(j == tables.length-1){
+                        $scope.databases.push({
+                          name : temp[i],
+                          table : tables
+                        });
+                      }
+                      if(i == temp.length-1) $scope.ready = true;
                     }
                     else {
                       console.log(postgresScope.columnValues);
@@ -41,11 +48,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                     }
                   });
                 }
-                $scope.databases.push({
-                  name : temp[i],
-                  table : tables
-                });
-                if(i == temp.length-1) $scope.ready = true;
               }
               else{
                 console.log(postgresScope.tableArray);
