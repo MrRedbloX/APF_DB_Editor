@@ -159,7 +159,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           scales: {
               yAxes: [{
                   ticks: {
-                      beginAtZero:true
+                      beginAtZero:true,
+                      maxRotation: 0
                   }
               }]
           }
