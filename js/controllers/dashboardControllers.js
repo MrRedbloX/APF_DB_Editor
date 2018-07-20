@@ -156,6 +156,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           }]
       },
       options: {
+          responsive: false,
           scales: {
               yAxes: [{
                   ticks: {
