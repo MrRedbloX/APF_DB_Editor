@@ -32,13 +32,13 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 tables = postgresScope.tableArray.data;
                 for(let j=0; j<tables.length; j++){
                   console.log("fonction "+j);
-                  postgresScope.getAllValues(db[i], postgresScope.tableArray.data[j].table_name, function(tables){
+                  postgresScope.getAllValues(db[i], tables[j].table_name, function(tables){
                     console.log("callback "+j);
                     if(postgresScope.successRequest){
                       //console.log(j);
                       //console.log(tables.length);
                       //console.log(tables[j]);
-                      postgresScope.tableArray.data[j]['nbValues'] = postgresScope.columnValues.data.length;
+                      tables[j]['nbValues'] = postgresScope.columnValues.data.length;
                       if(j == postgresScope.tableArray.data.length-1){
                         $scope.databases.push({
                           name : db[i],
