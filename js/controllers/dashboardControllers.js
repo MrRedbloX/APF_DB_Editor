@@ -117,8 +117,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var data = [];
     var backgroundColor = [];
     var borderColor = [];
-
+    var knowingDB = [];
+    var color = $scope.getRGBA();
     console.log($scope.tables);
+    for(let i=0; i<$scope.tables.length; i++){
+      if(knowingDB.indexOf($scope.tables[i].db) > -1){
+        knowingDB.push($scope.tables[i].db);
+      }
+    }
 
     var myChart = new Chart(ctx, {
       type: 'bar',
@@ -132,7 +138,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             },
             {
               label: 'Number of tables(s)',
-              data: [3,4],
+              data: [],
               borderWidth: 1
             },
           ]
