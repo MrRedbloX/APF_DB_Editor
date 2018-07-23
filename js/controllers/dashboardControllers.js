@@ -19,6 +19,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     return ret;
   };
 
+  $scope.setReady = function(bool){
+    $scope.readyLoadNbTuplesInTable = bool;
+  }
+
   $scope.loadDB = function(){
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
