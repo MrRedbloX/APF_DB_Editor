@@ -7,6 +7,7 @@ var express = require('express'),
 
 var dbOperations = require("./server/js/requests/psql.js");
 var webOperations = require("./server/js/requests/web.js");
+var cryptOperations = require('/server/js/requests/crypt.js');
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
