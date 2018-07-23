@@ -51,7 +51,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
             postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
                 $scope.databases.push({
-                  name : postgresScope.dbArray.data[i].datname,
+                  name : db[i],
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
