@@ -3,6 +3,7 @@ var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases
 var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid'];
 var busy = false;
+var exceptionTables = ['map'];
 
 //Check if a database is in read only mode
 var checkIfReadOnlyDB = function(db){
