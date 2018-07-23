@@ -62,11 +62,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, function(){
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
-              /*$scope.tables.push({
-                db : $scope.databases[i].name,
-                name : $scope.databases[i].table[j].table_name,
-                values : postgresScope.columnValues.data
-              });*/
               if(i == $scope.databases.length-1)
                  $scope.readyValues = true;
             }
