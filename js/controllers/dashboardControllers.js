@@ -123,7 +123,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.loadChartNbTuplesInTable = function(db){
     test = document.getElementsByTagName("CANVAS");
     console.log(test);
-    var ctx = document.getElementById("nbTuplesInTable"+db);
+    var ctx = document.getElementById(db);
     console.log(ctx);
     var labels = [];
     var data = [];
