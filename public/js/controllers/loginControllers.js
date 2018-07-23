@@ -153,7 +153,26 @@ app.controller('loginController', function($scope, postgresqlFactory){
   	}
   	else var expires = "";
   	document.cookie = name+"="+value+expires+"; path=/";
-    }
+  }
+
+  $scope.getMD5 = function(up, callback){
+    $http({
+      method: 'GET',
+      url: '/crypt/getMD5?up='+up
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.md5 = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.md5 = data;
+        if(callback) callback();
+    });
+
+  };
 });
 
 app.controller('signupController', function($scope, $http, postgresqlFactory){
