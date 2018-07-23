@@ -5,8 +5,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     app = express();
 
-var dbOperations = require("./js/requests/psql.js");
-var webOperations = require("./js/requests/web.js");
+var dbOperations = require("./server/js/requests/psql.js");
+var webOperations = require("./server/js/requests/web.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
