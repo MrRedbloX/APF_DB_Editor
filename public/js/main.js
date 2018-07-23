@@ -171,6 +171,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   postgresqlFactory.setScope($scope);
 
   $scope.getDBName = function(callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getDBName'
@@ -189,6 +190,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.getTableName = function(dbName,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getTableName?db='+dbName
