@@ -57,7 +57,7 @@ app.get('/db/addLogin', function(req,res){
 app.get('/web/getAnnuaire', function(req, res){
     webOperations.getAnnuaire(req,res);
 });
-app.get('/web/getMD5', function(req, res){
+app.get('/crypt/getMD5', function(req, res){
     cryptOperations.getMD5(req,res);
 });
 
