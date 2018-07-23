@@ -57,7 +57,7 @@ module.export = {
       res.status(200).send("OUI");
     else
       res.status(400).send("Problème dans la fonction md5");
-  }
+  },
 
   testFunction: function(req, res){
     console.log("OK");
