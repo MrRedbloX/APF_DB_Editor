@@ -87,6 +87,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           if(postgresScope.successRequest){
             console.log(postgresScope.dbMemoryRequest);
           }
+          else{
+            console.log(postgresScope.dbMemoryRequest);
+            alert("Error on getDbMemory request, check console logs.");
+          }
         });
       }
     }
