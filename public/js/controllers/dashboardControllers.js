@@ -32,14 +32,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               db.push(postgresScope.dbArray.data[i].datname);
           }
           for(let i=0; i<db.length; i++){
-            postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
+            postgresScope.getTableName(db[i], async function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
                 $scope.databases.push({
                   name : db[i],
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
-                  //await sleep(waitFor);
+                  await sleep(waitFor);
                   $scope.readyDB = true;
                 }
               }
@@ -62,11 +62,11 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     if(!$scope.readyValues && $scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
         for(let j=0; j<$scope.databases[i].table.length; j++){
-          postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, function(){
+          postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, async function(){
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                //await sleep(waitFor);
+                await sleep(waitFor);
                 $scope.readyValues = true;
               }
             }
@@ -80,8 +80,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     }
   };
 
-  $scope.loadChartNbTablesInDB = async function(){
-    await sleep(waitFor);
+  $scope.loadChartNbTablesInDB = function(){
     var ctx = $("#nbTablesInDB");
     var labels = [];
     var data = [];
@@ -118,7 +117,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadChartNbTuplesInTable = function(db){
-    //await sleep(waitFor);
     canvas = document.getElementById("nbTuplesInTable");
     canvas.id = canvas.id+db;
     var ctx = document.getElementById("nbTuplesInTable"+db);
