@@ -3,6 +3,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.readyDB = false;
   $scope.readyValues = false;
   $scope.readyDBChart = false;
+  $scope.readyMemory = false;
 
   $scope.dbColors = [];
   $scope.databases = [];
@@ -75,6 +76,18 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             }
           });
         }
+      }
+    }
+  };
+
+  $scope.loadDbMemory = function(){
+    if($scope.readyDB){
+      for(let i=0; i<$scope.databases.length; i++){
+        postgresScope.getDbMemory($scope.databases[i].name, function(){
+          if(postgresScope.successRequest){
+            console.log(postgresScope.dbMemoryRequest);
+          }
+        });
       }
     }
   };
