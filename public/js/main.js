@@ -209,6 +209,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.getColumnName = function(dbName,tableName,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getColumnName?db='+dbName+'&table='+tableName
