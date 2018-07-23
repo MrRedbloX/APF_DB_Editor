@@ -9,7 +9,9 @@ var dbOperations = require("./server/js/requests/psql.js");
 var webOperations = require("./server/js/requests/web.js");
 var cryptOperations = require('/server/js/requests/crypt.js');
 var logFmt = require("logfmt");
+
 app.set('views', __dirname) ;
+
 app.get('/' , function(req,res) {
     res.sendFile(__dirname+'/index.html');
 } );
@@ -54,6 +56,9 @@ app.get('/db/addLogin', function(req,res){
 });
 app.get('/web/getAnnuaire', function(req, res){
     webOperations.getAnnuaire(req,res);
+});
+app.get('/web/getMD5', function(req, res){
+    cryptOperations.getMD5(req,res);
 });
 
 app.set('port', process.env.PORT || 3001);
