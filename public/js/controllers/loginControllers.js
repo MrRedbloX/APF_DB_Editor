@@ -168,7 +168,7 @@ app.controller('loginController', function($scope, $http, postgresqlFactory){
   $scope.getMD5 = function(up, callback){
     $http({
       method: 'GET',
-      url: '/crypt/getMD5?up='+up
+      url: '/login/getMD5?up='+up
     })
     .then(
       function successCallback(data) {
