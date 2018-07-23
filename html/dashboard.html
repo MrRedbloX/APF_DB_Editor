@@ -5,7 +5,7 @@
       <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
     </div>
     <div ng-if="readyValues && readyDBChart">
-      <canvas ng-repeat="db in databases" id="nbTuplesInTable{{db.name}}" height="200%"></canvas>
+      <canvas ng-repeat="db in databases" id="nbTuplesInTable{{db.name}}" ng-init="console.log(db)" height="200%"></canvas>
       <a ng-init="loadChartNbTuplesInTable()" />
     </div>
     <div style='clear:both'></div>
