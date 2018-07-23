@@ -124,7 +124,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     canvas = document.getElementById("nbTuplesInTable");
     canvas.id = canvas.id+db;
     var ctx = document.getElementById("nbTuplesInTable"+db);
-    console.log(ctx);
     var labels = [];
     var data = [];
     var backgroundColor = [];
@@ -143,7 +142,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         borderColor.push(color[1]);
       }
     }
-
+    console.log(labels);
     /*var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
