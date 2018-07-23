@@ -195,7 +195,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
     for(let i=0; i<$scope.databases.length; i++){
       labels.push($scope.databases[i].name);
-      data.push($scope.databases[i].table.length);
+      data.push($scope.databases[i].size);
       rgba = $scope.getRGBA();
       backgroundColor.push(rgba[0]);
       borderColor.push(rgba[1]);
