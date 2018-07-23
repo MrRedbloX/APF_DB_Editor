@@ -39,7 +39,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
-                  await sleep(10);
+                  await sleep(5);
                   $scope.readyDB = true;
                 }
               }
