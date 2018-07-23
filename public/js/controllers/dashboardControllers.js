@@ -98,7 +98,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     }
 
     var myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'pie',
       data: {
           labels: labels,
           datasets: [{
