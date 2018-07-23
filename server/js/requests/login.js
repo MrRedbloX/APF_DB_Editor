@@ -2,6 +2,7 @@ var loginConString = "postgres://postgres:postgres@10.237.169.202:5432/postgres"
 
 module.export = {
   getIdFromMD5: function(req, res){
+    console.log("ok");
     var pg = require('pg');
 
     var client = new pg.Client(loginConString);
