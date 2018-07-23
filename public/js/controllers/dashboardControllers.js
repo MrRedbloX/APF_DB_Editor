@@ -134,7 +134,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var borderColor = [];
     var color = $scope.getRGBA();
 
-    console.log($scope.tables);
+    //console.log($scope.tables);
 
     for(let i=0; i<$scope.tables.length; i++){
       if($scope.tables[i].db == db && !isInExceptionTables($scope.tables[i].name)){
