@@ -295,7 +295,7 @@ module.exports = {
         }
         else{
           console.log("Connection successful");
-          client.query("SELECT pg_size_pretty(pg_database_size("+req.query.db+"));" , function(err,result) {
+          client.query("SELECT pg_database_size("+req.query.db+");" , function(err,result) {
             client.end(); // closing the connection;
             if(err){
                console.log(err);
