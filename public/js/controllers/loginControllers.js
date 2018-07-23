@@ -1,4 +1,4 @@
-app.controller('loginController', function($scope, postgresqlFactory){
+app.controller('loginController', function($scope, $http, postgresqlFactory){
   var id_ok = "63e780c3f321d13109c71bf81805476e";
   var postgresScope = postgresqlFactory.getScope();
   var time_to_expire = 0.041;
