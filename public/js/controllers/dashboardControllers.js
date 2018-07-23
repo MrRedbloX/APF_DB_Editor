@@ -139,7 +139,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     console.log($scope.databases);
 
     for(let i=0; i<$scope.databases.length; i++){
-      for(let y=0 y<$scope.databases[i].table.length; z++){
+      for(let y=0; y<$scope.databases[i].table.length; z++){
         if($scope.databases[i].name == db && !isInExceptionTables($scope.databases[i].table[z].table_name)){
           for(let j=0; j<$scope.dbColors.length; j++){
             if($scope.databases[i].name == $scope.dbColors[j].db_name)
