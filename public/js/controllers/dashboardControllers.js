@@ -199,10 +199,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       rgba = $scope.getRGBA();
       backgroundColor.push(rgba[0]);
       borderColor.push(rgba[1]);
-      $scope.dbColors.push({
-        db_name : $scope.databases[i].name,
-        color : rgba
-      });
     }
 
     var myChart = new Chart(ctx, {
