@@ -112,7 +112,7 @@ app.controller('loginController', function($scope, $http, postgresqlFactory){
   }
 
   $scope.check_login = function(md5, rm) {
-    postgresScope.getIdFromMD5(md5, function(){
+    $scope.getIdFromMD5(md5, function(){
       if(postgresScope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           $scope.id_exist =  true;
@@ -164,6 +164,43 @@ app.controller('loginController', function($scope, $http, postgresqlFactory){
   	else var expires = "";
   	document.cookie = name+"="+value+expires+"; path=/";
   }
+
+  $scope.getIdFromMD5 = function(md5,callback){
+    $http({
+      method: 'GET',
+      url: '/login/getIdFromMD5?md5='+md5
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.queryLogin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.queryLogin = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.addLogin = function(user,md5,email,callback){
+    console.log("addlog : " + user);
+    $http({
+      method: 'GET',
+      url: "/login/addLogin?id="+user+"&md5="+md5+"&mail="+email
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.addLogin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.addLogin = data;
+        if(callback) callback();
+    });
+  };
 
   $scope.getMD5 = function(up, callback){
     $http({
