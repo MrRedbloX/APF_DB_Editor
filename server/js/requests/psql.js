@@ -282,7 +282,7 @@ module.exports = {
           });
         }
       });
-  }
+  },
 
   getDbMemory: function(req, res) {
       var pg = require('pg');
