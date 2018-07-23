@@ -147,8 +147,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var borderColor = [];
     var color = $scope.getRGBA();
 
-    //console.log($scope.tables);
-    //console.log($scope.databases);
 
     for(let i=0; i<$scope.databases.length; i++){
       for(let y=0; y<$scope.databases[i].table.length; y++){
@@ -157,7 +155,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             if($scope.databases[i].name == $scope.dbColors[j].db_name)
               color = $scope.dbColors[j].color;
           }
-          //console.log($scope.databases[i].table[y]);
           labels.push($scope.splitTheTableName($scope.databases[i].table[y].table_name));
           data.push($scope.databases[i].table[y].values.length);
           backgroundColor.push(color[0]);
@@ -165,24 +162,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         }
       }
     }
-    /*var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-              datasets: [
-                {
-                  label: 'this year',
-                  backgroundColor: '#26B99A',
-                  data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                },
-                {
-                  label: 'previous year',
-                  backgroundColor: '#03586A',
-                  data: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-                }
-              ]
-            }
-    });*/
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -206,4 +185,41 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       }
     });
   };
+
+  $scope.loadChartNbTablesInDB = function(){
+    var ctx = $("#nbTablesInDB");
+    var labels = [];
+    var data = [];
+    var backgroundColor = [];
+    var borderColor = [];
+
+    for(let i=0; i<$scope.databases.length; i++){
+      labels.push($scope.databases[i].name);
+      data.push($scope.databases[i].table.length);
+      rgba = $scope.getRGBA();
+      backgroundColor.push(rgba[0]);
+      borderColor.push(rgba[1]);
+      $scope.dbColors.push({
+        db_name : $scope.databases[i].name,
+        color : rgba
+      });
+    }
+
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: 'Number of table(s)',
+              data: data,
+              backgroundColor: backgroundColor,
+              borderColor: borderColor,
+              borderWidth: 1
+          }]
+      },
+    });
+
+    $scope.readyDBChart = true;
+  };
+
 });
