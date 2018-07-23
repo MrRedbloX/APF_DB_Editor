@@ -337,41 +337,4 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
         if(callback) callback();
     });
   };
-
-  $scope.getIdFromMD5 = function(md5,callback){
-    $http({
-      method: 'GET',
-      url: '/db/getIdFromMD5?md5='+md5
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.queryLogin = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.queryLogin = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.addLogin = function(user,md5,email,callback){
-    console.log("addlog : " + user);
-    $http({
-      method: 'GET',
-      url: "/db/addLogin?id="+user+"&md5="+md5+"&mail="+email
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.addLogin = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.addLogin = data;
-        if(callback) callback();
-    });
-  };
 });
