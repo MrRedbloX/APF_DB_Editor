@@ -22,7 +22,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     return (table.split('_'))[0];
   }
 
-  $scope.loadDB = function(){
+  $scope.loadDB = async function(){
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
@@ -38,7 +38,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   name : db[i],
                   table : postgresScope.tableArray.data
                 });
-                if(i == db.length-1) $scope.readyDB = true;
+                if(i == db.length-1){
+                  await sleep(100);
+                  $scope.readyDB = true;
               }
               else{
                 console.log(postgresScope.tableArray);
