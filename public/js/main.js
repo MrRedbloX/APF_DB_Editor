@@ -228,6 +228,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.getColumnConstraint = function(dbName,tableName,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getColumnConstraint?db='+dbName+'&table='+tableName
@@ -246,6 +247,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.getAllValues = function(dbName,tableName,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getAllValues?db='+dbName+'&table='+tableName
