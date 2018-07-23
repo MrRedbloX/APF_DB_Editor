@@ -190,6 +190,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             }
         }
       });
+
+      $scope.readyLoadNbTuplesInTable = false;
     }
   };
 });
