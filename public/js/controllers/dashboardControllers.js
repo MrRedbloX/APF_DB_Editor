@@ -89,7 +89,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             if(i == $scope.databases.length-1){
               await sleep(waitFor);
               $scope.readyMemory = true;
-              console.log($scope.databases);
             }
           }
           else{
