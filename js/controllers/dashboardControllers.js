@@ -123,7 +123,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.loadChartNbTuplesInTable = function(){
     for(let z=0; z<$scope.databases.length; z++){
       var ctx = $("#nbTuplesInTable"+$scope.databases[z].name);
-      console.log("#nbTuplesInTable"+$scope.databases[z].name);
+      console.log(ctx);
       var labels = [];
       var data = [];
       var backgroundColor = [];
