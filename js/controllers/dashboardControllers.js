@@ -120,10 +120,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     $scope.readyDBChart = true;
   };
 
-  $scope.loadChartNbTuplesInTable = function(db){
+  $scope.loadChartNbTuplesInTable = function(){
     for(let z=0; z<$scope.databases.length; z++){
-      var ctx = $("#nbTuplesInTable"+$scope.databases[i].name);
-      console.log("#nbTuplesInTable"+$scope.databases[i].name);
+      var ctx = $("#nbTuplesInTable"+$scope.databases[z].name);
+      console.log("#nbTuplesInTable"+$scope.databases[z].name);
       var labels = [];
       var data = [];
       var backgroundColor = [];
@@ -131,14 +131,16 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       var color = $scope.getRGBA();
 
       for(let i=0; i<$scope.tables.length; i++){
-        for(let j=0; j<$scope.dbColors.length; j++){
-          if($scope.tables[i].db == $scope.dbColors[j].db_name)
-            color = $scope.dbColors[j].color;
+        if($scope.tables[i].db == $scope.databases[z].name){
+          for(let j=0; j<$scope.dbColors.length; j++){
+            if($scope.tables[i].db == $scope.dbColors[j].db_name)
+              color = $scope.dbColors[j].color;
+          }
+          labels.push($scope.tables[i].name.substring(0,9));
+          data.push($scope.tables[i].values.length);
+          backgroundColor.push(color[0]);
+          borderColor.push(color[1]);
         }
-        labels.push($scope.tables[i].name.substring(0,9));
-        data.push($scope.tables[i].values.length);
-        backgroundColor.push(color[0]);
-        borderColor.push(color[1]);
       }
 
       /*var myChart = new Chart(ctx, {
