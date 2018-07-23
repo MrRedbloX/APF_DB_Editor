@@ -51,6 +51,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
                     table : postgresScope.tableArray.data
                   });
                   if(i == postgresScope.dbArray.data.length-1){
+                    console.log("ok");
                     $scope.ready = true;
                     $(function() {
                       $('#treeDatabaseArea').jstree(); //Activating jtree
