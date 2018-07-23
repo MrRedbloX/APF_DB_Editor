@@ -5,7 +5,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     app = express();
 
-var loginOperations = require('./server/js/requests/logCon.js');
+var loginOperations = require('./server/js/requests/login.js');
 var dbOperations = require("./server/js/requests/psql.js");
 var webOperations = require("./server/js/requests/web.js");
 var logFmt = require("logfmt");
