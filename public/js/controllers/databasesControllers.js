@@ -54,7 +54,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
                   name : postgresScope.dbArray.data[i].datname,
                   table : postgresScope.tableArray.data
                 });
-                if(i == postgresScope.dbArray.data.length-1){
+                if(i == db.length-1){
                   console.log("ok");
                   $scope.ready = true;
                   $(function() {
