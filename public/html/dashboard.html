@@ -9,6 +9,7 @@
       <div ng-repeat="db in databases track by $index" class="divSquare">
         <canvas id="nbTuplesInTable" height="200%" ng-init="loadChartNbTuplesInTable(db.name)"></canvas>
         <div ng-if="$index%2 == 0" style='clear:both' />
+      </div>
     </div>
     <div class="divSquare" ng-if="ready">
     </div>
