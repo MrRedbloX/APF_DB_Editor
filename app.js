@@ -56,8 +56,7 @@ app.get('/web/getAnnuaire', function(req, res){
 });
 
 app.set('port', process.env.PORT || 3001);
-app.use(express.static(__dirname+"/public/"));
-app.use(express.static(__dirname+"/node_modules/bootstrap/dist/css/bootstrap/"));
+app.use(express.static("."));
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
