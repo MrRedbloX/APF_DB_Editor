@@ -80,7 +80,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     }
   };
 
-  $scope.loadChartNbTablesInDB = function(){
+  $scope.loadChartNbTablesInDB = async function(){
+    await sleep(waitFor);
     var ctx = $("#nbTablesInDB");
     var labels = [];
     var data = [];
