@@ -62,11 +62,11 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     if(!$scope.readyValues && $scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
         for(let j=0; j<$scope.databases[i].table.length; j++){
-          postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, async function(){
+          postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, function(){
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                await sleep(waitFor);
+                //await sleep(waitFor);
                 $scope.readyValues = true;
               }
             }
