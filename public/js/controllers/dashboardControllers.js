@@ -108,15 +108,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               borderWidth: 1
           }]
       },
-      /*options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
-      }*/
     });
 
     $scope.readyDBChart = true;
