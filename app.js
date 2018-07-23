@@ -7,7 +7,7 @@ var express = require('express'),
 
 var dbOperations = require("./server/js/requests/psql.js");
 var webOperations = require("./server/js/requests/web.js");
-var cryptOperations = require('./server/js/requests/crypt.js');
+var loginOperations = require('./server/js/requests/login.js');
 var logFmt = require("logfmt");
 
 app.set('views', __dirname) ;
@@ -58,7 +58,7 @@ app.get('/web/getAnnuaire', function(req, res){
     webOperations.getAnnuaire(req,res);
 });
 app.get('/crypt/getMD5', function(req, res){
-    cryptOperations.getMD5(req,res);
+    loginOperations.getMD5(req,res);
 });
 
 app.set('port', process.env.PORT || 3001);
