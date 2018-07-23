@@ -113,7 +113,7 @@ app.controller('loginController', function($scope, $http, postgresqlFactory){
 
   $scope.check_login = function(md5, rm) {
     $scope.getIdFromMD5(md5, function(){
-      if(postgresScope.successRequest){
+      if($scope.successRequest){
         if(postgresScope.queryLogin.data.length > 0){
           $scope.id_exist =  true;
         }
