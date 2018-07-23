@@ -139,15 +139,17 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     console.log(db);
 
     for(let i=0; i<$scope.databases.length; i++){
-      if($scope.databases[i].name == db && !isInExceptionTables($scope.tables[i].name)){
-        for(let j=0; j<$scope.dbColors.length; j++){
-          if($scope.tables[i].db == $scope.dbColors[j].db_name)
-            color = $scope.dbColors[j].color;
+      for(let y=0 y<$scope.databases[i].table.length; z++){
+        if($scope.databases[i].name == db && !isInExceptionTables($scope.databases[i].table[z].table_name)){
+          for(let j=0; j<$scope.dbColors.length; j++){
+            if($scope.tables[i].db == $scope.dbColors[j].db_name)
+              color = $scope.dbColors[j].color;
+          }
+          labels.push($scope.splitTheTableName($scope.tables[i].name));
+          data.push($scope.tables[i].values.length);
+          backgroundColor.push(color[0]);
+          borderColor.push(color[1]);
         }
-        labels.push($scope.splitTheTableName($scope.tables[i].name));
-        data.push($scope.tables[i].values.length);
-        backgroundColor.push(color[0]);
-        borderColor.push(color[1]);
       }
     }
     /*var myChart = new Chart(ctx, {
