@@ -148,7 +148,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         borderColor.push(color[1]);
       }
     }
-    console.log(labels);
     /*var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
