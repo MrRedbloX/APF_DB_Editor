@@ -136,7 +136,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           if($scope.tables[i].db == $scope.dbColors[j].db_name)
             color = $scope.dbColors[j].color;
         }
-        labels.push($scope.tables[i].name.substring(0,9));
+        labels.push($scope.tables[i].name/*.substring(0,9)*/);
         data.push($scope.tables[i].values.length);
         backgroundColor.push(color[0]);
         borderColor.push(color[1]);
