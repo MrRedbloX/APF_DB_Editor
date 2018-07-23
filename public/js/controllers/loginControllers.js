@@ -14,7 +14,7 @@ app.controller('loginController', function($scope, $http, postgresqlFactory){
 
     $scope.getMD5(userpass, function(){
       if($scope.successRequest){
-        console.log($scope.md5);
+        $scope.check_login($scope.md5.data, rm);
       }
       else{
         console.log($scope.md5);
