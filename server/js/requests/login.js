@@ -49,8 +49,8 @@ module.export = {
     });
   },
 
-  getMD5: function(req,res){
-    req.status(200).send(MD5(req.query.up));
+  getMD5: function(req, res){
+    res.status(200).send(MD5(req.query.up));
   }
 }
 
