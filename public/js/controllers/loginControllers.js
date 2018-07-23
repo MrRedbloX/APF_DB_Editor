@@ -274,9 +274,9 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
 
 
     console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
-    postgresScope.addLogin(user,result,mail,function(){
+    $scope.addLogin(user,result,mail,function(){
       if(postgresScope.successRequest){
-        if(postgresScope.addLogin.data.length > 0){
+        if($scope.addLogin.data.length > 0){
           $scope.success =  true;
         }
         else {
@@ -284,7 +284,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory){
         }
       }
       else {
-        console.log(postgresScope.addLogin);
+        console.log($scope.addLogin);
         alert("Error on addLogin request, check console logs.");
       }
 
