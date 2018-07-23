@@ -1,6 +1,6 @@
 module.export = {
   getMD5: function(req,res){
-    req.status(200).send(MD5(req.query.up))
+    req.status(200).send(MD5(req.query.up));
   }
 }
 
