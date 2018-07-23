@@ -3,7 +3,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.readyDB = false;
   $scope.readyValues = false;
   $scope.readyDBChart = false;
-  $scope.readyLoadNbTuplesInTable = false;
 
   $scope.dbColors = [];
   $scope.databases = [];
@@ -18,14 +17,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     ret.push(temp+'1)');
     return ret;
   };
-
-  $scope.setReady = function(bool){
-    $scope.readyLoadNbTuplesInTable = bool;
-  }
-
-  $scope.test = function(){
-    console.log("Canvas");
-  }
 
   $scope.loadDB = function(){
     if(!$scope.readyDB){
