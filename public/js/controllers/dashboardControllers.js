@@ -186,7 +186,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     });
   };
 
-  $scope.loadChartNbTablesInDB = function(){
+  $scope.loadChartDbMemory = function(){
     var ctx = $("#nbTablesInDB");
     var labels = [];
     var data = [];
