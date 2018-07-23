@@ -136,7 +136,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var color = $scope.getRGBA();
 
     //console.log($scope.tables);
-    console.log(db);
+    console.log($scope.databases);
 
     for(let i=0; i<$scope.databases.length; i++){
       for(let y=0 y<$scope.databases[i].table.length; z++){
