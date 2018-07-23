@@ -36,7 +36,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               if(postgresScope.successRequest){
                 $scope.databases.push({
                   name : db[i],
-                  table : postgresScope.tableArray.data
+                  table : postgresScope.tableArray.data,
+                  values : []
                 });
                 if(i == db.length-1) $scope.readyDB = true;
               }
