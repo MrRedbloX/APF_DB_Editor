@@ -136,6 +136,18 @@ app.factory('treeDatabaseAreaFactory', function(){
   };
 });
 
+app.factory('loginFactory', function(){
+  var theScope;
+  return{
+    setScope : function(scope){
+      theScope = scope;
+    },
+    getScope : function(){
+      return theScope;
+    }
+  };
+});
+
 app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
 
   postgresqlFactory.setScope($scope);
