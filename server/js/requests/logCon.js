@@ -54,7 +54,7 @@ module.export = {
   getTheMd5: function(req, res){
     console.log("Get id");
     //result = md5(req.query.up);
-    if(result != null)
+    if("test" != null)
       res.status(200).send("OUI");
     else
       res.status(400).send("Problème dans la fonction md5");
