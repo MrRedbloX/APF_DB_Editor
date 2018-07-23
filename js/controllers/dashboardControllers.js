@@ -121,16 +121,16 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadChartNbTuplesInTable = function(db){
-    var ctx = $("#nbTuplesInTable"+db);
-    console.log("#nbTuplesInTable"+db);
-    var labels = [];
-    var data = [];
-    var backgroundColor = [];
-    var borderColor = [];
-    var color = $scope.getRGBA();
+    for(let z=0; z<$scope.databases.length; z++){
+      var ctx = $("#nbTuplesInTable"+$scope.databases[i].name);
+      console.log("#nbTuplesInTable"+$scope.databases[i].name);
+      var labels = [];
+      var data = [];
+      var backgroundColor = [];
+      var borderColor = [];
+      var color = $scope.getRGBA();
 
-    for(let i=0; i<$scope.tables.length; i++){
-      if($scope.tables[i].db == db){
+      for(let i=0; i<$scope.tables.length; i++){
         for(let j=0; j<$scope.dbColors.length; j++){
           if($scope.tables[i].db == $scope.dbColors[j].db_name)
             color = $scope.dbColors[j].color;
@@ -140,48 +140,47 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         backgroundColor.push(color[0]);
         borderColor.push(color[1]);
       }
-    }
 
-    /*var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-              datasets: [
-                {
-                  label: 'this year',
-                  backgroundColor: '#26B99A',
-                  data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                },
-                {
-                  label: 'previous year',
-                  backgroundColor: '#03586A',
-                  data: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-                }
-              ]
-            }
-    });*/
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: labels,
-          datasets: [{
-              label: 'Number of record(s)',
-              data: data,
-              backgroundColor: backgroundColor,
-              borderColor: borderColor,
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
+      /*var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                  {
+                    label: 'this year',
+                    backgroundColor: '#26B99A',
+                    data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                  },
+                  {
+                    label: 'previous year',
+                    backgroundColor: '#03586A',
+                    data: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
                   }
-              }]
-          }
-      }
-    });
-
+                ]
+              }
+      });*/
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Number of record(s)',
+                data: data,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+      });
+    }
   };
 });
