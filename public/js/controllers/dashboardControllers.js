@@ -21,6 +21,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.splitTheTableName = function(table){
     return (table.split('_'))[0];
   }
+  
   $scope.loadDB = function(){
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
