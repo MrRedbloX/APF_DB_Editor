@@ -18,6 +18,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     return ret;
   };
 
+  angular.element(document).ready(function () {
+        console.log("Ready");
+});
+
   $scope.loadDB = function(){
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
