@@ -1,4 +1,5 @@
-app.controller('loginController', function($scope, $http, postgresqlFactory){
+app.controller('loginController', function($scope, $http, postgresqlFactory, loginFactory){
+  loginFactory.setScope($scope)
   var id_ok = "63e780c3f321d13109c71bf81805476e";
   var postgresScope = postgresqlFactory.getScope();
   var time_to_expire = 0.041;
@@ -19,11 +20,6 @@ app.controller('loginController', function($scope, $http, postgresqlFactory){
         alert("Error on getMD5, check console logs.");
       }
     });
-    //var result = MD5(userpass);
-
-    //$scope.check_login(result, rm);
-
-
   }
 
   $scope.clear_cook = function(){
@@ -220,8 +216,9 @@ app.controller('loginController', function($scope, $http, postgresqlFactory){
   };
 });
 
-app.controller('signupController', function($scope, $http, postgresqlFactory){
+app.controller('signupController', function($scope, $http, postgresqlFactory, loginFactory){
   var postgresScope = postgresqlFactory.getScope();
+  var loginScope = loginFactory.getScope();
 
   $scope.create_login  = function(){
 
