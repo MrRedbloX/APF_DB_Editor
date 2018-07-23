@@ -121,6 +121,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadChartNbTuplesInTable = function(){
+    test = document.getElementsByTagName("CANVAS");
+    console.log(test);
     for(let z=0; z<$scope.databases.length; z++){
       var ctx = document.getElementById("#nbTuplesInTable"+$scope.databases[z].name);
       console.log(ctx);
