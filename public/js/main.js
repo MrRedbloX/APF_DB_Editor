@@ -266,6 +266,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.getValuesOf = function(dbName,tableName,columnName,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getValuesOf?db='+dbName+'&table='+tableName+'&att='+columnName
@@ -284,6 +285,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)
@@ -302,6 +304,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.modifyRecord = function(dbName,tableName,columnList,valueList,pkKey,pkValue,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/modifyRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)+'&pkKey='+pkKey+'&pkValue='+pkValue
@@ -320,6 +323,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.getPrimaryKey = function(dbName,tableName,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getPrimaryKey?db='+dbName+'&table='+tableName
@@ -338,6 +342,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.delRecord = function(dbName,tableName,pkKey,pkValue,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/delRecord?db='+dbName+'&table='+tableName+'&pkKey='+pkKey+'&pkValue='+pkValue
@@ -356,6 +361,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.query = function(dbName,tableName,select,condAtt,condValue,callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/query?db='+dbName+'&table='+tableName+'&select='+select+'&condAtt='+condAtt+"&condValue="+condValue
@@ -374,6 +380,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
   };
 
   $scope.getDbMemory = function(dbName, callback){
+    $scope.successRequest = false;
     $http({
       method: 'GET',
       url: '/db/getDbMemory?db='+dbName
