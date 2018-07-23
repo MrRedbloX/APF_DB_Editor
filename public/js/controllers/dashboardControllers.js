@@ -117,7 +117,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     $scope.readyDBChart = true;
   };
 
-  $scope.loadChartNbTuplesInTable = function(db){
+  $scope.loadChartNbTuplesInTable = async function(db){
+    await sleep(waitFor);
     canvas = document.getElementById("nbTuplesInTable");
     canvas.id = canvas.id+db;
     var ctx = document.getElementById("nbTuplesInTable"+db);
