@@ -57,7 +57,7 @@ app.get('/login/addLogin', function(req,res){
 app.get('/web/getAnnuaire', function(req, res){
     webOperations.getAnnuaire(req,res);
 });
-app.get('/login/getMD5', function(req, res){
+app.get('/login/getTheMd5', function(req, res){
     loginOperations.getTheMd5(req,res);
 });
 
