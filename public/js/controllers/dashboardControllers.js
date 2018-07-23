@@ -21,7 +21,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.splitTheTableName = function(table){
     return (table.split('_'))[0];
   }
-  
+
   $scope.loadDB = function(){
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
@@ -133,6 +133,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var backgroundColor = [];
     var borderColor = [];
     var color = $scope.getRGBA();
+
+    console.log($scope.tables);
 
     for(let i=0; i<$scope.tables.length; i++){
       if($scope.tables[i].db == db && !isInExceptionTables($scope.tables[i].name)){
