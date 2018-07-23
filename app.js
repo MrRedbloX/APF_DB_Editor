@@ -48,16 +48,16 @@ app.get('/db/delRecord', function(req,res){
 app.get('/db/query', function(req,res){
     dbOperations.query(req,res);
 });
-app.get('/db/getIdFromMD5', function(req,res){
+app.get('/login/getIdFromMD5', function(req,res){
     loginOperations.getIdFromMD5(req,res);
 });
-app.get('/db/addLogin', function(req,res){
+app.get('/login/addLogin', function(req,res){
     loginOperations.addLogin(req,res);
 });
 app.get('/web/getAnnuaire', function(req, res){
     webOperations.getAnnuaire(req,res);
 });
-app.get('/crypt/getMD5', function(req, res){
+app.get('/login/getMD5', function(req, res){
     loginOperations.getMD5(req,res);
 });
 
