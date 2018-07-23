@@ -32,13 +32,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               db.push(postgresScope.dbArray.data[i].datname);
           }
           for(let i=0; i<db.length; i++){
-            postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
+            postgresScope.getTableName(db[i], async function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
                 $scope.databases.push({
                   name : db[i],
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
+                  await sleep(waitFor);
                   $scope.readyDB = true;
                 }
               }
