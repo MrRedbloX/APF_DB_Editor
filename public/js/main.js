@@ -367,4 +367,22 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
         if(callback) callback();
     });
   };
+
+  $scope.getDbMemory = function(dbName, callback){
+    $http({
+      method: 'GET',
+      url: '/db/getDbMemory?db='+dbName
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.dbMemoryRequest = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.dbMemoryRequest = data;
+        if(callback) callback();
+    });
+  };
 });
