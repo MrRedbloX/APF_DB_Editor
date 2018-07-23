@@ -1,4 +1,54 @@
+var loginConString = "postgres://postgres:postgres@10.237.169.202:5432/postgres";
+
 module.export = {
+  getIdFromMD5: function(req, res){
+    var pg = require('pg');
+
+    var client = new pg.Client(loginConString);
+
+    client.connect(function(err,client) {
+      if(err){
+       console.log("Not able to get connection : "+ err);
+       res.status(400).send(err);
+      }
+      else{
+        console.log("Connection successful");
+        client.query("SELECT username FROM APF_ID WHERE md5 = '"+req.query.md5+"';" ,function(err,result) {
+          client.end(); // closing the connection;
+          if(err){
+             console.log(err);
+             res.status(400).send(err);
+          }
+          else res.status(200).send(result.rows);
+        });
+      }
+    });
+  },
+
+  addLogin: function(req, res){
+    var pg = require('pg');
+
+    var client = new pg.Client(loginConString);
+
+    client.connect(function(err,client) {
+      if(err){
+       console.log("Not able to get connection : "+ err);
+       res.status(400).send(err);
+      }
+      else{
+        console.log("Connection successful");
+        client.query("INSERT INTO APF_ID (username,md5,mail) VALUES ('"+req.query.id+"','"+req.query.md5+"','"+req.query.mail+"');" ,function(err,result) {
+          client.end(); // closing the connection;
+          if(err){
+             console.log(err);
+             res.status(400).send(err);
+          }
+          else res.status(200).send(result.rows);
+        });
+      }
+    });
+  },
+
   getMD5: function(req,res){
     req.status(200).send(MD5(req.query.up));
   }
