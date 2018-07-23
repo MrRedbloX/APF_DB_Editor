@@ -58,7 +58,7 @@ app.get('/web/getAnnuaire', function(req, res){
     webOperations.getAnnuaire(req,res);
 });
 app.get('/login/getTheMd5', function(req, res){
-    loginOperations.getTheMd5(req,res);
+    loginOperations.testFunction(req,res);
 });
 
 app.set('port', process.env.PORT || 3001);
