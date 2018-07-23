@@ -7,7 +7,7 @@ var express = require('express'),
 
 var dbOperations = require("./server/js/requests/psql.js");
 var webOperations = require("./server/js/requests/web.js");
-var logFmt = require("logfmt"); 
+var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
     res.sendFile(__dirname+'/public/index.html');
