@@ -5,6 +5,19 @@ var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 
 var busy = false;
 var exceptionTables = ['map'];
 
+var isInExceptionTables = function(table){
+  ret = false;
+
+  for(let i=0; i<exceptionTables.length; i++){
+    if(table.startsWith(exceptionTables[i])){
+      ret = true;
+      break;
+    }
+  }
+
+  return ret;
+};
+
 //Check if a database is in read only mode
 var checkIfReadOnlyDB = function(db){
   ret = false;
