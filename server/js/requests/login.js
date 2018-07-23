@@ -50,7 +50,7 @@ module.export = {
   },
 
   getMD5: function(req, res){
-    console.log("Get id")
+    console.log("Get id");
     result = md5(req.query.up);
     res.status(200).send(result);
   }
