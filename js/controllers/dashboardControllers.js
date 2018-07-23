@@ -3,6 +3,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.readyDB = false;
   $scope.readyValues = false;
   $scope.readyDBChart = false;
+  $scope.readyLoadNbTuplesInTable = false;
 
   $scope.dbColors = [];
   $scope.databases = [];
@@ -17,10 +18,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     ret.push(temp+'1)');
     return ret;
   };
-
-  angular.element(document).ready(function () {
-        console.log("Ready");
-});
 
   $scope.loadDB = function(){
     if(!$scope.readyDB){
