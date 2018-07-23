@@ -59,7 +59,7 @@ module.export = {
       res.status(400).send("Problème dans la fonction md5");
   }
 
-  testFuntion: function(req, res){
+  testFunction: function(req, res){
     console.log("OK");
   }
 }
