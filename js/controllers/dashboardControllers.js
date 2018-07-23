@@ -120,73 +120,69 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     $scope.readyDBChart = true;
   };
 
-  $scope.loadChartNbTuplesInTable = function(){
+  $scope.loadChartNbTuplesInTable = function(db){
     test = document.getElementsByTagName("CANVAS");
     console.log(test);
-    for(let z=0; z<$scope.databases.length; z++){
-      var ctx = document.getElementById("#nbTuplesInTable"+$scope.databases[z].name);
-      console.log(ctx);
-      var labels = [];
-      var data = [];
-      var backgroundColor = [];
-      var borderColor = [];
-      var color = $scope.getRGBA();
+    var ctx = document.getElementById("#nbTuplesInTable"+db);
+    console.log(ctx);
+    var labels = [];
+    var data = [];
+    var backgroundColor = [];
+    var borderColor = [];
+    var color = $scope.getRGBA();
 
-      for(let i=0; i<$scope.tables.length; i++){
-        if($scope.tables[i].db == $scope.databases[z].name){
-          for(let j=0; j<$scope.dbColors.length; j++){
-            if($scope.tables[i].db == $scope.dbColors[j].db_name)
-              color = $scope.dbColors[j].color;
-          }
-          labels.push($scope.tables[i].name.substring(0,9));
-          data.push($scope.tables[i].values.length);
-          backgroundColor.push(color[0]);
-          borderColor.push(color[1]);
+    for(let i=0; i<$scope.tables.length; i++){
+      if($scope.tables[i].db == db){
+        for(let j=0; j<$scope.dbColors.length; j++){
+          if($scope.tables[i].db == $scope.dbColors[j].db_name)
+            color = $scope.dbColors[j].color;
         }
+        labels.push($scope.tables[i].name.substring(0,9));
+        data.push($scope.tables[i].values.length);
+        backgroundColor.push(color[0]);
+        borderColor.push(color[1]);
       }
-
-      /*var myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [
-                  {
-                    label: 'this year',
-                    backgroundColor: '#26B99A',
-                    data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                  },
-                  {
-                    label: 'previous year',
-                    backgroundColor: '#03586A',
-                    data: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-                  }
-                ]
-              }
-      });*/
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Number of record(s)',
-                data: data,
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
-      });
-
-      $scope.readyLoadNbTuplesInTable = false;
     }
+
+    /*var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+              datasets: [
+                {
+                  label: 'this year',
+                  backgroundColor: '#26B99A',
+                  data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  label: 'previous year',
+                  backgroundColor: '#03586A',
+                  data: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+                }
+              ]
+            }
+    });*/
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: 'Number of record(s)',
+              data: data,
+              backgroundColor: backgroundColor,
+              borderColor: borderColor,
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+    });
   };
 });
