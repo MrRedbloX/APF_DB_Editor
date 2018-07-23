@@ -3,7 +3,6 @@ var md5 = function(d){result = M(V(Y(X(d),8*d.length)));return result.toLowerCas
 
 module.export = {
   getIdFromMD5: function(req, res){
-    console.log("ok");
     var pg = require('pg');
 
     var client = new pg.Client(loginConString);
@@ -58,5 +57,9 @@ module.export = {
       res.status(200).send("OUI");
     else
       res.status(400).send("Problème dans la fonction md5");
+  }
+
+  testFuntion: function(req, res){
+    console.log("OK");
   }
 }
