@@ -195,12 +195,12 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
     })
     .then(
       function successCallback(data) {
-        //$scope.successRequest = true;
+        $scope.successRequest = true;
         $scope.tableArray = data;
         if(callback) callback();
       },
       function errorCallback(data) {
-        //$scope.successRequest = false;
+        $scope.successRequest = false;
         $scope.tableArray = data;
         if(callback) callback();
     });
