@@ -61,7 +61,7 @@ app.get('/login/getTheMd5', function(req, res){
     loginOperations.getTheMd5(req,res);
 });
 app.get('/db/getDbMemory', function(req, res){
-    loginOperations.getDbMemory(req,res);
+    dbOperations.getDbMemory(req,res);
 });
 
 app.set('port', process.env.PORT || 3001);
