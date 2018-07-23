@@ -1,10 +1,10 @@
 <div ng-controller="loginController" ng-init="verifco()">
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
-    <div ng-if="readyDB">
+    <div class="divSquare" ng-if="readyDB">
       <a ng-init="loadTableValues()" />
       <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
     </div>
-    <div ng-if="readyValues && readyDBChart">
+    <div class="divSquare" ng-if="readyValues && readyDBChart">
       <canvas ng-repeat="db in databases" id="nbTuplesInTable" height="200%" ng-init="loadChartNbTuplesInTable(db.name)"></canvas>
     </div>
     <div style='clear:both'></div>
