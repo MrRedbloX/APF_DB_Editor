@@ -6,7 +6,7 @@ do
   if [ "$val" != "Déjà à jour." ]
   then
     pkill -f node &>/dev/null
-    (node server/app.js &) &>/dev/null
+    (node app.js &) &>/dev/null
     beep -n
   fi
 done
