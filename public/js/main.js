@@ -62,25 +62,25 @@ var app = angular.module('DBEditorAPF', ["ngRoute"], function($rootScopeProvider
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "html/defaultDisplay.html"
+        templateUrl : "public/html/defaultDisplay.html"
     })
     .when("/db_management", {
-        templateUrl : "html/db_management.html"
+        templateUrl : "public/html/db_management.html"
     })
     .when("/db_views", {
-        templateUrl : "html/db_views.html"
+        templateUrl : "public/html/db_views.html"
     })
     .when("/dashboard", {
-        templateUrl : "html/dashboard.html"
+        templateUrl : "public/html/dashboard.html"
     })
     .when("/help", {
-        templateUrl : "html/help.html"
+        templateUrl : "public/html/help.html"
     })
     .when("/login", {
-        templateUrl : "html/login.html"
+        templateUrl : "public/html/login.html"
     })
     .when("/signup", {
-        templateUrl : "html/signup.html"
+        templateUrl : "public/html/signup.html"
     })
     .otherwise({
         redirectTo: '/'
