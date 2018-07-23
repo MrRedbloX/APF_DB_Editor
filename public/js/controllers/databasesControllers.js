@@ -44,28 +44,29 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
         if(postgresScope.successRequest){
           db = [];
           for(let i=0;i<postgresScope.dbArray.data.length;i++){
-            if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname)){
+            if(!exceptionDB.includes(postgresScope.dbArray.data[i].datname))
               db.push(postgresScope.dbArray.data[i].datname);
-              postgresScope.getTableName(postgresScope.dbArray.data[i].datname, function(){ //We do the same thing for this request
-                if(postgresScope.successRequest){
-                  $scope.databases.push({
-                    name : postgresScope.dbArray.data[i].datname,
-                    table : postgresScope.tableArray.data
+          }
+          for(let i=0; i<db.length; i++){
+            postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
+              if(postgresScope.successRequest){
+                $scope.databases.push({
+                  name : postgresScope.dbArray.data[i].datname,
+                  table : postgresScope.tableArray.data
+                });
+                if(i == postgresScope.dbArray.data.length-1){
+                  console.log("ok");
+                  $scope.ready = true;
+                  $(function() {
+                    $('#treeDatabaseArea').jstree(); //Activating jtree
                   });
-                  if(i == postgresScope.dbArray.data.length-1){
-                    console.log("ok");
-                    $scope.ready = true;
-                    $(function() {
-                      $('#treeDatabaseArea').jstree(); //Activating jtree
-                    });
-                  }
                 }
-                else{
-                  console.log(postgresScope.tableArray);
-                  alert("Error on getTableName request, check console logs.");
-                }
-              });
-            }
+              }
+              else{
+                console.log(postgresScope.tableArray);
+                alert("Error on getTableName request, check console logs.");
+              }
+            });
           }
         }
         else{
