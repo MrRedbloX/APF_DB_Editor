@@ -10,7 +10,7 @@ var webOperations = require("./js/requests/web.js");
 var logFmt = require("logfmt");
 app.set('views', __dirname) ;
 app.get('/' , function(req,res) {
-    res.sendFile(__dirname+'../public/index.html');
+    res.sendFile(__dirname+'/../public/index.html');
 } );
 app.get('/db/getDBName', function(req,res){
     dbOperations.getDBName(req,res);
