@@ -85,10 +85,11 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       for(let i=0; i<$scope.databases.length; i++){
         postgresScope.getDbMemory($scope.databases[i].name, async function(){
           if(postgresScope.successRequest){
-            console.log(postgresScope.dbMemoryRequest);
+            $scope.databases[i].size = Math.round(parseInt(dbMemoryRequest.data[0].pg_database_size)/1000000);
             if(i == $scope.databases.length-1){
               await sleep(waitFor);
               $scope.readyMemory = true;
+              console.log($scope.databases);
             }
           }
           else{
