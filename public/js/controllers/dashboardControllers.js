@@ -294,7 +294,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       type: 'bar',
       data: {
           labels: chart.labels,
-          datasets: chart.datasets
+          datasets: [chart.datasets]
       },
       options: {
           scales: {
