@@ -256,6 +256,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var nbData;
 
     for(let j=0; j<workingTables.length; j++){
+      console.log(workingTables[j].table_name);
       backgroundColor = [];
       borderColor = [];
       color = $scope.getRGBA();
