@@ -24,7 +24,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
   $scope.loadDB = function(){
     if(!$scope.readyDB){
-      document.body.style.cursor='wait';
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
           db = [];
@@ -90,7 +89,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             if(i == $scope.databases.length-1){
               await sleep(waitFor);
               $scope.readyMemory = true;
-              document.body.style.cursor='default';
             }
           }
           else{
@@ -220,7 +218,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       },
     });
 
-    $scope.readyDBChart = true;
+    $scope.readyMemory = true;
+    document.body.style.cursor='default';
   };
 
 });
