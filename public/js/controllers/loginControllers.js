@@ -109,26 +109,19 @@ app.controller('loginController', function($scope, $http, postgresqlFactory, log
     $scope.getIdFromMD5(md5, function(){
       if($scope.successRequest){
         if($scope.queryLogin.data.length > 0){
-          $scope.id_exist =  true;
+          if(rm.checked){
+            $scope.createCookie('identifiant', md5, 31);
+          }
+          window.location="/";
+          $scope.createCookie('date', '1', time_to_expire);
         }
         else {
-          $scope.id_exist =  false;
+          alert("incorrect password");
         }
       }
       else {
         console.log($scope.queryLogin);
         alert("Error on getIdFromMD5 request, check console logs.");
-      }
-
-      if($scope.id_exist == true){
-        if(rm.checked == true){
-          $scope.createCookie('identifiant', md5, 31);
-        }
-        window.location="/";
-        $scope.createCookie('date', '1', time_to_expire);
-      }
-      else{
-        alert("incorrect password");
       }
     });
   }
