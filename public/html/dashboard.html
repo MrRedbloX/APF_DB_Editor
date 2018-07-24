@@ -13,8 +13,6 @@
       <fieldset class="chartDisplayBorder">
         <legend class="chartDisplayBorder">Miscellaneous</legend>
         <div class="divSquare" ng-if="readyDB">
-          <a ng-init="loadTableValues()" />
-          <a ng-init="loadDbMemory()" />
           <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
           <p style="padding-top: 2%">Number of table(s) in a database<p>
         </div>
