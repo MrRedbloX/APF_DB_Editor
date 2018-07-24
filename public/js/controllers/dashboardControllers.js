@@ -35,14 +35,13 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               db.push(postgresScope.dbArray.data[i].datname);
           }
           for(let i=0; i<db.length; i++){
-            postgresScope.getTableName(db[i], async function(){ //We do the same thing for this request
+            postgresScope.getTableName(db[i], function(){ //We do the same thing for this request
               if(postgresScope.successRequest){
                 $scope.databases.push({
                   name : db[i],
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
-                  //await sleep(waitFor);
                   console.log("Finish loading db");
                   $scope.readyDB = true;
                   $scope.loadTableValues();
@@ -68,11 +67,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     if(!$scope.readyValues && $scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
         for(let j=0; j<$scope.databases[i].table.length; j++){
-          postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, async function(){
+          postgresScope.getAllValues($scope.databases[i].name, $scope.databases[i].table[j].table_name, function(){
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                //await sleep(waitFor);
                 console.log("Finish loading values");
                 $scope.readyValues = true;
                 $scope.loadSondeTenant();
@@ -91,11 +89,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.loadDbMemory = function(){
     if($scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
-        postgresScope.getDbMemory($scope.databases[i].name, async function(){
+        postgresScope.getDbMemory($scope.databases[i].name, function(){
           if(postgresScope.successRequest){
             $scope.databases[i].size = (parseInt(postgresScope.dbMemoryRequest.data[0].pg_database_size)/1000000).toFixed(2);
             if(i == $scope.databases.length-1){
-              await sleep(waitFor);
               $scope.readyMemory = true;
             }
           }
