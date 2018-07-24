@@ -75,6 +75,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 await sleep(waitFor);
                 console.log("Finish loading values");
                 $scope.readyValues = true;
+                $scope.loadSondeTenant();
               }
             }
             else{
