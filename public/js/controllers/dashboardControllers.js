@@ -307,5 +307,4 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       }
     });
   };
-
 });
