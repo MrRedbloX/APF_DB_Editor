@@ -1,12 +1,15 @@
 <div ng-controller="loginController" ng-init="verifco()">
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
     <a ng-if="readyDB" ng-init="loadTableValues()" />
-    <form ng-if="readyDB && readyValues">
-      <a ng-init="loadSondeTenant()" />
-      <div ng-if="readyChartSondeTenant" ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
-        <canvas id="sondeTenant" height="200%" ng-init="loadChartSondeTenant(chart)"></canvas>
-        <div ng-if="$index%2 == 0" style='clear:both' />
-      </div>
+    <form>
+      <fieldset ng-if="readyDB && readyValues">
+        <legend>Tenant</legend>
+        <a ng-init="loadSondeTenant()" />
+        <div ng-if="readyChartSondeTenant" ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
+          <canvas id="sondeTenant" height="200%" ng-init="loadChartSondeTenant(chart)"></canvas>
+          <div ng-if="$index%2 == 0" style='clear:both' />
+        </div>
+      </fieldset>
     </form>
     <!--<div class="divSquare" ng-if="readyDB">
       <a ng-init="loadTableValues()" />
