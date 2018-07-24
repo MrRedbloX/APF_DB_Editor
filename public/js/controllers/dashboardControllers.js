@@ -221,7 +221,41 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadChartSondeTenant = function(){
+    var ctx = $("#sondeTenantRelations");
+    var labels = [];
+    var data = [];
+    var backgroundColor = [];
+    var borderColor = [];
+    var color = $scope.getRGBA();
 
+    for(let i=0; i<$scope.databases.length; i++){
+      if($scope.databases[i].name == "sonde"){
+        for(let j=0; j<$scope.databases[i].table.length; j++){
+          if($scope.databases[i].table[j].table_name == "tenant_table"){
+            
+
+
+            break;
+          }
+        }
+        break;
+      }
+
+    }
+
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: 'Memory of database(s) in Mb',
+              data: data,
+              backgroundColor: backgroundColor,
+              borderColor: borderColor,
+              borderWidth: 1
+          }]
+      },
+    });
   };
 
 });
