@@ -269,7 +269,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       else if(workingTables[j].table_name == 'subnet_table') label = "Subnet";
       else if(workingTables[j].table_name == 'ecs_table') label = "Elastic Cloud Server";*/
       datasets.push({
-        label: label,
+        label: workingTables[j].table_name,
         data: data,
         backgroundColor: backgroundColor,
         borderColor: borderColor,
