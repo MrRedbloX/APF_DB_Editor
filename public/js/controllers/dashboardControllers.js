@@ -251,18 +251,18 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var backgroundColor;
     var borderColor;
     var color;
-    var data; 
+    var data;
     var label;
+    var nbData;
 
     for(let i=0; i<idTenant.length; i++){
-      var backgroundColor = [];
-      var borderColor = [];
-      var color = $scope.getRGBA();
-      var data = [];
-      var label;
+      backgroundColor = [];
+      borderColor = [];
+      color = $scope.getRGBA();
+      data = [];
       for(let j=0; j<workingTables.length; j++){
         label = workingTables[j].table_name;
-        var nbData = 0;
+        nbData = 0;
         for(let k=0; k<workingTables[j].values.length; k++){
           if(workingTables[j].values[k].tenant_uuid == idTenant[i])
             nbData++;
