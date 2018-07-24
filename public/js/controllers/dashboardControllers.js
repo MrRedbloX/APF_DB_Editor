@@ -45,6 +45,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   await sleep(waitFor);
                   console.log("Finish loading db");
                   $scope.readyDB = true;
+                  $scope.loadTableValues();
                 }
               }
               else{
