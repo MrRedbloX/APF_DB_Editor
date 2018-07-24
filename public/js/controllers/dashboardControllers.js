@@ -8,7 +8,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
   $scope.dbColors = [];
   $scope.databases = [];
-  $scope.charts = [];
+  $scope.chartsSondeTenant = [];
 
   $scope.getRGBA = function(){
     ret = [];
@@ -277,7 +277,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       });
     }
     for(let i=0; i<datasets.length; i++){
-      $scope.charts.push({
+      $scope.chartsSondeTenant.push({
         labels : labels,
         datasets : datasets[i]
       });
