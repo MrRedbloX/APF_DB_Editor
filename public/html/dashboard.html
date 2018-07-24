@@ -2,7 +2,11 @@
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
     <a ng-if="readyDB" ng-init="loadTableValues()" />
     <div ng-if="readyDB && readyValues">
-      <canvas id="sondeTenantRelations" ng-init="loadChartSondeTenant()" height="200%"></canvas>
+      <a ng-init="loadSondeTenant()" />
+      <div ng-if="readyChartSondeTenant" ng-repeat="chart in charts track by $index" class="divSquare">
+        <canvas id="sondeTenant" height="200%" ng-init="loadChartSondeTenant(chart)"></canvas>
+        <div ng-if="$index%2 == 0" style='clear:both' />
+      </div>
     </div>
     <!--<div class="divSquare" ng-if="readyDB">
       <a ng-init="loadTableValues()" />
