@@ -116,7 +116,7 @@ app.controller('loginController', function($scope, $http, postgresqlFactory, log
           $scope.createCookie('date', '1', time_to_expire);
         }
         else {
-          alert("incorrect password");
+          alert("Id or password incorrect");
         }
       }
       else {
