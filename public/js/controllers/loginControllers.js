@@ -29,7 +29,7 @@ app.controller('loginController', function($scope, $http, postgresqlFactory, log
   }
 
   $scope.verifco = function(){
-    var login_page = document.getElementById("connexion");
+    /*var login_page = document.getElementById("connexion");
     var signup_page = document.getElementById("inscription");
     var name = "date=";
     var cook = "";
@@ -65,11 +65,11 @@ app.controller('loginController', function($scope, $http, postgresqlFactory, log
       else{
         $scope.createCookie('date', '1', time_to_expire);
       }
-    }
+    }*/
   }
 
   $scope.isLoggedOn = function(){
-    var name = "date" + "=";
+    /*var name = "date" + "=";
     var cook = "";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -101,7 +101,8 @@ app.controller('loginController', function($scope, $http, postgresqlFactory, log
     if(cook != "" || cookid != "")
       ret = true;
 
-    return ret;
+    return ret;*/
+    return true;
   }
 
   $scope.check_login = function(md5, rm) {
