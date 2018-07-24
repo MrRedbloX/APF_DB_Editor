@@ -63,6 +63,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadTableValues = function(){
+    console.log("Start loading values");
     if(!$scope.readyValues && $scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
         for(let j=0; j<$scope.databases[i].table.length; j++){
