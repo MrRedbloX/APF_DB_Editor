@@ -4,11 +4,11 @@
       <a ng-init="loadTableValues()" />
       <a ng-init="loadDbMemory()" />
       <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
-      <p>Number of table(s) in a database<p>
+      <p style="padding-top: 3%">Number of table(s) in a database<p>
     </div>
     <div class="divSquare" ng-if="readyDB && readyMemory">
       <canvas id="dbMemory" ng-init="loadChartDbMemory()" height="200%"></canvas>
-      <p>Memory of database(s) in Mb<p>
+      <p style="padding-top: 3%">Memory of database(s) in Mb<p>
     </div>
     <div style='clear:both'></div>
     <div ng-if="readyValues && readyDBChart">
