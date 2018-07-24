@@ -248,7 +248,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var color;
     var data;
     var nbData;
-    var label;
+    var label = "";
 
     for(let j=0; j<workingTables.length; j++){
       backgroundColor = [];
