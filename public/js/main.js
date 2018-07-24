@@ -4,7 +4,6 @@ var readOnlyDB = ['sonde']; //Contains the read only databases
 var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid'];
 var busy = false;
 var exceptionTables = ['map'];
-var waitFor = 0.1;
 
 var isInExceptionTables = function(table){
   ret = false;
