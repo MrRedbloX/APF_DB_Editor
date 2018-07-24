@@ -42,7 +42,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
-                  await sleep(waitFor);
+                  //await sleep(waitFor);
                   console.log("Finish loading db");
                   $scope.readyDB = true;
                   $scope.loadTableValues();
@@ -72,7 +72,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                await sleep(waitFor);
+                //await sleep(waitFor);
                 console.log("Finish loading values");
                 $scope.readyValues = true;
                 $scope.loadSondeTenant();
