@@ -253,33 +253,30 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var borderColor;
     var color;
     var data;
-    var label = [];
     var nbData;
 
-    for(let i=0; i<idTenant.length; i++){
+    for(let j=0; j<workingTables.length; j++){
       backgroundColor = [];
       borderColor = [];
       color = $scope.getRGBA();
       data = [];
-      for(let j=0; j<workingTables.length; j++){
+      for(let i=0; i<idTenant.length; i++){
         nbData = 0;
         for(let k=0; k<workingTables[j].values.length; k++){
           if(workingTables[j].values[k].tenant_uuid == idTenant[i])
             nbData++;
         }
-        label.push(workingTables[j].table_name);
         data.push(nbData);
         backgroundColor.push(color[0]);
         borderColor.push(color[1]);
       }
       datasets.push({
-        label: label,
+        label: workingTables[j].table_name,
         data: data,
         backgroundColor: backgroundColor,
         borderColor: borderColor,
         borderWidth: 1
       });
-
     }
 
     datasets = [
