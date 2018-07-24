@@ -285,46 +285,25 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     datasets = [
       {
         label: "Test1",
-        data : [1,2,3],
+        data : [1,2,3,4,5,6],
         backgroundColor: backgroundColor,
         borderColor: borderColor,
         borderWidth: 1
       },
       {
         label: "Test2",
-        data : [1,2,3],
+        data : [1,2,3,4,5,6],
         backgroundColor: backgroundColor,
         borderColor: borderColor,
         borderWidth: 1
       },
       {
         label: "Test3",
-        data : [1,2,3],
+        data : [1,2,3,4,5,6],
         backgroundColor: backgroundColor,
         borderColor: borderColor,
         borderWidth: 1
-      },
-      {
-        label: "Test4",
-        data : [1,2,3],
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-      },
-      {
-        label: "Test5",
-        data : [1,2,3],
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-      },
-      {
-        label: "Test6",
-        data : [1,2,3],
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-      },
+      }
     ];
 
     var myChart = new Chart(ctx, {
