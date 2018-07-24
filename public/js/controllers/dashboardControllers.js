@@ -8,6 +8,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
   $scope.dbColors = [];
   $scope.databases = [];
+  $scope.charts = [];
 
   $scope.getRGBA = function(){
     ret = [];
