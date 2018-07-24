@@ -1,10 +1,9 @@
 <div ng-controller="loginController" ng-init="verifco()">
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
-    <form ng-if="readyDB && readyValues">
-      <a ng-init="loadSondeTenant()" />
+    <form ng-if="readyDB && readyValues && readyChartSondeTenant">
       <fieldset class="chartDisplayBorder">
         <legend class="chartDisplayBorder">Tenant</legend>
-        <div ng-if="readyChartSondeTenant" ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
+        <div ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
           <canvas id="sondeTenant" height="200%" ng-init="loadChartSondeTenant(chart)"></canvas>
           <div ng-if="$index%2 == 0" style='clear:both' />
         </div>
