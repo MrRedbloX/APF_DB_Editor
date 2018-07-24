@@ -262,12 +262,12 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       color = $scope.getRGBA();
       data = [];
       for(let j=0; j<workingTables.length; j++){
-        label = workingTables[j].table_name;
         nbData = 0;
         for(let k=0; k<workingTables[j].values.length; k++){
           if(workingTables[j].values[k].tenant_uuid == idTenant[i])
             nbData++;
         }
+        label.push(workingTables[j].table_name);
         data.push(nbData);
         backgroundColor.push(color[0]);
         borderColor.push(color[1]);
@@ -281,6 +281,51 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       });
 
     }
+
+    datasets = [
+      {
+        label: "Test1",
+        data : [1,2,3],
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      },
+      {
+        label: "Test2",
+        data : [1,2,3],
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      },
+      {
+        label: "Test3",
+        data : [1,2,3],
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      },
+      {
+        label: "Test4",
+        data : [1,2,3],
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      },
+      {
+        label: "Test5",
+        data : [1,2,3],
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      },
+      {
+        label: "Test6",
+        data : [1,2,3],
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      },
+    ];
 
     var myChart = new Chart(ctx, {
       type: 'bar',
