@@ -265,11 +265,11 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         backgroundColor.push(color[0]);
         borderColor.push(color[1]);
       }
-      /*if(workingTables[j].table_name == 'sg_table') label = "Security Group";
+      if(workingTables[j].table_name == 'sg_table') label = "Security Group";
       else if(workingTables[j].table_name == 'subnet_table') label = "Subnet";
-      else if(workingTables[j].table_name == 'ecs_table') label = "Elastic Cloud Server";*/
+      else if(workingTables[j].table_name == 'ecs_table') label = "Elastic Cloud Server";
       datasets.push({
-        label: workingTables[j].table_name,
+        label: label,
         data: data,
         backgroundColor: backgroundColor,
         borderColor: borderColor,
