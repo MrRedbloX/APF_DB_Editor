@@ -3,8 +3,8 @@
     <a ng-if="readyDB" ng-init="loadTableValues()" />
     <form ng-if="readyDB && readyValues">
       <a ng-init="loadSondeTenant()" />
-      <fieldset style="border: solid; border-width: thin; border-color: #a8a8a8;">
-        <legend>Tenant</legend>
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Tenant</legend>
         <div ng-if="readyChartSondeTenant" ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
           <canvas id="sondeTenant" height="200%" ng-init="loadChartSondeTenant(chart)"></canvas>
           <div ng-if="$index%2 == 0" style='clear:both' />
