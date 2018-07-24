@@ -4,7 +4,7 @@
     <div ng-if="readyDB && readyValues">
       <canvas id="sondeTenantRelations" ng-init="loadChartSondeTenant()" height="200%"></canvas>
     </div>
-    <!--<div class="divSquare" ng-if="readyDB">
+    <div class="divSquare" ng-if="readyDB">
       <a ng-init="loadTableValues()" />
       <a ng-init="loadDbMemory()" />
       <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
@@ -20,6 +20,5 @@
         <canvas id="nbTuplesInTable" height="200%" ng-init="loadChartNbTuplesInTable(db.name)"></canvas>
         <div ng-if="$index%2 == 0" style='clear:both' />
       </div>
-    </div>-->
   </div>
 </div>
