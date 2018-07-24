@@ -72,6 +72,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
                 await sleep(waitFor);
+                console.log("Finish loading values");
                 $scope.readyValues = true;
               }
             }
