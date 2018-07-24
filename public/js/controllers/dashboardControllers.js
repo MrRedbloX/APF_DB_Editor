@@ -218,7 +218,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       },
     });
 
-    $scope.readyMemory = true;
     document.body.style.cursor='default';
   };
 
