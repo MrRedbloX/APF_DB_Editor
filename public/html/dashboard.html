@@ -2,7 +2,7 @@
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
     <a ng-if="readyDB" ng-init="loadTableValues()" />
     <fieldset style="border-style: solid; border: 1px; border-color: #F00;" ng-if="readyDB && readyValues">
-      <legend font-size: 12px; font-weight: bold; color: #1f497d;">Tenant</legend>
+      <legend style="width:auto; margin-bottom: 0px; font-size: 12px; font-weight: bold; color: #1f497d;">Tenant</legend>
       <a ng-init="loadSondeTenant()" />
       <div ng-if="readyChartSondeTenant" ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
         <canvas id="sondeTenant" height="200%" ng-init="loadChartSondeTenant(chart)"></canvas>
