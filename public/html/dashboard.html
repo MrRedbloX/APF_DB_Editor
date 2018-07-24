@@ -1,5 +1,6 @@
 <div ng-controller="loginController" ng-init="verifco()">
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
+    <a ng-init="wait()" />
     <form ng-if="readyDB && readyValues && readyChartSondeTenant">
       <fieldset class="chartDisplayBorder">
         <legend class="chartDisplayBorder">Tenant</legend>
