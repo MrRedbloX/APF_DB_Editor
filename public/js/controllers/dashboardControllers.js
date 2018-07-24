@@ -288,6 +288,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadChartSondeTenant = function(chart){
+    console.log("Start displaying");
     canvas = document.getElementById("sondeTenant");
     canvas.id = canvas.id+chart.datasets.label;
     var ctx = document.getElementById("sondeTenant"+chart.datasets.label);
@@ -308,5 +309,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           }
       }
     });
+
+    console.log("Finish displaying");
   };
 });
