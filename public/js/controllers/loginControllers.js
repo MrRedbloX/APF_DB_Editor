@@ -29,7 +29,6 @@ app.controller('loginController', function($scope, $http, postgresqlFactory, log
   }
 
   $scope.verifco = function(){
-    console.log("Start");
     var login_page = document.getElementById("connexion");
     var signup_page = document.getElementById("inscription");
     var name = "date=";
@@ -67,7 +66,6 @@ app.controller('loginController', function($scope, $http, postgresqlFactory, log
         $scope.createCookie('date', '1', time_to_expire);
       }
     }
-    console.log("End");
   }
 
   $scope.isLoggedOn = function(){
