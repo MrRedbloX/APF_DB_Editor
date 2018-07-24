@@ -9,22 +9,26 @@
         </div>
       </fieldset>
     </form>
-    <!--<div class="divSquare" ng-if="readyDB">
-      <a ng-init="loadTableValues()" />
-      <a ng-init="loadDbMemory()" />
-      <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
-      <p style="padding-top: 2%">Number of table(s) in a database<p>
-    </div>
-    <div class="divSquare" ng-if="readyDB && readyMemory">
-      <canvas id="dbMemory" ng-init="loadChartDbMemory()" height="200%"></canvas>
-      <p style="padding-top: 2%">Memory of database(s) in Mb<p>
-    </div>
-    <div style='clear:both'></div>
-    <div ng-if="readyValues && readyDBChart">
-      <div ng-repeat="db in databases track by $index" class="divSquare">
-        <canvas id="nbTuplesInTable" height="200%" ng-init="loadChartNbTuplesInTable(db.name)"></canvas>
-        <div ng-if="$index%2 == 0" style='clear:both' />
-      </div>
-    </div>-->
+    <form>
+      <fieldset>
+        <div class="divSquare" ng-if="readyDB">
+          <a ng-init="loadTableValues()" />
+          <a ng-init="loadDbMemory()" />
+          <canvas id="nbTablesInDB" ng-init="loadChartNbTablesInDB()" height="200%"></canvas>
+          <p style="padding-top: 2%">Number of table(s) in a database<p>
+        </div>
+        <div class="divSquare" ng-if="readyDB && readyMemory">
+          <canvas id="dbMemory" ng-init="loadChartDbMemory()" height="200%"></canvas>
+          <p style="padding-top: 2%">Memory of database(s) in Mb<p>
+        </div>
+        <div style='clear:both'></div>
+        <div ng-if="readyValues && readyDBChart">
+          <div ng-repeat="db in databases track by $index" class="divSquare">
+            <canvas id="nbTuplesInTable" height="200%" ng-init="loadChartNbTuplesInTable(db.name)"></canvas>
+            <div ng-if="$index%2 == 0" style='clear:both' />
+          </div>
+        </div>
+      </fieldset>
+    </form>
   </div>
 </div>
