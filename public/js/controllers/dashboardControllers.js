@@ -222,25 +222,50 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
   $scope.loadChartSondeTenant = function(){
     var ctx = $("#sondeTenantRelations");
+
+    var wantedTables = ['sg_table', 'subnet_table', 'ecs_table']
+    var idTenant = [];
     var labels = [];
-    var data = [];
-    var backgroundColor = [];
-    var borderColor = [];
-    var color = $scope.getRGBA();
+    var datasets = [];
+    var workingTables = [];
 
     for(let i=0; i<$scope.databases.length; i++){
       if($scope.databases[i].name == "sonde"){
         for(let j=0; j<$scope.databases[i].table.length; j++){
           if($scope.databases[i].table[j].table_name == "tenant_table"){
-            
-
-
-            break;
+            for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
+              idTenant.push($scope.databases[i].table[j].values[k].uuid);
+              labels.push($scope.databases[i].table[j].values[k].tenant_name);
+            }
+          }
+          else{
+            for(let k=0; k<wantedTables.length; k++){
+              if($scope.databases[i].table[j].table_name == wantedTables[i]){
+                workingTables.push($scope.databases[i].table[j]);
+              }
+            }
           }
         }
         break;
       }
+    }
 
+    for(let i=0; i<$scope.databases.length; i++){
+      if($scope.databases[i].name == "sonde"){
+        for(let j=0; j<$scope.databases[i].table.length; j++){
+          for(let k=0; k<wantedTables.length; k++){
+            if($scope.databases[i].table[j].table_name == wantedTables[i]){
+              var data = [];
+              var backgroundColor = [];
+              var borderColor = [];
+              var color = $scope.getRGBA();
+
+              break;
+            }
+          }
+        }
+        break;
+      }
     }
 
     var myChart = new Chart(ctx, {
