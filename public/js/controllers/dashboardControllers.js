@@ -223,7 +223,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadSondeTenant = function(){
-    document.body.style.cursor='wait';
     var idTenant = [];
     var labels = [];
     var datasets = [];
@@ -307,7 +306,5 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           }
       }
     });
-
-    document.body.style.cursor='default';
   };
 });
