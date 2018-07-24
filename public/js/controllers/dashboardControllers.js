@@ -282,17 +282,20 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     }
 
     var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'bar',
       data: {
           labels: labels,
-          datasets: [{
-              label: 'Memory of database(s) in Mb',
-              data: data,
-              backgroundColor: backgroundColor,
-              borderColor: borderColor,
-              borderWidth: 1
-          }]
+          datasets: datasets
       },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
     });
   };
 
