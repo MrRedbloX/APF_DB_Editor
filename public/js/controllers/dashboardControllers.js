@@ -4,6 +4,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   $scope.readyValues = false;
   $scope.readyDBChart = false;
   $scope.readyMemory = false;
+  $scope.readyChartSondeTenant = false;
 
   $scope.dbColors = [];
   $scope.databases = [];
@@ -274,23 +275,13 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         borderWidth: 1
       });
     }
-
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: labels,
-          datasets: datasets
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
-      }
-    });
+    for(let i=0; i<datasets.length; i++){
+      $scope.charts.push({
+        labels : labels,
+        datasets : datasets[i]
+      });
+    }
+    $scope.readyChartSondeTenant = true;
   };
 
 });
