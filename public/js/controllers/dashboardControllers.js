@@ -220,10 +220,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
 
   };
 
-  $scope.loadChartSondeTenant = function(){
-    console.log("ok");
-    var ctx = $("#sondeTenantRelations");
-
+  $scope.loadSondeTenant = function(){
     var idTenant = [];
     var labels = [];
     var datasets = [];
@@ -238,7 +235,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               labels.push($scope.databases[i].table[j].values[k].tenant_name);
             }
           }
-          else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')  
+          else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
             workingTables.push($scope.databases[i].table[j]);
         }
         break;
@@ -249,9 +246,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var color;
     var data;
     var nbData;
+    var label;
 
     for(let j=0; j<workingTables.length; j++){
-      console.log(workingTables[j].table_name);
       backgroundColor = [];
       borderColor = [];
       color = $scope.getRGBA();
@@ -266,38 +263,17 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         backgroundColor.push(color[0]);
         borderColor.push(color[1]);
       }
+      if(workingTables[j].table_name == 'sg_table') label = "Security Group";
+      else if(workingTables[j].table_name == 'subnet_table') label = "Subnet";
+      else if(workingTables[j].table_name == 'ecs_table') label = "Elastic Cloud Server";
       datasets.push({
-        label: workingTables[j].table_name,
+        label: label,
         data: data,
         backgroundColor: backgroundColor,
         borderColor: borderColor,
         borderWidth: 1
       });
     }
-
-    /*datasets = [
-      {
-        label: "Test1",
-        data : [1,2,3,4,5,6],
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-      },
-      {
-        label: "Test2",
-        data : [1,2,3,4,5,6],
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-      },
-      {
-        label: "Test3",
-        data : [1,2,3,4,5,6],
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-      }
-    ];*/
 
     var myChart = new Chart(ctx, {
       type: 'bar',
