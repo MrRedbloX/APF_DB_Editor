@@ -253,7 +253,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var borderColor;
     var color;
     var data;
-    var label =  [];
+    var label = [];
     var nbData;
 
     for(let i=0; i<idTenant.length; i++){
