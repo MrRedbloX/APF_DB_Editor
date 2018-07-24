@@ -69,10 +69,6 @@ var isRowSelected = function(row){
   }
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 var app = angular.module('DBEditorAPF', ["ngRoute"], function($rootScopeProvider){
   $rootScopeProvider.digestTtl(20);
 });
