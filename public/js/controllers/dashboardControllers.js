@@ -224,7 +224,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     console.log("ok");
     var ctx = $("#sondeTenantRelations");
 
-    var wantedTables = ['sg_table', 'subnet_table', 'ecs_table']
     var idTenant = [];
     var labels = [];
     var datasets = [];
@@ -239,12 +238,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               labels.push($scope.databases[i].table[j].values[k].tenant_name);
             }
           }
-          else{
-            for(let k=0; k<wantedTables.length; k++){
-              if($scope.databases[i].table[j].table_name == wantedTables[i])
-                workingTables.push($scope.databases[i].table[j]);
-            }
-          }
+          else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')  
+            workingTables.push($scope.databases[i].table[j]);
         }
         break;
       }
