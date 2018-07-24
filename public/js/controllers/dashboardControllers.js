@@ -221,6 +221,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadChartSondeTenant = function(){
+    console.log("ok");
     var ctx = $("#sondeTenantRelations");
 
     var wantedTables = ['sg_table', 'subnet_table', 'ecs_table']
