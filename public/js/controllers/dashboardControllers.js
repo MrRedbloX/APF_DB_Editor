@@ -279,7 +279,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       });
     }
 
-    datasets = [
+    /*datasets = [
       {
         label: "Test1",
         data : [1,2,3,4,5,6],
@@ -301,7 +301,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         borderColor: borderColor,
         borderWidth: 1
       }
-    ];
+    ];*/
 
     var myChart = new Chart(ctx, {
       type: 'bar',
