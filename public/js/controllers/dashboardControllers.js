@@ -263,7 +263,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     var backgroundColor = [];
     var borderColor = [];
     var color = $scope.getRGBA();
-
+    console.log($scope.databases.length);
     for(let i=0; i<$scope.databases.length; i++){
       for(let j=0; j<$scope.dbColors.length; j++){
         if($scope.databases[i].name == $scope.dbColors[j].db_name)
