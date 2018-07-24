@@ -47,7 +47,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 if(i == db.length-1){
                   $scope.readyDB = true;
                   $scope.loadTableValues();
-                  $scope.loadChartNbTablesInDB
+                  $scope.loadChartNbTablesInDB();
                 }
               }
               else{
