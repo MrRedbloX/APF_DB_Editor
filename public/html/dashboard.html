@@ -1,8 +1,8 @@
 <div ng-controller="loginController" ng-init="verifco()">
   <div ng-controller="chartDisplayController" ng-init="loadDB()">
     <a ng-if="readyDB" ng-init="loadTableValues()" />
-    <form>
-      <fieldset style="border: solid; border-width: thin; border-color: #a8a8a8;" ng-if="readyDB && readyValues">
+    <form ng-if="readyDB && readyValues">
+      <fieldset style="border: solid; border-width: thin; border-color: #a8a8a8;">
         <legend>Tenant</legend>
         <a ng-init="loadSondeTenant()" />
         <div ng-if="readyChartSondeTenant" ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
