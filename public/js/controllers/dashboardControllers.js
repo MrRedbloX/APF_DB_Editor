@@ -284,4 +284,27 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     $scope.readyChartSondeTenant = true;
   };
 
+  $scope.loadChartSondeTenant = function(chart){
+    canvas = document.getElementById("sondeTenant");
+    canvas.id = canvas.id+chart.datasets.label;
+    var ctx = document.getElementById("sondeTenant"+chart.datasets.label);
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: chart.labels,
+          datasets: chart.datasets
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+    });
+  };
+
 });
