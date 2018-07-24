@@ -119,3 +119,8 @@ button.paddingRigth{
   float: left;
   text-align:center;
 }
+
+.field_set{
+  border-color: #F00;
+  border-style: solid;
+}
