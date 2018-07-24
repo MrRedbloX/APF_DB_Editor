@@ -159,6 +159,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             $scope.databases[i].size = (parseInt(postgresScope.dbMemoryRequest.data[0].pg_database_size)/1000000).toFixed(2);
             if(i == $scope.databases.length-1){
               $scope.readyMemory = true;
+              $scope.loadChartDbMemory();
             }
           }
           else{
