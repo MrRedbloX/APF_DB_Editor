@@ -25,6 +25,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   }
 
   $scope.loadDB = function(){
+    console.log("Start loading db");
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
@@ -42,6 +43,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                 });
                 if(i == db.length-1){
                   await sleep(waitFor);
+                  console.log("Finish loading db");
                   $scope.readyDB = true;
                 }
               }
@@ -223,7 +225,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadSondeTenant = function(){
-    console.log("Start loading");
+    console.log("Start loading chart");
     var idTenant = [];
     var labels = [];
     var datasets = [];
@@ -284,7 +286,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       });
     }
     $scope.readyChartSondeTenant = true;
-    console.log("Finish loading");
+    console.log("Finish loading chart");
   };
 
   $scope.loadChartSondeTenant = function(chart){
