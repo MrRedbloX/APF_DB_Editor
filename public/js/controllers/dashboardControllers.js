@@ -70,6 +70,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
                 $scope.readyValues = true;
                 $scope.loadSondeTenant();
+                $scope.loadDbMemory();
               }
             }
             else{
@@ -80,6 +81,69 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
         }
       }
     }
+  };
+
+  $scope.loadSondeTenant = function(){
+    var idTenant = [];
+    var labels = [];
+    var datasets = [];
+    var workingTables = [];
+
+    for(let i=0; i<$scope.databases.length; i++){
+      if($scope.databases[i].name == "sonde"){
+        for(let j=0; j<$scope.databases[i].table.length; j++){
+          if($scope.databases[i].table[j].table_name == "tenant_table"){
+            for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
+              idTenant.push($scope.databases[i].table[j].values[k].uuid);
+              labels.push($scope.databases[i].table[j].values[k].tenant_name);
+            }
+          }
+          else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
+            workingTables.push($scope.databases[i].table[j]);
+        }
+        break;
+      }
+    }
+    var backgroundColor;
+    var borderColor;
+    var color;
+    var data;
+    var nbData;
+    var label = "";
+
+    for(let j=0; j<workingTables.length; j++){
+      backgroundColor = [];
+      borderColor = [];
+      color = $scope.getRGBA();
+      data = [];
+      for(let i=0; i<idTenant.length; i++){
+        nbData = 0;
+        for(let k=0; k<workingTables[j].values.length; k++){
+          if(workingTables[j].values[k].tenant_uuid == idTenant[i])
+            nbData++;
+        }
+        data.push(nbData);
+        backgroundColor.push(color[0]);
+        borderColor.push(color[1]);
+      }
+      if(workingTables[j].table_name == 'sg_table') label = "Security Group";
+      else if(workingTables[j].table_name == 'subnet_table') label = "Subnet";
+      else if(workingTables[j].table_name == 'ecs_table') label = "Elastic Cloud Server";
+      datasets.push({
+        label: label,
+        data: data,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      });
+    }
+    for(let i=0; i<datasets.length; i++){
+      $scope.chartsSondeTenant.push({
+        labels : labels,
+        datasets : datasets[i]
+      });
+    }
+    $scope.readyChartSondeTenant = true;
   };
 
   $scope.loadDbMemory = function(){
@@ -219,69 +283,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       },
     });
 
-  };
-
-  $scope.loadSondeTenant = function(){
-    var idTenant = [];
-    var labels = [];
-    var datasets = [];
-    var workingTables = [];
-
-    for(let i=0; i<$scope.databases.length; i++){
-      if($scope.databases[i].name == "sonde"){
-        for(let j=0; j<$scope.databases[i].table.length; j++){
-          if($scope.databases[i].table[j].table_name == "tenant_table"){
-            for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
-              idTenant.push($scope.databases[i].table[j].values[k].uuid);
-              labels.push($scope.databases[i].table[j].values[k].tenant_name);
-            }
-          }
-          else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
-            workingTables.push($scope.databases[i].table[j]);
-        }
-        break;
-      }
-    }
-    var backgroundColor;
-    var borderColor;
-    var color;
-    var data;
-    var nbData;
-    var label = "";
-
-    for(let j=0; j<workingTables.length; j++){
-      backgroundColor = [];
-      borderColor = [];
-      color = $scope.getRGBA();
-      data = [];
-      for(let i=0; i<idTenant.length; i++){
-        nbData = 0;
-        for(let k=0; k<workingTables[j].values.length; k++){
-          if(workingTables[j].values[k].tenant_uuid == idTenant[i])
-            nbData++;
-        }
-        data.push(nbData);
-        backgroundColor.push(color[0]);
-        borderColor.push(color[1]);
-      }
-      if(workingTables[j].table_name == 'sg_table') label = "Security Group";
-      else if(workingTables[j].table_name == 'subnet_table') label = "Subnet";
-      else if(workingTables[j].table_name == 'ecs_table') label = "Elastic Cloud Server";
-      datasets.push({
-        label: label,
-        data: data,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-      });
-    }
-    for(let i=0; i<datasets.length; i++){
-      $scope.chartsSondeTenant.push({
-        labels : labels,
-        datasets : datasets[i]
-      });
-    }
-    $scope.readyChartSondeTenant = true;
   };
 
   $scope.loadChartSondeTenant = function(chart){
