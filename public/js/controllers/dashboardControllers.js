@@ -240,32 +240,45 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           }
           else{
             for(let k=0; k<wantedTables.length; k++){
-              if($scope.databases[i].table[j].table_name == wantedTables[i]){
+              if($scope.databases[i].table[j].table_name == wantedTables[i])
                 workingTables.push($scope.databases[i].table[j]);
-              }
             }
           }
         }
         break;
       }
     }
+    var backgroundColor;
+    var borderColor;
+    var color;
+    var data; 
+    var label;
 
-    for(let i=0; i<$scope.databases.length; i++){
-      if($scope.databases[i].name == "sonde"){
-        for(let j=0; j<$scope.databases[i].table.length; j++){
-          for(let k=0; k<wantedTables.length; k++){
-            if($scope.databases[i].table[j].table_name == wantedTables[i]){
-              var data = [];
-              var backgroundColor = [];
-              var borderColor = [];
-              var color = $scope.getRGBA();
-
-              break;
-            }
-          }
+    for(let i=0; i<idTenant.length; i++){
+      var backgroundColor = [];
+      var borderColor = [];
+      var color = $scope.getRGBA();
+      var data = [];
+      var label;
+      for(let j=0; j<workingTables.length; j++){
+        label = workingTables[j].table_name;
+        var nbData = 0;
+        for(let k=0; k<workingTables[j].values.length; k++){
+          if(workingTables[j].values[k].tenant_uuid == idTenant[i])
+            nbData++;
         }
-        break;
+        data.push(nbData);
+        backgroundColor.push(color[0]);
+        borderColor.push(color[1]);
       }
+      datasets.push({
+        label: label,
+        data: data,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+      });
+
     }
 
     var myChart = new Chart(ctx, {
