@@ -223,6 +223,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadSondeTenant = function(){
+    console.log("Start loading");
     var idTenant = [];
     var labels = [];
     var datasets = [];
@@ -283,6 +284,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       });
     }
     $scope.readyChartSondeTenant = true;
+    console.log("Finish loading");
   };
 
   $scope.loadChartSondeTenant = function(chart){
