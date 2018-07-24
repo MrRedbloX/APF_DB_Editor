@@ -25,7 +25,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   }
 
   $scope.loadDB = function(){
-    console.log("Start loading db");
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
         if(postgresScope.successRequest){
@@ -42,7 +41,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
-                  console.log("Finish loading db");
                   $scope.readyDB = true;
                   $scope.loadTableValues();
                 }
@@ -63,7 +61,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadTableValues = function(){
-    console.log("Start loading values");
     if(!$scope.readyValues && $scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
         for(let j=0; j<$scope.databases[i].table.length; j++){
@@ -71,7 +68,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                console.log("Finish loading values");
                 $scope.readyValues = true;
                 $scope.loadSondeTenant();
               }
@@ -226,7 +222,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
   };
 
   $scope.loadSondeTenant = function(){
-    console.log("Start loading chart");
     var idTenant = [];
     var labels = [];
     var datasets = [];
@@ -287,11 +282,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       });
     }
     $scope.readyChartSondeTenant = true;
-    console.log("Finish loading chart");
   };
 
   $scope.loadChartSondeTenant = function(chart){
-    console.log("Start displaying");
     canvas = document.getElementById("sondeTenant");
     canvas.id = canvas.id+chart.datasets.label;
     var ctx = document.getElementById("sondeTenant"+chart.datasets.label);
@@ -312,7 +305,5 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           }
       }
     });
-
-    console.log("Finish displaying");
   };
 });
