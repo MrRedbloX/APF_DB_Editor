@@ -316,6 +316,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
     canvas.onclick = function(evt){
       var activePoints = myChart.getElementsAtEvent(evt);
       console.log(activePoints);
+      if(activePoints.length > 0){
+        window.location = "/#!/db_management";
+      }
     };
   };
 });
