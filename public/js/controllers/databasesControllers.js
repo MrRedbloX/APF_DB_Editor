@@ -4,15 +4,18 @@
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory, treeDatabaseAreaFactory){
   $scope.databases = []; //This array will be use to by jtree
 
-  var postgresScope = postgresqlFactory.getScope();
-  treeDatabaseAreaFactory.setScope($scope);
+  var postgresScope = postgresqlFactory.getScope(); //Here we get the $scope of postgresqlController
+  treeDatabaseAreaFactory.setScope($scope); //Here we set the $scope of this controller that he can be used in other controllers
 
-  $scope.ready = false; //Wait to load page
-  $scope.displayNothing = true;
-  $scope.displayAdd = false;
-  $scope.displayModify = false;
-  $scope.displayRelations = false;
+  $scope.ready = false; //Used in angular html loading to tell the databases has been loaded
 
+  //The following attributes are used to choose which views will be displayed
+  $scope.displayNothing = true; //By default nothing is displayed
+  $scope.displayAdd = false; //Display the form to add an element
+  $scope.displayModify = false; //Display the form to modify an element
+  $scope.displayRelations = false; //Display the table of relations of an element
+
+  //Allows to set the display of a specific view and prevent conflits
   $scope.setDisplayTo = function(type){
     if(type === "nothing"){
       $scope.displayNothing = true;
@@ -40,6 +43,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
     else console.log("Wrong type for setDisplayTo");
   }
 
+  //Query the databases and the tables
   $scope.loadDB = function(){
     if(!$scope.ready){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
@@ -56,7 +60,7 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
                   name : db[i],
                   table : postgresScope.tableArray.data
                 });
-                if(i == db.length-1){
+                if(i == db.length-1){ //Here we make sure we are in the last tour of the for
                   $scope.ready = true;
                   $(function() {
                     $('#treeDatabaseArea').jstree(); //Activating jtree
