@@ -1,4 +1,6 @@
-//Each controller manage a view in the html
+//The following controllers are used in db_management db_views
+
+//This one manage the display of the db list
 app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory, treeDatabaseAreaFactory){
   $scope.databases = []; //This array will be use to by jtree
 
