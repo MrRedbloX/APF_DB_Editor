@@ -318,6 +318,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
       console.log(activePoints);
       if(activePoints.length > 0){
         window.location = "/#!/db_management";
+        $scope.wait();
         var buttonAreaScope = buttonAreaFactory.getScope();
         tableSelected = "sonde";
         buttonAreaScope.display();
