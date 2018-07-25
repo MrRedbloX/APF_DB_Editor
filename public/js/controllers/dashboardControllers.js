@@ -1,4 +1,4 @@
-app.controller('chartDisplayController', function($scope, postgresqlFactory){
+app.controller('chartDisplayController', function($scope, postgresqlFactory, buttonAreaFactory){
   var postgresScope = postgresqlFactory.getScope();
   $scope.readyDB = false;
   $scope.readyValues = false;
@@ -318,6 +318,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       console.log(activePoints);
       if(activePoints.length > 0){
         window.location = "/#!/db_management";
+        var buttonAreaScope = buttonAreaFactory.getScope();
+        tableSelected = "sonde";
+        buttonAreaScope.display();
       }
     };
   };
