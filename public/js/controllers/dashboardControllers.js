@@ -59,6 +59,11 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){
+                  for(let z=0; z<$scope.databases.length; z++){
+                    for(let y=0 ;y<$scope.databases[z].table.length; y++)
+                      $scope.databases[z].table[y].values = [];
+                  }
+
                   $scope.readyDB = true;
                   $scope.loadTableValues();
                   $scope.loadChartNbTablesInDB();
