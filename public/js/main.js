@@ -5,6 +5,7 @@ var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 
 var busy = false;
 var exceptionTables = ['map'];
 var waitFor = 1;
+var forbiddenChar = /[#%&+\[\]{}'"\\]/;
 
 var isInExceptionTables = function(table){
   ret = false;
@@ -71,6 +72,10 @@ var isRowSelected = function(row){
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function containsForbiddenChar(str){
+  return forbiddenChar.test(srt);
 }
 
 var app = angular.module('DBEditorAPF', ["ngRoute"], function($rootScopeProvider){
