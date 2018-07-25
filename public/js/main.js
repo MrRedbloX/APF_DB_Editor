@@ -76,7 +76,7 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-//
+//Check if a string contains a forbidden char
 function containsForbiddenChar(str){
   ret = false;
   for(let i=0; i<forbiddenChar.length; i++){
@@ -88,8 +88,10 @@ function containsForbiddenChar(str){
   return ret;
 }
 
+//Here we define the application, we also use angular module route
 var app = angular.module('DBEditorAPF', ["ngRoute"]);
 
+//Here we configure the routes
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -179,6 +181,7 @@ app.factory('loginFactory', function(){
   };
 });
 
+//This controller allows to do all the requests in databases, therefore he needs to be on top of every others
 app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
 
   postgresqlFactory.setScope($scope);
