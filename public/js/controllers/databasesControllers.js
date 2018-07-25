@@ -251,11 +251,14 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                   }
                   if(condAtt != null && condValue != null){
                     if((columnsDisplayScope.columns[j].column_name) == condAtt && (postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]) == condValue)
-                      temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
+                      canPush = true;
+                    else
+                      canPush =  false;
                   }
                   else
                     canPush = true;
-                  temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
+                  if(canPush)
+                    temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
                 }
                 columnsDisplayScope.tuples.push({
                   column_names : columnsDisplayScope.columns,
