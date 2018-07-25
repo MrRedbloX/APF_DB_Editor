@@ -30,6 +30,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     await sleep(waitFor);
   }
 
+  $scope.getIdTenantFromName(tenant_name){
+
+  }
+
   $scope.loadDB = function(){
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
@@ -104,6 +108,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               labels.push($scope.databases[i].table[j].values[k].tenant_name);
+              $scope.relTenantIdName.push({
+                id : $scope.databases[i].table[j].values[k].uuid,
+                name : $scope.databases[i].table[j].values[k].tenant_name
+              });
             }
           }
           else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
@@ -327,7 +335,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
         else if(activePoints[0]._model.datasetLabel == "Security Group") table = "sg_table";
         else if(activePoints[0]._model.datasetLabel == "Subnet") table = "subnet_table";
         tableSelected = "sonde;"+table;
-        buttonAreaScope.display("tenant_uuid", activePoints[0]._model.label);
+        buttonAreaScope.display("tenant_uuid", $scope.getIdTenantFromName(activePoints[0]._model.label));
       }
     };
   };
