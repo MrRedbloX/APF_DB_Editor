@@ -516,8 +516,9 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
          }
        }
        if(containsForbiddenChar(JSON.stringify(columnList)) || containsForbiddenChar(JSON.stringify(valueList)))
-         dontAdd = true;
+          dontAdd = true;
         else{
+          dontAdd= false;
           postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
               if(postgresqlScope.successRequest){
                 buttonAreaScope.display();
@@ -660,45 +661,53 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
          }
         }
 
-        postgresqlScope.getPrimaryKey(db, table, function(){
-          if(postgresqlScope.successRequest){
-            for(let i=0; columnsDisplayScope.columns.length; i++){
-              if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){ //The difference is here
-                var pkValue = JSON.parse(currentRowSelected)[i];
-                break;
+        if(containsForbiddenChar(JSON.stringify(columnList)) || containsForbiddenChar(JSON.stringify(valueList)))
+          dontModify = true;
+        else{
+          dontModify = false;
+          postgresqlScope.getPrimaryKey(db, table, function(){
+            if(postgresqlScope.successRequest){
+              for(let i=0; columnsDisplayScope.columns.length; i++){
+                if(postgresqlScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){ //The difference is here
+                  var pkValue = JSON.parse(currentRowSelected)[i];
+                  break;
+                }
               }
+              postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){ //Request to modify a tuple
+                if(postgresqlScope.successRequest){
+                  buttonAreaScope.display();
+                  document.getElementById('modifyButton').disabled = true;
+                  if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+                  if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
+                  rowSelected = null;
+                }
+                else{
+                  console.log(postgresqlScope.modifyRequest);
+                  alert("Error on getPrimaryKey request, check console logs.");
+                }
+              });
             }
-            postgresqlScope.modifyRecord(db, table, columnList, valueList, postgresqlScope.primaryKey.data[0].attname, pkValue, function(){ //Request to modify a tuple
-              if(postgresqlScope.successRequest){
-                buttonAreaScope.display();
-                document.getElementById('modifyButton').disabled = true;
-                if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
-                if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
-                rowSelected = null;
-              }
-              else{
-                console.log(postgresqlScope.modifyRequest);
-                alert("Error on getPrimaryKey request, check console logs.");
-              }
-            });
-          }
-          else{
-            console.log(postgresqlScope.primaryKey);
-            alert("Error on getPrimaryKey request, check console logs.");
-          }
-        });
+            else{
+              console.log(postgresqlScope.primaryKey);
+              alert("Error on getPrimaryKey request, check console logs.");
+            }
+          });
+        }
 
-        treeDatabaseAreaScope.setDisplayTo("nothing");
-        document.getElementById('addButton').disabled = false;
-        document.getElementById('modifyButton').disabled = false;
-        busy = false;
+        if(dontModify)
+          alert("You cannot modify elements with forbidden characters");
+        else{
+          treeDatabaseAreaScope.setDisplayTo("nothing");
+          document.getElementById('addButton').disabled = false;
+          document.getElementById('modifyButton').disabled = false;
+          busy = false;
+        }
       }
     }
   }
 
   $scope.cancelRecord = function(){
     if(confirm("Are you sure you want to cancel ?")){
-
       treeDatabaseAreaScope.setDisplayTo("nothing");
       document.getElementById('addButton').disabled = false;
       document.getElementById('modifyButton').disabled = true;
