@@ -33,16 +33,16 @@ app.get('/db/getAllValues', function(req,res){
 app.get('/db/getValuesOf', function(req,res){
     dbOperations.getValuesOf(req,res);
 });
-app.get('/db/addRecord', function(req,res){
+app.post('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
 });
-app.get('/db/modifyRecord', function(req,res){
+app.post('/db/modifyRecord', function(req,res){
     dbOperations.modifyRecord(req,res);
 });
 app.get('/db/getPrimaryKey', function(req,res){
     dbOperations.getPrimaryKey(req,res);
 });
-app.get('/db/delRecord', function(req,res){
+app.post('/db/delRecord', function(req,res){
     dbOperations.delRecord(req,res);
 });
 app.get('/db/query', function(req,res){
@@ -51,7 +51,7 @@ app.get('/db/query', function(req,res){
 app.get('/login/getIdFromMD5', function(req,res){
     loginOperations.getIdFromMD5(req,res);
 });
-app.get('/login/addLogin', function(req,res){
+app.post('/login/addLogin', function(req,res){
     loginOperations.addLogin(req,res);
 });
 app.get('/web/getAnnuaire', function(req, res){
