@@ -107,6 +107,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             catch (e){
               console.log(e);
               $scope.loadSondeTenant();
+              return;
             }
           }
           else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
@@ -238,6 +239,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           catch (e){
             console.log(e);
             $scope.loadChartNbTuplesInTable();
+            return;
           }
           backgroundColor.push(color[0]);
           borderColor.push(color[1]);
