@@ -426,6 +426,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     treeDatabaseAreaScope.setDisplayTo("nothing");
   };
 
+  //When we want to show the relations of a tuple
   $scope.showRelations = function(){
     if(!isReadOnly){
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
