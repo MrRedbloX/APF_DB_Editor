@@ -320,7 +320,11 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
         window.location = "/#!/db_management";
         $scope.wait();
         var buttonAreaScope = buttonAreaFactory.getScope();
-        tableSelected = "sonde";
+        let table;
+        if(activePoints[0]._model.datasetLabel == "Elastic Cloud Server") table = "ecs_table";
+        else if(activePoints[0]._model.datasetLabel == "Security Group") table = "sg_table";
+        else if(activePoints[0]._model.datasetLabel == "Subnet") table = "subnet_table";
+        tableSelected = table;
         buttonAreaScope.display();
       }
     };
