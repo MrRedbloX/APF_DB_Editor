@@ -631,8 +631,8 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   }
 
   $scope.saveRecord = function(){
+    var dontModify = false;
     if(confirm("Are you sure you want to save this record ?")){
-
       if(currentTableSelected != null){
         let temp = currentTableSelected.split(';');
         let db = temp[0];
