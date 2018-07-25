@@ -98,15 +98,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       if($scope.databases[i].name == "sonde"){
         for(let j=0; j<$scope.databases[i].table.length; j++){
           if($scope.databases[i].table[j].table_name == "tenant_table"){
-            try{
-              for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
-                idTenant.push($scope.databases[i].table[j].values[k].uuid);
-                labels.push($scope.databases[i].table[j].values[k].tenant_name);
-              }
-            }
-            catch (e){
-              console.log($scope.databases[i].table.length);
-              console.log(j);
+            for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
+              idTenant.push($scope.databases[i].table[j].values[k].uuid);
+              labels.push($scope.databases[i].table[j].values[k].tenant_name);
             }
           }
           else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
