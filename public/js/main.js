@@ -77,7 +77,6 @@ function sleep(ms) {
 function containsForbiddenChar(str){
   ret = false;
   for(let i=0; i<forbiddenChar.length; i++){
-    console.log(str+" vs "+forbiddenChar[i]);
     if(str.indexOf(forbiddenChar[i]) > -1){
       ret = true;
       break;
