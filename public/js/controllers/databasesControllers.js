@@ -503,7 +503,16 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             if(elt.value == null) valueList.push("");
             else{
               if($scope.attributes[j].data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
-              else valueList.push(elt.value);
+              else{
+                if(containsForbiddenChar(elt.value)){
+                  dontAdd = true;
+                  break;
+                }
+                else{
+                  dontAdd = false;
+                  valueList.push(elt.value);
+                }
+             }
             }
           }
           else if(elt.nodeName === "SELECT"){
@@ -654,24 +663,34 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
             if(elt.value == null) valueList.push("");
             else{
               if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.value));
-              else valueList.push(elt.value);
+              else{
+                if(containsForbiddenChar(elt.value)){
+                  dontModify = true;
+                  break;
+                }
+                else{
+                  dontModify = false;
+                  valueList.push(elt.value);
+                }
+             }
             }
           }
           else if(elt.nodeName === "SELECT"){
             if(elt.selectedIndex == null || elt.options[elt.selectedIndex] == null) valueList.push("");
             else{
                if($scope.attributes[j].name.data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].value));
-               else valueList.push(elt.options[elt.selectedIndex].value);
+               else{
+                 if(containsForbiddenChar(elt.options[elt.selectedIndex].value)){
+                   dontModify = true;
+                   break;
+                 }
+                 else{
+                   dontModify = false;
+                   valueList.push(elt.options[elt.selectedIndex].value);
+                 }
+              }
            }
          }
-        }
-        for(let y=0; y<columnList.valueList; y++){
-          if(containsForbiddenChar(valueList[y])){
-             dontModify = true;
-             break;
-           }
-           else
-             dontModify = false;
         }
         if(!dontModify){
           postgresqlScope.getPrimaryKey(db, table, function(){
