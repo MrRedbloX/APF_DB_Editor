@@ -105,6 +105,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               }
             }
             catch (e){
+              console.log(e);
               $scope.loadSondeTenant();
             }
           }
@@ -235,6 +236,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
             data.push($scope.databases[i].table[y].values.length);
           }
           catch (e){
+            console.log(e);
             $scope.loadChartNbTuplesInTable();
           }
           backgroundColor.push(color[0]);
