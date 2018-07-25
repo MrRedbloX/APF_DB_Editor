@@ -25,7 +25,7 @@ Rajouter colonne customer_name dans tenant_table sonde > fait
 Faire la vue pour les vues (relations) > Fait
 Faire les messages d'erreur pour les mauvaises requêtes
 Gérer les vues > fait
-Dashboard (graphique) > En cours (essayer de générer les canvas in JS)
+Dashboard (graphique) > Fait
 Vérification des règles
 Mettre les noms à la place des uuid pour tous les fk > Fait
 Vérifier les références dans addRow > Fait
