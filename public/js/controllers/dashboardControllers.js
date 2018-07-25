@@ -340,6 +340,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
         window.location = "#!/db_management";
         $scope.wait();
         buttonAreaScope = buttonAreaFactory.getScope();
+        if(buttonAreaScope == null){
+          $scope.wait();
+          buttonAreaScope = buttonAreaFactory.getScope();
+        }
         let table;
         if(activePoints[0]._model.datasetLabel == "Elastic Cloud Server") table = "ecs_table";
         else if(activePoints[0]._model.datasetLabel == "Security Group") table = "sg_table";
