@@ -439,6 +439,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   }
 });
 
+//Manage the actions appearing when the user want to add a tuple
 app.controller('addRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
 
   var columnsDisplayScope = columnsDisplayFactory.getScope();
