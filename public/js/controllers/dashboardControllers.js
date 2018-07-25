@@ -35,6 +35,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     var ret;
     for(let i=0; i<$scope.relTenantIdName; i++){
       if($scope.relTenantIdName[i].name == tenant_name){
+        console.log('ok');
         ret = $scope.relTenantIdName[i].id;
         break;
       }
