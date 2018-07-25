@@ -1,4 +1,4 @@
-app.controller('loginController', function($scope, $http, $state, postgresqlFactory, loginFactory){
+app.controller('loginController', function($scope, $http, $window, postgresqlFactory, loginFactory){
   loginFactory.setScope($scope)
   var id_ok = "63e780c3f321d13109c71bf81805476e";
   var postgresScope = postgresqlFactory.getScope();
@@ -209,7 +209,7 @@ app.controller('loginController', function($scope, $http, $state, postgresqlFact
   };
 
   $scope.reload = function(){
-    $state.reload();
+    $window.location.reload();
   };
 });
 
