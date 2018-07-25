@@ -515,10 +515,15 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             }
          }
        }
-       if(containsForbiddenChar(JSON.stringify(columnList)) || containsForbiddenChar(JSON.stringify(valueList)))
-          dontAdd = true;
-        else{
-          dontAdd= false;
+       for(let y=0; y<columnList.valueList; y++){
+         if(containsForbiddenChar(valueList[y])){
+            dontAdd = true;
+            break;
+          }
+          else
+            dontAdd = false;
+       }
+       if(!dontAdd){
           postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
               if(postgresqlScope.successRequest){
                 buttonAreaScope.display();
@@ -661,10 +666,15 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
          }
         }
 
-        if(containsForbiddenChar(JSON.stringify(columnList)) || containsForbiddenChar(JSON.stringify(valueList)))
-          dontModify = true;
-        else{
-          dontModify = false;
+        for(let y=0; y<columnList.valueList; y++){
+          if(containsForbiddenChar(valueList[y])){
+             dontModify = true;
+             break;
+           }
+           else
+             dontModify = false;
+        }
+        if(!dontModify){
           postgresqlScope.getPrimaryKey(db, table, function(){
             if(postgresqlScope.successRequest){
               for(let i=0; columnsDisplayScope.columns.length; i++){
