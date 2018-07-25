@@ -1,5 +1,7 @@
 app.controller('chartDisplayController', function($scope, postgresqlFactory, buttonAreaFactory){
   var postgresScope = postgresqlFactory.getScope();
+  var buttonAreaScope;
+
   $scope.readyDB = false;
   $scope.readyValues = false;
   $scope.readyDBChart = false;
@@ -319,7 +321,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
       if(activePoints.length > 0){
         window.location = "/#!/db_management";
         $scope.wait();
-        var buttonAreaScope = buttonAreaFactory.getScope();
+        buttonAreaScope = buttonAreaFactory.getScope();
         let table;
         if(activePoints[0]._model.datasetLabel == "Elastic Cloud Server") table = "ecs_table";
         else if(activePoints[0]._model.datasetLabel == "Security Group") table = "sg_table";
