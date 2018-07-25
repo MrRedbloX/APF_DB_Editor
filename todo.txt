@@ -30,3 +30,4 @@ Vérification des règles
 Mettre les noms à la place des uuid pour tous les fk > Fait
 Vérifier les références dans addRow > Fait
 Vérifier dans display les noms > Fait
+Commenter le code > En cours
