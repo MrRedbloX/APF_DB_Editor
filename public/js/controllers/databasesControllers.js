@@ -195,7 +195,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
   //When we click on display
-  $scope.display = function(){
+  $scope.display = function(condAtt, condValue){
     busy = false;
     currentTableSelected = tableSelected;
     currentRowSelected = rowSelected;
@@ -248,9 +248,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       break;
                     }
                   }
-                  temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
+                  if(condAtt != null && condValue != null){
+                    if(columnsDisplayScope.columns[j].column_name == condAtt && postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]) == condValue)
+                  }
+                  else
+                    temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
                 }
-                console.log(temp);
                 columnsDisplayScope.tuples.push({
                   column_names : columnsDisplayScope.columns,
                   values : temp
