@@ -515,6 +515,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             }
          }
        }
+       console.log(valueList);
        for(let y=0; y<columnList.valueList; y++){
          if(containsForbiddenChar(valueList[y])){
             dontAdd = true;
@@ -665,7 +666,6 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
            }
          }
         }
-        console.log(valueList);
         for(let y=0; y<columnList.valueList; y++){
           if(containsForbiddenChar(valueList[y])){
              dontModify = true;
