@@ -1,12 +1,13 @@
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases
-var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid'];
-var busy = false;
-var exceptionTables = ['map'];
-var waitFor = 1;
-var forbiddenChar = ['#','%','&','+','[',']','{','}',"'",'"','\\'];
+var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid']; //The name that will be displayed instead of the id
+var busy = false; //When a view in db_management is displayed, this turn to true in order to prevent from some unwanted behaviors
+var exceptionTables = ['map']; //The tables which starts with these elements won't be displayed in the dashboard charts
+var waitFor = 1; //The time in ms use in the sleep function
+var forbiddenChar = ['#','%','&','+','[',']','{','}',"'",'"','\\']; //The chars that the user can't write when he add or modify an element
 
+//Check if a table is elligible to exceptionTables
 var isInExceptionTables = function(table){
   ret = false;
 
@@ -70,10 +71,12 @@ var isRowSelected = function(row){
   }
 }
 
+//Allows to stop the execution for a specific time, it's used to prevent from async issues in certain functions
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+//
 function containsForbiddenChar(str){
   ret = false;
   for(let i=0; i<forbiddenChar.length; i++){
@@ -85,9 +88,7 @@ function containsForbiddenChar(str){
   return ret;
 }
 
-var app = angular.module('DBEditorAPF', ["ngRoute"], function($rootScopeProvider){
-  $rootScopeProvider.digestTtl(20);
-});
+var app = angular.module('DBEditorAPF', ["ngRoute"]);
 
 app.config(function($routeProvider) {
     $routeProvider
