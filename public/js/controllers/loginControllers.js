@@ -173,7 +173,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   $scope.addLogin = function(user,md5,email,callback){
     console.log("addlog : " + user);
     $http({
-      method: 'GET',
+      method: 'POST',
       url: "/login/addLogin?id="+user+"&md5="+md5+"&mail="+email
     })
     .then(
