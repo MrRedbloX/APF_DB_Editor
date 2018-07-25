@@ -98,9 +98,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
       if($scope.databases[i].name == "sonde"){
         for(let j=0; j<$scope.databases[i].table.length; j++){
           if($scope.databases[i].table[j].table_name == "tenant_table"){
-            for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
-              idTenant.push($scope.databases[i].table[j].values[k].uuid);
-              labels.push($scope.databases[i].table[j].values[k].tenant_name);
+            try{
+              for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
+                idTenant.push($scope.databases[i].table[j].values[k].uuid);
+                labels.push($scope.databases[i].table[j].values[k].tenant_name);
+              }
+            }
+            catch (e){
+              $scope.loadSondeTenant();
             }
           }
           else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
@@ -226,7 +231,12 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               color = $scope.dbColors[j].color;
           }
           labels.push($scope.splitTheTableName($scope.databases[i].table[y].table_name));
-          data.push($scope.databases[i].table[y].values.length);
+          try{
+            data.push($scope.databases[i].table[y].values.length);
+          }
+          catch (e){
+            $scope.loadChartNbTuplesInTable();
+          }
           backgroundColor.push(color[0]);
           borderColor.push(color[1]);
         }
