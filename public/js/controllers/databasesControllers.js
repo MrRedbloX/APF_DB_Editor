@@ -533,15 +533,18 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
                 console.log(postgresqlScope.addRequest);
                 alert("Error on addRecord request, check console logs.");
               }
-            });
-          }
+          });
         }
       }
 
-      treeDatabaseAreaScope.setDisplayTo("nothing");
-      document.getElementById('addButton').disabled = false;
-      document.getElementById('modifyButton').disabled = false;
-      busy = false;
+      if(dontAdd)
+        alert("You cannot add elements with forbidden characters");
+      else{
+        treeDatabaseAreaScope.setDisplayTo("nothing");
+        document.getElementById('addButton').disabled = false;
+        document.getElementById('modifyButton').disabled = false;
+        busy = false;
+      }
     }
   };
 
