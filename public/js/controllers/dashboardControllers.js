@@ -11,6 +11,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
   $scope.dbColors = [];
   $scope.databases = [];
   $scope.chartsSondeTenant = [];
+  $scope.relTenantIdName = [];
 
   $scope.getRGBA = function(){
     ret = [];
