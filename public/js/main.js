@@ -285,7 +285,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
 
   $scope.addRecord = function(dbName,tableName,columnList,valueList,callback){
     $http({
-      method: 'GET',
+      method: 'POST',
       url: '/db/addRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)
     })
     .then(
@@ -303,7 +303,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
 
   $scope.modifyRecord = function(dbName,tableName,columnList,valueList,pkKey,pkValue,callback){
     $http({
-      method: 'GET',
+      method: 'POST',
       url: '/db/modifyRecord?db='+dbName+'&table='+tableName+'&column_list='+JSON.stringify(columnList)+'&value_list='+JSON.stringify(valueList)+'&pkKey='+pkKey+'&pkValue='+pkValue
     })
     .then(
@@ -339,7 +339,7 @@ app.controller('postgresqlController', function($scope, $http, postgresqlFactory
 
   $scope.delRecord = function(dbName,tableName,pkKey,pkValue,callback){
     $http({
-      method: 'GET',
+      method: 'POST',
       url: '/db/delRecord?db='+dbName+'&table='+tableName+'&pkKey='+pkKey+'&pkValue='+pkValue
     })
     .then(
