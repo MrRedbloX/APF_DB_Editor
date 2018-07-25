@@ -233,14 +233,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
               color = $scope.dbColors[j].color;
           }
           labels.push($scope.splitTheTableName($scope.databases[i].table[y].table_name));
-          try{
-            data.push($scope.databases[i].table[y].values.length);
-          }
-          catch (e){
-            console.log(e);
-            $scope.loadChartNbTuplesInTable();
-            return;
-          }
+          data.push($scope.databases[i].table[y].values.length);
           backgroundColor.push(color[0]);
           borderColor.push(color[1]);
         }
