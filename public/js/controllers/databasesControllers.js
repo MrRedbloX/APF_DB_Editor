@@ -83,11 +83,12 @@ app.controller('treeDatabaseAreaController', function($scope, postgresqlFactory,
   }
 });
 
+//Manage the table displayed of the columns and values of a table
 app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFactory, postgresqlFactory){
   columnsDisplayFactory.setScope($scope);
   var postgresqlScope = postgresqlFactory.getScope();
-  $scope.row_ids = [];
-  $scope.elementIdToSet = [];
+  $scope.row_ids = []; //This array will contains all the row's ids which their tooltips need to be set;
+  $scope.elementIdToSet = []; //This one will be used to manage id/name crossback
 
   //Check if an attribute is a foreign key
   $scope.checkIfIsReference = function(att){
@@ -101,6 +102,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     return ret;
   };
 
+  //Will be call in html by foreign keys rows in order to set the tooltips with their references
   $scope.setIdForToolTips = function(tuple_value, column, val){
     let theID = column+";"+JSON.stringify(tuple_value)+";"+val;
 
@@ -113,26 +115,28 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     return "";
   };
 
+  //Here we use row_ids
   $scope.setToolTips = function(){
     for(let i=0; i<$scope.row_ids.length; i++){
-      if($scope.checkIfIsReference($scope.row_ids[i].column_name)){
+      if($scope.checkIfIsReference($scope.row_ids[i].column_name)){ //First we check if it's a foreign key
         if(document.getElementById($scope.row_ids[i].id) != null) {
-          document.getElementById($scope.row_ids[i].id).title = $scope.getInfoForFK($scope.row_ids[i].column_name,$scope.row_ids[i].value);
+          document.getElementById($scope.row_ids[i].id).title = $scope.getInfoForFK($scope.row_ids[i].column_name,$scope.row_ids[i].value); //And we set with the correct information
         }
       }
     }
     $scope.row_ids = [];
   }
 
+  //From a column name and an id retrivied all the references' info
   $scope.getInfoForFK = function(column_name, value){
     ret = "";
     for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
       if(column_name === postgresqlScope.valuesOfConstraint[i].name){
         for(let j=0; j<postgresqlScope.valuesOfConstraint[i].values.length; j++){
           if(postgresqlScope.valuesOfConstraint[i].values[j].id === value){
-            keys = Object.keys(postgresqlScope.valuesOfConstraint[i].values[j].records);
+            keys = Object.keys(postgresqlScope.valuesOfConstraint[i].values[j].records); //We retrieve all the column names
             for(let k=0; k<keys.length; k++)
-              ret += postgresqlScope.valuesOfConstraint[i].values[j].records[keys[k]]+" / ";
+              ret += postgresqlScope.valuesOfConstraint[i].values[j].records[keys[k]]+" / "; //And we make a string
             ret = ret.substring(0, ret.length-3);
             break;
           }
@@ -143,12 +147,14 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     return ret;
   };
 
+  //Allows to clear all tooltips of td tag in order to prevent conflicts
   $scope.clearTooltips = function(){
     listTD = document.getElementsByTagName("TD");
     for(let i=0; i<listTD.length; i++)
       listTD[i].title = "";
   }
 
+  //Allows to set the name of a row in order to be used in setNameWithId
   $scope.setName = function(column_name, tuple, val){
     id = column_name+";"+JSON.stringify(tuple)+";"+val;
     $scope.elementIdToSet.push({
@@ -159,6 +165,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
     });
   };
 
+  //Allows to replace the html text of a foreign key by its name instead of its id
   $scope.setNameWithId = function(){
     if(postgresqlScope.valuesOfConstraint != null){
       for(let i=0; i<postgresqlScope.valuesOfConstraint.length; i++){
@@ -168,7 +175,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
               if(postgresqlScope.valuesOfConstraint[i].values[k].id == $scope.elementIdToSet[j].value){
                 if(document.getElementById($scope.elementIdToSet[j].id) != null){
                   document.getElementById($scope.elementIdToSet[j].id).innerHTML = postgresqlScope.valuesOfConstraint[i].values[k].name;
-                  $scope.elementIdToSet[j].set = true;
+                  $scope.elementIdToSet[j].set = true; //The set attributes is for optimization in angular loading
                 }
               }
             }
@@ -177,10 +184,6 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
       }
     }
   }
-
-  /*angular.element(document).ready(function(){
-    console.log("Table fully loaded");
-  });*/
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
