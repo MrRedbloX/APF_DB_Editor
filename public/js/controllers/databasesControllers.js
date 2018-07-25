@@ -199,6 +199,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     busy = false;
     currentTableSelected = tableSelected;
     currentRowSelected = rowSelected;
+    var canPush = true;
     var columnsDisplayScope = columnsDisplayFactory.getScope();
     treeDatabaseAreaScope.setDisplayTo("nothing");
     if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
@@ -248,6 +249,12 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       break;
                     }
                   }
+                  if(condAtt != null && condValue != null){
+                    if((columnsDisplayScope.columns[j].column_name) == condAtt && (postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]) == condValue)
+                      temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
+                  }
+                  else
+                    canPush = true;
                   temp.push(postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]);
                 }
                 columnsDisplayScope.tuples.push({
