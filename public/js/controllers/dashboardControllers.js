@@ -334,7 +334,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     canvas.onclick = function(evt){
       var activePoints = myChart.getElementsAtEvent(evt);
       if(activePoints.length > 0){
-        window.location = "/#!/db_management";
+        window.location = "#!/db_management";
         $scope.wait();
         buttonAreaScope = buttonAreaFactory.getScope();
         let table;
