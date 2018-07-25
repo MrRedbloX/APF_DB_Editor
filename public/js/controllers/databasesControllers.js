@@ -186,12 +186,13 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
   }
 });
 
+//Manage all the buttons in the application
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
   buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
-  var isReadOnly = false;
+  var isReadOnly = false; //Will be use to check if a database has to be in read only
   var currentTableSelected = tableSelected;
   var currentRowSelected = rowSelected;
 
