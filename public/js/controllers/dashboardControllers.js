@@ -327,7 +327,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
         else if(activePoints[0]._model.datasetLabel == "Security Group") table = "sg_table";
         else if(activePoints[0]._model.datasetLabel == "Subnet") table = "subnet_table";
         tableSelected = "sonde;"+table;
-        buttonAreaScope.display();
+        buttonAreaScope.display("tenant_uuid", activePoints[0]._model.label);
       }
     };
   };
