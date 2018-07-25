@@ -404,7 +404,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
       if(treeDatabaseAreaScope != null) treeDatabaseAreaScope.setDisplayTo("nothing");
     }
-    if(rowSelected != null) document.getElementById(rowSelected).style.backgroundColor = "";
+    if(rowSelected != null && document.getElementById(rowSelected) != null) document.getElementById(rowSelected).style.backgroundColor = "";
     rowSelected = null;
     busy = false;
     treeDatabaseAreaScope.setDisplayTo("nothing");
