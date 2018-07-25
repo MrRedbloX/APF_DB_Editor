@@ -515,7 +515,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             }
          }
        }
-       if(containsForbiddenChar(JSON.stringify(columnList)) || containsForbiddenChar(JSON.stringify(valueList))){
+       if(containsForbiddenChar(JSON.stringify(columnList)) || containsForbiddenChar(JSON.stringify(valueList)))
          dontAdd = true;
         else{
           postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
