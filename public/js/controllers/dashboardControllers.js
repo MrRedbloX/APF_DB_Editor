@@ -312,5 +312,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory){
           }
       }
     });
+
+    canvas.onclick = function(evt){
+      var activePoints = myChart.getElementsAtEvent(evt);
+      console.log(activePoints);
+    };
   };
 });
