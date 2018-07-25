@@ -178,7 +178,7 @@ app.controller('columnsDisplayAreaController', function($scope, columnsDisplayFa
 });
 
 app.controller('buttonAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
-
+  console.log("Button scope");
   buttonAreaFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
