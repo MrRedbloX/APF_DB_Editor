@@ -75,7 +75,7 @@ function sleep(ms) {
 }
 
 function containsForbiddenChar(str){
-  return forbiddenChar.test(srt);
+  return forbiddenChar.test(str);
 }
 
 var app = angular.module('DBEditorAPF', ["ngRoute"], function($rootScopeProvider){
