@@ -204,28 +204,34 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   if(document.getElementById("clearButton") != null) document.getElementById("clearButton").disabled = false;
   if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
-  //When we click on display
+  //When we click on display; condAtt and condValue are used as filter in the display
   $scope.display = function(condAtt, condValue){
-    busy = false;
-    currentTableSelected = tableSelected;
-    currentRowSelected = rowSelected;
-    var canPush = true;
+    busy = false; //First we say that no view is displayed by default
+    currentTableSelected = tableSelected; //We make sure the table selected won't change
+    currentRowSelected = rowSelected; //Same for the row
+    var canPush = true; //if condAtt and condValue are verified this will be true and then we can push
     var columnsDisplayScope = columnsDisplayFactory.getScope();
     treeDatabaseAreaScope.setDisplayTo("nothing");
+
+    //We make no row is selected
     if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
     rowSelected = null;
+
+    //We refresh the elements for tooltip and name management
     columnsDisplayScope.row_ids = [];
     columnsDisplayScope.elementIdToSet = [];
     columnsDisplayScope.clearTooltips();
 
+    //We retrieve the name of the db and table selected and check if it's on read only
     if(currentTableSelected != null){
       let temp = currentTableSelected.split(';');
       let db = temp[0];
       isReadOnly = checkIfReadOnlyDB(db);
     }
 
-    document.getElementById("columnsDisplayArea").style.display = "block";
+    document.getElementById("columnsDisplayArea").style.display = "block"; //We make appear the column display area
 
+    //Here we manage the clickability of the buttons
     if(isReadOnly){
       if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
@@ -259,7 +265,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
                       break;
                     }
                   }
-                  if(condAtt != null && condValue != null){
+                  if(condAtt != null && condValue != null){ //If the attributes exist we use the filter
                     if((columnsDisplayScope.columns[j].column_name) == condAtt && (postgresScope.columnValues.data[i][(columnsDisplayScope.columns[j].column_name)]) == condValue)
                       canPush = true;
                     else
