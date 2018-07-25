@@ -483,6 +483,8 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   //When we want to save a new tuple
   $scope.saveRecord = function(){
 
+    var dontAdd = false;
+
     if(confirm("Are you sure you want to save this record ?")){
 
       if(currentTableSelected != null){
@@ -513,22 +515,27 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             }
          }
        }
-        postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
-          if(postgresqlScope.successRequest){
-            buttonAreaScope.display();
-            if(currentRowSelected != null){
-              if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
-              if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
-              if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
-              if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
-              rowSelected = null;
-            }
+       if(containsForbiddenChar(JSON.stringify(columnList)) || containsForbiddenChar(JSON.stringify(valueList))){
+         dontAdd = true;
+        else{
+          postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
+              if(postgresqlScope.successRequest){
+                buttonAreaScope.display();
+                if(currentRowSelected != null){
+                  if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
+                  if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
+                  if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
+                  if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
+                  rowSelected = null;
+                }
+              }
+              else{
+                console.log(postgresqlScope.addRequest);
+                alert("Error on addRecord request, check console logs.");
+              }
+            });
           }
-          else{
-            console.log(postgresqlScope.addRequest);
-            alert("Error on addRecord request, check console logs.");
-          }
-        });
+        }
       }
 
       treeDatabaseAreaScope.setDisplayTo("nothing");
