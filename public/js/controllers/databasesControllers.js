@@ -510,19 +510,18 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
             if(elt.selectedIndex == null || elt.options[elt.selectedIndex] == null) valueList.push("");
             else{
                if($scope.attributes[j].data_type.toLowerCase().includes("int")) valueList.push(parseInt(elt.options[elt.selectedIndex].value));
-               else
-                  valueList.push(elt.options[elt.selectedIndex].value);
+               else{
+                 if(containsForbiddenChar(elt.options[elt.selectedIndex].value)){
+                   dontAdd = true;
+                   break;
+                 }
+                 else{
+                   dontAdd = false;
+                   valueList.push(elt.options[elt.selectedIndex].value);
+                 }
+              }
             }
          }
-       }
-       console.log(valueList);
-       for(let y=0; y<columnList.valueList; y++){
-         if(containsForbiddenChar(valueList[y])){
-            dontAdd = true;
-            break;
-          }
-          else
-            dontAdd = false;
        }
        if(!dontAdd){
           postgresqlScope.addRecord(db, table, columnList, valueList, function(){ //Request to save a record in db
