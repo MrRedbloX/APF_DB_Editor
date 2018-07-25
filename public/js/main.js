@@ -184,7 +184,12 @@ app.factory('loginFactory', function(){
 //This controller allows to do all the requests in databases, therefore he needs to be on top of every others
 app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
 
-  postgresqlFactory.setScope($scope);
+  postgresqlFactory.setScope($scope); //We set the $scope
+
+  //All the following functions has the same structure :
+  // 1) Query with specific attributes
+  // 2) A function for success, a function for error, an attribute successRequest set depending the outcome and an array for the request
+  // 3) At the end a callback function
 
   $scope.getDBName = function(callback){
     $http({
