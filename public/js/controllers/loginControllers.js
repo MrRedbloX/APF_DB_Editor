@@ -242,7 +242,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
       if($scope.successRequest){
         if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
           console.log("NOT EXIST");
-        else if($scope.annuaire.data.includes("Profil de"))
+        if($scope.annuaire.data.includes("Profil de"))
           console.log("EXIST");
         else
           console.log("Unhandle");
