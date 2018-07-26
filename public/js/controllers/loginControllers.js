@@ -208,6 +208,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
 
   };
 
+  //Sometimes the display is not as expected due to JS async problems are databases network issues, this allows to relaod the view which is much faster than reload the all page
   $scope.reload = function(){
     $route.reload();
   };
