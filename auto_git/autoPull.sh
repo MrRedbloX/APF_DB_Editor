@@ -8,5 +8,6 @@ do
     pkill -f node &>/dev/null
     (node app.js &) &>/dev/null
     beep -n
+    clear
   fi
 done
