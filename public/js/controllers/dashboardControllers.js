@@ -68,7 +68,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){ //We make sure we are in the last tour
-                  $scope.wait(); //We wait here to give some space to the loading array databases
                   for(let z=0; z<$scope.databases.length; z++){
                     for(let y=0 ;y<$scope.databases[z].table.length; y++)
                       $scope.databases[z].table[y].values = []; //Prevent from JS async error when we will want to use values
