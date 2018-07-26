@@ -242,6 +242,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   $scope.checkInfo = function(){
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
+    var rePass = document.getElementById("repass").value;
     var mail= document.getElementById("mail").value;
 
     var nom= document.getElementById("nom").value;
