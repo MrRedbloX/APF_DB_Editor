@@ -2,6 +2,8 @@ var http = require("http");
 module.exports = {
   getAnnuaire: function(req, res){
 
+    console.log(req.query.lien);
+
     http.get(req.query.lien, (resp) => {
       var data = '';
 
