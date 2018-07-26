@@ -3,7 +3,7 @@ module.exports = {
   getAnnuaire: function(req, res){
 
     http.get(req.query.lien, (resp) => {
-      let data = '';
+      var data = '';
 
       resp.on('data', (chunk) => {
         data += chunk;
