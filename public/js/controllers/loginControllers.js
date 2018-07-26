@@ -218,47 +218,6 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   var postgresScope = postgresqlFactory.getScope();
   var loginScope = loginFactory.getScope();
 
-  $scope.create_login  = function(){
-    //console.log(lien);
-
-    var test = $scope.httpGet(lien);
-    console.log("" + test);*/
-
-
-    //  document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
-    //document.getElementById("annuaire1").load(lien);
-
-    /*$scope.getAnnuaire(lien, function(){
-      if($scope.successRequest){
-        console.log($scope.annuaire);
-      }
-      else{
-        console.log($scope.annuaire);
-      }
-    });
-    //$scope.verif_user(2000);
-
-
-    console.log("user " + user + " mail " + mail + " mdp " + pass + " md5 " + result);
-    $scope.addLogin(user,result,mail,function(){
-      if($scope.successRequest){
-        if($scope.addLogin.data.length > 0){
-          $scope.success =  true;
-        }
-        else {
-          $scope.success =  false;
-        }
-      }
-      else {
-        console.log($scope.addLogin);
-        alert("Error on addLogin request, check console logs.");
-      }
-
-    });
-
-    window.location="#!/login";
-  }*/
-
   $scope.checkInfo = function(){
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
@@ -272,17 +231,6 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
 
     var userpass = user + pass;
     var result = null;
-
-    /*loginScope.getMD5(userpass, function(){
-      if($scope.successRequest){
-        result = $scope.md5.data;
-      }
-      else{
-        console.log($scope.md5);
-        alert("Error on getMD5, check console logs.");
-      }
-
-    });*/
 
     nom = nom.replace(" ", "+");
     prenom = prenom.replace(" ", "+");
