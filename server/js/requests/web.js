@@ -2,15 +2,20 @@ var http = require("http");
 module.exports = {
   getAnnuaire: function(req, res){
 
-    var options = {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            res.status(200).send(xmlHttp.responseText);
+        else {
+          res.status(400).send("Error");
+        }
+    }
+    xmlHttp.open("GET", req.query.lien, true); // true for asynchronous
+    xmlHttp.send(null);
+
+    /*var options = {
       hostname: req.query.lien,
       method: 'GET',
-      /*qs:{
-        'searchType':'PERSON_COMPLEX',
-        'personCriteria.sn' : 'guitton',
-        'personCriteria.givenName' : 'alois',
-        'personCriteria.mail': 'alois.guitton@orange.com'
-      },*/
       headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -38,5 +43,5 @@ module.exports = {
     });
 
     request.end();
-  }
+  }*/
 }
