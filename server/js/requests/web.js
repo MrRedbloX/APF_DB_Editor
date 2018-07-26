@@ -41,6 +41,6 @@ module.exports = {
       res.status(400).send(err);
     });
 
-    request.end();
-  }*/
+    request.end();*/
+  }
 }
