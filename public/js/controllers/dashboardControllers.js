@@ -101,7 +101,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                $scope.wait();
                 $scope.readyValues = true; //We say the values are ready
                 $scope.loadSondeTenant(); //Now we can load the tenant process
                 $scope.loadDbMemory(); //And the memory process
