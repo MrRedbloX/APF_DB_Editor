@@ -350,5 +350,6 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
         break;
       }
     }
+    return ret;
   };
 });
