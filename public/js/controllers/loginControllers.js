@@ -250,6 +250,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   }
 
   $scope.getAnnuaire = function(lien, callback){
+    console.log(lien);
       $http({
         method: 'GET',
         url: '/web/getAnnuaire?lien='+lien
