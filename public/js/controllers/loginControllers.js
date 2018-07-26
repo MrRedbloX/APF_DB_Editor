@@ -170,11 +170,11 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     });
   };
 
-  $scope.addLogin = function(user,md5,email,callback){
+  $scope.addLogin = function(user,md5,email,md5NameMail,validate,callback){
     console.log("addlog : " + user);
     $http({
       method: 'POST',
-      url: "/login/addLogin?id="+user+"&md5="+md5+"&mail="+email
+      url: "/login/addLogin?id="+user+"&md5="+md5+"&mail="+email+"&md5NameMail="+md5NameMail+"&validate="+validate
     })
     .then(
       function successCallback(data) {
