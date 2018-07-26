@@ -82,4 +82,20 @@ module.exports = {
       }
     });
   },
+
+  sendConfirmEmail: function(req, res){
+    var mandrill = require('node-mandrill')('<your API Key>'); //Payant voir avec client
+
+    mandrill('/messages/send', {
+      message: {
+          to: [{email: _email , name: _name}],
+          from_email: 'noreply@apfDbEditor.com',
+          subject: _subject,
+          text: _message
+      }
+    }, function(error, response){
+        if (error) console.log( error );
+        else console.log(response);
+    });
+  }
 }
