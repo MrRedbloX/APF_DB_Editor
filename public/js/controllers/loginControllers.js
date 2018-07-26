@@ -290,6 +290,9 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
 
     lien = "annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.sn="+nom+"&personCriteria.givenName="+prenom+"&personCriteria.mail="+mail_lien;
 
+    $scope.getAnnuaire(lien, function(){
+      console.log($scope.annuaire);
+    });
 
   }
 
