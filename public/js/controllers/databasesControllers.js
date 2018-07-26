@@ -890,6 +890,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
     }
   }
 
+  //When the user want to clear the relations display
   $scope.clear = function(){
     busy = false;
     $scope.relationsData = [];
