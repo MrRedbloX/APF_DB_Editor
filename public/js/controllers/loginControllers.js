@@ -248,7 +248,6 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
           console.log("Unhandle");
       }
     });
-
   }
 
   $scope.getAnnuaire = function(lien, callback){
