@@ -246,18 +246,15 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     var nom= document.getElementById("nom").value;
     var prenom= document.getElementById("prenom").value;
 
-    var lien = "";
-    var mail_lien = "";
-
     var userpass = user + pass;
     var result = null;
 
-    nom = $scope.normalizeStr(nom);
-    prenom = $scope.normalizeStr(prenom);
-    mail_lien = mail.replace("@", "%40");
+    var nom_lien = $scope.normalizeStr(nom);
+    var prenom_lien = $scope.normalizeStr(prenom);
+    var mail_lien = mail.replace("@", "%40");
     var param = [user, pass, mail, nom, prenom];
 
-    lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteriaN="+nom+"&personCriteriaP="+prenom+"&personCriteriaM="+mail_lien;
+    var lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteriaN="+nom_lien+"&personCriteriaP="+prenom_lien+"&personCriteriaM="+mail_lien;
 
     if(pass === rePass){
       if($scope.areCorrectParam(param)){
