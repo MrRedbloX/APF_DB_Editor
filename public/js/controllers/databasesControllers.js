@@ -597,6 +597,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
     }
   };
 
+  //Called in html to set the id for tooltips of references when the user wants to add a tuple
   $scope.setIdForToolTips = function(val, column){
     ret = "";
     let theID = "a"+column+val;
@@ -615,6 +616,7 @@ app.controller('addRowAreaController', function($scope, columnsDisplayFactory, p
   };
 });
 
+//Manage the actions appearing when the user want to modify a tuple
 app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory, postgresqlFactory, buttonAreaFactory, treeDatabaseAreaFactory){
 
   //Same process as add, except we need to retrieve the existing primary key
@@ -796,14 +798,16 @@ app.controller('modifyRowAreaController', function($scope, columnsDisplayFactory
   };
 });
 
+//When a user wants to show relations of a tuple (meaning we will display all the tuple of all tables in the database which have as foreign key the wanted tuple)
 app.controller('relationsAreaController', function($scope, postgresqlFactory, columnsDisplayFactory, treeDatabaseAreaFactory){
   var postgresScope = postgresqlFactory.getScope();
   var columnsDisplayScope = columnsDisplayFactory.getScope();
   var treeDatabaseAreaScope = treeDatabaseAreaFactory.getScope();
 
-  $scope.relationsData = [];
+  $scope.relationsData = []; //An array which will contains all the relations
   $scope.ready = false;
 
+  //We do here the process of query the relations
   $scope.displayRel = function(){
     currentTableSelected = tableSelected;
     currentRowSelected = rowSelected;
@@ -815,7 +819,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
       let db = temp[0];
       let table = temp[1];
 
-      postgresScope.getPrimaryKey(db, table, function(){
+      postgresScope.getPrimaryKey(db, table, function(){ //First we get the primary key name of this table
         if(postgresScope.successRequest){
           var pkName = postgresScope.primaryKey.data[0].attname;
           for(let i=0; i<columnsDisplayScope.columns.length; i++){
@@ -824,20 +828,21 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
               break;
             }
           }
-          for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){
-            if(treeDatabaseAreaScope.databases[j].name == db){
-              for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){
-                if(treeDatabaseAreaScope.databases[j].table[k].table_name != table){
-                  postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){
+          for(let j=0; j<treeDatabaseAreaScope.databases.length; j++){ //We check in the databases array
+            if(treeDatabaseAreaScope.databases[j].name == db){ //We focus on the wanted one
+              for(let k=0; k<treeDatabaseAreaScope.databases[j].table.length; k++){ //We query its tables
+                if(treeDatabaseAreaScope.databases[j].table[k].table_name != table){ //We don't want to process the wanted table (makes no sense)
+                  postgresScope.getColumnConstraint(db, treeDatabaseAreaScope.databases[j].table[k].table_name, function(){ //We request the contraint of this table
                     if(postgresScope.successRequest){
                       for(let l=0; l<postgresScope.columnConstraint.data.length; l++){
+                        //If the constraint has as reference the wanted table and the wanted primary key we process
                         if(postgresScope.columnConstraint.data[l].foreign_table_name == table && postgresScope.columnConstraint.data[l].foreign_column_name == pkName){
                           col = postgresScope.columnConstraint.data[l].column_name;
-                          postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){
+                          postgresScope.getPrimaryKey(db, postgresScope.columnConstraint.data[l].table_name, function(){ //We get the primary key of the processing table
                             if(postgresScope.successRequest){
-                              postgresScope.query(db, treeDatabaseAreaScope.databases[j].table[k].table_name, "*", col, pkValue, function(){
+                              postgresScope.query(db, treeDatabaseAreaScope.databases[j].table[k].table_name, "*", col, pkValue, function(){ //And we query this table
                                 if(postgresScope.successRequest){
-                                  let theName = postgresScope.primaryKey.data[0].attname;
+                                  let theName = postgresScope.primaryKey.data[0].attname; //We want to display the name and not the id at first
                                   if(postgresScope.queryRequest.data.length > 0){
                                     for(let m=0; m<displayName.length; m++){
                                       if(postgresScope.queryRequest.data[0][displayName[m]] != null){
@@ -846,7 +851,7 @@ app.controller('relationsAreaController', function($scope, postgresqlFactory, co
                                       }
                                     }
                                   }
-                                  $scope.relationsData.push({
+                                  $scope.relationsData.push({ //Finnally we push the results in relationData
                                     table_name : treeDatabaseAreaScope.databases[j].table[k].table_name,
                                     values : postgresScope.queryRequest.data,
                                     id : postgresScope.primaryKey.data[0].attname,
