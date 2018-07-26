@@ -218,6 +218,10 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   var postgresScope = postgresqlFactory.getScope();
   var loginScope = loginFactory.getScope();
 
+  $scope.normalizeStr = function(str){
+    return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" ", "+");
+  };
+
   $scope.checkInfo = function(){
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
@@ -232,18 +236,20 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     var userpass = user + pass;
     var result = null;
 
-    nom = nom.replace(" ", "+");
-    prenom = prenom.replace(" ", "+");
+    nom = $scope.normalizeStr(nom);
+    prenom = $scope.normalizeStr(prenom);
     mail_lien = mail.replace("@", "%40");
 
     lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteriaN="+nom+"&personCriteriaP="+prenom+"&personCriteriaM="+mail_lien;
 
     $scope.getAnnuaire(lien, function(){
       if($scope.successRequest){
-        if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
-          console.log("NOT EXIST");
-        if($scope.annuaire.data.includes("Profil de"))
-          console.log("EXIST");
+        if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents")){
+          alert("")
+        }
+        else if($scope.annuaire.data.includes("Profil de")){
+
+        }
         else
           console.log("Unhandle");
       }
