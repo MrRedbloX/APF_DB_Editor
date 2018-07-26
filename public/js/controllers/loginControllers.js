@@ -239,12 +239,14 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.sn="+nom+"&personCriteria.givenName="+prenom+"&personCriteria.mail="+mail_lien;
 
     $scope.getAnnuaire(lien, function(){
-      if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
-        console.log("NOT EXIST");
-      else if($scope.annuaire.data.includes("Profil de"))
-        console.log("EXIST");
-      else
-        console.log("Unhandle");
+      if($scope.successRequest){
+        if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
+          console.log("NOT EXIST");
+        else if($scope.annuaire.data.includes("Profil de"))
+          console.log("EXIST");
+        else
+          console.log("Unhandle");
+      }
     });
 
   }
