@@ -270,6 +270,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
             else if($scope.annuaire.data.includes("Profil de")){
               loginScope.getMD5(nom+prenom+mail, function(){
                 if(loginScope.successRequest){
+                  var md5NameMail = loginScope.md5.data;
                   loginScope.getIdFromMd5NameMail(loginScope.md5.data, function(){
                     if(loginScope.successRequest){
                       if(loginScope.md5NameMail.data == "" || (loginScope.md5NameMail.data.length != null && loginScope.md5NameMail.data.length == 0))
