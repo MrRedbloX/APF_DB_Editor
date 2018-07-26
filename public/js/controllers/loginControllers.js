@@ -219,49 +219,13 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   var loginScope = loginFactory.getScope();
 
   $scope.create_login  = function(){
-
-    var user= document.getElementById("user").value;
-    var pass= document.getElementById("pass").value;
-    var mail= document.getElementById("mail").value;
-
-    var nom= document.getElementById("nom").value;
-    var prenom= document.getElementById("prenom").value;
-
-    var lien = "";
-    var mail_lien = "";
-
-    var userpass = user + pass;
-    var result = null;
-
-    loginScope.getMD5(userpass, function(){
-      if($scope.successRequest){
-        result = $scope.md5.data;
-      }
-      else{
-        console.log($scope.md5);
-        alert("Error on getMD5, check console logs.");
-      }
-
-    });
-
-    /*nom = nom.replace(" ", "+");
-    prenom = prenom.replace(" ", "+");
-    mail_lien = mail.replace("@", "%40");
-
-    lien1 = "annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.sn="+nom+"&personCriteria.givenName="+prenom+"&personCriteria.mail="+mail_lien";
-
-
-
-
-    lien = "http://www.google.com";
-    console.log(lien);
     //console.log(lien);
 
     var test = $scope.httpGet(lien);
     console.log("" + test);*/
 
 
-  //  document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
+    //  document.getElementById("annuaire").innerHTML='<object data="'+lien1+'" ></object>';
     //document.getElementById("annuaire1").load(lien);
 
     /*$scope.getAnnuaire(lien, function(){
@@ -271,7 +235,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
       else{
         console.log($scope.annuaire);
       }
-    });*/
+    });
     //$scope.verif_user(2000);
 
 
@@ -293,39 +257,43 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     });
 
     window.location="#!/login";
+  }*/
+
+  $scope.checkInfo = function(){
+    var user= document.getElementById("user").value;
+    var pass= document.getElementById("pass").value;
+    var mail= document.getElementById("mail").value;
+
+    var nom= document.getElementById("nom").value;
+    var prenom= document.getElementById("prenom").value;
+
+    var lien = "";
+    var mail_lien = "";
+
+    var userpass = user + pass;
+    var result = null;
+
+    /*loginScope.getMD5(userpass, function(){
+      if($scope.successRequest){
+        result = $scope.md5.data;
+      }
+      else{
+        console.log($scope.md5);
+        alert("Error on getMD5, check console logs.");
+      }
+
+    });*/
+
+    nom = nom.replace(" ", "+");
+    prenom = prenom.replace(" ", "+");
+    mail_lien = mail.replace("@", "%40");
+
+    lien = "annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteria.sn="+nom+"&personCriteria.givenName="+prenom+"&personCriteria.mail="+mail_lien;
+
+
   }
 
-
-
-  /*  $scope.httpGet = function(theUrl)
-    {
-        invocation = new XMLHttpRequest();
-        if(invocation){
-          invocation.open('GET', theUrl, false);
-          //invocation.onreadystatechange = handler;
-          invocation.send();
-          return invocation.responseText;
-        }
-    }*/
-
-  /*  $scope.verif_user = function(){
-      console.log("verif");
-      console.log(document.getElementsByTagName("h3"));
-      for(var i = 0; i < document.getElementsByTagName("h3").length; i++){
-          console.log("recup " + document.getElementsByTagName("h3")[i]);
-      }
-    }*/
-
-  /*  $scope.sleep = function(milliseconds) {
-      var start = new Date().getTime();
-      for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds){
-          break;
-        }
-      }
-    }*/
-
-  /*  $scope.getAnnuaire = function(lien, callback){
+  $scope.getAnnuaire = function(lien, callback){
       console.log(lien);
 
       $http({
@@ -343,6 +311,5 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
           $scope.annuaire = data;
           if(callback) callback();
       });
-    }*/
-
+    }
 });
