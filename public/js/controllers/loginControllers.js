@@ -278,9 +278,10 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
                       else{
                         loginScope.getMD5(user+pass, function(){
                           if(loginScope.successRequest){
-                            loginScope.addLogin(user,loginScope.md5.data, mail, md5NameMail, true, function(){
+                            loginScope.addLogin(user,loginScope.md5.data, mail, md5NameMail, true/*false*/, function(){
                               if(loginScope.successRequest){
                                 //alert("An email was sent to "+mail+" to confirm your registration.");
+                                alert("You have been registered.")
                                 window.location = "#!/login";
                               }
                               else{
