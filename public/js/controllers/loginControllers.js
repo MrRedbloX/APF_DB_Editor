@@ -237,7 +237,6 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     var result = null;
 
     nom = $scope.normalizeStr(nom);
-    console.log(nom);
     prenom = $scope.normalizeStr(prenom);
     mail_lien = mail.replace("@", "%40");
 
@@ -245,11 +244,9 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
 
     $scope.getAnnuaire(lien, function(){
       if($scope.successRequest){
-        if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents")){
-          alert("")
-        }
+        if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
+          alert("You cannot register with the giving information, please try again or contact your administrator");
         else if($scope.annuaire.data.includes("Profil de")){
-
         }
         else
           console.log("Unhandle");
@@ -262,7 +259,6 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   }
 
   $scope.getAnnuaire = function(lien, callback){
-    console.log(lien);
       $http({
         method: 'GET',
         url: '/web/getAnnuaire?lien='+lien
