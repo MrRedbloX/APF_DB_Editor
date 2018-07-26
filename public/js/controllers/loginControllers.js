@@ -345,7 +345,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   $scope.areCorrectParam = function(params){
     var ret = true;
     for(let i=0; i<params.length; i++){
-      if(params[i] == "" || containsForbiddenChar(params[i]) || /^[ ]+$/.test(params[i])){
+      if(params[i] == "" || containsForbiddenChar(params[i])){
         ret = false;
         break;
       }
