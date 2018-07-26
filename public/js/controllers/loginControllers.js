@@ -259,31 +259,43 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
 
     lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteriaN="+nom+"&personCriteriaP="+prenom+"&personCriteriaM="+mail_lien;
 
-    $scope.getAnnuaire(lien, function(){
-      if($scope.successRequest){
-        if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
-          alert("You cannot register with the giving information, please try again or contact your administrator");
-        else if($scope.annuaire.data.includes("Profil de")){
-          loginScope.getMD5(nom+prenom+mail, function(){
-            if(loginScope.successRequest){
-              loginScope.getIdFromMd5NameMail(loginScope.md5.data, function(){
+    if($scope.areCorrectParam()){
+      $scope.getAnnuaire(lien, function(){
+        if($scope.successRequest){
+          if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
+            alert("You cannot register with the giving information, please try again or contact your administrator.");
+          else if($scope.annuaire.data.includes("Profil de")){
+            loginScope.getMD5(nom+prenom+mail, function(){
+              if(loginScope.successRequest){
+                loginScope.getIdFromMd5NameMail(loginScope.md5.data, function(){
+                  if(loginScope.successRequest){
+                    if(loginScope.md5NameMail.data == "" || (loginScope.md5NameMail.data.length != null && loginScope.md5NameMail.data.length == 0))
+                      alert("An account already exists for this person.")
+                    else{
 
-              });
-            }
-            else{
-              console.log(loginScope.md5);
-              alert("Error on getMD5 request, check console logs.");
-            }
-          });
+                    }
+                  }
+                  else{
+                    console.log(loginScope.md5NameMail);
+                    alert("Error on getIdFromMd5NameMail request, check console logs.");
+                  }
+                });
+              }
+              else{
+                console.log(loginScope.md5);
+                alert("Error on getMD5 request, check console logs.");
+              }
+            });
+          }
+          else
+            console.log("Unhandle");
         }
-        else
-          console.log("Unhandle");
-      }
-      else{
-        console.log($scope.annuaire);
-        alert("Error on getAnnuaire request, check console logs.");
-      }
-    });
+        else{
+          console.log($scope.annuaire);
+          alert("Error on getAnnuaire request, check console logs.");
+        }
+      });
+    }
   }
 
   $scope.getAnnuaire = function(lien, callback){
