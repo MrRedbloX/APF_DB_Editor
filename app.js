@@ -66,6 +66,9 @@ app.get('/db/getDbMemory', function(req, res){
 app.get('/login/getIdFromMd5NameMail', function(req,res){
     loginOperations.getIdFromMd5NameMail(req,res);
 });
+app.post('/login/sendConfirmEmail', function(req,res){
+    loginOperations.sendConfirmEmail(req,res);
+});
 
 app.set('port', process.env.PORT || 3001);
 app.use(express.static(__dirname));
