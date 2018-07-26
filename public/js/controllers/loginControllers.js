@@ -257,7 +257,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     nom = $scope.normalizeStr(nom);
     prenom = $scope.normalizeStr(prenom);
     mail_lien = mail.replace("@", "%40");
-    param = [user, pass, mail, nom, prenom];
+    var param = [user, pass, mail, nom, prenom];
 
     lien = "http://annuaire.sso.infra.ftgroup/persons?searchType=PERSON_COMPLEX&personCriteriaN="+nom+"&personCriteriaP="+prenom+"&personCriteriaM="+mail_lien;
 
