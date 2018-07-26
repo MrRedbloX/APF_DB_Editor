@@ -237,6 +237,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     var result = null;
 
     nom = $scope.normalizeStr(nom);
+    console.log(nom);
     prenom = $scope.normalizeStr(prenom);
     mail_lien = mail.replace("@", "%40");
 
