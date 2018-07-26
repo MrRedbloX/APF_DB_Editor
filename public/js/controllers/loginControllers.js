@@ -247,6 +247,10 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
         else
           console.log("Unhandle");
       }
+      else{
+        console.log($scope.annuaire);
+        alert("Error on getAnnuaire request, check console logs.");
+      }
     });
   }
 
