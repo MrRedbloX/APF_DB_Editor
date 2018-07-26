@@ -1,18 +1,23 @@
+//The following controllers will be handle the dashboard area
+
+//This one is for all the chart display and process
 app.controller('chartDisplayController', function($scope, postgresqlFactory, buttonAreaFactory){
   var postgresScope = postgresqlFactory.getScope();
   var buttonAreaScope;
 
+  //These bool will tell if a specific process has finish
   $scope.readyDB = false;
   $scope.readyValues = false;
   $scope.readyDBChart = false;
   $scope.readyMemory = false;
   $scope.readyChartSondeTenant = false;
 
-  $scope.dbColors = [];
-  $scope.databases = [];
-  $scope.chartsSondeTenant = [];
-  $scope.relTenantIdName = [];
+  $scope.dbColors = []; //Will make the relation between a database and the color used to display the database info in the chart
+  $scope.databases = []; //Will contains the databases info
+  $scope.chartsSondeTenant = []; //This array will contains labels and data for the tenant display
+  $scope.relTenantIdName = []; //This array will contains the id and the name of every tenant
 
+  //Allows to randomly generate a color for the chart (return a table with a color for the background and a color for the border)
   $scope.getRGBA = function(){
     ret = [];
     temp = 'rgba(';
@@ -23,14 +28,17 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     return ret;
   };
 
+  //Simply return the table name without the word table
   $scope.splitTheTableName = function(table){
     return (table.split('_'))[0];
   }
 
+  //Allows to stop the process for a specific time
   $scope.wait = async function(){
     await sleep(waitFor);
   }
 
+  //From a name return the id of a tenant
   $scope.getIdTenantFromName = function(tenant_name){
     var ret;
     for(let i=0; i<$scope.relTenantIdName.length; i++){
@@ -42,6 +50,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     return ret;
   }
 
+  //Allows to load the databases and tables info
   $scope.loadDB = function(){
     if(!$scope.readyDB){
       postgresScope.getDBName(function(){ //We do the request and we define the callback function
@@ -58,14 +67,15 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
                   name : db[i],
                   table : postgresScope.tableArray.data
                 });
-                if(i == db.length-1){
+                if(i == db.length-1){ //We make sure we are in the last tour
+                  $scope.wait(); //We wait here to give some space to the loading array databases
                   for(let z=0; z<$scope.databases.length; z++){
                     for(let y=0 ;y<$scope.databases[z].table.length; y++)
-                      $scope.databases[z].table[y].values = [];
+                      $scope.databases[z].table[y].values = []; //Prevent from JS async error when we will want to use values
                   }
-                  $scope.readyDB = true;
-                  $scope.loadTableValues();
-                  $scope.loadChartNbTablesInDB();
+                  $scope.readyDB = true; //We say the loading has finish
+                  $scope.loadTableValues(); //We load the table values
+                  $scope.loadChartNbTablesInDB(); //And we load the chart
                 }
               }
               else{
@@ -83,6 +93,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     }
   };
 
+  //Load the values of tables
   $scope.loadTableValues = function(){
     if(!$scope.readyValues && $scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
@@ -91,9 +102,10 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                $scope.readyValues = true;
-                $scope.loadSondeTenant();
-                $scope.loadDbMemory();
+                $scope.wait();
+                $scope.readyValues = true; //We say the values are ready
+                $scope.loadSondeTenant(); //Now we can load the tenant process
+                $scope.loadDbMemory(); //And the memory process
               }
             }
             else{
@@ -106,16 +118,17 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     }
   };
 
+  //Allows to load information of specific tables regarding the tenants (this is a unique process based on a specific client request)
   $scope.loadSondeTenant = function(){
-    var idTenant = [];
-    var labels = [];
-    var datasets = [];
-    var workingTables = [];
+    var idTenant = []; //Will contains the id of tenants
+    var labels = []; //Will contains the displayed labels
+    var datasets = []; //Will contains the displayed datas
+    var workingTables = []; //Will contains all the wanted tables for faster query
 
     for(let i=0; i<$scope.databases.length; i++){
-      if($scope.databases[i].name == "sonde"){
+      if($scope.databases[i].name == "sonde"){ //We focus on sonde database
         for(let j=0; j<$scope.databases[i].table.length; j++){
-          if($scope.databases[i].table[j].table_name == "tenant_table"){
+          if($scope.databases[i].table[j].table_name == "tenant_table"){ // We push all the needed info of a tenant
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               labels.push($scope.databases[i].table[j].values[k].tenant_name);
@@ -125,18 +138,19 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
               });
             }
           }
+          //Here we check the wanted tables (you can add a condition here if the client wants to add another table)
           else if($scope.databases[i].table[j].table_name == 'sg_table' || $scope.databases[i].table[j].table_name == 'subnet_table' || $scope.databases[i].table[j].table_name == 'ecs_table')
             workingTables.push($scope.databases[i].table[j]);
         }
         break;
       }
     }
-    var backgroundColor;
-    var borderColor;
-    var color;
-    var data;
-    var nbData;
-    var label = "";
+    var backgroundColor; //Will contains the colors of the background charts
+    var borderColor; //Will contains the colors of the border charts
+    var color; //The var used to retrivied the random color
+    var data; //Will contains the displayed datas
+    var nbData; //This var will increment to count the number of data
+    var label = ""; //This var will contains the displayed label
 
     for(let j=0; j<workingTables.length; j++){
       backgroundColor = [];
@@ -146,13 +160,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
       for(let i=0; i<idTenant.length; i++){
         nbData = 0;
         for(let k=0; k<workingTables[j].values.length; k++){
-          if(workingTables[j].values[k].tenant_uuid == idTenant[i])
+          if(workingTables[j].values[k].tenant_uuid == idTenant[i]) //For the querying table and tenant, we check if this tenant is in this table
             nbData++;
         }
         data.push(nbData);
         backgroundColor.push(color[0]);
         borderColor.push(color[1]);
       }
+      //We set the display name
       if(workingTables[j].table_name == 'sg_table') label = "Security Group";
       else if(workingTables[j].table_name == 'subnet_table') label = "Subnet";
       else if(workingTables[j].table_name == 'ecs_table') label = "Elastic Cloud Server";
@@ -164,6 +179,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
         borderWidth: 1
       });
     }
+    //And here we push for a table the regarding data;
     for(let i=0; i<datasets.length; i++){
       $scope.chartsSondeTenant.push({
         labels : labels,
@@ -173,6 +189,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     $scope.readyChartSondeTenant = true;
   };
 
+  //Simply load the databases memory
   $scope.loadDbMemory = function(){
     if($scope.readyDB){
       for(let i=0; i<$scope.databases.length; i++){
@@ -193,8 +210,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     }
   };
 
+  //Load the chart which display the number of tables in a database
   $scope.loadChartNbTablesInDB = function(){
-    var ctx = $("#nbTablesInDB");
+    var ctx = $("#nbTablesInDB"); //We get the canvas
     var labels = [];
     var data = [];
     var backgroundColor = [];
@@ -224,14 +242,15 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
               borderWidth: 1
           }]
       },
-    });
+    }); //We create the chart
 
     $scope.readyDBChart = true;
   };
 
+  //Load for a table the number of tuple in it
   $scope.loadChartNbTuplesInTable = function(db){
     canvas = document.getElementById("nbTuplesInTable");
-    canvas.id = canvas.id+db;
+    canvas.id = canvas.id+db; //We get the canvas and change its id in order to have multiple ones
     var ctx = document.getElementById("nbTuplesInTable"+db);
     var labels = [];
     var data = [];
@@ -278,6 +297,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     });
   };
 
+  //Load the memory chart
   $scope.loadChartDbMemory = function(){
     var ctx = $("#dbMemory");
     var labels = [];
@@ -312,6 +332,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
 
   };
 
+  //Load the tenant chart from a labels and datasets info in var chart
   $scope.loadChartSondeTenant = function(chart){
     canvas = document.getElementById("sondeTenant");
     canvas.id = canvas.id+chart.datasets.label;
@@ -334,13 +355,14 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
       }
     });
 
+    //Here we handle the click on the chart and we redirect to database management with a partial view of the wanted table
     canvas.onclick = function(evt){
       var activePoints = myChart.getElementsAtEvent(evt);
       if(activePoints.length > 0){
         window.location = "#!/db_management";
         $scope.wait();
         buttonAreaScope = buttonAreaFactory.getScope();
-        if(buttonAreaScope == null){
+        if(buttonAreaScope == null){ //We do that to prevent from async issues
           $scope.wait();
           buttonAreaScope = buttonAreaFactory.getScope();
         }
