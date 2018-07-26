@@ -247,6 +247,15 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
         if($scope.annuaire.data.includes("Aucun résultat trouvé. Relancer la requête sur des critères différents"))
           alert("You cannot register with the giving information, please try again or contact your administrator");
         else if($scope.annuaire.data.includes("Profil de")){
+          loginScope.getMD5(nom+prenom+mail, function(){
+            if(loginScope.successRequest){
+
+            }
+            else{
+              console.log(loginScope.md5);
+              alert("Error on getMD5 request, check console logs.");
+            }
+          });
         }
         else
           console.log("Unhandle");
