@@ -275,7 +275,24 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
                       if(loginScope.md5NameMail.data == "" || (loginScope.md5NameMail.data.length != null && loginScope.md5NameMail.data.length == 0))
                         alert("An account already exists for this person.")
                       else{
-
+                        loginScope.getMD5(user+pass, function(){
+                          if(loginScope.successRequest){
+                            loginScope.addLogin(user,loginScope.md5.data, mail, function(){
+                              if(loginScope.successRequest){
+                                alert("An email was sent to "+mail+" to confirm your registration.");
+                                window.location = "#!/login";
+                              }
+                              else{
+                                console.log(loginScope.addLogin);
+                                alert("Error on addLogin request, check console logs.");
+                              }
+                            });
+                          }
+                          else{
+                            console.log(loginScope.md5);
+                            alert("Error on getMD5 request, check console logs.");
+                          }
+                        });
                       }
                     }
                     else{
