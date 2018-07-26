@@ -205,7 +205,24 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
         $scope.md5 = data;
         if(callback) callback();
     });
+  };
 
+  $scope.getIdFromMd5NameMail = function(npm, callback){
+    $http({
+      method: 'GET',
+      url: '/login/getIdFromMd5NameMail?md5namemail='+npm
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.md5NameMail = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.md5NameMail = data;
+        if(callback) callback();
+    });
   };
 
   //Sometimes the display is not as expected due to JS async problems are databases network issues, this allows to relaod the view which is much faster than reload the all page
@@ -249,7 +266,9 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
         else if($scope.annuaire.data.includes("Profil de")){
           loginScope.getMD5(nom+prenom+mail, function(){
             if(loginScope.successRequest){
+              loginScope.getIdFromMd5NameMail(loginScope.md5.data, function(){
 
+              });
             }
             else{
               console.log(loginScope.md5);
