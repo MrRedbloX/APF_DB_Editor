@@ -273,7 +273,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
                   var md5NameMail = loginScope.md5.data;
                   loginScope.getIdFromMd5NameMail(loginScope.md5.data, function(){
                     if(loginScope.successRequest){
-                      if(loginScope.md5NameMail.data == "" || (loginScope.md5NameMail.data.length != null && loginScope.md5NameMail.data.length == 0))
+                      if(loginScope.md5NameMail.data != "" || (loginScope.md5NameMail.data.length != null && loginScope.md5NameMail.data.length > 0))
                         alert("An account already exists for this person.")
                       else{
                         loginScope.getMD5(user+pass, function(){
