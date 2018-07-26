@@ -7,7 +7,7 @@ module.exports = {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
             res.status(200).send(xmlHttp.responseText);
         else {
-          res.status(400).send("Error");
+          res.status(400).send("Wrong URL");
         }
     }
     xmlHttp.open("GET", req.query.lien, true); // true for asynchronous
