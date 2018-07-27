@@ -1,6 +1,7 @@
-var mainConString = "postgres://postgres:postgres@10.237.169.132:5432/";
+var mainConString = "postgres://postgres:postgres@10.237.169.132:5432/"; //The database IP
 
 module.exports = {
+  //Return all database names on the server
   getDBName: function(req, res) {
         var pg = require('pg');
 
@@ -25,6 +26,7 @@ module.exports = {
         });
   },
 
+  //From a database return all the table names
   getTableName: function(req, res) {
         var pg = require('pg');
         var client = new pg.Client(mainConString+req.query.db);
@@ -48,6 +50,7 @@ module.exports = {
         });
   },
 
+  //From a table return all the column names
   getColumnName: function(req, res) {
         var pg = require('pg');
         var client = new pg.Client(mainConString+req.query.db);
@@ -71,6 +74,7 @@ module.exports = {
         });
   },
 
+  //From a table return all the foreign key constraint
   getColumnConstraint: function(req, res) {
         var pg = require('pg');
         var client = new pg.Client(mainConString+req.query.db);
@@ -94,6 +98,7 @@ module.exports = {
         });
   },
 
+  //From a table return all the records
   getAllValues: function(req, res) {
         var pg = require('pg');
         var client = new pg.Client(mainConString+req.query.db);
@@ -117,6 +122,7 @@ module.exports = {
         });
   },
 
+  //From a table and an attribute return the wanted records
   getValuesOf: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+req.query.db);
@@ -140,6 +146,7 @@ module.exports = {
       });
   },
 
+  //Insert a record in a table
   addRecord: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+req.query.db);
@@ -177,6 +184,7 @@ module.exports = {
       });
   },
 
+  //Modify a record in a table
   modifyRecord: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+req.query.db);
@@ -214,6 +222,7 @@ module.exports = {
       });
   },
 
+  //From a table return the primary key name
   getPrimaryKey: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+req.query.db);
@@ -237,6 +246,7 @@ module.exports = {
       });
   },
 
+  //Delete a record in a table
   delRecord: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+req.query.db);
@@ -261,6 +271,7 @@ module.exports = {
       });
   },
 
+  //From a table, an attribute and a condition return the wanted records
   query: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+req.query.db);
@@ -284,6 +295,7 @@ module.exports = {
       });
   },
 
+  //From a database return its memory
   getDbMemory: function(req, res) {
       var pg = require('pg');
       var client = new pg.Client(mainConString+"postgres");
