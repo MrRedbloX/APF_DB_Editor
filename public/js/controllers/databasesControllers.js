@@ -204,13 +204,15 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   if(document.getElementById("clearButton") != null) document.getElementById("clearButton").disabled = false;
   if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
+  //We retrieve the name of the db and table selected and check if it's on read only
   $scope.checkReadOnlyDB = function(db){
-    //We retrieve the name of the db and table selected and check if it's on read only
+    ret = true;
     if(currentTableSelected != null){
       let temp = currentTableSelected.split(';');
       let db = temp[0];
-      isReadOnly = checkIfReadOnlyDB(db);
+      ret = checkIfReadOnlyDB(db);
     }
+    return ret;
   };
   //When we click on display; condAtt and condValue are used as filter in the display
   $scope.display = function(condAtt, condValue){
