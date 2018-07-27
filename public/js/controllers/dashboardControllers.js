@@ -80,7 +80,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){ //We make sure we are in the last tour
-                  while($scope.databases[i] == null || $scope.databases[i].table == null) $scope.wait() //Prevent from bad loading
+                  while($scope.databases[i] == null || $scope.databases[i].table == null) $scope.wait(); //Prevent from bad loading
                   $scope.readyDB = true; //We say the loading has finish
                   $scope.loadTableValues(); //We load the table values
                   $scope.loadChartNbTablesInDB(); //And we load the chart
@@ -110,7 +110,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                while($scope.databases[i].table[j].values == null) $scope.wait() //Prevent from bad loading
+                while($scope.databases[i].table[j].values == null) $scope.wait(); //Prevent from bad loading
                 $scope.readyValues = true; //We say the values are ready
                 $scope.loadSondeTenant(); //Now we can load the tenant process
                 $scope.loadDbMemory(); //And the memory process
