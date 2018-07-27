@@ -115,6 +115,9 @@ app.config(function($routeProvider) {
     .when("/signup", {
         templateUrl : "public/html/signup.html"
     })
+    .when("/configuration", {
+        templateUrl : "public/html/configuration.html"
+    })
     .otherwise({
         redirectTo: '/'
     });
