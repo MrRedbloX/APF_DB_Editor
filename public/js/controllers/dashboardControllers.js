@@ -1,7 +1,7 @@
 //The following controllers will be handle the dashboard area
 
 //This one is for all the chart display and process
-app.controller('chartDisplayController', function($scope, postgresqlFactory, buttonAreaFactory){
+app.controller('chartDisplayController', function($scope, postgresqlFactory, buttonAreaFactory, loginFactory){
   var postgresScope = postgresqlFactory.getScope();
   var buttonAreaScope;
   var loginScope = loginFactory.getScope();
