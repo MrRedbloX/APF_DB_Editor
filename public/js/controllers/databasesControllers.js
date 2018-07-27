@@ -374,7 +374,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to delete a tuple
   $scope.delete = function(){
-    if($scope.checkReadOnlyDB()){
+    if(!$scope.checkReadOnlyDB()){
       currentRowSelected = rowSelected;
       currentTableSelected = tableSelected;
       if(confirm('Do you want to delete this record ?')){
