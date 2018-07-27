@@ -162,6 +162,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
               if($scope.breakIndex >= $scope.limit){
                 loginScope.reload();
                 $scope.breakIndex = 0;
+                $scope.wait();
                 break;
               }
               $scope.breakIndex++;
