@@ -1,8 +1,9 @@
 app.controller('loginController', function($scope, $http, $route, postgresqlFactory, loginFactory){
   loginFactory.setScope($scope)
-  var id_ok = "63e780c3f321d13109c71bf81805476e";
   var postgresScope = postgresqlFactory.getScope();
-  var time_to_expire = 0.041;
+  $scope.time_to_expire = 0.041;
+
+  $scope.user = null;
 
   $scope.iden = function() {
     var tab="azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789_$&#@";
@@ -10,6 +11,8 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     var pass= document.getElementById("pass").value;
     var rm= document.getElementById("check");
     var userpass = user + pass;
+
+    $scope.user = user;
 
     $scope.getMD5(userpass, function(){
       if($scope.successRequest){
@@ -63,7 +66,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
         window.location="#!/login";
       }
       else{
-        $scope.createCookie('date', '1', time_to_expire);
+        $scope.createCookie('date', '1', $scope.time_to_expire);
       }
     }
   }
@@ -112,7 +115,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
             $scope.createCookie('identifiant', md5, 31);
           }
           window.location="/";
-          $scope.createCookie('date', '1', time_to_expire);
+          $scope.createCookie('date', '1', $scope.time_to_expire);
         }
         else {
           alert("Id or password incorrect");
