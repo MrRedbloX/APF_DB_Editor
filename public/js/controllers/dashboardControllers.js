@@ -166,6 +166,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
               }
               $scope.breakIndex++;
             }
+            $scope.wait();
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name)){
