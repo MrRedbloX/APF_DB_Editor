@@ -38,6 +38,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#!/dashboard">Dashboard</a>
+            </li>
             <li class="nav-item dropdown" >
               <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Databases
@@ -48,8 +51,16 @@
                 <a ng-if="isAdmin()" class="dropdown-item" href="#!/configuration">Configuration</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!/dashboard">Dashboard</a>
+            <li class="nav-item dropdown" >
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Providers
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#!/providers?name=AWS">AWS</a>
+                <a class="dropdown-item" href="#!/providers?name=Azure">Azure</a>
+                <a class="dropdown-item" href="#!/providers?name=FCA">FCA</a>
+                <a class="dropdown-item" href="#!/providers?name=FE">Flexible Engine</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#!/help">Help</a>
