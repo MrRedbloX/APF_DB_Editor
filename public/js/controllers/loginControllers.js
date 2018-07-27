@@ -253,7 +253,15 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   $scope.isAdmin = function(){
     ret = false;
     if($scope.user != null){
-
+      $scope.getAdminFromId($scope.user, function(){
+        if($scope.successRequest){
+          console.log($scope.admin);
+        }
+        else{
+          console.log($scope.admin);
+          alert("Error on getAdminFromId request, check console logs.");
+        }
+      });
     }
     return ret;
   }
