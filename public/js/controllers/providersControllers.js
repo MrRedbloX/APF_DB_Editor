@@ -15,7 +15,7 @@ app.controller('mainProvidersController', function($scope){
     else
       console.log("WTF");
 
-    $scope.selectedProvider = String.raw($scope.selectedProvider);
+    console.log($scope.selectedProvider);
   };
 });
 
