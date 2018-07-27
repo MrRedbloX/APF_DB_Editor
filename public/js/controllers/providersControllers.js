@@ -24,6 +24,5 @@ app.controller('fcaProviderController', function($scope){
 });
 
 app.controller('feProviderController', function($scope){
-  console.log("FE");
   $scope.controller = "Flexible Engine";
 });
