@@ -19,7 +19,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
   $scope.relTenantIdName = []; //This array will contains the id and the name of every tenant
 
   $scope.breakIndex = 0;
-  $scope.limit = 1000;
+  $scope.limit = 100;
 
   //Allows to randomly generate a color for the chart (return a table with a color for the background and a color for the border)
   $scope.getRGBA = function(){
@@ -166,7 +166,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
               }
               $scope.breakIndex++;
             }
-            $scope.wait();
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name)){
