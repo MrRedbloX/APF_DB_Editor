@@ -1,15 +1,15 @@
 <div ng-controller="mainProvidersController">
   <a ng-init="checkProvider()" />
-  <div ng-if="selectedController == awsProvider" ng-controller="awsProviderController">
+  <div ng-if="selectedProvider == awsProvider" ng-controller="awsProviderController">
     {{controller}}
   </div>
-  <div ng-if="selectedController == azureProvider" ng-controller="azureProviderController">
+  <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
     {{controller}}
   </div>
-  <div ng-if="selectedController == fcaProvider" ng-controller="fcaProviderController">
+  <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
     {{controller}}
   </div>
-  <div ng-if="selectedController == feProvider" ng-controller="feProviderController">
+  <div ng-if="selectedProvider == feProvider" ng-controller="feProviderController">
     {{controller}}
   </div>
 </div>
