@@ -17,6 +17,9 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
   $scope.chartsSondeTenant = []; //This array will contains labels and data for the tenant display
   $scope.relTenantIdName = []; //This array will contains the id and the name of every tenant
 
+  $scope.breakIndex = 0;
+  $scope.limit = 100000;
+
   //Allows to randomly generate a color for the chart (return a table with a color for the background and a color for the border)
   $scope.getRGBA = function(){
     ret = [];
