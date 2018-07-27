@@ -205,6 +205,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //We retrieve the name of the db and table selected and check if it's on read only
   $scope.checkReadOnlyDB = function(){
+    console.log("check");
     ret = false;
     if(currentTableSelected != null){
       let temp = currentTableSelected.split(';');
