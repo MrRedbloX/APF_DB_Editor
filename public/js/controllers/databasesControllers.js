@@ -437,6 +437,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to show the relations of a tuple
   $scope.showRelations = function(){
+    currentTableSelected = tableSelected;
     if(!$scope.checkReadOnlyDB()){
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
