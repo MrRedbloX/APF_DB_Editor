@@ -283,7 +283,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             if($scope.databases[i].name == $scope.dbColors[j].db_name)
               color = $scope.dbColors[j].color;
           }
-          while($scope.databases[i].table[y].values.length == null) $scope.wait();
+          while($scope.databases[i].table[y].values == null) $scope.wait();
           labels.push($scope.splitTheTableName($scope.databases[i].table[y].table_name));
           data.push($scope.databases[i].table[y].values.length);
           backgroundColor.push(color[0]);
