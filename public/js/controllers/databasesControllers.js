@@ -204,6 +204,14 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   if(document.getElementById("clearButton") != null) document.getElementById("clearButton").disabled = false;
   if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
+  $scope.checkReadOnlyDB = function(db){
+    //We retrieve the name of the db and table selected and check if it's on read only
+    if(currentTableSelected != null){
+      let temp = currentTableSelected.split(';');
+      let db = temp[0];
+      isReadOnly = checkIfReadOnlyDB(db);
+    }
+  };
   //When we click on display; condAtt and condValue are used as filter in the display
   $scope.display = function(condAtt, condValue){
     busy = false; //First we say that no view is displayed by default
@@ -221,13 +229,6 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     columnsDisplayScope.row_ids = [];
     columnsDisplayScope.elementIdToSet = [];
     columnsDisplayScope.clearTooltips();
-
-    //We retrieve the name of the db and table selected and check if it's on read only
-    if(currentTableSelected != null){
-      let temp = currentTableSelected.split(';');
-      let db = temp[0];
-      isReadOnly = checkIfReadOnlyDB(db);
-    }
 
     document.getElementById("columnsDisplayArea").style.display = "block"; //We make appear the column display area
 
