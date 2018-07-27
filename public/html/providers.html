@@ -5,6 +5,11 @@
   </div>
   <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
     {{controller}}
+    <div ng-if="readyTenant" ng-repeat="tenant in tenants">
+      <fieldset>
+        <legend>{{tenant.name}}</legend>
+      </fieldset>
+    </div>
   </div>
   <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
     {{controller}}
