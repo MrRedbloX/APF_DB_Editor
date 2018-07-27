@@ -137,6 +137,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
       if($scope.databases[i].name == "sonde"){ //We focus on sonde database
         for(let j=0; j<$scope.databases[i].table.length; j++){
           if($scope.databases[i].table[j].table_name == "tenant_table"){ // We push all the needed info of a tenant
+            while($scope.databases[i].table[j].values == null) $scope.wait(); //Prevent from bad loading
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name)){
