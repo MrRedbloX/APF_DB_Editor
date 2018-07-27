@@ -31,3 +31,6 @@ Mettre les noms à la place des uuid pour tous les fk > Fait
 Vérifier les références dans addRow > Fait
 Vérifier dans display les noms > Fait
 Commenter le code > Fait (dire à Alois de commenter le sien)
+
+Rajouter dans Subnet vpc id
+Copier table Provider dans sonde
