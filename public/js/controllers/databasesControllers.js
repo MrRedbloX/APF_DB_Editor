@@ -205,7 +205,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   if(document.getElementById("showRelationsButton") != null) document.getElementById("showRelationsButton").disabled = true;
 
   //We retrieve the name of the db and table selected and check if it's on read only
-  $scope.checkReadOnlyDB = function(db){
+  $scope.checkReadOnlyDB = function(){
     ret = true;
     if(currentTableSelected != null){
       let temp = currentTableSelected.split(';');
@@ -235,7 +235,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     document.getElementById("columnsDisplayArea").style.display = "block"; //We make appear the column display area
 
     //Here we manage the clickability of the buttons
-    if(isReadOnly){
+    if($scope.checkReadOnlyDB()){
       if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
@@ -250,7 +250,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
       let temp = currentTableSelected.split(';'); //We retrieve the db and the table names
       let db = temp[0];
       let table = temp[1];
-      if(!isReadOnly) document.getElementById('addButton').disabled = false;
+      if(!$scope.checkReadOnlyDB()) document.getElementById('addButton').disabled = false;
 
       postgresScope.getColumnName(db, table, function(){ //We get the name of all columns
         if(postgresScope.successRequest){
@@ -345,9 +345,8 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to add a tuple
   $scope.add = function(){
-    console.log(isReadOnly);
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
-    if(!isReadOnly){
+    if(!$scope.checkReadOnlyDB()){
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
@@ -362,7 +361,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.modify = function(){
 
     //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
-    if(!isReadOnly){
+    if(!$scope.checkReadOnlyDB()){
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
@@ -375,38 +374,40 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to delete a tuple
   $scope.delete = function(){
-    currentRowSelected = rowSelected;
-    currentTableSelected = tableSelected;
-    if(confirm('Do you want to delete this record ?')){
-      if(currentTableSelected != null){
-        let temp = currentTableSelected.split(';');
-        let db = temp[0];
-        let table = temp[1];
+    if($scope.checkReadOnlyDB()){
+      currentRowSelected = rowSelected;
+      currentTableSelected = tableSelected;
+      if(confirm('Do you want to delete this record ?')){
+        if(currentTableSelected != null){
+          let temp = currentTableSelected.split(';');
+          let db = temp[0];
+          let table = temp[1];
 
-        postgresScope.getPrimaryKey(db, table, function(){ //We retrieve the primary key of the table (for now we only handle a single pk)
-          if(postgresScope.successRequest){
-            for(let i=0; i<columnsDisplayScope.columns.length; i++){
-              if(postgresScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
-                var pkValue = JSON.parse(currentRowSelected)[i];
-                break;
+          postgresScope.getPrimaryKey(db, table, function(){ //We retrieve the primary key of the table (for now we only handle a single pk)
+            if(postgresScope.successRequest){
+              for(let i=0; i<columnsDisplayScope.columns.length; i++){
+                if(postgresScope.primaryKey.data[0].attname === columnsDisplayScope.columns[i].column_name){
+                  var pkValue = JSON.parse(currentRowSelected)[i];
+                  break;
+                }
               }
+              postgresScope.delRecord(db, table,postgresScope.primaryKey.data[0].attname, pkValue, function(){ //The request of deletion
+                if(postgresScope.successRequest){
+                  $scope.display(); // We call the display function to refresh the table (the most secure method but it can be a little heavy)
+                  rowSelected = null;
+                }
+                else{
+                  console.log(postgresScope.deleteRequest);
+                  alert("Error on delRecord request, check console logs.");
+                }
+              });
             }
-            postgresScope.delRecord(db, table,postgresScope.primaryKey.data[0].attname, pkValue, function(){ //The request of deletion
-              if(postgresScope.successRequest){
-                $scope.display(); // We call the display function to refresh the table (the most secure method but it can be a little heavy)
-                rowSelected = null;
-              }
-              else{
-                console.log(postgresScope.deleteRequest);
-                alert("Error on delRecord request, check console logs.");
-              }
-            });
-          }
-          else{
-            console.log(postgresScope.primaryKey);
-            alert("Error on getPrimaryKey request, check console logs.");
-          }
-        });
+            else{
+              console.log(postgresScope.primaryKey);
+              alert("Error on getPrimaryKey request, check console logs.");
+            }
+          });
+        }
       }
     }
   };
@@ -416,7 +417,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
     //We just hide the table display
     if(document.getElementById("columnsDisplayArea") != null) document.getElementById("columnsDisplayArea").style.display = "none";
-    if(!isReadOnly){
+    if(!$scope.checkReadOnlyDB()){
       if(document.getElementById("addButton") != null) document.getElementById("addButton").disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
@@ -431,7 +432,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to show the relations of a tuple
   $scope.showRelations = function(){
-    if(!isReadOnly){
+    if(!$scope.checkReadOnlyDB()){
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
