@@ -4,6 +4,7 @@
 app.controller('chartDisplayController', function($scope, postgresqlFactory, buttonAreaFactory){
   var postgresScope = postgresqlFactory.getScope();
   var buttonAreaScope;
+  var loginScope = loginFactory.getScope();
 
   //These bool will tell if a specific process has finish
   $scope.readyDB = false;
@@ -83,7 +84,15 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
                   table : postgresScope.tableArray.data
                 });
                 if(i == db.length-1){ //We make sure we are in the last tour
-                  while($scope.databases[i] == null || $scope.databases[i].table == null) $scope.wait(); //Prevent from bad loading
+                  while($scope.databases[i] == null || $scope.databases[i].table == null){ //Prevent from bad loading
+                    $scope.wait();
+                    if($scope.breakIndex >= $scope.limit){
+                      loginScope.reload();
+                      $scope.breakIndex = 0;
+                      break;
+                    }
+                    $scope.breakIndex++;
+                  }
                   $scope.readyDB = true; //We say the loading has finish
                   $scope.loadTableValues(); //We load the table values
                   $scope.loadChartNbTablesInDB(); //And we load the chart
@@ -113,7 +122,15 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             if($scope.successRequest){
               $scope.databases[i].table[j].values = postgresScope.columnValues.data;
               if(i == $scope.databases.length-1 && j == $scope.databases[i].table.length-1){
-                while($scope.databases[i].table[j].values == null) $scope.wait(); //Prevent from bad loading
+                while($scope.databases[i].table[j].values == null){
+                  $scope.wait();
+                  if($scope.breakIndex >= $scope.limit){
+                    loginScope.reload();
+                    $scope.breakIndex = 0;
+                    break;
+                  }
+                  $scope.breakIndex++;
+                }
                 $scope.readyValues = true; //We say the values are ready
                 $scope.loadSondeTenant(); //Now we can load the tenant process
                 $scope.loadDbMemory(); //And the memory process
@@ -140,7 +157,15 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
       if($scope.databases[i].name == "sonde"){ //We focus on sonde database
         for(let j=0; j<$scope.databases[i].table.length; j++){
           if($scope.databases[i].table[j].table_name == "tenant_table"){ // We push all the needed info of a tenant
-            while($scope.databases[i].table[j].values == null) $scope.wait(); //Prevent from bad loading
+            while($scope.databases[i].table[j].values == null){
+              $scope.wait();
+              if($scope.breakIndex >= $scope.limit){
+                loginScope.reload();
+                $scope.breakIndex = 0;
+                break;
+              }
+              $scope.breakIndex++;
+            }
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name)){
@@ -287,7 +312,15 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             if($scope.databases[i].name == $scope.dbColors[j].db_name)
               color = $scope.dbColors[j].color;
           }
-          while($scope.databases[i].table[y].values == null) $scope.wait();
+          while($scope.databases[i].table[y].values == null){
+            $scope.wait();
+            if($scope.breakIndex >= $scope.limit){
+              loginScope.reload();
+              $scope.breakIndex = 0;
+              break;
+            }
+            $scope.breakIndex++;
+          }
           labels.push($scope.splitTheTableName($scope.databases[i].table[y].table_name));
           data.push($scope.databases[i].table[y].values.length);
           backgroundColor.push(color[0]);
