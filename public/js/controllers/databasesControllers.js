@@ -214,7 +214,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     treeDatabaseAreaScope.setDisplayTo("nothing");
 
     //We make no row is selected
-    if(currentRowSelected != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
+    if(currentRowSelected != null && document.getElementById(currentRowSelected) != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
     rowSelected = null;
 
     //We refresh the elements for tooltip and name management
