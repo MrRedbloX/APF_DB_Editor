@@ -12,6 +12,8 @@ app.controller('mainProvidersController', function($scope){
       $scope.selectedProvider = "fcaProviderController";
     else if(provider == "FE")
       $scope.selectedProvider = "feProviderController";
+    else
+      console.log("WTF");
 
     $scope.selectedProvider = String.raw($scope.selectedProvider);
   };
