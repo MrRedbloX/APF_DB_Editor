@@ -13,6 +13,7 @@ app.controller('mainProvidersController', function($scope){
     else if(provider == "FE")
       $scope.selectedProvider = "feProviderController";
 
+    $scope.selectedProvider = String.raw($scope.selectedProvider);
   };
 });
 
