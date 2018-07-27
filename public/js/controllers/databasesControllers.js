@@ -209,6 +209,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     if(currentTableSelected != null){
       let temp = currentTableSelected.split(';');
       let db = temp[0];
+      console.log(db);
       ret = checkIfReadOnlyDB(db);
     }
     return ret;
