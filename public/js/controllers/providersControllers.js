@@ -5,13 +5,14 @@ app.controller('mainProvidersController', function($scope){
     let provider = ((window.location.href.split('?')[1]).split('&')[0]).split('=')[1];
 
     if(provider == "AWS")
-      selectedProvider = "awsProviderController";
+      $scope.selectedProvider = "awsProviderController";
     else if(provider == "Azure")
-      selectedProvider = "azureProviderController";
+      $scope.selectedProvider = "azureProviderController";
     else if(provider == "FCA")
-      selectedProvider = "fcaProviderController";
+      $scope.selectedProvider = "fcaProviderController";
     else if(provider == "FE")
-      selectedProvider = "feProviderController";
+      $scope.selectedProvider = "feProviderController";
+
   };
 });
 
