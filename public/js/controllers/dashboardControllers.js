@@ -50,6 +50,18 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
     return ret;
   }
 
+  //From a tenant name return if one already exists with the same name
+  $scope.checkIdNameTenant = function(tenant_name){
+    ret = false;
+    for(let i=0;i<$scope.relTenantIdName.length;i++){
+      if($scope.relTenantIdName[i].name == tenant_name){
+        ret = true;
+        break;
+      }
+    }
+    return ret;
+  };
+
   //Allows to load the databases and tables info
   $scope.loadDB = function(){
     if(!$scope.readyDB){
@@ -130,6 +142,8 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               labels.push($scope.databases[i].table[j].values[k].tenant_name);
+              if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name))
+                $scope.databases[i].table[j].values[k].tenant_name = $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid;
               $scope.relTenantIdName.push({
                 id : $scope.databases[i].table[j].values[k].uuid,
                 name : $scope.databases[i].table[j].values[k].tenant_name
