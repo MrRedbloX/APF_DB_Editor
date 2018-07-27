@@ -227,6 +227,11 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   $scope.reload = function(){
     $route.reload();
   };
+
+  //Check if the logged on user is administrator
+  $scope.isAdmin = function(){
+    return true;
+  }
 });
 
 app.controller('signupController', function($scope, $http, postgresqlFactory, loginFactory){
