@@ -347,7 +347,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to add a tuple
   $scope.add = function(){
-    console.log("wtf");
+    currentTableSelected = tableSelected;
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
     if(!$scope.checkReadOnlyDB()){
       console.log("add");
@@ -363,7 +363,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to modify a tuple
   $scope.modify = function(){
-
+    currentTableSelected = tableSelected;
     //Same as add we only manage graphical constraints, the actions are handle in modifyRowAreaController
     if(!$scope.checkReadOnlyDB()){
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
@@ -378,6 +378,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to delete a tuple
   $scope.delete = function(){
+    currentTableSelected = tableSelected;
     if(!$scope.checkReadOnlyDB()){
       currentRowSelected = rowSelected;
       currentTableSelected = tableSelected;
@@ -418,7 +419,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to clear the table display
   $scope.clear = function(){
-
+    currentTableSelected = tableSelected;
     //We just hide the table display
     if(document.getElementById("columnsDisplayArea") != null) document.getElementById("columnsDisplayArea").style.display = "none";
     if(!$scope.checkReadOnlyDB()){
