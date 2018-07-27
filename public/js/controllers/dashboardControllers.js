@@ -142,12 +142,19 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
               labels.push($scope.databases[i].table[j].values[k].tenant_name);
-              if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name))
+              if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name)){
                 $scope.databases[i].table[j].values[k].tenant_name = $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid;
-              $scope.relTenantIdName.push({
-                id : $scope.databases[i].table[j].values[k].uuid,
-                name : $scope.databases[i].table[j].values[k].tenant_name
-              });
+                $scope.relTenantIdName.push({
+                  id : $scope.databases[i].table[j].values[k].uuid,
+                  name : $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid;
+                });
+              }
+              else{
+                $scope.relTenantIdName.push({
+                  id : $scope.databases[i].table[j].values[k].uuid,
+                  name : $scope.databases[i].table[j].values[k].tenant_name
+                });
+              }
             }
           }
           //Here we check the wanted tables (you can add a condition here if the client wants to add another table)
