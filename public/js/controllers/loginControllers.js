@@ -226,6 +226,24 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     });
   };
 
+  $scope.getAdminFromId = function(id, callback){
+    $http({
+      method: 'GET',
+      url: '/login/getAdminFromId?id='+id
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.admin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.admin = data;
+        if(callback) callback();
+    });
+  };
+
   //Sometimes the display is not as expected due to JS async problems are databases network issues, this allows to relaod the view which is much faster than reload the all page
   $scope.reload = function(){
     $route.reload();
@@ -233,7 +251,11 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
 
   //Check if the logged on user is administrator
   $scope.isAdmin = function(){
-    return false;
+    ret = false;
+    if($scope.user != null){
+
+    }
+    return ret;
   }
 });
 
