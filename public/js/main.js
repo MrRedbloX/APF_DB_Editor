@@ -1,6 +1,7 @@
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
 var readOnlyDB = ['sonde']; //Contains the read only databases
+var dbReadOnly = false; //True if the database is in read only
 var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid']; //The name that will be displayed instead of the id
 var busy = false; //When a view in db_management is displayed, this turn to true in order to prevent from some unwanted behaviors
 var exceptionTables = ['map']; //The tables which starts with these elements won't be displayed in the dashboard charts
@@ -24,9 +25,11 @@ var isInExceptionTables = function(table){
 //Check if a database is in read only mode
 var checkIfReadOnlyDB = function(db){
   ret = false;
+  dbReadOnly = false;
   for(let i=0; i<readOnlyDB.length; i++){
     if(db === readOnlyDB[i]){
       ret = true;
+      dbReadOnly = true;
       break;
     }
   }
