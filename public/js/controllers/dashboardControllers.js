@@ -142,15 +142,15 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
           if($scope.databases[i].table[j].table_name == "tenant_table"){ // We push all the needed info of a tenant
             for(let k=0; k<$scope.databases[i].table[j].values.length; k++){
               idTenant.push($scope.databases[i].table[j].values[k].uuid);
-              labels.push($scope.databases[i].table[j].values[k].tenant_name);
               if($scope.checkIdNameTenant($scope.databases[i].table[j].values[k].tenant_name)){
-                $scope.databases[i].table[j].values[k].tenant_name = $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid;
+                labels.push($scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid);
                 $scope.relTenantIdName.push({
                   id : $scope.databases[i].table[j].values[k].uuid,
                   name : $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid
                 });
               }
               else{
+                labels.push($scope.databases[i].table[j].values[k].tenant_name);
                 $scope.relTenantIdName.push({
                   id : $scope.databases[i].table[j].values[k].uuid,
                   name : $scope.databases[i].table[j].values[k].tenant_name
