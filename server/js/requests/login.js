@@ -105,4 +105,29 @@ module.exports = {
         else console.log(response);
     });
   }
+
+  //From an ID check if the user is administrator
+  getAdminFromId: function(req, res){
+    var pg = require('pg');
+
+    var client = new pg.Client(loginConString);
+
+    client.connect(function(err,client) {
+      if(err){
+       console.log("Not able to get connection : "+ err);
+       res.status(400).send(err);
+      }
+      else{
+        console.log("Connection successful");
+        client.query("SELECT username FROM APF_ID WHERE username = '"+req.query.id+"' AND is_admin = true;" ,function(err,result) {
+          client.end(); // closing the connection;
+          if(err){
+             console.log(err);
+             res.status(400).send(err);
+          }
+          else res.status(200).send(result.rows);
+        });
+      }
+    });
+  }
 }
