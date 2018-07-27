@@ -381,7 +381,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
         window.location = "#!/db_management";
         $scope.wait();
         buttonAreaScope = buttonAreaFactory.getScope();
-        if(buttonAreaScope == null){ //We do that to prevent from async issues
+        while(buttonAreaScope == null){ //We do that to prevent from async issues
           $scope.wait();
           buttonAreaScope = buttonAreaFactory.getScope();
         }
