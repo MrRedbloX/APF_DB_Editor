@@ -59,7 +59,6 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
         break;
       }
     }
-    console.log(ret);
     return ret;
   };
 
