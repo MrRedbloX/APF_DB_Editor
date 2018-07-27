@@ -104,7 +104,7 @@ module.exports = {
         if (error) console.log( error );
         else console.log(response);
     });
-  }
+  },
 
   //From an ID check if the user is administrator
   getAdminFromId: function(req, res){
