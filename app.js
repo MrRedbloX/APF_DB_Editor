@@ -69,6 +69,9 @@ app.get('/login/getIdFromMd5NameMail', function(req,res){
 app.post('/login/sendConfirmEmail', function(req,res){
     loginOperations.sendConfirmEmail(req,res);
 });
+app.get('/login/getAdminFromId', function(req,res){
+    loginOperations.getAdminFromId(req,res);
+});
 
 app.set('port', process.env.PORT || 3001);
 app.use(express.static(__dirname));
