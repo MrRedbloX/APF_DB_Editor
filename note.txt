@@ -1,0 +1,7 @@
+Connect putty:
+	application server : 10.237.169.132
+	login server : 10.237.169.202
+
+Execute auto git : 
+	auto pull : on application server execute ./autoPull.sh &
+	auto push : on dev side execute in powershell .\autoPush.ps1
