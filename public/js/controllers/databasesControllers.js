@@ -346,6 +346,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
 
   //When we want to add a tuple
   $scope.add = function(){
+    console.log("wtf");
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
     if(!$scope.checkReadOnlyDB()){
       console.log("add");
