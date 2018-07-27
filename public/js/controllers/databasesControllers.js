@@ -348,6 +348,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
   $scope.add = function(){
     //Here we only manage graphical constraints, the actions are handle in the addRowAreaController
     if(!$scope.checkReadOnlyDB()){
+      console.log("add");
       if(document.getElementById("addButton") != null) document.getElementById('addButton').disabled = true;
       if(document.getElementById("modifyButton") != null) document.getElementById("modifyButton").disabled = true;
       if(document.getElementById("deleteButton") != null) document.getElementById("deleteButton").disabled = true;
