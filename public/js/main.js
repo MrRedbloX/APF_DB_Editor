@@ -118,6 +118,9 @@ app.config(function($routeProvider) {
     .when("/configuration", {
         templateUrl : "public/html/configuration.html"
     })
+    .when("/providers", {
+        templateUrl : "public/html/providers.html"
+    })
     .otherwise({
         redirectTo: '/'
     });
