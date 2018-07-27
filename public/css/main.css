@@ -125,3 +125,7 @@ legend.chartDisplayBorder {
     padding:0 10px; /* To give a bit of padding on the left and right */
     border-bottom:none;
 }
+footer {
+  text-align: left;
+  padding-top: 20%;
+}
