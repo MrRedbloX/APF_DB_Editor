@@ -146,7 +146,7 @@ app.controller('chartDisplayController', function($scope, postgresqlFactory, but
                 $scope.databases[i].table[j].values[k].tenant_name = $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid;
                 $scope.relTenantIdName.push({
                   id : $scope.databases[i].table[j].values[k].uuid,
-                  name : $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid;
+                  name : $scope.databases[i].table[j].values[k].tenant_name+"#"+$scope.databases[i].table[j].values[k].uuid
                 });
               }
               else{
