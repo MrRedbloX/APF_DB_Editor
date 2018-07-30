@@ -16,7 +16,15 @@
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
 
           <div ng-repeat="res in ressources">
-            {{res.name}}
+            <div id="treeECSTenantAWS">
+              <ul>
+                 <li data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{res.name}}</a>
+                   <ul ng-repeat="tenant in tenants">
+                     <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}' title="Tenant">{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+                   </ul>
+                 </li>
+              </ul>
+            </div>
             <hr>
           </div>
         </fieldset>
