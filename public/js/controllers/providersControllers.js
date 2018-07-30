@@ -27,9 +27,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.provider_table = "provider_table";
   $scope.tenantFkProvider = "provider_uuid";
 
-  $scope.displayRessources = displayRessources;
-  $scope.selectedTenant = selectedTenant;
-  $scope.selectedTenantID = selectedTenantID;
+  $scope.displayRessources = false;
+  $scope.selectedTenant = null;
+  $scope.selectedTenantID = null;
 
   $scope.providerScope = null;
 
@@ -85,7 +85,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               $scope.providerScope = feProviderFactory.getScope();
               while($scope.providerScope == null) $scope.providerScope = feProviderFactory.getScope();
             }
-            
+
             $scope.providerScope.setTenants(postgresScope.queryRequest.data);
           }
           else{
