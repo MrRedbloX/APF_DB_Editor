@@ -117,8 +117,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
             $scope.displayRessources = true;
             for(let j=0; j<$scope.ressourcesNames.length; j++){
-              console.log("treeAWSTenant"+$scope.ressourcesNames[i]);
-              $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[i]);
+              console.log("treeAWSTenant"+$scope.ressourcesNames[j]);
+              $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[j]);
             }
             break;
           }
