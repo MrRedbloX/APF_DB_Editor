@@ -247,6 +247,20 @@ app.factory('feProviderFactory', function(){
   };
 });
 
+
+app.directive('onFinishRender', function ($timeout) {
+	return {
+		restrict: 'A',
+		link: function (scope, element, attr) {
+			if (scope.$last === true) {
+				$timeout(function () {
+					scope.$emit('ngRepeatFinished');
+				});
+			}
+		}
+	}
+});
+
 //This controller allows to do all the requests in databases, therefore he needs to be on top of every others
 app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
 
