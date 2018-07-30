@@ -1,4 +1,4 @@
-var readyQueryTenants = false;
+var readyTenants = false;
 app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory){
   mainProvidersFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
