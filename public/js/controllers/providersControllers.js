@@ -37,6 +37,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(postgresScope.successRequest){
             $scope.tenants = postgresScope.queryRequest.data;
             $scope.readyQueryTenants = true;
+            readyTenants = true;
             console.log($scope.tenants);
           }
           else{
