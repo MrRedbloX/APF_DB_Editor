@@ -51,6 +51,14 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       }
     });
   };
+
+  $scope.loadJSTree = function(provider){
+    $(function() {
+      $('#treeTenants'+provider).jstree(); //Activating jtree
+    });
+
+    $scope.readyQueryTenants = false;
+  }
 });
 
 app.controller('awsProviderController', function($scope, mainProvidersFactory){
