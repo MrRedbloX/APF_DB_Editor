@@ -221,6 +221,7 @@ app.factory('awsProviderFactory', function(){
       return theScope;
     }
   };
+});
 
 app.factory('fcaProviderFactory', function(){
   var theScope;
