@@ -34,24 +34,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.providerScope = null;
 
-  $scope.ressources = [
-    {
-      name : "ECS",
-      values : []
-    },
-    {
-      name : "VPC",
-      values : []
-    },
-    {
-      name : "SG",
-      values : []
-    },
-    {
-      name : "KP",
-      values : []
-    }
-  ];
+  $scope.ressources = [];
 
   $scope.readyCheckProvider = false;
   $scope.readyQueryTenants = false;
