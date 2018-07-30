@@ -75,9 +75,11 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = mainProvidersScope.getQueryTenants($scope.controller);
+  $scope.queryTenants = function(){
+    mainProvidersScope.getQueryTenants($scope.controller);
+  }
 
-  /*$scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);*/
+  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);*/
 });
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory){
