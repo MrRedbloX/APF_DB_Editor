@@ -142,7 +142,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryRessources = function(res){
-    console.log("Enter");
+    console.log("Enter query Res");
     if(res == "ECS") return new Promise((resolve, reject) => $scope.queryECS(resolve, reject));
     else if(res == "VPC") return new Promise((resolve, reject) => $scope.queryVPC(resolve, reject));
     else if(res == "SG") return new Promise((resolve, reject) => $scope.querySG(resolve, reject));
@@ -154,6 +154,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryECS = function(resolve, reject){
+    console.log("Enter query ECS");
     let values = [];
     postgresScope.query($scope.database, $scope.ecs_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
