@@ -57,8 +57,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     $(function() {
       $('#treeTenants'+provider).jstree(); //Activating jtree
     });
-
-    $scope.readyQueryTenants = false;
   }
   $scope.getReadyTenants = function(){
     return $scope.readyQueryTenants;
@@ -84,12 +82,6 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
   $scope.tenants = mainProvidersScope.tenants;
 
   $scope.readyTenants = mainProvidersScope.getReadyTenants();
-
-  $scope.queryTenantsBis = function(){
-    console.log("Start");
-    mainProvidersScope.queryTenants($scope.controller);
-    console.log($scope.readyQueryTenants);
-  }
 
   $scope.loadJSTreeBis = function(){
     mainProvidersScope.loadJSTree($scope.controller);
