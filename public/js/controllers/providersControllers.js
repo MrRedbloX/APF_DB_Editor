@@ -131,11 +131,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory, f
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTree("treeTenants"+$scope.controller);
-  }
-
-  $scope.loadJSTreeBis = function(){
-    mainProvidersScope.loadJSTree($scope.controller);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
   }
 });
 
