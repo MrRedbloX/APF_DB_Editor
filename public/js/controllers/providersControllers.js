@@ -53,7 +53,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               while(providerScope == null) providerScope = feProviderFactory.getScope();
             }
             providerScope.setTenants(postgresScope.queryRequest.data);
-            console.log($scope.tenants);
           }
           else{
             console.log(postgresScope.queryRequest);
@@ -69,7 +68,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.loadJSTree = function(provider){
-    console.log("Load");
     $(function() {
       let treeView = $('#treeTenants'+provider);
       treeView.jstree()
