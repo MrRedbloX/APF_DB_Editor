@@ -207,6 +207,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             $scope.ressources.push({
               name : "Security group(s)",
               nameBis : res,
+              imgPath : "ressources_sg.png",
               values : values
             });
           }
