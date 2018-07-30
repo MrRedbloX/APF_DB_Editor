@@ -31,12 +31,29 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
         $scope.readyCheckProvider = true;
 
+        let providerScope = null;
+        if($scope.selectedProvider == $scope.awsProvider){
+          providerScope = awsProviderFactory.getScope();
+          while(providerScope == null) providerScope = awsProviderFactory.getScope();
+        }
+        else if($scope.selectedProvider == $scope.azureProvider){
+          providerScope = awsProviderFactory.getScope();
+          while(providerScope == null) providerScope = azureProviderFactory.getScope();
+        }
+        else if($scope.selectedProvider == $scope.fcaProvider){
+          providerScope = awsProviderFactory.getScope();
+          while(providerScope == null) providerScope = fcaProviderFactory.getScope();
+        }
+        else if($scope.selectedProvider == $scope.feProvider){
+          providerScope = awsProviderFactory.getScope();
+          while(providerScope == null) providerScope = feProviderFactory.getScope();
+        }
+
         $scope.tenants = [];
         postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
           if(postgresScope.successRequest){
-            $scope.tenants = postgresScope.queryRequest.data;
-            $scope.readyQueryTenants = true;
-            readyTenants = true;
+            //$scope.tenants = postgresScope.queryRequest.data;
+            providerScope.setTenants(postgresScope.queryRequest.data);
             console.log($scope.tenants);
           }
           else{
