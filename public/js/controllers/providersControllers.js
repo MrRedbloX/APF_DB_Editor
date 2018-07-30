@@ -57,7 +57,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       $('#treeTenants'+provider).jstree(); //Activating jtree
     });
 
-    //$scope.readyQueryTenants = false;
+    $scope.readyQueryTenants = false;
   }
 });
 
