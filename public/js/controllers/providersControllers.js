@@ -155,8 +155,20 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.queryECS = function(resolve, reject){
     let values = [];
     postgresScope.query($scope.database, $scope.ecs_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
-      if($scope.successRequest){
-
+      if(postgresScope.successRequest){
+        for(let i=0; i<postgresScope.queryRequest.data.length; i++){
+          values.push({
+            id : postgresScope.queryRequest.data[i].uuid,
+            name : postgresScope.queryRequest.data[i].ecs_name
+          });
+          if(i == postgresScope.queryRequest.data.length-1){
+            $scope.ressources.push({
+              name : "Elastic Cloud Server(s)",
+              values : values
+            });
+            resolve();
+          }
+        }
       }
       else{
         console.log(postgresScope.queryRequest);
