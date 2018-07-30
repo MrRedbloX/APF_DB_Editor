@@ -128,17 +128,17 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryRessources = function(res){
-    if(res == "ECS") return new Promise((resolve, reject) => $scope.queryECS(resolve, reject));
-    else if(res == "VPC") return new Promise((resolve, reject) => $scope.queryVPC(resolve, reject));
-    else if(res == "SG") return new Promise((resolve, reject) => $scope.querySG(resolve, reject));
-    else if(res == "KP") return new Promise((resolve, reject) => $scope.queryKP(resolve, reject));
+    if(res == "ECS") return new Promise((resolve, reject) => $scope.queryECS(resolve, reject, res));
+    else if(res == "VPC") return new Promise((resolve, reject) => $scope.queryVPC(resolve, reject, res));
+    else if(res == "SG") return new Promise((resolve, reject) => $scope.querySG(resolve, reject, res));
+    else if(res == "KP") return new Promise((resolve, reject) => $scope.queryKP(resolve, reject, res));
     else return new Promise(reject => {
       console.log("Hundle ressource");
       reject();
     });
   };
 
-  $scope.queryECS = function(resolve, reject){
+  $scope.queryECS = function(resolve, reject, res){
     let values = [];
     postgresScope.query($scope.database, $scope.ecs_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
@@ -150,6 +150,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Elastic Cloud Server(s)",
+              nameBis : res
               values : values
             });
           }
@@ -164,7 +165,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.queryVPC = function(resolve, reject){
+  $scope.queryVPC = function(resolve, reject, res){
     let values = [];
     postgresScope.query($scope.database, $scope.vpc_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
@@ -176,6 +177,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Virtual Private Cloud(s)",
+              nameBis : res,
               values : values
             });
           }
@@ -190,7 +192,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.querySG = function(resolve, reject){
+  $scope.querySG = function(resolve, reject, res){
     let values = [];
     postgresScope.query($scope.database, $scope.sg_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
@@ -216,7 +218,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.queryKP = function(resolve, reject){
+  $scope.queryKP = function(resolve, reject, res){
     let values = [];
     postgresScope.query($scope.database, $scope.kp_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
