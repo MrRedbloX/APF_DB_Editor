@@ -27,6 +27,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.provider_table = "provider_table";
   $scope.tenantFkProvider = "provider_uuid";
   $scope.ecs_table = "ecs_table";
+  $scope.vpc_table = "vpc_table";
 
   $scope.displayRessources = false;
   $scope.selectedTenant = null;
