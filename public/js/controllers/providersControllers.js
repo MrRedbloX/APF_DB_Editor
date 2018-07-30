@@ -31,7 +31,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.selectedTenant = selectedTenant;
   $scope.selectedTenantID = selectedTenantID;
 
-  $scope.providerScope;
+  $scope.providerScope = null;
 
   $scope.ressources = [
     {
@@ -67,26 +67,26 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         $scope.readyCheckProvider = true;
 
         if($scope.selectedProvider == $scope.awsProvider){
-          providerScope = awsProviderFactory.getScope();
-          while(providerScope == null) providerScope = awsProviderFactory.getScope();
+          $scope.providerScope = awsProviderFactory.getScope();
+          while($scope.providerScope == null) $scope.providerScope = awsProviderFactory.getScope();
         }
         else if($scope.selectedProvider == $scope.azureProvider){
-          providerScope = azureProviderFactory.getScope();
-          while(providerScope == null) providerScope = azureProviderFactory.getScope();
+          $scope.providerScope = azureProviderFactory.getScope();
+          while($scope.providerScope == null) $scope.providerScope = azureProviderFactory.getScope();
         }
         else if($scope.selectedProvider == $scope.fcaProvider){
-          providerScope = fcaProviderFactory.getScope();
-          while(providerScope == null) providerScope = fcaProviderFactory.getScope();
+          $scope.providerScope = fcaProviderFactory.getScope();
+          while($scope.providerScope == null) $scope.providerScope = fcaProviderFactory.getScope();
         }
         else if($scope.selectedProvider == $scope.feProvider){
-          providerScope = feProviderFactory.getScope();
-          while(providerScope == null) providerScope = feProviderFactory.getScope();
+          $scope.providerScope = feProviderFactory.getScope();
+          while($scope.providerScope == null) $scope.providerScope = feProviderFactory.getScope();
         }
 
         $scope.tenants = [];
         postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
           if(postgresScope.successRequest){
-            providerScope.setTenants(postgresScope.queryRequest.data);
+            $scope.providerScope.setTenants(postgresScope.queryRequest.data);
           }
           else{
             console.log(postgresScope.queryRequest);
@@ -115,7 +115,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   }
 
   $scope.getRessources = function(tenant){
-    
+
   };
 
 });
