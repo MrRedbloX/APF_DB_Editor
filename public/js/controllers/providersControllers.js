@@ -13,6 +13,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.provider_table = "provider_table";
   $scope.tenantFkProvider = "provider_uuid";
 
+  $scope.tenants = [];
+
   $scope.checkProvider = function(){
     $scope.selectedProvider = ((window.location.href.split('?')[1]).split('&')[0]).split('=')[1];
 
@@ -31,9 +33,11 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryTenants = function(provider){
+    $scope.tenants = [];
     postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
       if(postgresScope.successRequest){
-        $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
+        $scope.tenants = postgresScope.queryRequest.data;
+        console.log($scope.tenants);
       }
       else{
         console.log(postgresScope.queryRequest);
