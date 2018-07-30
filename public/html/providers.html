@@ -14,10 +14,6 @@
       <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
-          <div ng-repeat="chart in chartsSondeTenant track by $index" class="divSquare">
-            <canvas id="sondeTenant" height="200%" ng-init="loadChartSondeTenant(chart)"></canvas>
-            <div ng-if="$index%2 == 0" style='clear:both' />
-          </div>
         </fieldset>
       </form>
     </div>
