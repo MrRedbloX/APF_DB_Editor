@@ -37,15 +37,15 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           while(providerScope == null) providerScope = awsProviderFactory.getScope();
         }
         else if($scope.selectedProvider == $scope.azureProvider){
-          providerScope = awsProviderFactory.getScope();
+          providerScope = azureProviderFactory.getScope();
           while(providerScope == null) providerScope = azureProviderFactory.getScope();
         }
         else if($scope.selectedProvider == $scope.fcaProvider){
-          providerScope = awsProviderFactory.getScope();
+          providerScope = fcaProviderFactory.getScope();
           while(providerScope == null) providerScope = fcaProviderFactory.getScope();
         }
         else if($scope.selectedProvider == $scope.feProvider){
-          providerScope = awsProviderFactory.getScope();
+          providerScope = feProviderFactory.getScope();
           while(providerScope == null) providerScope = feProviderFactory.getScope();
         }
 
