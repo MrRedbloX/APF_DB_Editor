@@ -115,6 +115,10 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
     $scope.tenants = tenants;
     mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
   }
+
+  $scope.getRessources = function(){
+    console.log("OK");
+  }
 });
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory, azureProviderFactory){
