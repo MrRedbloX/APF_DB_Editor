@@ -106,6 +106,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       treeView.jstree()
       .on('ready.jstree', function(){
         treeView.jstree('open_all');
+      })
+      .on('select_node.jstree', function(e, data){
+        console.log(e);
+        console.log(data);
       });
     });
   }
