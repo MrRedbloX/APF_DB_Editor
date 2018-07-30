@@ -116,11 +116,14 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.getRessources = function(tenant){
     let split = tenant.split(" / ");
-    postgresScope.query($scope.database, $scope.tenant_table, "uuid,tenant_region", "tenant_name", split[0], function(){
+    $scope.selectedTenant = split[0];
+    postgresScope.query($scope.database, $scope.tenant_table, "uuid,tenant_region", "tenant_name", $scope.selectedTenant, function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
-
+            $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
+            $scope.displayRessources = true;
+            break;
           }
         }
       }
