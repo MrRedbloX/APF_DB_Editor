@@ -142,10 +142,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryRessources = function(res){
-    if(res == "ECS") return new Promise(resolve => $scope.queryECS(resolve));
-    else if(res == "VPC") return new Promise(resolve => $scope.queryVPC(resolve));
-    else if(res == "SG") return new Promise(resolve => $scope.querySG(resolve));
-    else if(res == "KP") return new Promise(resolve => $scope.queryKP(resolve));
+    if(res == "ECS") return new Promise((resolve, reject) => $scope.queryECS(resolve, reject));
+    else if(res == "VPC") return new Promise((resolve, reject) => $scope.queryVPC(resolve, reject));
+    else if(res == "SG") return new Promise((resolve, reject) => $scope.querySG(resolve, reject));
+    else if(res == "KP") return new Promise((resolve, reject) => $scope.queryKP(resolve, reject));
     else return new Promise(reject => {
       console.log("Hundle ressources");
       reject();
