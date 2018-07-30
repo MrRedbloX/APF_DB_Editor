@@ -20,7 +20,7 @@
               <ul>
                  <li data-jstree='{"icon":"public/css/img/ressources_ecs.png"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
-                     <li data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+                     <li id="{{val.ecs.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.ecs_name}}</li>
                    </ul>
                  </li>
               </ul>
