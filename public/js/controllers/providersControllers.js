@@ -66,26 +66,26 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
         $scope.readyCheckProvider = true;
 
-        if($scope.selectedProvider == $scope.awsProvider){
-          $scope.providerScope = awsProviderFactory.getScope();
-          while($scope.providerScope == null) $scope.providerScope = awsProviderFactory.getScope();
-        }
-        else if($scope.selectedProvider == $scope.azureProvider){
-          $scope.providerScope = azureProviderFactory.getScope();
-          while($scope.providerScope == null) $scope.providerScope = azureProviderFactory.getScope();
-        }
-        else if($scope.selectedProvider == $scope.fcaProvider){
-          $scope.providerScope = fcaProviderFactory.getScope();
-          while($scope.providerScope == null) $scope.providerScope = fcaProviderFactory.getScope();
-        }
-        else if($scope.selectedProvider == $scope.feProvider){
-          $scope.providerScope = feProviderFactory.getScope();
-          while($scope.providerScope == null) $scope.providerScope = feProviderFactory.getScope();
-        }
-
         $scope.tenants = [];
         postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
           if(postgresScope.successRequest){
+            if($scope.selectedProvider == $scope.awsProvider){
+              $scope.providerScope = awsProviderFactory.getScope();
+              while($scope.providerScope == null) $scope.providerScope = awsProviderFactory.getScope();
+            }
+            else if($scope.selectedProvider == $scope.azureProvider){
+              $scope.providerScope = azureProviderFactory.getScope();
+              while($scope.providerScope == null) $scope.providerScope = azureProviderFactory.getScope();
+            }
+            else if($scope.selectedProvider == $scope.fcaProvider){
+              $scope.providerScope = fcaProviderFactory.getScope();
+              while($scope.providerScope == null) $scope.providerScope = fcaProviderFactory.getScope();
+            }
+            else if($scope.selectedProvider == $scope.feProvider){
+              $scope.providerScope = feProviderFactory.getScope();
+              while($scope.providerScope == null) $scope.providerScope = feProviderFactory.getScope();
+            }
+            
             $scope.providerScope.setTenants(postgresScope.queryRequest.data);
           }
           else{
