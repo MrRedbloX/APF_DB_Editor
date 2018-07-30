@@ -7,7 +7,7 @@
     <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
       <a ng-init="queryTenantsBis()" />
       <div id="treeTenantsAzure" ng-if="readyQueryTenants">
-        <script>alert("ok");</script>
+        {{controller}}
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_azure.png"}'><a class="inactiveLink">{{controller}}</a>
              <ul ng-repeat="tenant in tenants">
