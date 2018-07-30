@@ -5,11 +5,14 @@
       {{controller}}
     </div>
     <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
-      {{controller}}
       <a ng-init="queryTenants()" />
-      <div ng-if="readyQueryTenants" ng-repeat="tenant in tenants">
-
-      </div>
+      <ul ng-if="readyQueryTenants">
+         <li data-jstree='{"icon":"public/css/img/provider.png"}'><a class="inactiveLink">{{controller}}</a>
+           <ul ng-repeat="tenant in tenants">
+             <li id="{{tenant.name}}" onclick="isTableSelected(id)" data-jstree='{"icon":"public/css/img/table.png"}'>{{tab.table_name}}</li>
+           </ul>
+         </li>
+      </ul>
     </div>
     <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
       {{controller}}
