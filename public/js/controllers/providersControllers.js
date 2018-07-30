@@ -25,12 +25,14 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
     let queryVar = $scope.selectedProvider;
     if($scope.selectedProvider == $scope.feProvider) queryVar = "Flexible Engine";
-    queryVar = "'"+queryVar+"'";
 
-    postgresScope.query($scope.database, $scope.provider_table, "uuid", "name", queryVar, function(){
+    postgresScope.query($scope.database, $scope.provider_table, "uuid", "name", "'"+queryVar+"'", function(){
       if(postgresScope.successRequest){
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
         $scope.readyCheckProvider = true;
+
+        $scope.queryTenants();
+
       }
       else{
         console.log(postgresScope.queryRequest);
@@ -39,7 +41,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.queryTenants = function(provider){
+  $scope.queryTenants = function(){
     $scope.tenants = [];
     $scope.readyCheckProvider = false;
     postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
