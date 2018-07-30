@@ -5,7 +5,7 @@
       {{controller}}
     </div>
     <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
-      <a ng-init="queryTheTenants()" />
+      <a ng-init="queryTenants()" />
       <div id="treeTenantsAzure" ng-if="readyQueryTenants">
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_azure.png"}'><a class="inactiveLink">{{controller}}</a>
