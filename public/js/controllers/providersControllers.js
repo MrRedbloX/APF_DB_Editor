@@ -1,4 +1,4 @@
-app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory){
+app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory, feProviderFactory){
   mainProvidersFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
   $scope.selectedProvider = null;
@@ -125,9 +125,10 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory, f
   }
 });
 
-app.controller('feProviderController', function($scope, mainProvidersFactory){
+app.controller('feProviderController', function($scope, mainProvidersFactory, feProviderFactory){
   $scope.controller = "Flexible Engine";
   var mainProvidersScope = mainProvidersFactory.getScope();
+  feProviderFactory.setScope($scope);
   $scope.tenants = [];
 
   $scope.setTenants = function(tenants){
