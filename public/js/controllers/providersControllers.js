@@ -144,10 +144,6 @@ app.controller('feProviderController', function($scope, mainProvidersFactory, fe
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTree("treeTenants"+$scope.controllerBis);
-  }
-
-  $scope.loadJSTreeBis = function(){
-    mainProvidersScope.loadJSTree($scope.controllerBis);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controllerBis);
   }
 });
