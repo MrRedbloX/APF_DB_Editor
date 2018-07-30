@@ -43,7 +43,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             else if($scope.selectedProvider == $scope.azureProvider){
               providerScope = azureProviderFactory.getScope();
               console.log(providerScope);
-              //while(providerScope == null) providerScope = azureProviderFactory.getScope();
+              while(providerScope == null) providerScope = azureProviderFactory.getScope();
             }
             else if($scope.selectedProvider == $scope.fcaProvider){
               providerScope = fcaProviderFactory.getScope();
@@ -80,9 +80,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   }
 });
 
-app.controller('awsProviderController', function($scope, mainProvidersFactory, azureProviderFactory){
+app.controller('awsProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "AWS";
-  azureProviderFactory.setScope($scope);
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = [];
 
@@ -95,8 +94,9 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
   }
 });
 
-app.controller('azureProviderController', function($scope, mainProvidersFactory){
+app.controller('azureProviderController', function($scope, mainProvidersFactory, azureProviderFactory){
   $scope.controller = "Azure";
+  azureProviderFactory.setScope($scope);
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = [];
 
