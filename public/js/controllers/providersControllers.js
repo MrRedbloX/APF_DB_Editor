@@ -123,7 +123,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
     mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
   }
 
-  $scope.getRessources = function(a, b){
+  $scope.getRessources = function(){
     console.log("OK");
   }
 });
