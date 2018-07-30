@@ -66,9 +66,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 app.controller('awsProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "AWS";
   var mainProvidersScope = mainProvidersFactory.getScope();
-/*  $scope.tenants = mainProvidersScope.tenants;
+  $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+  /*$scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
 
   $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);*/
 });
