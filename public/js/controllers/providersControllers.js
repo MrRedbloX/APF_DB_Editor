@@ -128,6 +128,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory, f
 
 app.controller('feProviderController', function($scope, mainProvidersFactory, feProviderFactory){
   $scope.controller = "Flexible Engine";
+  $scope.controllerBis = "FE";
   var mainProvidersScope = mainProvidersFactory.getScope();
   feProviderFactory.setScope($scope);
   $scope.tenants = [];
@@ -138,6 +139,6 @@ app.controller('feProviderController', function($scope, mainProvidersFactory, fe
   }
 
   $scope.loadJSTreeBis = function(){
-    mainProvidersScope.loadJSTree($scope.controller);
+    mainProvidersScope.loadJSTree($scope.controllerBis);
   }
 });
