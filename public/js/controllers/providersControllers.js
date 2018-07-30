@@ -75,7 +75,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
     mainProvidersScope.queryTenants($scope.controller);
   }
 
-  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);*/
+  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
 });
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory){
