@@ -83,7 +83,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.readyQueryTenants = mainProvidersScope.readyQueryTenants;
+  //$scope.readyQueryTenants = mainProvidersScope.readyQueryTenants;
 
   $scope.queryTenantsBis = function(){
     console.log("Start");
