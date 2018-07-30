@@ -14,7 +14,7 @@
       <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
-          <div ng-repeat="res in ressources" ng-repeat-end="loadJSTreeRes()">
+          <div ng-repeat="res in ressources" on-finish-render="ngRepeatFinished">
             <div id="treeAWSTenant{{res.name}}">
               <ul>
                  <li data-jstree='{"icon":"public/css/img/ressources_ecs.png"}'><a class="inactiveLink">{{res.name}}</a>
