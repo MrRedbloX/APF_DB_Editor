@@ -53,6 +53,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
+  $scope.getQueryTenants = function(provider){
+    return $scope.queryTenants(provider);
+  }
+
   $scope.loadJSTree = function(provider){
     console.log("Load");
     $(function() {
