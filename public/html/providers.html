@@ -14,8 +14,10 @@
       <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
-          <hr>
+
           <div ng-repeat="res in ressources">
+            {{res.name}}
+            <hr>
           </div>
         </fieldset>
       </form>
