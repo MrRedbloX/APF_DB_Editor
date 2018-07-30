@@ -1,5 +1,6 @@
-app.controller('mainProvidersController', function($scope, mainProvidersFactory){
+app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory){
   mainProvidersFactory.setScope($scope);
+  var postgresScope = postgresqlFactory.getScope();
   $scope.selectedProvider = null;
 
   $scope.awsProvider = "AWS";
@@ -12,7 +13,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory)
   };
 
   $scope.queryTenants = function(provider){
-    console.log(provider);
+
   };
 });
 
