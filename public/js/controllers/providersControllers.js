@@ -84,7 +84,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.loadJSTree = function(provider){
+  $scope.loadJSTree = function(id){
     $(function() {
       let treeView = $('#treeTenants'+provider);
       treeView.jstree()
@@ -94,6 +94,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   }
 
+  $scope
 
 });
 
@@ -105,11 +106,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTreeBis();
-  }
-
-  $scope.loadJSTreeBis = function(){
-    mainProvidersScope.loadJSTree($scope.controller);
+    $scope.loadJSTree("treeTenant"+$scope.controller);
   }
 });
 
@@ -121,7 +118,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory,
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTreeBis();
+    $scope.loadJSTree("treeTenant"+$scope.controller);
   }
 
   $scope.loadJSTreeBis = function(){
@@ -137,7 +134,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory, f
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTreeBis();
+    $scope.loadJSTree("treeTenant"+$scope.controller);
   }
 
   $scope.loadJSTreeBis = function(){
@@ -154,7 +151,7 @@ app.controller('feProviderController', function($scope, mainProvidersFactory, fe
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTreeBis();
+    $scope.loadJSTree("treeTenant"+$scope.controllerBis);
   }
 
   $scope.loadJSTreeBis = function(){
