@@ -29,6 +29,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.ecs_table = "ecs_table";
   $scope.vpc_table = "vpc_table";
   $scope.sg_table = "sg_table";
+  $scope.kp_table = "kp_table";
 
   $scope.displayRessources = false;
   $scope.selectedTenant = null;
