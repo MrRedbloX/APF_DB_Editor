@@ -40,7 +40,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryTenants = function(provider){
-    let ret = false;
     $scope.tenants = [];
     $scope.readyCheckProvider = false;
     postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
@@ -48,14 +47,13 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         $scope.tenants = postgresScope.queryRequest.data;
         $scope.readyQueryTenants = true;
         console.log($scope.tenants);
-        ret = true;
+        $scope.readyQueryTenants = true;
       }
       else{
         console.log(postgresScope.queryRequest);
         alert("Error on query request, check console logs.");
       }
     });
-    return ret;
   };
 
   $scope.loadJSTree = function(provider){
