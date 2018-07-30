@@ -11,17 +11,17 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.database = "sonde";
   $scope.tenant_table = "tenant_table";
   $scope.provider_table = "provider_table";
-  $scope.foreign_key = "provider_uuid";
+  $scope.tenantFkProvider = "provider_uuid";
 
   $scope.checkProvider = function(){
     $scope.selectedProvider = ((window.location.href.split('?')[1]).split('&')[0]).split('=')[1];
 
-    queryVar = $scope.selectedProvider;
+    let queryVar = $scope.selectedProvider;
     if($scope.selectedProvider == $scope.feProvider) queryVar = "Flexible Engine";
 
     postgresScope.query($scope.database, $scope.provider_table, "uuid", "name", queryVar, function(){
       if(postgresScope.successRequest){
-
+        $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
       }
       else{
         console.log(postgresScope.queryRequest);
@@ -31,14 +31,22 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryTenants = function(provider){
-    postgresScope.query($scope.database, $scope.tenant_table, "*", )
+    postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
+      if(postgresScope.successRequest){
+        $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
+      }
+      else{
+        console.log(postgresScope.queryRequest);
+        alert("Error on query request, check console logs.");
+      }
+    });
   };
 });
 
 app.controller('awsProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "AWS";
-  $scope.tenants = [];
   var mainProvidersScope = mainProvidersFactory.getScope();
+  $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
 });
