@@ -73,7 +73,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     console.log("Load");
     $(function() {
       let treeView = $('#treeTenants'+provider);
-      treeView.('#treeTenants'+provider).jstree()
+      treeView.jstree()
       .on('loaded.jstree', function(){
         treeView.jstree('open_all');
       });
