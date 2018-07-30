@@ -87,6 +87,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 
   $$scope.setTenants = function(tenants){
     $scope.tenants = tenants;
+    console.log($scope.tenants);
   }
 
   $scope.loadJSTreeBis = function(){
