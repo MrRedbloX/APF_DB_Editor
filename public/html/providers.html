@@ -5,6 +5,7 @@
   </div>
   <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
     {{controller}}
+    <a ng-init="loadTenants()" />
     <div ng-if="readyTenant" ng-repeat="tenant in tenants">
       <fieldset>
         <legend>{{tenant.name}}</legend>
