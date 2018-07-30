@@ -170,10 +170,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               name : "Elastic Cloud Server(s)",
               values : values
             });
-            console.log("resolve");
-            resolve();
           }
         }
+        resolve();
       }
       else{
         console.log(postgresScope.queryRequest);
