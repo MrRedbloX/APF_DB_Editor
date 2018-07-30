@@ -1,4 +1,5 @@
-app.controller('mainProvidersController', function($scope){
+app.controller('mainProvidersController', function($scope, mainProvidersFactory){
+  mainProvidersFactory.setScope($scope);
   $scope.selectedProvider = null;
 
   $scope.awsProvider = "AWS";
