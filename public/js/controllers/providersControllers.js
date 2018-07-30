@@ -73,6 +73,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "Azure";
+  var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
@@ -82,6 +83,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
 
 app.controller('fcaProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "FCA";
+  var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
@@ -91,6 +93,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory){
 
 app.controller('feProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "Flexible Engine";
+  var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
