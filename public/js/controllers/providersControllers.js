@@ -96,7 +96,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   }
 
-  $scope.getRessources = function(tenant_id, tenant_name){
+  $scope.getRessources = function(id){
     console.log("getRessources");
     let id = tenant_id+";"+tenant_name;
     $scope.displayRessources = true;
