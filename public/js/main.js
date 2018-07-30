@@ -221,6 +221,29 @@ app.factory('awsProviderFactory', function(){
       return theScope;
     }
   };
+
+app.factory('fcaProviderFactory', function(){
+  var theScope;
+  return{
+    setScope : function(scope){
+      theScope = scope;
+    },
+    getScope : function(){
+      return theScope;
+    }
+  };
+});
+
+app.factory('feProviderFactory', function(){
+  var theScope;
+  return{
+    setScope : function(scope){
+      theScope = scope;
+    },
+    getScope : function(){
+      return theScope;
+    }
+  };
 });
 
 //This controller allows to do all the requests in databases, therefore he needs to be on top of every others
