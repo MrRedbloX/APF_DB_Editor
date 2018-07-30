@@ -15,7 +15,24 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.provider_table = "provider_table";
   $scope.tenantFkProvider = "provider_uuid";
 
-  $scope.tenants = [];
+  $scope.ressources = [
+    {
+      name : "ECS",
+      values : []
+    },
+    {
+      name : "VPC",
+      values : []
+    },
+    {
+      name : "SG",
+      values : []
+    },
+    {
+      name : "KP",
+      values : []
+    }
+  ];
 
   $scope.readyCheckProvider = false;
   $scope.readyQueryTenants = false;
@@ -76,6 +93,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       });
     });
   }
+
+
 });
 
 app.controller('awsProviderController', function($scope, mainProvidersFactory, awsProviderFactory){
