@@ -84,7 +84,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+  $scope.queryTheTenants = mainProvidersScope.queryTenants($scope.controller);
 
   $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
 });
