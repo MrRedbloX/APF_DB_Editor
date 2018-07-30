@@ -250,12 +250,12 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     for(let j=0; j<$scope.ressourcesNames.length; j++)
       $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[j]);
   }
-  $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+  /*$scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(let j=0; j<$scope.ressourcesNames.length; j++){
       console.log(document.getElementById("treeAWSTenant"+$scope.ressourcesNames[j]));
       $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[j], "Ressource");
     }
-  });
+  });*/
 });
 
 app.controller('awsProviderController', function($scope, mainProvidersFactory, awsProviderFactory){
