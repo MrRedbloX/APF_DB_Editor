@@ -59,6 +59,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
     $scope.readyQueryTenants = false;
   }
+  $scope.getReadyTenants = function(){
+    return $scope.readyQueryTenants;
+  }
 });
 
 app.controller('awsProviderController', function($scope, mainProvidersFactory){
