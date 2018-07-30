@@ -25,6 +25,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     postgresScope.query($scope.database, $scope.provider_table, "uuid", "name", queryVar, function(){
       if(postgresScope.successRequest){
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
+        console.log($scope.selectedProviderId);
       }
       else{
         console.log(postgresScope.queryRequest);
