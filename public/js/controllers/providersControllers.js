@@ -1,4 +1,4 @@
-app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory){
+app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory, azureProviderFactory){
   mainProvidersFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
   $scope.selectedProvider = null;
@@ -80,8 +80,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   }
 });
 
-app.controller('awsProviderController', function($scope, mainProvidersFactory){
+app.controller('awsProviderController', function($scope, mainProvidersFactory, azureProviderFactory){
   $scope.controller = "AWS";
+  azureProviderFactory.setScope($scope);
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = [];
 
