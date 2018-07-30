@@ -2,7 +2,7 @@
   <a ng-init="checkProvider()" />
   <div ng-if="readyCheckProvider">
     <div ng-if="selectedProvider == awsProvider" ng-controller="awsProviderController">
-      <div id="treeTenantsAWS">
+      <div id="treeTenantsAWS" class="treeProviders">
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{controller}}</a>
              <ul ng-repeat="tenant in tenants">
