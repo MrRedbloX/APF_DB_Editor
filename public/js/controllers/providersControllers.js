@@ -164,12 +164,12 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.queryVPC = function(resolve, reject){
     let values = [];
-    postgresScope.query($scope.database, $scope.ecs_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
+    postgresScope.query($scope.database, $scope.vpc_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
-            name : postgresScope.queryRequest.data[i].ecs_name
+            name : postgresScope.queryRequest.data[i].vpc_name
           });
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
