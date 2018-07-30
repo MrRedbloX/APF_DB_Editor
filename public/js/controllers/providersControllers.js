@@ -150,7 +150,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Elastic Cloud Server(s)",
-              nameBis : res
+              nameBis : res,
               values : values
             });
           }
@@ -204,6 +204,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Security group(s)",
+              nameBis : res,
               values : values
             });
           }
