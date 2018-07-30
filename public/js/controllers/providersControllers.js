@@ -1,10 +1,13 @@
 var displayRessources;
 var selectedTenant;
+var selectedTenantID;
 
-function getRessources(tenant_id, tenant_name){
+function getRessources(id){
   console.log("getRessources")
+  let split = id.split(";");
   displayRessources = true;
-  selectedTenant = tenant_name;
+  selectedTenant = split[1];
+  selectedTenantID = split[0];
 }
 
 app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory, feProviderFactory){
