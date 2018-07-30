@@ -54,6 +54,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
           if(postgresScope.successRequest){
             $scope.tenants = postgresScope.queryRequest.data;
+            console.log("Want to set tenants");
             //providerScope.setTenants(postgresScope.queryRequest.data);
             console.log($scope.tenants);
           }
