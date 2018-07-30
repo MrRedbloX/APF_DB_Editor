@@ -124,6 +124,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
             console.log("Ressources query");
             await $scope.queryRessources("ECS");
+            console.log("Continue");
             /*await $scope.queryRessources("VPC");
             await $scope.queryRessources("SG");
             await $scope.queryRessources("KP");*/
