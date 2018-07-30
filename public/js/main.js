@@ -248,7 +248,7 @@ app.factory('feProviderFactory', function(){
 });
 
 
-app.directive('onFinishRender', function ($timeout) {
+app.directive('onRessourcesFinishRender', function ($timeout) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attr) {
