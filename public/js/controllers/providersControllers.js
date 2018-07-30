@@ -31,9 +31,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
         $scope.readyCheckProvider = true;
 
-        $scope.tenants = [];
+        /*$scope.tenants = [];
         $scope.readyCheckProvider = false;
-        /*postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
+        postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
           if(postgresScope.successRequest){
             $scope.tenants = postgresScope.queryRequest.data;
             $scope.readyQueryTenants = true;
