@@ -246,11 +246,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.loadJSTreeRes = function(){
-    console.log("test");
-    for(let j=0; j<$scope.ressourcesNames.length; j++)
-      $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[j]);
-  }
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(let j=0; j<$scope.ressourcesNames.length; j++)
       $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[j], "Ressource");
