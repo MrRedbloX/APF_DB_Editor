@@ -14,14 +14,8 @@
       <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
-          <div id="treeTenantsAWS" class="treeProviders">
-            <ul>
-               <li data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{controller}}</a>
-                 <ul ng-repeat="tenant in tenants">
-                   <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}' title="Tenant">{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
-                 </ul>
-               </li>
-            </ul>
+          <hr>
+          <div ng-repeat="res in ressources">
           </div>
         </fieldset>
       </form>
