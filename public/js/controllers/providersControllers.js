@@ -74,7 +74,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
     mainProvidersScope.queryTenants($scope.controller);
   }
 
-  $scope.loadJSTree = function(){
+  $scope.loadJSTreeBis = function(){
     mainProvidersScope.loadJSTree($scope.controller);
   }
 });
@@ -84,11 +84,11 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = function(){
+  $scope.queryTenantsBis = function(){
     mainProvidersScope.queryTenants($scope.controller);
   }
 
-  $scope.loadJSTree = function(){
+  $scope.loadJSTreeBis = function(){
     mainProvidersScope.loadJSTree($scope.controller);
   }
 });
@@ -98,11 +98,11 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory){
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = function(){
+  $scope.queryTenantsBis = function(){
     mainProvidersScope.queryTenants($scope.controller);
   }
 
-  $scope.loadJSTree = function(){
+  $scope.loadJSTreeBis = function(){
     mainProvidersScope.loadJSTree($scope.controller);
   }
 });
@@ -112,11 +112,11 @@ app.controller('feProviderController', function($scope, mainProvidersFactory){
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = function(){
+  $scope.queryTenantsBis = function(){
     mainProvidersScope.queryTenants($scope.controller);
   }
 
-  $scope.loadJSTree = function(){
+  $scope.loadJSTreeBis = function(){
     mainProvidersScope.loadJSTree($scope.controller);
   }
 });
