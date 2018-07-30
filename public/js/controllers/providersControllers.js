@@ -3,7 +3,6 @@ var selectedTenant;
 
 function getRessources(tenant_id, tenant_name){
   console.log("getRessources")
-  let id = tenant_id+";"+tenant_name;
   displayRessources = true;
   selectedTenant = tenant_name;
 }
