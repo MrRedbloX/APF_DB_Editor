@@ -20,6 +20,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
     let queryVar = $scope.selectedProvider;
     if($scope.selectedProvider == $scope.feProvider) queryVar = "Flexible Engine";
+    queryVar = "'"+queryVar+"'";
 
     postgresScope.query($scope.database, $scope.provider_table, "uuid", "name", queryVar, function(){
       if(postgresScope.successRequest){
