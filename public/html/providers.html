@@ -5,7 +5,7 @@
       {{controller}}
     </div>
     <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
-      <a ng-init="queryTenants()" />
+      <a ng-init="queryTenantsBis()" />
       {{controller}}
       <div id="treeTenantsAzure" ng-if="readyQueryTenants">
         <ul>
