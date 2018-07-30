@@ -112,8 +112,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
             await $scope.queryRessources("ECS");
             await $scope.queryRessources("VPC");
-            /*await $scope.queryRessources("SG");
-            await $scope.queryRessources("KP");*/
+            await $scope.queryRessources("SG");
+            await $scope.queryRessources("KP");
 
             $scope.displayRessources = true;
             break;
