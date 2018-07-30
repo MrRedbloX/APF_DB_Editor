@@ -110,8 +110,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
 
             await $scope.queryRessources("ECS");
-            /*await $scope.queryRessources("VPC");
-            await $scope.queryRessources("SG");
+            await $scope.queryRessources("VPC");
+            /*await $scope.queryRessources("SG");
             await $scope.queryRessources("KP");*/
 
             $scope.displayRessources = true;
