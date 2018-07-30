@@ -95,9 +95,6 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
     console.log($scope.readyQueryTenants);
   }
 
-  $scope.loadJSTreeBis = function(){
-    mainProvidersScope.loadJSTree($scope.controller);
-  }
 });
 
 app.controller('fcaProviderController', function($scope, mainProvidersFactory){
