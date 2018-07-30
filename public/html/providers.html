@@ -7,10 +7,8 @@
     <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
       {{controller}}
       <a ng-init="queryTenants()" />
-      <div ng-if="readyTenant" ng-repeat="tenant in tenants">
-        <fieldset>
-          <legend>{{tenant.name}}</legend>
-        </fieldset>
+      <div ng-if="readyQueryTenants" ng-repeat="tenant in tenants">
+
       </div>
     </div>
     <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
