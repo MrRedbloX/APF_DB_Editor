@@ -122,7 +122,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
-
+            console.log("Ressources query");
             await $scope.queryRessources("ECS");
             /*await $scope.queryRessources("VPC");
             await $scope.queryRessources("SG");
