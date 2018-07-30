@@ -100,8 +100,6 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory,
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = [];
 
-  $scope.readyTenants = mainProvidersScope.getReadyTenants();
-
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
     $scope.loadJSTreeBis();
