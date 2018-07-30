@@ -151,6 +151,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             $scope.ressources.push({
               name : "Elastic Cloud Server(s)",
               nameBis : res,
+              imgPath : "ressources_ecs.png",
               values : values
             });
           }
@@ -178,6 +179,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             $scope.ressources.push({
               name : "Virtual Private Cloud(s)",
               nameBis : res,
+              imgPath : "ressources_vpc.png",
               values : values
             });
           }
