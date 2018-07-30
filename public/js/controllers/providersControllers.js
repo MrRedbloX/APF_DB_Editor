@@ -15,6 +15,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.provider_table = "provider_table";
   $scope.tenantFkProvider = "provider_uuid";
 
+  $scope.displayRessources = false;
+
   $scope.ressources = [
     {
       name : "ECS",
@@ -94,7 +96,11 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   }
 
-  $scope
+  $scope.getRessources = function(tenant_id, tenant_name){
+    let id = tenant_id+";"+tenant_name;
+    $scope.displayRessources = true;
+    $scope.selectedTenant = tenant_name;
+  };
 
 });
 
