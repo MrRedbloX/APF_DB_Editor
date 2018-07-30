@@ -18,7 +18,7 @@
       </form>
     </div>
     <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
-      <div id="treeTenantsAzure">
+      <div id="treeTenantsAzure" class="treeProviders">
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_azure.png"}'><a class="inactiveLink">{{controller}}</a>
              <ul ng-repeat="tenant in tenants">
@@ -34,7 +34,7 @@
       </form>
     </div>
     <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
-      <div id="treeTenantsFCA">
+      <div id="treeTenantsFCA" class="treeProviders">
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_fca.png"}'><a class="inactiveLink">{{controller}}</a>
              <ul ng-repeat="tenant in tenants">
@@ -50,7 +50,7 @@
       </form>
     </div>
     <div ng-if="selectedProvider == feProvider" ng-controller="feProviderController">
-      <div id="treeTenantsFE">
+      <div id="treeTenantsFE" class="treeProviders">
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_fe.png"}'><a class="inactiveLink">{{controller}}</a>
              <ul ng-repeat="tenant in tenants">
