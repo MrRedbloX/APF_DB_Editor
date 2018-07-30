@@ -92,7 +92,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.loadJSTree = function(id, mode){
     $(function() {
       let treeView = $("#"+id);
-      treeView.jstree('destroy');
       treeView.jstree()
       .on('ready.jstree', function(){
         treeView.jstree('open_all');
