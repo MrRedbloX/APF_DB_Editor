@@ -4,7 +4,7 @@
     <div ng-if="selectedProvider == awsProvider" ng-controller="awsProviderController">
       <div id="treeTenantsAWS" class="treeProviders">
         <ul>
-           <li data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{controller}}</a>
+           <li data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
                <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
@@ -33,7 +33,7 @@
     <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
       <div id="treeTenantsAzure" class="treeProviders">
         <ul>
-           <li data-jstree='{"icon":"public/css/img/provider_azure.png"}'><a class="inactiveLink">{{controller}}</a>
+           <li data-jstree='{"icon":"public/css/img/provider_azure.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
                <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
@@ -49,7 +49,7 @@
     <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
       <div id="treeTenantsFCA" class="treeProviders">
         <ul>
-           <li data-jstree='{"icon":"public/css/img/provider_fca.png"}'><a class="inactiveLink">{{controller}}</a>
+           <li data-jstree='{"icon":"public/css/img/provider_fca.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
                <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
@@ -65,7 +65,7 @@
     <div ng-if="selectedProvider == feProvider" ng-controller="feProviderController">
       <div id="treeTenantsFE" class="treeProviders">
         <ul>
-           <li data-jstree='{"icon":"public/css/img/provider_fe.png"}'><a class="inactiveLink">{{controller}}</a>
+           <li data-jstree='{"icon":"public/css/img/provider_fe.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
                <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
