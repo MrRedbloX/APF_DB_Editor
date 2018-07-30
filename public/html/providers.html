@@ -27,6 +27,11 @@
            </li>
         </ul>
       </div>
+      <form ng-if="displayRessources">
+        <fieldset class="chartDisplayBorder">
+          <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
+        </fieldset>
+      </form>
     </div>
     <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
       <div id="treeTenantsFCA">
@@ -38,6 +43,11 @@
            </li>
         </ul>
       </div>
+      <form ng-if="displayRessources">
+        <fieldset class="chartDisplayBorder">
+          <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
+        </fieldset>
+      </form>
     </div>
     <div ng-if="selectedProvider == feProvider" ng-controller="feProviderController">
       <div id="treeTenantsFE">
@@ -49,6 +59,11 @@
            </li>
         </ul>
       </div>
+      <form ng-if="displayRessources">
+        <fieldset class="chartDisplayBorder">
+          <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
+        </fieldset>
+      </form>
     </div>
   </div>
 </div>
