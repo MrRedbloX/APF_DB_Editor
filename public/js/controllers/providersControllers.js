@@ -67,25 +67,33 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
   $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+
+  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
 });
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "Azure";
-  $scope.tenants = [];
+  $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+
+  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
 });
 
 app.controller('fcaProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "FCA";
-  $scope.tenants = [];
+  $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+
+  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
 });
 
 app.controller('feProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "Flexible Engine";
-  $scope.tenants = [];
+  $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+
+  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
 });
