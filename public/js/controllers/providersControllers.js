@@ -89,7 +89,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.loadJSTree = function(id){
+  $scope.loadJSTree = function(id, mode){
     $(function() {
       let treeView = $("#"+id);
       treeView.jstree()
@@ -97,7 +97,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         treeView.jstree('open_all');
       })
       .on('select_node.jstree', function(e, data){
-        $scope.getRessources(data.node.text);
+        if(mode == "")$scope.getRessources(data.node.text);
       });
     });
   }
@@ -246,6 +246,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
+  $scope.loadJSTreeRes = function(){
+    for(let j=0; j<$scope.ressourcesNames.length; j++)
+      $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[j]);
+  }
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(let j=0; j<$scope.ressourcesNames.length; j++){
       console.log(document.getElementById("treeAWSTenant"+$scope.ressourcesNames[j]));
@@ -262,7 +266,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller, "Tenant");
   }
 });
 
@@ -274,7 +278,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory,
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller, "Tenant");
   }
 
 });
@@ -287,7 +291,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory, f
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller, "Tenant");
   }
 });
 
@@ -300,6 +304,6 @@ app.controller('feProviderController', function($scope, mainProvidersFactory, fe
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controllerBis);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controllerBis, "Tenant");
   }
 });
