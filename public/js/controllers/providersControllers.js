@@ -15,6 +15,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.tenants = [];
 
+  $scope.readyCheckProvider = false;
+
   $scope.checkProvider = function(){
     $scope.selectedProvider = ((window.location.href.split('?')[1]).split('&')[0]).split('=')[1];
 
@@ -25,7 +27,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     postgresScope.query($scope.database, $scope.provider_table, "uuid", "name", queryVar, function(){
       if(postgresScope.successRequest){
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
-        console.log($scope.selectedProviderId);
+        $scope.readyCheckProvider = true;
       }
       else{
         console.log(postgresScope.queryRequest);
