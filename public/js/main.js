@@ -1,6 +1,6 @@
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
-var readOnlyDB = []; //Contains the read only databases
+var readOnlyDB = ['sonde']; //Contains the read only databases
 var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid']; //The name that will be displayed instead of the id
 var busy = false; //When a view in db_management is displayed, this turn to true in order to prevent from some unwanted behaviors
 var exceptionTables = ['map']; //The tables which starts with these elements won't be displayed in the dashboard charts
