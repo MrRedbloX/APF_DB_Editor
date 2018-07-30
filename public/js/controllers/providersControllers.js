@@ -50,9 +50,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         console.log(postgresScope.queryRequest);
         alert("Error on query request, check console logs.");
       }
-      return;
     });
-    return;
   };
 
   $scope.loadJSTree = function(provider){
