@@ -75,7 +75,9 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
     mainProvidersScope.queryTenants($scope.controller);
   }
 
-  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
+  $scope.loadJSTree = function(){
+    mainProvidersScope.loadJSTree($scope.controller);
+  }
 });
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory){
@@ -83,9 +85,13 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTheTenants = mainProvidersScope.queryTenants($scope.controller);
+  $scope.queryTenants = function(){
+    mainProvidersScope.queryTenants($scope.controller);
+  }
 
-  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
+  $scope.loadJSTree = function(){
+    mainProvidersScope.loadJSTree($scope.controller);
+  }
 });
 
 app.controller('fcaProviderController', function($scope, mainProvidersFactory){
@@ -93,9 +99,13 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory){
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+  $scope.queryTenants = function(){
+    mainProvidersScope.queryTenants($scope.controller);
+  }
 
-  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
+  $scope.loadJSTree = function(){
+    mainProvidersScope.loadJSTree($scope.controller);
+  }
 });
 
 app.controller('feProviderController', function($scope, mainProvidersFactory){
@@ -103,7 +113,11 @@ app.controller('feProviderController', function($scope, mainProvidersFactory){
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
-  $scope.queryTenants = mainProvidersScope.queryTenants($scope.controller);
+  $scope.queryTenants = function(){
+    mainProvidersScope.queryTenants($scope.controller);
+  }
 
-  $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);
+  $scope.loadJSTree = function(){
+    mainProvidersScope.loadJSTree($scope.controller);
+  }
 });
