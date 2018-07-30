@@ -116,6 +116,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   }
 
   $scope.getRessources = function(tenant){
+    $scope.ressources = [];
     let split = tenant.split(" / ");
     $scope.selectedTenant = split[0];
     postgresScope.query($scope.database, $scope.tenant_table, "uuid,tenant_region", "tenant_name", "'"+$scope.selectedTenant+"'", async function(){
@@ -123,9 +124,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
-            console.log("Ressources query");
+
             await $scope.queryRessources("ECS");
-            console.log("Continue");
             /*await $scope.queryRessources("VPC");
             await $scope.queryRessources("SG");
             await $scope.queryRessources("KP");*/
