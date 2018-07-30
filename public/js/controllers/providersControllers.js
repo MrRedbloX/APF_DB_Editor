@@ -97,7 +97,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         treeView.jstree('open_all');
       })
       .on('select_node.jstree', function(e, data){
-        if(mode == "")$scope.getRessources(data.node.text);
+        if(mode == "Tenant") $scope.getRessources(data.node.text);
       });
     });
   }
