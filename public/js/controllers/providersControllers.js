@@ -122,10 +122,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
 
-            await $scope.queryECS();
-            await $scope.queryVPC();
-            await $scope.querySG();
-            await $scope.queryKP();
+            await $scope.queryRessources("ECS");
+            await $scope.queryRessources("VPC");
+            await $scope.queryRessources("SG");
+            await $scope.queryRessources("KP");
 
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
             $scope.displayRessources = true;
@@ -140,8 +140,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.queryECS = function(){
-    
+  $scope.queryRessources = function(res){
+    if(res == "ECS") return new Promise(resolve => $scope.queryECS(resolve));
   };
 
 });
