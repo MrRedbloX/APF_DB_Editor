@@ -197,11 +197,11 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
-            name : postgresScope.queryRequest.data[i].vpc_name
+            name : postgresScope.queryRequest.data[i].sg_name
           });
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
-              name : "Virtual Private Cloud(s)",
+              name : "Security group(s)",
               values : values
             });
           }
