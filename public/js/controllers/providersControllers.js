@@ -74,6 +74,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
   $scope.readyQueryTenants = false;
 
   $scope.queryTenantsBis = function(){
+    console.log("Start");
     $scope.readyQueryTenants = mainProvidersScope.queryTenants($scope.controller);
     console.log("Continue");
   }
