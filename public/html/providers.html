@@ -5,8 +5,8 @@
       <div id="treeTenantsAWS">
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{controller}}</a>
-             <ul ng-repeat="tenant in tenants" ng-dblclick="getRessources(tenant.uuid,tenant.tenant_name)">
-               <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+             <ul ng-repeat="tenant in tenants">
+               <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}' ng-click="getRessources(tenant.uuid,tenant.tenant_name)">{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
            </li>
         </ul>
