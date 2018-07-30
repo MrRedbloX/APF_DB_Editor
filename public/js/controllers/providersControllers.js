@@ -190,7 +190,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.queryVPC = function(resolve, reject){
+  $scope.querySG = function(resolve, reject){
     let values = [];
     postgresScope.query($scope.database, $scope.sg_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
@@ -202,6 +202,32 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Security group(s)",
+              values : values
+            });
+          }
+        }
+        resolve();
+      }
+      else{
+        console.log(postgresScope.queryRequest);
+        reject();
+        alert("Error on query request, check console logs.");
+      }
+    });
+  };
+
+  $scope.queryKP = function(resolve, reject){
+    let values = [];
+    postgresScope.query($scope.database, $scope.sg_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
+      if(postgresScope.successRequest){
+        for(let i=0; i<postgresScope.queryRequest.data.length; i++){
+          values.push({
+            id : postgresScope.queryRequest.data[i].uuid,
+            name : postgresScope.queryRequest.data[i].sg_name
+          });
+          if(i == postgresScope.queryRequest.data.length-1){
+            $scope.ressources.push({
+              name : "Key peer(s)",
               values : values
             });
           }
