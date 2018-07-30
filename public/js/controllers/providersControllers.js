@@ -42,7 +42,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             }
             else if($scope.selectedProvider == $scope.azureProvider){
               providerScope = azureProviderFactory.getScope();
-              console.log(providerScope);
               while(providerScope == null) providerScope = azureProviderFactory.getScope();
             }
             else if($scope.selectedProvider == $scope.fcaProvider){
