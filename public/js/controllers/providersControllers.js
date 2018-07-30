@@ -106,7 +106,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTree("treeTenants"+$scope.controller);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
   }
 });
 
