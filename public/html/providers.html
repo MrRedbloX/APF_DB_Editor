@@ -6,7 +6,7 @@
         <ul>
            <li data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{controller}}</a>
              <ul ng-repeat="tenant in tenants">
-               <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}' onclick="{{getRessources(tenant.uuid, tenant.tenant_name)}}">{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+               <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}' on-click="{{getRessources(tenant.uuid, tenant.tenant_name)}}">{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
            </li>
         </ul>
