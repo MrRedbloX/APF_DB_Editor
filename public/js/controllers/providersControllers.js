@@ -118,12 +118,9 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory,
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    $scope.loadJSTree("treeTenants"+$scope.controller);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
   }
 
-  $scope.loadJSTreeBis = function(){
-    mainProvidersScope.loadJSTree($scope.controller);
-  }
 });
 
 app.controller('fcaProviderController', function($scope, mainProvidersFactory, fcaProviderFactory){
