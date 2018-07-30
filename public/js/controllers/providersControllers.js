@@ -115,7 +115,20 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   }
 
   $scope.getRessources = function(tenant){
+    let split = tenant.split(" / ");
+    postgresScope.query($scope.database, $scope.tenant_table, "uuid,tenant_region", "tenant_name", split[0], function(){
+      if(postgresScope.successRequest){
+        for(let i=0; i<postgresScope.queryRequest.data.length; i++){
+          if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
 
+          }
+        }
+      }
+      else{
+        console.log(postgresScope.queryRequest);
+        alert("Error on query request, check console logs.");
+      }
+    });
   };
 
 });
