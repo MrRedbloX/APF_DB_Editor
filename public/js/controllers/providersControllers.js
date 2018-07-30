@@ -173,7 +173,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           });
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
-              name : "Elastic Cloud Server(s)",
+              name : "Virtual Private Cloud(s)",
               values : values
             });
           }
