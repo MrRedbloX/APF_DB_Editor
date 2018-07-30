@@ -26,6 +26,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.tenant_table = "tenant_table";
   $scope.provider_table = "provider_table";
   $scope.tenantFkProvider = "provider_uuid";
+  $scope.ecs_table = "ecs_table";
 
   $scope.displayRessources = false;
   $scope.selectedTenant = null;
@@ -123,9 +124,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
 
             await $scope.queryRessources("ECS");
-            await $scope.queryRessources("VPC");
+            /*await $scope.queryRessources("VPC");
             await $scope.queryRessources("SG");
-            await $scope.queryRessources("KP");
+            await $scope.queryRessources("KP");*/
 
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
             $scope.displayRessources = true;
@@ -142,6 +143,27 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.queryRessources = function(res){
     if(res == "ECS") return new Promise(resolve => $scope.queryECS(resolve));
+    else if(res == "VPC") return new Promise(resolve => $scope.queryVPC(resolve));
+    else if(res == "SG") return new Promise(resolve => $scope.querySG(resolve));
+    else if(res == "KP") return new Promise(resolve => $scope.queryKP(resolve));
+    else return new Promise(reject => {
+      console.log("Hundle ressources");
+      reject();
+    });
+  };
+
+  $scope.queryECS = function(resolve, reject){
+    let values = [];
+    postgresScope.query($scope.database, $scope.ecs_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
+      if($scope.successRequest){
+
+      }
+      else{
+        console.log(postgresScope.queryRequest);
+        reject();
+        alert("Error on query request, check console logs.");
+      }
+    });
   };
 
 });
