@@ -37,6 +37,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.providerScope = null;
 
+  $scope.ressourcesNames = ["ECS", "VPC", "SG", "KP"];
   $scope.ressources = [];
 
   $scope.readyCheckProvider = false;
@@ -111,12 +112,13 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
 
-            await $scope.queryRessources("ECS");
-            await $scope.queryRessources("VPC");
-            await $scope.queryRessources("SG");
-            await $scope.queryRessources("KP");
+            for(let j=0; j<$scope.ressourcesNames.length; j++)
+              await $scope.queryRessources($scope.ressourcesNames[j]);
 
             $scope.displayRessources = true;
+            for(let j=0; j<$scope.ressourcesNames.length; j++)
+              $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[i]);
+              
             break;
           }
         }
