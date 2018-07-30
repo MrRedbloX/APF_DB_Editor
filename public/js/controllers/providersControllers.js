@@ -114,7 +114,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   }
 
-  $scope.getRessources()
+  $scope.getRessources = function(tenant){
+    
+  };
 
 });
 
