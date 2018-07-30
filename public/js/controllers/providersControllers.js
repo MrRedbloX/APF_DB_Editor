@@ -97,6 +97,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 });
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory){
+  console.log("AZURE SCOPE");
   $scope.controller = "Azure";
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = [];
