@@ -126,7 +126,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.queryRessources = function(res){
-    console.log("Enter query Res");
     if(res == "ECS") return new Promise((resolve, reject) => $scope.queryECS(resolve, reject));
     else if(res == "VPC") return new Promise((resolve, reject) => $scope.queryVPC(resolve, reject));
     else if(res == "SG") return new Promise((resolve, reject) => $scope.querySG(resolve, reject));
