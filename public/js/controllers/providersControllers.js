@@ -116,9 +116,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               await $scope.queryRessources($scope.ressourcesNames[j]);
 
             $scope.displayRessources = true;
-            for(let j=0; j<$scope.ressourcesNames.length; j++)
+            for(let j=0; j<$scope.ressourcesNames.length; j++){
+              console.log("treeAWSTenant"+$scope.ressourcesNames[i]);
               $scope.loadJSTree("treeAWSTenant"+$scope.ressourcesNames[i]);
-              
+            }
             break;
           }
         }
