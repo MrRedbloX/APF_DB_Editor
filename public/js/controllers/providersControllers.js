@@ -118,6 +118,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory, f
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
+    $scope.loadJSTreeBis();
   }
 
   $scope.loadJSTreeBis = function(){
@@ -133,6 +134,7 @@ app.controller('feProviderController', function($scope, mainProvidersFactory, fe
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
+    $scope.loadJSTreeBis();
   }
 
   $scope.loadJSTreeBis = function(){
