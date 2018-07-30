@@ -98,9 +98,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.getRessources = function(id){
     console.log("getRessources");
-    let id = tenant_id+";"+tenant_name;
+    let split = id.split(';')
     $scope.displayRessources = true;
-    $scope.selectedTenant = tenant_name;
+    $scope.selectedTenant = split[1];
   };
 
 });
