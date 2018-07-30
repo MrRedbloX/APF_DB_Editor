@@ -78,8 +78,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   }
 });
 
-app.controller('awsProviderController', function($scope, mainProvidersFactory){
+app.controller('awsProviderController', function($scope, mainProvidersFactory, awsProviderFactory){
   $scope.controller = "AWS";
+  awsProviderFactory.setScope($scope);
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = [];
 
