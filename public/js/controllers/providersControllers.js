@@ -120,7 +120,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
+    //mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
   }
 
   $scope.getRessources = function(){
@@ -136,7 +136,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory,
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    //mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
+    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller);
   }
 
 });
