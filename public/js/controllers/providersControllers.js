@@ -122,6 +122,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
+            $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
             console.log("Ressources query");
             await $scope.queryRessources("ECS");
             console.log("Continue");
@@ -129,7 +130,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             await $scope.queryRessources("SG");
             await $scope.queryRessources("KP");*/
 
-            $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
             $scope.displayRessources = true;
             break;
           }
