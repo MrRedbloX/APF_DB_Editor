@@ -113,11 +113,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
 app.controller('fcaProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "FCA";
   var mainProvidersScope = mainProvidersFactory.getScope();
-  $scope.tenants = mainProvidersScope.tenants;
-
-  $scope.queryTenantsBis = function(){
-    mainProvidersScope.queryTenants($scope.controller);
-  }
+  $scope.tenants = [];
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
@@ -131,11 +127,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory){
 app.controller('feProviderController', function($scope, mainProvidersFactory){
   $scope.controller = "Flexible Engine";
   var mainProvidersScope = mainProvidersFactory.getScope();
-  $scope.tenants = mainProvidersScope.tenants;
-
-  $scope.queryTenantsBis = function(){
-    mainProvidersScope.queryTenants($scope.controller);
-  }
+  $scope.tenants = [];
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
