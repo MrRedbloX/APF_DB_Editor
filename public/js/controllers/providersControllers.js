@@ -31,6 +31,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.selectedTenant = selectedTenant;
   $scope.selectedTenantID = selectedTenantID;
 
+  $scope.providerScope;
+
   $scope.ressources = [
     {
       name : "ECS",
@@ -64,27 +66,26 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
         $scope.readyCheckProvider = true;
 
+        if($scope.selectedProvider == $scope.awsProvider){
+          providerScope = awsProviderFactory.getScope();
+          while(providerScope == null) providerScope = awsProviderFactory.getScope();
+        }
+        else if($scope.selectedProvider == $scope.azureProvider){
+          providerScope = azureProviderFactory.getScope();
+          while(providerScope == null) providerScope = azureProviderFactory.getScope();
+        }
+        else if($scope.selectedProvider == $scope.fcaProvider){
+          providerScope = fcaProviderFactory.getScope();
+          while(providerScope == null) providerScope = fcaProviderFactory.getScope();
+        }
+        else if($scope.selectedProvider == $scope.feProvider){
+          providerScope = feProviderFactory.getScope();
+          while(providerScope == null) providerScope = feProviderFactory.getScope();
+        }
+
         $scope.tenants = [];
         postgresScope.query($scope.database, $scope.tenant_table, "*", $scope.tenantFkProvider, $scope.selectedProviderId, function(){
           if(postgresScope.successRequest){
-            //$scope.tenants = postgresScope.queryRequest.data;
-            let providerScope = null;
-            if($scope.selectedProvider == $scope.awsProvider){
-              providerScope = awsProviderFactory.getScope();
-              while(providerScope == null) providerScope = awsProviderFactory.getScope();
-            }
-            else if($scope.selectedProvider == $scope.azureProvider){
-              providerScope = azureProviderFactory.getScope();
-              while(providerScope == null) providerScope = azureProviderFactory.getScope();
-            }
-            else if($scope.selectedProvider == $scope.fcaProvider){
-              providerScope = fcaProviderFactory.getScope();
-              while(providerScope == null) providerScope = fcaProviderFactory.getScope();
-            }
-            else if($scope.selectedProvider == $scope.feProvider){
-              providerScope = feProviderFactory.getScope();
-              while(providerScope == null) providerScope = feProviderFactory.getScope();
-            }
             providerScope.setTenants(postgresScope.queryRequest.data);
           }
           else{
@@ -108,11 +109,12 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         treeView.jstree('open_all');
       })
       .on('select_node.jstree', function(e, data){
-        console.log(e);
-        console.log(data);
+        $scope.getRessources(data.node.text);
       });
     });
   }
+
+  $scope.getRessources()
 
 });
 
