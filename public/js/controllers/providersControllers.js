@@ -47,6 +47,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         $scope.tenants = postgresScope.queryRequest.data;
         $scope.readyQueryTenants = true;
         console.log($scope.tenants);
+        return true;
       }
       else{
         console.log(postgresScope.queryRequest);
@@ -86,8 +87,10 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = mainProvidersScope.tenants;
 
+  $scope.readyQueryTenants = false;
+
   $scope.queryTenantsBis = function(){
-    mainProvidersScope.queryTenants($scope.controller);
+    $scope.readyQueryTenants = mainProvidersScope.queryTenants($scope.controller);
   }
 
   $scope.loadJSTreeBis = function(){
