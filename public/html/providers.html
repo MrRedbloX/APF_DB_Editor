@@ -42,6 +42,18 @@
       <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
+          <div ng-repeat="res in ressources" on-finish-render="ngRepeatFinished">
+            <div id="treeTenant{{res.nameBis}}">
+              <ul>
+                 <li data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
+                   <ul ng-repeat="val in res.values">
+                     <li id="{{val.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                   </ul>
+                 </li>
+              </ul>
+            </div>
+            <hr ng-if="$index < ressources.length-1">
+          </div>
         </fieldset>
       </form>
     </div>
@@ -58,6 +70,18 @@
       <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
+          <div ng-repeat="res in ressources" on-finish-render="ngRepeatFinished">
+            <div id="treeTenant{{res.nameBis}}">
+              <ul>
+                 <li data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
+                   <ul ng-repeat="val in res.values">
+                     <li id="{{val.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                   </ul>
+                 </li>
+              </ul>
+            </div>
+            <hr ng-if="$index < ressources.length-1">
+          </div>
         </fieldset>
       </form>
     </div>
@@ -74,6 +98,18 @@
       <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
+          <div ng-repeat="res in ressources" on-finish-render="ngRepeatFinished">
+            <div id="treeTenant{{res.nameBis}}">
+              <ul>
+                 <li data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
+                   <ul ng-repeat="val in res.values">
+                     <li id="{{val.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                   </ul>
+                 </li>
+              </ul>
+            </div>
+            <hr ng-if="$index < ressources.length-1">
+          </div>
         </fieldset>
       </form>
     </div>
