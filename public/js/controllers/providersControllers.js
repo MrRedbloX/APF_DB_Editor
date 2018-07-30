@@ -29,6 +29,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.displayRessources = displayRessources;
   $scope.selectedTenant = selectedTenant;
+  $scope.selectedTenantID = selectedTenantID;
 
   $scope.ressources = [
     {
