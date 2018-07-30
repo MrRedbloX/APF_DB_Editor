@@ -117,10 +117,16 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.getRessources = function(tenant){
     let split = tenant.split(" / ");
     $scope.selectedTenant = split[0];
-    postgresScope.query($scope.database, $scope.tenant_table, "uuid,tenant_region", "tenant_name", "'"+$scope.selectedTenant+"'", function(){
+    postgresScope.query($scope.database, $scope.tenant_table, "uuid,tenant_region", "tenant_name", "'"+$scope.selectedTenant+"'", async function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
+
+            await $scope.queryECS();
+            await $scope.queryVPC();
+            await $scope.querySG();
+            await $scope.queryKP();
+
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
             $scope.displayRessources = true;
             break;
@@ -132,6 +138,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         alert("Error on query request, check console logs.");
       }
     });
+  };
+
+  $scope.queryECS = function(){
+    
   };
 
 });
