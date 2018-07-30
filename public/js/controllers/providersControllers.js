@@ -231,6 +231,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Key peer(s)",
+              nameBis : res,
               values : values
             });
           }
