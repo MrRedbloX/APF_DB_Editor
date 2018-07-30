@@ -235,6 +235,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             $scope.ressources.push({
               name : "Key peer(s)",
               nameBis : res,
+              imgPath : "ressources_kp.png",
               values : values
             });
           }
