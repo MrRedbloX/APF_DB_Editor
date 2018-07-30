@@ -167,7 +167,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     let values = [];
     postgresScope.query($scope.database, $scope.ecs_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
-        console.log(postgresScope.queryRequest.data);
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
