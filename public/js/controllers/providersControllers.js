@@ -52,6 +52,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       }
       return;
     });
+    return;
   };
 
   $scope.loadJSTree = function(provider){
