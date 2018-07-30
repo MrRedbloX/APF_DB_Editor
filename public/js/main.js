@@ -248,7 +248,7 @@ app.factory('feProviderFactory', function(){
 });
 
 
-app.directive('onRessourcesFinishRender', function ($timeout) {
+app.directive('onFinishRender', function ($timeout) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attr) {
@@ -260,6 +260,7 @@ app.directive('onRessourcesFinishRender', function ($timeout) {
 		}
 	}
 });
+
 
 //This controller allows to do all the requests in databases, therefore he needs to be on top of every others
 app.controller('postgresqlController', function($scope, $http, postgresqlFactory){
