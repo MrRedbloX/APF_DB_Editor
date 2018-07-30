@@ -1,3 +1,13 @@
+var displayRessources;
+var selectedTenant;
+
+function getRessources(tenant_id, tenant_name){
+  console.log("getRessources")
+  let id = tenant_id+";"+tenant_name;
+  displayRessources = true;
+  selectedTenant = tenant_name;
+}
+
 app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory, feProviderFactory){
   mainProvidersFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
@@ -15,7 +25,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.provider_table = "provider_table";
   $scope.tenantFkProvider = "provider_uuid";
 
-  $scope.displayRessources = false;
+  $scope.displayRessources = displayRessources;
+  $scope.selectedTenant = selectedTenant;
 
   $scope.ressources = [
     {
@@ -95,13 +106,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       });
     });
   }
-
-  $scope.getRessources = function(tenant_id, tenant_name){
-    console.log("getRessources")
-    let id = tenant_id+";"+tenant_name;
-    $scope.displayRessources = true;
-    $scope.selectedTenant = tenant_name;
-  };
 
 });
 
