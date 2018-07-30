@@ -87,7 +87,6 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 
   $$scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    console.log($scope.tenants);
   }
 
   $scope.loadJSTreeBis = function(){
@@ -96,7 +95,6 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 });
 
 app.controller('azureProviderController', function($scope, mainProvidersFactory){
-  console.log("AZURE SCOPE");
   $scope.controller = "Azure";
   var mainProvidersScope = mainProvidersFactory.getScope();
   $scope.tenants = [];
@@ -105,6 +103,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
+    console.log($scope.tenants);
   }
 
   $scope.loadJSTreeBis = function(){
