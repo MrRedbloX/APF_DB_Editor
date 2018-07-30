@@ -35,4 +35,4 @@ Commenter le code > Fait (dire à Alois de commenter le sien)
 Rajouter dans Subnet vpc id > Fait
 Copier table Provider dans sonde > Fait
 
-Continuer les providers
+S'occuper de subnet et rules pour vpc et sg
