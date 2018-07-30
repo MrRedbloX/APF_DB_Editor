@@ -218,7 +218,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.queryKP = function(resolve, reject){
     let values = [];
-    postgresScope.query($scope.database, $scope.sg_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
+    postgresScope.query($scope.database, $scope.kp_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
       if(postgresScope.successRequest){
         console.log(postgresScope.queryRequest.data);
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
