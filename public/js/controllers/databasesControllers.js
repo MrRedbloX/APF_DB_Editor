@@ -222,6 +222,7 @@ app.controller('buttonAreaController', function($scope, columnsDisplayFactory, p
     var canPush = true; //if condAtt and condValue are verified this will be true and then we can push
     var columnsDisplayScope = columnsDisplayFactory.getScope();
     treeDatabaseAreaScope.setDisplayTo("nothing");
+    columnsDisplayScope.columns = [];
 
     //We make no row is selected
     if(currentRowSelected != null && document.getElementById(currentRowSelected) != null) document.getElementById(currentRowSelected).style.backgroundColor = "";
