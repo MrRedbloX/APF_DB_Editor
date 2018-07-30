@@ -131,7 +131,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     else if(res == "SG") return new Promise((resolve, reject) => $scope.querySG(resolve, reject));
     else if(res == "KP") return new Promise((resolve, reject) => $scope.queryKP(resolve, reject));
     else return new Promise(reject => {
-      console.log("Hundle ressources");
+      console.log("Hundle ressource");
       reject();
     });
   };
