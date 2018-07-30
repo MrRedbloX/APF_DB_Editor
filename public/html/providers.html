@@ -1,21 +1,23 @@
 <div ng-controller="mainProvidersController">
   <a ng-init="checkProvider()" />
-  <div ng-if="selectedProvider == awsProvider" ng-controller="awsProviderController">
-    {{controller}}
-  </div>
-  <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
-    {{controller}}
-    <a ng-init="queryTenants()" />
-    <div ng-if="readyTenant" ng-repeat="tenant in tenants">
-      <fieldset>
-        <legend>{{tenant.name}}</legend>
-      </fieldset>
+  <div ng-if="readyCheckProvider">
+    <div ng-if="selectedProvider == awsProvider" ng-controller="awsProviderController">
+      {{controller}}
     </div>
-  </div>
-  <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
-    {{controller}}
-  </div>
-  <div ng-if="selectedProvider == feProvider" ng-controller="feProviderController">
-    {{controller}}
+    <div ng-if="selectedProvider == azureProvider" ng-controller="azureProviderController">
+      {{controller}}
+      <a ng-init="queryTenants()" />
+      <div ng-if="readyTenant" ng-repeat="tenant in tenants">
+        <fieldset>
+          <legend>{{tenant.name}}</legend>
+        </fieldset>
+      </div>
+    </div>
+    <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
+      {{controller}}
+    </div>
+    <div ng-if="selectedProvider == feProvider" ng-controller="feProviderController">
+      {{controller}}
+    </div>
   </div>
 </div>
