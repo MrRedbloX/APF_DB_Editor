@@ -9,7 +9,7 @@
       <ul ng-if="readyQueryTenants">
          <li data-jstree='{"icon":"public/css/img/provider.png"}'><a class="inactiveLink">{{controller}}</a>
            <ul ng-repeat="tenant in tenants">
-             <li id="{{tenant.name}}" onclick="isTableSelected(id)" data-jstree='{"icon":"public/css/img/table.png"}'>{{tab.table_name}}</li>
+             <li id="{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.name}}</li>
            </ul>
          </li>
       </ul>
