@@ -74,7 +74,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
   $scope.readyQueryTenants = false;
 
   $scope.queryTenantsBis = function(){
-    $scope.readyQueryTenants = mainProvidersScope.queryTenants($scope.controller);  
+    $scope.readyQueryTenants = mainProvidersScope.queryTenants($scope.controller);
   }
 
   $scope.loadJSTreeBis = function(){
@@ -92,7 +92,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory)
   $scope.queryTenantsBis = function(){
     console.log("Start");
     $scope.readyQueryTenants = mainProvidersScope.queryTenants($scope.controller);
-    console.log("Continue");
+    console.log($scope.readyQueryTenants);
   }
 
   $scope.loadJSTreeBis = function(){
