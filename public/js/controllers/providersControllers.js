@@ -76,7 +76,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory){
   $scope.tenants = mainProvidersScope.tenants;
 
   $scope.queryTenants = function(){
-    mainProvidersScope.getQueryTenants($scope.controller);
+    mainProvidersScope.queryTenants($scope.controller);
   }
 
   $scope.loadJSTree = mainProvidersScope.loadJSTree($scope.controller);*/
