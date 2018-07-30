@@ -31,7 +31,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       if(postgresScope.successRequest){
         $scope.selectedProviderId = postgresScope.queryRequest.data[0].uuid;
         $scope.readyCheckProvider = true;
-        console.log("CHECK");
       }
       else{
         console.log(postgresScope.queryRequest);
