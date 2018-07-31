@@ -322,7 +322,7 @@ app.controller('azureProviderController', function($scope, mainProvidersFactory,
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller, "Tenant");
+    mainProvidersScope.loadJSTreeAndSetListener("treeTenants"+$scope.controller, "Tenant");
   }
 
 });
@@ -335,7 +335,7 @@ app.controller('fcaProviderController', function($scope, mainProvidersFactory, f
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller, "Tenant");
+    mainProvidersScope.loadJSTreeAndSetListener("treeTenants"+$scope.controller, "Tenant");
   }
 });
 
@@ -348,6 +348,6 @@ app.controller('feProviderController', function($scope, mainProvidersFactory, fe
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controllerBis, "Tenant");
+    mainProvidersScope.loadJSTreeAndSetListener("treeTenants"+$scope.controllerBis, "Tenant");
   }
 });
