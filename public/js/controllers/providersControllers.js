@@ -85,7 +85,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.loadJSTreeAndSetListener = function(id, mode){
     $(function() {
       let treeView = $("#"+id);
-      treeView.jstree("destroy");
       treeView.jstree()
       .on('select_node.jstree', function(e, data){
         if(mode == "Tenant"){
@@ -98,7 +97,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.loadJSTree= function(id){
     $(function() {
       let treeView = $("#"+id);
-      treeView.jstree("destroy");
       treeView.jstree();
     });
   }
