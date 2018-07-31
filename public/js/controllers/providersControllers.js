@@ -179,7 +179,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           add = "";
-          let contains = await querySubnet(resolve, reject, postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
+          let contains = await $scope.querySubnet(resolve, reject, postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
           console.log(contains);
           if (contains) add = "subnet(s)";
           values.push({
