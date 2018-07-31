@@ -105,6 +105,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   }
 
   $scope.getRessources = function(tenant){
+    console.log("getRessources");
     $scope.ressources = [];
     $scope.objects = {};
     let split = tenant.split(" / ");
