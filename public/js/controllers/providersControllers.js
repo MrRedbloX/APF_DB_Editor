@@ -117,6 +117,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             for(let j=0; j<$scope.objectsNames.length; j++)
               await $scope.queryObjects($scope.objectsNames[j]);
 
+            console.log("Authorize Display")
             $scope.displayRessources = true;
             break;
           }
