@@ -172,7 +172,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if ($scope.objects[postgresScope.queryRequest.data[i].vpc_name] != null && $scope.objects[postgresScope.queryRequest.data[i].vpc_name].length > 0) add = "subnet(s)";
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
-            name : postgresScope.queryRequest.data[i].vpc_name+add
+            name : postgresScope.queryRequest.data[i].vpc_name+add,
+            values : $scope.objects[postgresScope.queryRequest.data[i].vpc_name]
           });
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
