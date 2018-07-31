@@ -269,7 +269,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
           });
         }
         $scope.objects[vpc_name] = values;
-        if(values.length > 0 ) vpc_name = vpc_name+" subnet(s)";
+        //if(values.length > 0 ) vpc_name = vpc_name+" subnet(s)";
         resolve();
       }
       else{
