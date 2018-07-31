@@ -29,7 +29,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.ressourcesNames = ["ECS", "VPC", "SG", "KP"];
   $scope.ressources = [];
   $scope.objectsNames = ["Subnet", "Rule"];
-  $scope.objects = ["Test1", "Test2"];
+  $scope.resObjects = ["Test1", "Test2"];
 
   $scope.readyCheckProvider = false;
   $scope.readyQueryTenants = false;
