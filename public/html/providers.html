@@ -20,9 +20,7 @@
                  <li class="jstree-open" data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
                      <li class="jstree-open" id="{{val.uuid}};{{val.name}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'><a>{{val.name}}</a>
-                       <div ng-if="objects[val.name] == null">
-                         <a ng-init="doAlert()" />
-                       </div>
+                       <a ng-if="val.name == null" ng-init="doAlert()"></a>
                        <ul ng-repeat="obj in objects[val.name]">
                          <li id='{{obj.id}};{{obj.name}}' data-jstree='{"icon":"public/css/img/objects_default.png"}'>{{obj.name}}</li>
                        </ul>
