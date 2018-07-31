@@ -310,7 +310,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
                   name : postgresScope.queryRequest.data[k].direction+" / "+postgresScope.queryRequest.data[k].protocol+" / "+postgresScope.queryRequest.data[k].remote_ip_prefix
                 });
               }
-              if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
+              if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" rule(s)";
               $scope.objects[$scope.ressources[i].values[j].name] = values;
               resolve();
             }
