@@ -181,7 +181,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             });
           }
         }
-        console.log($scope.objects);
         resolve();
       }
       else{
@@ -270,7 +269,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             $scope.objects[name_vpc] = values;
           }
         }
-        console.log("Finish");
         resolve();
       }
       else{
