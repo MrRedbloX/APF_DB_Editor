@@ -85,7 +85,13 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       let treeView = $("#"+id);
       treeView.jstree()
       .on('select_node.jstree', function(e, data){
-        if(mode == "Tenant") $scope.getRessources(data.node.text);
+        if(mode == "Tenant"){
+          for(let j=0; j<$scope.ressourcesNames.length; j++){
+            let treeId = "treeTenant"+$scope.ressourcesNames[j];
+            if(document.getElementById(treeId) != null) $("#"+treeId).jstree("destroy");
+          }
+          $scope.getRessources(data.node.text);
+        }
       });
     });
   }
