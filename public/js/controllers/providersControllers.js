@@ -176,7 +176,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             name : postgresScope.queryRequest.data[i].vpc_name
           });
           await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
-          console.log('Continue');
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Virtual Private Cloud(s)",
