@@ -111,6 +111,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
+            console.log("Found uuid");
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
 
             for(let j=0; j<$scope.ressourcesNames.length; j++)
