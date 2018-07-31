@@ -114,9 +114,10 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             console.log("Found uuid");
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
 
-            for(let j=0; j<$scope.ressourcesNames.length; j++)
+            for(let j=0; j<$scope.ressourcesNames.length; j++){
+              console.log("Query "+$scope.ressourcesNames[j]);
               await $scope.queryRessources($scope.ressourcesNames[j]);
-
+            }
             for(let j=0; j<$scope.objectsNames.length; j++)
               await $scope.queryObjects($scope.objectsNames[j]);
 
