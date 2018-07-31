@@ -88,6 +88,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
         if(mode == "Tenant"){
           for(let j=0; j<$scope.ressourcesNames.length; j++){
             let treeId = "treeTenant"+$scope.ressourcesNames[j];
+            console.log(document.getElementById(treeId));
             if(document.getElementById(treeId) != null) $("#"+treeId).jstree("destroy");
           }
           $scope.getRessources(data.node.text);
