@@ -11,7 +11,7 @@
            </li>
         </ul>
       </div>
-      <form ng-if="displayRessources" ng-init="reload()">
+      <form ng-if="displayRessources">
         <fieldset class="chartDisplayBorder">
           <legend class="chartDisplayBorder">{{selectedTenant}}</legend>
           <div ng-repeat="res in ressources" on-finish-render="ngRepeatFinished">
