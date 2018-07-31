@@ -96,7 +96,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   }
 
-  $scope.loadJSTree= function(id, mode){
+  $scope.loadJSTree= function(id){
     $(function() {
       let treeView = $("#"+id);
       treeView.jstree();
