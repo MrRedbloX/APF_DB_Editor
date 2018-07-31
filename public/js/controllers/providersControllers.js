@@ -1,15 +1,3 @@
-var displayRessources;
-var selectedTenant;
-var selectedTenantID;
-
-function getRessources(id){
-  console.log("getRessources")
-  let split = id.split(";");
-  displayRessources = true;
-  selectedTenant = split[1];
-  selectedTenantID = split[0];
-}
-
 app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory, feProviderFactory){
   mainProvidersFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
@@ -123,6 +111,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               await $scope.queryRessources($scope.ressourcesNames[j]);
 
             $scope.displayRessources = true;
+            console.log($scope.objects);
             break;
           }
         }
