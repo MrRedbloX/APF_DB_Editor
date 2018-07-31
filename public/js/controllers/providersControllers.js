@@ -1,3 +1,5 @@
+var tempSelectedTenant;
+var tempSelectedTenantID;
 app.controller('mainProvidersController', function($scope, $route, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory, feProviderFactory){
   mainProvidersFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
@@ -88,10 +90,9 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       treeView.jstree()
       .on('select_node.jstree', function(e, data){
         if(mode == "Tenant"){
-          let tempSelectedTenant = $scope.selectedTenant;
-          let tempSelectedTenantID = $scope.selectedTenantID;
+          tempSelectedTenant = $scope.selectedTenant;
+          tempSelectedTenantID = $scope.selectedTenantID;
           $route.reload();
-          console.log(tempSelectedTenant);
           $scope.selectedTenant = tempSelectedTenant;
           $scope.selectedTenantID = tempSelectedTenantID;
           $scope.getRessources(data.node.text);
