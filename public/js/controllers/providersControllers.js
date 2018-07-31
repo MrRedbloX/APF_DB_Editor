@@ -286,6 +286,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               alert("Error on query request, check console logs.");
             }
           });
+        }
       }
     }
   };
