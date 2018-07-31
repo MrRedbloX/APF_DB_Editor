@@ -90,7 +90,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         });
       }
       catch (e){
-        console.log(e);
+        //console.log(e);
         return;
       }
     });
