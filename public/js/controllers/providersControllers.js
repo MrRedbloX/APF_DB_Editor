@@ -32,10 +32,10 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.objects = {};
 
   $scope.readyCheckProvider = false;
-  $scope.readyQueryTenants = false;
 
   $scope.checkProvider = function(){
     $scope.readyCheckProvider = false;
+    $scope.displayRessources = false;
     $scope.selectedProvider = ((window.location.href.split('?')[1]).split('&')[0]).split('=')[1];
 
     let queryVar = $scope.selectedProvider;
