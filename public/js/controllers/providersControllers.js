@@ -80,7 +80,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.loadJSTree = function(id, mode){
+  $scope.loadJSTreeAndSetListener = function(id, mode){
     $(function() {
       try{
         let treeView = $("#"+id);
@@ -93,6 +93,16 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         //console.log(e);
         return;
       }
+    });
+  }
+
+  $scope.loadJSTree= function(id, mode){
+    $(function() {
+      let treeView = $("#"+id);
+      treeView.jstree()
+      .on('select_node.jstree', function(e, data){
+        if(mode == "Tenant") $scope.getRessources(data.node.text);
+      });
     });
   }
 
@@ -305,7 +315,7 @@ app.controller('awsProviderController', function($scope, mainProvidersFactory, a
 
   $scope.setTenants = function(tenants){
     $scope.tenants = tenants;
-    mainProvidersScope.loadJSTree("treeTenants"+$scope.controller, "Tenant");
+    mainProvidersScope.loadJSTreeAndSetListener("treeTenants"+$scope.controller, "Tenant");
   }
 });
 
