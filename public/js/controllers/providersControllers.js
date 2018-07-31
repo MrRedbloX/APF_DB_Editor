@@ -270,8 +270,10 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
 
   $scope.querySubnet = function(resolve, reject){
     console.log($scope.ressources);
+    let found = false;
     for(let i=0; i<$scope.ressources.length; i++){
       if($scope.ressources[i].nameBis == "VPC"){
+        found = true;
         for(let j=0; j<$scope.ressources[i].values.length; j++){
           let values = [];
           postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", $scope.ressources[i].values[j].id, function(){
@@ -295,8 +297,8 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
           });
         }
       }
-      else console.log("wtf");
     }
+    if(!found) resolve();
   };
 
   $scope.queryRule = function(resolve, reject){
