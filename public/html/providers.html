@@ -6,7 +6,7 @@
         <ul>
            <li class="jstree-open" data-jstree='{"icon":"public/css/img/provider_aws.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
-               <li data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+               <li data-jstree='{"icon":"public/css/img/tenant.png"}' onclick="alert()">{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
            </li>
         </ul>
