@@ -88,9 +88,11 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       treeView.jstree()
       .on('select_node.jstree', function(e, data){
         if(mode == "Tenant"){
-          console.log("Starting reload");
+          let tempSelectedTenant = $scope.selectedTenant;
+          let tempSelectedTenantID = $scope.selectedTenantID;
           $route.reload();
-          console.log($scope.selectedTenant);
+          $scope.selectedTenant = tempSelectedTenant;
+          $scope.selectedTenantID = tempSelectedTenantID;
           $scope.getRessources(data.node.text);
         }
       });
