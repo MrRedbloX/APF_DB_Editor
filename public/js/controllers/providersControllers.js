@@ -169,7 +169,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           let add = "";
-          await $scope.querySubnet(resolve, reject, postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
+          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
           if ($scope.objects[postgresScope.queryRequest.data[i].vpc_name] != null && $scope.objects[postgresScope.queryRequest.data[i].vpc_name].length > 0) add = "subnet(s)";
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
@@ -248,6 +248,15 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         reject();
         alert("Error on query request, check console logs.");
       }
+    });
+  };
+
+  $scope.queryRessources = function(type, id, name){
+    if(res == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject, id, name));
+    else if(res == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject, id, name));
+    else return new Promise(reject => {
+      console.log("Hundle objects");
+      reject();
     });
   };
 
