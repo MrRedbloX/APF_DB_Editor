@@ -252,7 +252,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.querySubnet = function(resolve, reject, id_vpc, name_vpc){
     let values = [];
-    let ret = false;
     postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", id_vpc, function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
@@ -266,7 +265,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           }
         }
         resolve();
-        return ret;
+        return true;
       }
       else{
         console.log(postgresScope.queryRequest);
