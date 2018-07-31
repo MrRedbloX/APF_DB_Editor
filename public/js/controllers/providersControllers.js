@@ -34,9 +34,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.readyCheckProvider = false;
   $scope.readyQueryTenants = false;
 
-  $scope.reload = function(){
-    $route.reload();
-  }
   $scope.checkProvider = function(){
     $scope.selectedProvider = ((window.location.href.split('?')[1]).split('&')[0]).split('=')[1];
 
