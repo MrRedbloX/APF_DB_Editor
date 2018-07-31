@@ -1,4 +1,4 @@
-app.controller('mainProvidersController', function($scope, $route, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory, feProviderFactory){
+app.controller('mainProvidersController', function($scope, mainProvidersFactory, postgresqlFactory, azureProviderFactory, awsProviderFactory, fcaProviderFactory, feProviderFactory){
   mainProvidersFactory.setScope($scope);
   var postgresScope = postgresqlFactory.getScope();
   $scope.selectedProvider = null;
@@ -301,8 +301,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(let j=0; j<$scope.ressourcesNames.length; j++)
       $scope.loadJSTree("treeTenant"+$scope.ressourcesNames[j]);
-
-    $route.reload();
   });
 });
 
