@@ -97,7 +97,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.loadJSTree= function(id){
     $(function() {
       let treeView = $("#"+id);
-      sleep(50);
       treeView.jstree();
     });
   }
