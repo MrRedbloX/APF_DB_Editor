@@ -276,7 +276,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
                   $scope.objects[$scope.ressources[i].values[j].name] = values;
                 }*/
               }
-              $scope.objects[$scope.ressources[i].values[j].name] = values;
+              $scope.objects[0][$scope.ressources[i].values[j].name] = values;
               resolve();
             }
             else{
