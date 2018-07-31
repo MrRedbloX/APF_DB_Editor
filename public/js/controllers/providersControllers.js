@@ -268,8 +268,8 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             name : postgresScope.queryRequest.data[k].subnet_name
           });
         }
+        $scope.objects[vpc_name] = values;
         if(values.length > 0 ) vpc_name = vpc_name+" subnet(s)";
-        $scope.objects[$scope.ressources[i].values[j].name] = values;
         resolve();
       }
       else{
