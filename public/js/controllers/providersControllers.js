@@ -30,6 +30,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.vpc_table = "vpc_table";
   $scope.sg_table = "sg_table";
   $scope.kp_table = "kp_table";
+  $scope.subnet_table = "subnet_table";
 
   $scope.displayRessources = false;
   $scope.selectedTenant = null;
@@ -178,11 +179,11 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           add = "";
-          let contains = await querySubnet(resolve, reject, postgresScope.queryRequest.data[i].uuid);
+          let contains = await querySubnet(resolve, reject, postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
           if (contains) add = "subnet(s)";
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
-            name : postgresScope.queryRequest.data[i].vpc_name
+            name : postgresScope.queryRequest.data[i].vpc_name+add
           });
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
@@ -234,6 +235,34 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.queryKP = function(resolve, reject, res){
     let values = [];
     postgresScope.query($scope.database, $scope.kp_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
+      if(postgresScope.successRequest){
+        for(let i=0; i<postgresScope.queryRequest.data.length; i++){
+          values.push({
+            id : postgresScope.queryRequest.data[i].uuid,
+            name : postgresScope.queryRequest.data[i].kp_name
+          });
+          if(i == postgresScope.queryRequest.data.length-1){
+            $scope.ressources.push({
+              name : "Key peer(s)",
+              nameBis : res,
+              imgPath : "ressources_kp.png",
+              values : values
+            });
+          }
+        }
+        resolve();
+      }
+      else{
+        console.log(postgresScope.queryRequest);
+        reject();
+        alert("Error on query request, check console logs.");
+      }
+    });
+  };
+
+  $scope.querySubnet = function(resolve, reject, id_vpc, name_vpc){
+    let values = [];
+    postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", id_vpc, function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           values.push({
