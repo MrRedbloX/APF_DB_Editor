@@ -19,6 +19,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.sg_table = "sg_table";
   $scope.kp_table = "kp_table";
   $scope.subnet_table = "subnet_table";
+  $scope.rule_table = "rule_table";
 
   $scope.displayRessources = false;
   $scope.selectedTenant = null;
@@ -101,7 +102,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   }
 
   $scope.getRessources = function(tenant){
-    console.log("getRessources");
     $scope.ressources = [];
     $scope.objects = {};
     $scope.displayRessources = false;
@@ -111,19 +111,15 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           if(postgresScope.queryRequest.data[i].tenant_region == split[1]){
-            console.log("Found uuid");
             $scope.selectedTenantID = postgresScope.queryRequest.data[i].uuid;
 
             for(let j=0; j<$scope.ressourcesNames.length; j++){
-              console.log("Query "+$scope.ressourcesNames[j]);
               await $scope.queryRessources($scope.ressourcesNames[j]);
             }
             console.log("Finish query res");
             for(let j=0; j<$scope.objectsNames.length; j++){
-              console.log("Query "+$scope.objectsNames[j]);
               await $scope.queryObjects($scope.objectsNames[j]);
             }
-            console.log("Display res");
             $scope.displayRessources = true;
             break;
           }
@@ -269,7 +265,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   };
 
   $scope.querySubnet = function(resolve, reject){
-    console.log($scope.ressources);
     let found = false;
     for(let i=0; i<$scope.ressources.length; i++){
       if($scope.ressources[i].nameBis == "VPC"){
@@ -286,7 +281,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
               }
               if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
               $scope.objects[$scope.ressources[i].values[j].name] = values;
-
               resolve();
             }
             else{
@@ -302,7 +296,34 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   };
 
   $scope.queryRule = function(resolve, reject){
-    resolve();
+    let found = false;
+    for(let i=0; i<$scope.ressources.length; i++){
+      if($scope.ressources[i].nameBis == "KP"){
+        found = true;
+        for(let j=0; j<$scope.ressources[i].values.length; j++){
+          let values = [];
+          postgresScope.query($scope.database, $scope.rule_table, "*", "sg_uuid", $scope.ressources[i].values[j].id, function(){
+            if(postgresScope.successRequest){
+              for(let k=0; k<postgresScope.queryRequest.data.length; k++){
+                values.push({
+                  id : postgresScope.queryRequest.data[k].uuid,
+                  name : postgresScope.queryRequest.data[k].subnet_name
+                });
+              }
+              if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
+              $scope.objects[$scope.ressources[i].values[j].name] = values;
+              resolve();
+            }
+            else{
+              console.log(postgresScope.queryRequest);
+              reject();
+              alert("Error on query request, check console logs.");
+            }
+          });
+        }
+      }
+    }
+    if(!found) resolve();
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
