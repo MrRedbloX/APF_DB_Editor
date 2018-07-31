@@ -273,7 +273,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
                   name : postgresScope.queryRequest.data[k].subnet_name
                 });
               }
-              $scope.objects[0][$scope.ressources[i].values[j].name] = values;
+              $scope.objects.push({
+                name : $scope.ressources[i].values[j].name,
+                values : values;
+              });
               resolve();
             }
             else{
