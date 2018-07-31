@@ -265,7 +265,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           }
         }
         resolve();
-        return true;
       }
       else{
         console.log(postgresScope.queryRequest);
