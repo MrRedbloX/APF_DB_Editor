@@ -269,7 +269,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   };
 
   $scope.querySubnet = function(resolve, reject){
-    console.log("Enter subnet");
+    console.log($scope.ressources);
     for(let i=0; i<$scope.ressources.length; i++){
       if($scope.ressources[i].nameBis == "VPC"){
         for(let j=0; j<$scope.ressources[i].values.length; j++){
