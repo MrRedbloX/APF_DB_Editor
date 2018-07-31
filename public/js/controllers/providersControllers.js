@@ -81,7 +81,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.loadJSTree = function(id, mode){
-    $(function() {
+    /*$(function() {
       try{
         let treeView = $("#"+id);
         treeView.jstree()
@@ -95,7 +95,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       catch (e){
         return;
       }
-    });
+    });*/
   }
 
   $scope.getRessources = function(tenant){
