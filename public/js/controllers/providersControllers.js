@@ -90,7 +90,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
         if(mode == "Tenant"){
           for(let j=0; j<$scope.ressourcesNames.length; j++){
             let treeId = "treeTenant"+$scope.ressourcesNames[j];
-            console.log(document.getElementById(treeId));
             let elt = document.getElementById(treeId);
             if(elt != null) elt.parentNode.removeChild(elt);/*$("#"+treeId).jstree("destroy");*/
           }
