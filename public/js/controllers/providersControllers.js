@@ -299,8 +299,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-    /*for(let j=0; j<$scope.ressourcesNames.length; j++)
-      $scope.loadJSTree("treeTenant"+$scope.ressourcesNames[j], "Ressource");*/
+    for(let j=0; j<$scope.ressourcesNames.length; j++)
+      $scope.loadJSTree("treeTenant"+$scope.ressourcesNames[j]);
   });
 });
 
