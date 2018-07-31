@@ -284,7 +284,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
               }
               if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
               $scope.objects[$scope.ressources[i].values[j].name] = values;
-              console.log("Resolve");
+
               resolve();
             }
             else{
@@ -295,6 +295,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
           });
         }
       }
+      else console.log("wtf");
     }
   };
 
