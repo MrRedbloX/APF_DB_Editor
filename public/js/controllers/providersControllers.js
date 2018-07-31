@@ -112,6 +112,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
             $scope.displayRessources = true;
             console.log($scope.objects);
+            console.log($scope.ressources);
             break;
           }
         }
