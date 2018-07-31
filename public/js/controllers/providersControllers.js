@@ -79,9 +79,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       }
     });
   };
-  $scope.doAlert = function(){
-    console.log("null");
-  }
+
   $scope.loadJSTreeAndSetListener = function(id, mode){
     $(function() {
       let treeView = $("#"+id);
