@@ -103,6 +103,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.getRessources = function(tenant){
     $scope.ressources = [];
     $scope.objects = {};
+    $scope.displayRessources = false;
     let split = tenant.split(" / ");
     $scope.selectedTenant = split[0];
     postgresScope.query($scope.database, $scope.tenant_table, "uuid,tenant_region", "tenant_name", "'"+$scope.selectedTenant+"'", async function(){
