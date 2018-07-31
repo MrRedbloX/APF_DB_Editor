@@ -112,7 +112,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               await $scope.queryRessources($scope.ressourcesNames[j]);
 
             for(let j=0; j<$scope.objectsNames.length; j++)
-              await $scope.queryObjects($scope.objectsNames[k]);
+              await $scope.queryObjects($scope.objectsNames[j]);
 
             $scope.displayRessources = true;
             console.log($scope.objects);
