@@ -29,7 +29,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.ressourcesNames = ["ECS", "VPC", "SG", "KP"];
   $scope.ressources = [];
   $scope.objectsNames = ["Subnet", "Rule"];
-  $scope.objects = [{}];
+  $scope.objects = [];
 
   $scope.readyCheckProvider = false;
   $scope.readyQueryTenants = false;
@@ -272,9 +272,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
                   id : postgresScope.queryRequest.data[k].uuid,
                   name : postgresScope.queryRequest.data[k].subnet_name
                 });
-                /*if(k == postgresScope.queryRequest.data.length-1){
-                  $scope.objects[$scope.ressources[i].values[j].name] = values;
-                }*/
               }
               $scope.objects[0][$scope.ressources[i].values[j].name] = values;
               resolve();
