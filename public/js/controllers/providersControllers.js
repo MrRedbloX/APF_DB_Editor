@@ -273,7 +273,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         alert("Error on query request, check console logs.");
       }
     });
-    return ret;
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
