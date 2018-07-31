@@ -307,7 +307,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
               for(let k=0; k<postgresScope.queryRequest.data.length; k++){
                 values.push({
                   id : postgresScope.queryRequest.data[k].uuid,
-                  name : postgresScope.queryRequest.data[k].subnet_name
+                  name : postgresScope.queryRequest.data[k].direction+" / "+postgresScope.queryRequest.data[k].protocol+" / "+postgresScope.queryRequest.data[k].remote_ip_prefix
                 });
               }
               if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
