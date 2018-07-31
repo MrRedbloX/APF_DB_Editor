@@ -262,6 +262,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.querySubnet = function(resolve, reject, id_vpc, name_vpc){
     let values = [];
+    let ret = false;
     postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", id_vpc, function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
@@ -270,15 +271,12 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             name : postgresScope.queryRequest.data[i].kp_name
           });
           if(i == postgresScope.queryRequest.data.length-1){
-            $scope.ressources.push({
-              name : "Key peer(s)",
-              nameBis : res,
-              imgPath : "ressources_kp.png",
-              values : values
-            });
+            $scope.objects[name_vpc] = values;
+            if(values.length > 0) ret = true;
           }
         }
         resolve();
+        return ret;
       }
       else{
         console.log(postgresScope.queryRequest);
@@ -286,6 +284,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
         alert("Error on query request, check console logs.");
       }
     });
+    return ret;
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
