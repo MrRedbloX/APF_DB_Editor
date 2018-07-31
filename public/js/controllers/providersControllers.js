@@ -90,7 +90,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
         if(mode == "Tenant"){
           console.log("Starting reload");
           $route.reload();
-          console.log("Finish reload");
+          console.log($scope.selectedTenant);
           $scope.getRessources(data.node.text);
         }
       });
