@@ -251,7 +251,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.queryRessources = function(type, id, name){
+  $scope.queryObjects = function(type, id, name){
     if(res == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject, id, name));
     else if(res == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject, id, name));
     else return new Promise(reject => {
