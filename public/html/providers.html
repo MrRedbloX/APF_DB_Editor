@@ -38,7 +38,7 @@
         <ul>
            <li class="jstree-open" data-jstree='{"icon":"public/css/img/provider_azure.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
-               <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+               <li data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
            </li>
         </ul>
@@ -64,9 +64,9 @@
     <div ng-if="selectedProvider == fcaProvider" ng-controller="fcaProviderController">
       <div id="treeTenantsFCA" class="treeProviders">
         <ul>
-           <li data-jstree='{"icon":"public/css/img/provider_fca.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
+           <li class="jstree-open" data-jstree='{"icon":"public/css/img/provider_fca.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
-               <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+               <li data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
            </li>
         </ul>
@@ -77,9 +77,9 @@
           <div ng-repeat="res in ressources" on-finish-render="ngRepeatFinished">
             <div id="treeTenant{{res.nameBis}}">
               <ul>
-                 <li data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
+                 <li class="jstree-open" data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
-                     <li id="{{val.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
                    </ul>
                  </li>
               </ul>
@@ -92,9 +92,9 @@
     <div ng-if="selectedProvider == feProvider" ng-controller="feProviderController">
       <div id="treeTenantsFE" class="treeProviders">
         <ul>
-           <li data-jstree='{"icon":"public/css/img/provider_fe.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
+           <li class="jstree-open" data-jstree='{"icon":"public/css/img/provider_fe.png"}'><a class="inactiveLink">{{controller}} tenant(s)</a>
              <ul ng-repeat="tenant in tenants">
-               <li id="{{tenant.uuid}};{{tenant.name}}" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
+               <li class="jstree-open" data-jstree='{"icon":"public/css/img/tenant.png"}'>{{tenant.tenant_name}} / {{tenant.tenant_region}}</li>
              </ul>
            </li>
         </ul>
@@ -105,9 +105,9 @@
           <div ng-repeat="res in ressources" on-finish-render="ngRepeatFinished">
             <div id="treeTenant{{res.nameBis}}">
               <ul>
-                 <li data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
+                 <li class="jstree-open" data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
-                     <li id="{{val.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
                    </ul>
                  </li>
               </ul>
