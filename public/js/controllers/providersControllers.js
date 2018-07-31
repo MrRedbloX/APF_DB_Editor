@@ -169,12 +169,13 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
           //let add = "";
-          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
+
           //if ($scope.objects[postgresScope.queryRequest.data[i].vpc_name] != null && $scope.objects[postgresScope.queryRequest.data[i].vpc_name].length > 0) add = "subnet(s)";
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
             name : postgresScope.queryRequest.data[i].vpc_name
           });
+          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Virtual Private Cloud(s)",
