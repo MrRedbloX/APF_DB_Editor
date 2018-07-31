@@ -274,9 +274,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
                 });
               }
               //if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
-              $scope.objects.push({
-                  $scope.ressources[i].values[j].name : values
-              });
+              let obj = {};
+              obj[$scope.ressources[i].values[j].name] = values;
+              $scope.objects.push(obj);
               resolve();
             }
             else{
