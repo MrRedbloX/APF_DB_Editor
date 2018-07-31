@@ -258,9 +258,9 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
     });
   };
 
-  $scope.querySubnet = function(resolve, reject){
+  $scope.querySubnet = function(resolve, reject, vpc_id, vpc_name){
     let values = [];
-    postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", $scope.ressources[i].values[j].id, function(){
+    postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", vpc_id, function(){
       if(postgresScope.successRequest){
         for(let k=0; k<postgresScope.queryRequest.data.length; k++){
           values.push({
@@ -268,7 +268,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             name : postgresScope.queryRequest.data[k].subnet_name
           });
         }
-        if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
+        if(values.length > 0 ) vpc_name = vpc_name+" subnet(s)";
         $scope.objects[$scope.ressources[i].values[j].name] = values;
         resolve();
       }
