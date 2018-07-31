@@ -28,6 +28,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.ressourcesNames = ["ECS", "VPC", "SG", "KP"];
   $scope.ressources = [];
+  $scope.objectsNames = ["Subnet", "Rule"];
   $scope.objects = {};
 
   $scope.readyCheckProvider = false;
@@ -109,6 +110,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
             for(let j=0; j<$scope.ressourcesNames.length; j++)
               await $scope.queryRessources($scope.ressourcesNames[j]);
+
+            for(let j=0; j<$scope.objectsNames.length; j++)
+              await $scope.queryObjects($scope.objectsNames[k]);
 
             $scope.displayRessources = true;
             console.log($scope.objects);
@@ -247,36 +251,42 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     });
   };
 
-  $scope.queryObjects = function(type, id, name){
-    if(type == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject, id, name));
-    else if(type == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject, id, name));
+  $scope.queryObjects = function(type){
+    if(type == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject));
+    else if(type == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject));
     else return new Promise(reject => {
       console.log("Hundle objects");
       reject();
     });
   };
 
-  $scope.querySubnet = function(resolve, reject, id_vpc, name_vpc){
-    let values = [];
-    postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", id_vpc, function(){
-      if(postgresScope.successRequest){
-        for(let i=0; i<postgresScope.queryRequest.data.length; i++){
-          values.push({
-            id : postgresScope.queryRequest.data[i].uuid,
-            name : postgresScope.queryRequest.data[i].subnet_name
+  $scope.querySubnet = function(resolve, reject){
+    for(let i=0; i<$scope.ressources.length; i++){
+      if($scope.ressources[i].nameBis == "VPC"){
+        for(let j=0; j<$scope.ressources[i].values.length; j++){
+          let values = [];
+          postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", $scope.ressources[i].values[j].id, function(){
+            if(postgresScope.successRequest){
+              for(let i=0; i<postgresScope.queryRequest.data.length; i++){
+                values.push({
+                  id : postgresScope.queryRequest.data[i].uuid,
+                  name : postgresScope.queryRequest.data[i].subnet_name
+                });
+                if(i == postgresScope.queryRequest.data.length-1){
+                  $scope.objects[name_vpc] = values;
+                }
+              }
+              resolve();
+            }
+            else{
+              console.log(postgresScope.queryRequest);
+              reject();
+              alert("Error on query request, check console logs.");
+            }
           });
-          if(i == postgresScope.queryRequest.data.length-1){
-            $scope.objects[name_vpc] = values;
-          }
         }
-        resolve();
       }
-      else{
-        console.log(postgresScope.queryRequest);
-        reject();
-        alert("Error on query request, check console logs.");
-      }
-    });
+    }
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
