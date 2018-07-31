@@ -95,10 +95,10 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   }
 
   $scope.loadJSTree= function(id){
-    /*$(function() {
+    $(function() {
       let treeView = $("#"+id);
       treeView.jstree();
-    });*/
+    });
   }
 
   $scope.getRessources = function(tenant){
