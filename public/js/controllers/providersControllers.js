@@ -113,9 +113,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             for(let j=0; j<$scope.ressourcesNames.length; j++)
               await $scope.queryRessources($scope.ressourcesNames[j]);
 
-            for(let j=0; j<$scope.objectsNames.length; j++)
-              await $scope.queryObjects($scope.objectsNames[j]);
-
             $scope.displayRessources = true;
             break;
           }
@@ -261,31 +258,25 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   };
 
   $scope.querySubnet = function(resolve, reject){
-    for(let i=0; i<$scope.ressources.length; i++){
-      if($scope.ressources[i].nameBis == "VPC"){
-        for(let j=0; j<$scope.ressources[i].values.length; j++){
-          let values = [];
-          postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", $scope.ressources[i].values[j].id, function(){
-            if(postgresScope.successRequest){
-              for(let k=0; k<postgresScope.queryRequest.data.length; k++){
-                values.push({
-                  id : postgresScope.queryRequest.data[k].uuid,
-                  name : postgresScope.queryRequest.data[k].subnet_name
-                });
-              }
-              if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
-              $scope.objects[$scope.ressources[i].values[j].name] = values;
-              resolve();
-            }
-            else{
-              console.log(postgresScope.queryRequest);
-              reject();
-              alert("Error on query request, check console logs.");
-            }
+    let values = [];
+    postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", $scope.ressources[i].values[j].id, function(){
+      if(postgresScope.successRequest){
+        for(let k=0; k<postgresScope.queryRequest.data.length; k++){
+          values.push({
+            id : postgresScope.queryRequest.data[k].uuid,
+            name : postgresScope.queryRequest.data[k].subnet_name
           });
         }
+        if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
+        $scope.objects[$scope.ressources[i].values[j].name] = values;
+        resolve();
       }
-    }
+      else{
+        console.log(postgresScope.queryRequest);
+        reject();
+        alert("Error on query request, check console logs.");
+      }
+    });
   };
 
   $scope.queryRule = function(resolve, reject){
