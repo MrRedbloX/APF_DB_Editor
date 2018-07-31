@@ -173,6 +173,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             id : postgresScope.queryRequest.data[i].uuid,
             name : postgresScope.queryRequest.data[i].vpc_name
           });
+          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Virtual Private Cloud(s)",
@@ -248,9 +249,9 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
     });
   };
 
-  $scope.queryObjects = function(type){
-    if(type == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject));
-    else if(type == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject));
+  $scope.queryObjects = function(type, id, name){
+    if(type == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject, id, name));
+    else if(type == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject, id, name));
     else return new Promise(reject => {
       console.log("Hundle objects");
       reject();
