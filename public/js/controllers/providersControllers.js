@@ -101,7 +101,9 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           if(mode == "Tenant") $scope.getRessources(data.node.text);
         });
       }
-      catch (e){}
+      catch (e){
+        console.log(e);
+      }
     });
   }
 
