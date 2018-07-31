@@ -90,6 +90,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             let treeId = "treeTenant"+$scope.ressourcesNames[j];
             if(document.getElementById(treeId) != null) $("#"+treeId).jstree("destroy");
           }
+          $route.reload();
           $scope.getRessources(data.node.text);
         }
       });
