@@ -290,6 +290,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     }
   };
 
+  $scope.queryRule = function(resolve, reject){
+    resolve();
+  };
+
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(let j=0; j<$scope.ressourcesNames.length; j++)
       $scope.loadJSTree("treeTenant"+$scope.ressourcesNames[j], "Ressource");
