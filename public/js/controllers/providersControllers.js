@@ -169,7 +169,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
     postgresScope.query($scope.database, $scope.vpc_table, "*", "tenant_uuid", $scope.selectedTenantID, async function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
-          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
             name : postgresScope.queryRequest.data[i].vpc_name
@@ -182,6 +181,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
               values : values
             });
           }
+          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
         }
         resolve();
       }
