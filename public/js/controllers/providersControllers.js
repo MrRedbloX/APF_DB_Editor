@@ -271,7 +271,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           });
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.objects[name_vpc] = values;
-            if(values.length > 0) ret = true;
           }
         }
         resolve();
