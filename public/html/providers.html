@@ -20,8 +20,8 @@
                  <li data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
                      <li id="{{val.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'><a>{{val.name}}</a>
-                       <ul ng-repeat="test in objects">
-                         <li data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{OBJ}}</li>
+                       <ul ng-repeat="obj in objects">
+                         <li data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{obj}}</li>
                        </ul>
                      </li>
                    </ul>
