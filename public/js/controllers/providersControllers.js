@@ -89,7 +89,8 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
           for(let j=0; j<$scope.ressourcesNames.length; j++){
             let treeId = "treeTenant"+$scope.ressourcesNames[j];
             console.log(document.getElementById(treeId));
-            if(document.getElementById(treeId) != null) $("#"+treeId).jstree("destroy");
+            let elt = document.getElementById(treeId);
+            if(elt != null) elt.parentNode.removeChild(elt);/*$("#"+treeId).jstree("destroy");*/
           }
           $scope.getRessources(data.node.text);
         }
