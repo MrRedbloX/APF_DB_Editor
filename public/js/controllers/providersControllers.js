@@ -117,7 +117,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             for(let j=0; j<$scope.objectsNames.length; j++)
               await $scope.queryObjects($scope.objectsNames[j]);
 
-            console.log("Authorize Display")
+            console.log("Authorize Display");
             $scope.displayRessources = true;
             break;
           }
@@ -295,6 +295,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    console.log("Render Finish");
     for(let j=0; j<$scope.ressourcesNames.length; j++)
       $scope.loadJSTree("treeTenant"+$scope.ressourcesNames[j]);
   });
