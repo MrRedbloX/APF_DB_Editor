@@ -93,6 +93,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
           tempSelectedTenant = $scope.selectedTenant;
           tempSelectedTenantID = $scope.selectedTenantID;
           $route.reload();
+          console.log(tempSelectedTenant);
           $scope.selectedTenant = tempSelectedTenant;
           $scope.selectedTenantID = tempSelectedTenantID;
           $scope.getRessources(data.node.text);
