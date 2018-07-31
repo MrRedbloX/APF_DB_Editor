@@ -89,9 +89,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       .on('select_node.jstree', function(e, data){
         if(mode == "Tenant"){
           $route.reload();
-          console.log(tempSelectedTenant);
-          $scope.selectedTenant = tempSelectedTenant;
-          $scope.selectedTenantID = tempSelectedTenantID;
           $scope.getRessources(data.node.text);
         }
       });
