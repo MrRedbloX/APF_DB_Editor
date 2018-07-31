@@ -85,9 +85,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
       try{
         let treeView = $("#"+id);
         treeView.jstree()
-        .on('ready.jstree', function(){
-          treeView.jstree('open_all');
-        })
         .on('select_node.jstree', function(e, data){
           if(mode == "Tenant") $scope.getRessources(data.node.text);
         });
