@@ -98,6 +98,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.loadJSTree= function(id){
     $(function() {
       let treeView = $("#"+id);
+      treeView.jstree("destroy");
       treeView.jstree();
     });
   }
