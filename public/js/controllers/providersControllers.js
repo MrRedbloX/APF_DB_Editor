@@ -88,12 +88,10 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       treeView.jstree()
       .on('select_node.jstree', function(e, data){
         if(mode == "Tenant"){
-          for(let j=0; j<$scope.ressourcesNames.length; j++){
-            let treeId = "treeTenant"+$scope.ressourcesNames[j];
-            let elt = document.getElementById(treeId);
-            if(elt != null) elt.parentNode.removeChild(elt);/*$("#"+treeId).jstree("destroy");*/
-          }
+          console.log("Starting reload");
+          $route.reload();
           $scope.getRessources(data.node.text);
+          console.log("Finish reload");
         }
       });
     });
