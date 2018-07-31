@@ -82,17 +82,11 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.loadJSTreeAndSetListener = function(id, mode){
     $(function() {
-      try{
-        let treeView = $("#"+id);
-        treeView.jstree()
-        .on('select_node.jstree', function(e, data){
-          if(mode == "Tenant") $scope.getRessources(data.node.text);
-        });
-      }
-      catch (e){
-        //console.log(e);
-        return;
-      }
+      let treeView = $("#"+id);
+      treeView.jstree()
+      .on('select_node.jstree', function(e, data){
+        if(mode == "Tenant") $scope.getRessources(data.node.text);
+      });
     });
   }
 
