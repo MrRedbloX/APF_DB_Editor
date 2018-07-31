@@ -11,7 +11,6 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     var pass= document.getElementById("pass").value;
     var rm= document.getElementById("check");
     var userpass = user + pass;
-    console.log("user");
     $scope.user = user;
 
     $scope.getMD5(userpass, function(){
