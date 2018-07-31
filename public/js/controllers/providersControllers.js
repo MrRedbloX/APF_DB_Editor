@@ -32,6 +32,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.objects = {};
 
   $scope.readyCheckProvider = false;
+  $scope.readyQueryTenants = false;
 
   $scope.checkProvider = function(){
     $scope.readyCheckProvider = false;
@@ -113,6 +114,9 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             for(let j=0; j<$scope.ressourcesNames.length; j++)
               await $scope.queryRessources($scope.ressourcesNames[j]);
 
+            for(let j=0; j<$scope.objectsNames.length; j++)
+              await $scope.queryObjects($scope.objectsNames[j]);
+
             $scope.displayRessources = true;
             break;
           }
@@ -181,7 +185,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
               values : values
             });
           }
-          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
         }
         resolve();
       }
@@ -249,35 +252,41 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
     });
   };
 
-  $scope.queryObjects = function(type, id, name){
-    if(type == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject, id, name));
-    else if(type == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject, id, name));
+  $scope.queryObjects = function(type){
+    if(type == "Subnet") return new Promise((resolve, reject) => $scope.querySubnet(resolve, reject));
+    else if(type == "Rule") return new Promise((resolve, reject) => $scope.queryRule(resolve, reject));
     else return new Promise(reject => {
       console.log("Hundle objects");
       reject();
     });
   };
 
-  $scope.querySubnet = function(resolve, reject, vpc_id, vpc_name){
-    let values = [];
-    postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", vpc_id, function(){
-      if(postgresScope.successRequest){
-        for(let k=0; k<postgresScope.queryRequest.data.length; k++){
-          values.push({
-            id : postgresScope.queryRequest.data[k].uuid,
-            name : postgresScope.queryRequest.data[k].subnet_name
+  $scope.querySubnet = function(resolve, reject){
+    for(let i=0; i<$scope.ressources.length; i++){
+      if($scope.ressources[i].nameBis == "VPC"){
+        for(let j=0; j<$scope.ressources[i].values.length; j++){
+          let values = [];
+          postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", $scope.ressources[i].values[j].id, function(){
+            if(postgresScope.successRequest){
+              for(let k=0; k<postgresScope.queryRequest.data.length; k++){
+                values.push({
+                  id : postgresScope.queryRequest.data[k].uuid,
+                  name : postgresScope.queryRequest.data[k].subnet_name
+                });
+              }
+              if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
+              $scope.objects[$scope.ressources[i].values[j].name] = values;
+              resolve();
+            }
+            else{
+              console.log(postgresScope.queryRequest);
+              reject();
+              alert("Error on query request, check console logs.");
+            }
           });
         }
-        $scope.objects[vpc_name] = values;
-        //if(values.length > 0 ) vpc_name = vpc_name+" subnet(s)";
-        resolve();
       }
-      else{
-        console.log(postgresScope.queryRequest);
-        reject();
-        alert("Error on query request, check console logs.");
-      }
-    });
+    }
   };
 
   $scope.queryRule = function(resolve, reject){
@@ -286,7 +295,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(let j=0; j<$scope.ressourcesNames.length; j++)
-      $//scope.loadJSTree("treeTenant"+$scope.ressourcesNames[j]);
+      $scope.loadJSTree("treeTenant"+$scope.ressourcesNames[j]);
   });
 });
 
