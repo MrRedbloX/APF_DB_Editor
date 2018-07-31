@@ -39,6 +39,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.ressourcesNames = ["ECS", "VPC", "SG", "KP"];
   $scope.ressources = [];
+  $scope.objects = {};
 
   $scope.readyCheckProvider = false;
   $scope.readyQueryTenants = false;
@@ -173,9 +174,12 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
 
   $scope.queryVPC = function(resolve, reject, res){
     let values = [];
-    postgresScope.query($scope.database, $scope.vpc_table, "*", "tenant_uuid", $scope.selectedTenantID, function(){
+    postgresScope.query($scope.database, $scope.vpc_table, "*", "tenant_uuid", $scope.selectedTenantID, async function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
+          add = "";
+          let contains = await querySubnet(resolve, reject, postgresScope.queryRequest.data[i].uuid);
+          if (contains) add = "subnet(s)";
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
             name : postgresScope.queryRequest.data[i].vpc_name
