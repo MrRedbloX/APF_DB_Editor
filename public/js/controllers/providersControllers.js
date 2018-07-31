@@ -112,8 +112,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             for(let j=0; j<$scope.ressourcesNames.length; j++)
               await $scope.queryRessources($scope.ressourcesNames[j]);
 
-          /*  for(let j=0; j<$scope.objectsNames.length; j++)
-              await $scope.queryObjects($scope.objectsNames[j]);*/
+            for(let j=0; j<$scope.objectsNames.length; j++)
+              await $scope.queryObjects($scope.objectsNames[j]);
 
             $scope.displayRessources = true;
             console.log($scope.objects);
@@ -274,10 +274,8 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
                   name : postgresScope.queryRequest.data[k].subnet_name
                 });
               }
-              //if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
-              let obj = {};
-              obj[$scope.ressources[i].values[j].name] = values;
-              $scope.objects.push(obj);
+              if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
+              $scope.objects[$scope.ressources[i].values[j].name] = values;
               resolve();
             }
             else{
