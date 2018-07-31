@@ -168,15 +168,10 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     postgresScope.query($scope.database, $scope.vpc_table, "*", "tenant_uuid", $scope.selectedTenantID, async function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
-          //let add = "";
-
-          //if ($scope.objects[postgresScope.queryRequest.data[i].vpc_name] != null && $scope.objects[postgresScope.queryRequest.data[i].vpc_name].length > 0) add = "subnet(s)";
           values.push({
             id : postgresScope.queryRequest.data[i].uuid,
             name : postgresScope.queryRequest.data[i].vpc_name
           });
-          await $scope.queryObjects("Subnet", postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
-          console.log('Continue');
           if(i == postgresScope.queryRequest.data.length-1){
             $scope.ressources.push({
               name : "Virtual Private Cloud(s)",
