@@ -186,7 +186,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
             });
           }
         }
-        console.log("Resolve");
+        console.log($scope.objects);
         resolve();
       }
       else{
