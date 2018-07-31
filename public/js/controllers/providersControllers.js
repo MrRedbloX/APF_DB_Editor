@@ -167,7 +167,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
     postgresScope.query($scope.database, $scope.vpc_table, "*", "tenant_uuid", $scope.selectedTenantID, async function(){
       if(postgresScope.successRequest){
         for(let i=0; i<postgresScope.queryRequest.data.length; i++){
-          add = "";
+          let add = "";
           await $scope.querySubnet(resolve, reject, postgresScope.queryRequest.data[i].uuid, postgresScope.queryRequest.data[i].vpc_name);
           if ($scope.objects[postgresScope.queryRequest.data[i].vpc_name].length > 0) add = "subnet(s)";
           values.push({
