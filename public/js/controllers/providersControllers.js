@@ -99,10 +99,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
   $scope.loadJSTree= function(id, mode){
     $(function() {
       let treeView = $("#"+id);
-      treeView.jstree()
-      .on('select_node.jstree', function(e, data){
-        if(mode == "Tenant") $scope.getRessources(data.node.text);
-      });
+      treeView.jstree();
     });
   }
 
