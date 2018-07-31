@@ -88,7 +88,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       treeView.jstree()
       .on('select_node.jstree', function(e, data){
         if(mode == "Tenant"){
-          $route.reload();
           $scope.getRessources(data.node.text);
         }
       });
