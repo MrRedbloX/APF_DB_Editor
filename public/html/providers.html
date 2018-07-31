@@ -19,7 +19,7 @@
               <ul>
                  <li class="jstree-open" data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
-                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'><a>{{val.name}}</a>
+                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}
                        <ul ng-repeat="obj in objects[val.name]">
                          <li data-jstree='{"icon":"public/css/img/objects_default.png"}'>{{obj.name}}</li>
                        </ul>
@@ -51,7 +51,11 @@
               <ul>
                  <li class="jstree-open" data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
-                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}
+                       <ul ng-repeat="obj in objects[val.name]">
+                         <li data-jstree='{"icon":"public/css/img/objects_default.png"}'>{{obj.name}}</li>
+                       </ul>
+                     </li>
                    </ul>
                  </li>
               </ul>
@@ -79,7 +83,11 @@
               <ul>
                  <li class="jstree-open" data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
-                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}
+                       <ul ng-repeat="obj in objects[val.name]">
+                         <li data-jstree='{"icon":"public/css/img/objects_default.png"}'>{{obj.name}}</li>
+                       </ul>
+                     </li>
                    </ul>
                  </li>
               </ul>
@@ -107,7 +115,11 @@
               <ul>
                  <li class="jstree-open" data-jstree='{"icon":"public/css/img/{{res.imgPath}}"}'><a class="inactiveLink">{{res.name}}</a>
                    <ul ng-repeat="val in res.values">
-                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}</li>
+                     <li class="jstree-open" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}
+                       <ul ng-repeat="obj in objects[val.name]">
+                         <li data-jstree='{"icon":"public/css/img/objects_default.png"}'>{{obj.name}}</li>
+                       </ul>
+                     </li>
                    </ul>
                  </li>
               </ul>
