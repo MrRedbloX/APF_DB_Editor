@@ -90,8 +90,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
       treeView.jstree()
       .on('select_node.jstree', function(e, data){
         if(mode == "Tenant"){
-          tempSelectedTenant = $scope.selectedTenant;
-          tempSelectedTenantID = $scope.selectedTenantID;
           $route.reload();
           console.log(tempSelectedTenant);
           $scope.selectedTenant = tempSelectedTenant;
