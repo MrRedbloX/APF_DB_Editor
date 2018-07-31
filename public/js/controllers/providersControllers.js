@@ -115,8 +115,6 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
               await $scope.queryObjects($scope.objectsNames[j]);
 
             $scope.displayRessources = true;
-            console.log($scope.objects);
-            console.log($scope.ressources);
             break;
           }
         }
