@@ -274,10 +274,7 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
                 });
               }
               //if(values.length > 0 ) $scope.ressources[i].values[j].name = $scope.ressources[i].values[j].name+" subnet(s)";
-              $scope.objects.push({
-                name : $scope.ressources[i].values[j].name,
-                values : values
-              });
+              $scope.objects[$scope.ressources[i].values[j].name] = values;
               resolve();
             }
             else{
