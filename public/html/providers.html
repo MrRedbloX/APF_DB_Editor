@@ -21,7 +21,7 @@
                    <ul ng-repeat="val in res.values">
                      <li id="{{val.uuid}}" data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{val.name}}
                        <ul ng-if="res.nameBis == 'VPC'" ng-reapeat="obj in object[val.name]">
-                         <li data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{obj.name}}</li>
+                         <li data-jstree='{"icon":"public/css/img/ressources_default.png"}'>{{obj}}</li>
                        </ul>
                      </li>
                    </ul>
