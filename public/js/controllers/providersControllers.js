@@ -267,15 +267,16 @@ app.controller('mainProvidersController', function($scope, mainProvidersFactory,
           let values = [];
           postgresScope.query($scope.database, $scope.subnet_table, "*", "vpc_uuid", $scope.ressources[i].values[j].id, function(){
             if(postgresScope.successRequest){
-              for(let i=0; i<postgresScope.queryRequest.data.length; i++){
+              for(let k=0; k<postgresScope.queryRequest.data.length; k++){
                 values.push({
-                  id : postgresScope.queryRequest.data[i].uuid,
-                  name : postgresScope.queryRequest.data[i].subnet_name
+                  id : postgresScope.queryRequest.data[k].uuid,
+                  name : postgresScope.queryRequest.data[k].subnet_name
                 });
-                if(i == postgresScope.queryRequest.data.length-1){
+                /*if(k == postgresScope.queryRequest.data.length-1){
                   $scope.objects[$scope.ressources[i].values[j].name] = values;
-                }
+                }*/
               }
+              $scope.objects[$scope.ressources[i].values[j].name] = values;
               resolve();
             }
             else{
