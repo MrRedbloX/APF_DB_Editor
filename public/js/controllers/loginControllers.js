@@ -4,7 +4,6 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   $scope.time_to_expire = 0.041;
 
   $scope.iden = function() {
-    var tab="azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789_$&#@";
     var user= document.getElementById("user").value;
     var pass= document.getElementById("pass").value;
     var rm= document.getElementById("check");
