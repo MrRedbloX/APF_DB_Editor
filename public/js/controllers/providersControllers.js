@@ -3,7 +3,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   var postgresScope = postgresqlFactory.getScope();
   $scope.selectedProvider = null;
 
-  $scope.controller = "Test";
+  $scope.controller;
 
   $scope.awsProvider = "AWS";
   $scope.azureProvider = "Azure";
