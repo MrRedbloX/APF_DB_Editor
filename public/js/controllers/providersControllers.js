@@ -116,7 +116,6 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
             for(let j=0; j<$scope.ressourcesNames.length; j++){
               await $scope.queryRessources($scope.ressourcesNames[j]);
             }
-            console.log("Finish query res");
             for(let j=0; j<$scope.objectsNames.length; j++){
               await $scope.queryObjects($scope.objectsNames[j]);
             }
