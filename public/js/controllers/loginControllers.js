@@ -251,6 +251,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   //Check if the logged on user is administrator
   $scope.isAdmin = function(){
     ret = false;
+    $scope.readCookie();
     if($scope.user != null){
       $scope.getAdminFromId($scope.user, function(){
         if($scope.successRequest){
