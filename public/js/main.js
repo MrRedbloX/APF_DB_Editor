@@ -6,8 +6,6 @@ var busy = false; //When a view in db_management is displayed, this turn to true
 var exceptionTables = ['map']; //The tables which starts with these elements won't be displayed in the dashboard charts
 var waitFor = 1; //The time in ms use in the sleep function
 var forbiddenChar = ['#','%','&','+','[',']','{','}',"'",'"','\\']; //The chars that the user can't write when he add or modify an element
-var currentUser = null;
-var alreadyCheckIsAdmin = false;
 
 //Check if a table is elligible to exceptionTables
 var isInExceptionTables = function(table){
