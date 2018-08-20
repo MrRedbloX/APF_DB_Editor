@@ -8,7 +8,16 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     var pass= document.getElementById("pass").value;
     var rm= document.getElementById("check");
     var userpass = user + pass;
-    currentUser = user;
+
+    $scope.getAdminFromId(user, function(){
+      if($scope.successRequest){
+        console.log($scope.admin);
+      }
+      else{
+        console.log($scope.admin);
+        alert("Error on getAdminFromId request, check console logs.");
+      }
+    });
 
     $scope.getMD5(userpass, function(){
       if($scope.successRequest){
