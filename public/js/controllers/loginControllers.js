@@ -257,8 +257,8 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
           console.log($scope.admin);
           alert("Error on getAdminFromId request, check console logs.");
         }
-        currentUser = null;
       });
+      currentUser = null;
     }
     return ret;
   }
