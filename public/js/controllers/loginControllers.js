@@ -12,7 +12,6 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     $scope.getAdminFromId(user, function(){
       if($scope.successRequest){
         console.log($scope.admin);
-        alert($scope.admin.data[0]);
       }
       else{
         console.log($scope.admin);
@@ -258,6 +257,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   //Check if the logged on user is administrator
   $scope.isAdmin = function(){
     ret = false;
+    console.log($scope.admin);
     return ret;
   }
 });
