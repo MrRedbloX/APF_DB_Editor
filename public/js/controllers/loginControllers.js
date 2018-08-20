@@ -1,9 +1,8 @@
+var currentUser = null;
 app.controller('loginController', function($scope, $http, $route, postgresqlFactory, loginFactory){
   loginFactory.setScope($scope)
   var postgresScope = postgresqlFactory.getScope();
   $scope.time_to_expire = 0.041;
-
-  $scope.user = null;
 
   $scope.iden = function() {
     var tab="azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789_$&#@";
@@ -11,7 +10,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     var pass= document.getElementById("pass").value;
     var rm= document.getElementById("check");
     var userpass = user + pass;
-    $scope.user = user;
+    currentUser = user;
 
     $scope.getMD5(userpass, function(){
       if($scope.successRequest){
@@ -251,7 +250,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   //Check if the logged on user is administrator
   $scope.isAdmin = function(){
     ret = false;
-    if($scope.user != null){
+    if(currentUser != null){
       $scope.getAdminFromId($scope.user, function(){
         if($scope.successRequest){
           console.log($scope.admin);
