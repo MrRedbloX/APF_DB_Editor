@@ -12,7 +12,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     $scope.getAdminFromId(user, function(){
       if($scope.successRequest){
         console.log($scope.admin);
-        alert($scope.admin);
+        alert($scope.admin.data);
       }
       else{
         console.log($scope.admin);
