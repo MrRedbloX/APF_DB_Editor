@@ -257,7 +257,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   //Check if the logged on user is administrator
   $scope.isAdmin = function(){
     ret = false;
-    console.log($scope.admin);
+    console.log(admin);
     return ret;
   }
 });
