@@ -12,6 +12,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     $scope.getAdminFromId(user, function(){
       if($scope.successRequest){
         console.log($scope.admin);
+        admin = $scope.admin;
       }
       else{
         console.log($scope.admin);
