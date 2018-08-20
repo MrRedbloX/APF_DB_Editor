@@ -1,4 +1,3 @@
-var currentUser = null;
 app.controller('loginController', function($scope, $http, $route, postgresqlFactory, loginFactory){
   loginFactory.setScope($scope)
   var postgresScope = postgresqlFactory.getScope();
