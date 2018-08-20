@@ -297,7 +297,7 @@ app.controller('mainProvidersController', function($scope, $route, mainProviders
   $scope.queryRule = function(resolve, reject){
     let found = false;
     for(let i=0; i<$scope.ressources.length; i++){
-      if($scope.ressources[i].nameBis == "KP"){
+      if($scope.ressources[i].nameBis == "SG"){
         found = true;
         for(let j=0; j<$scope.ressources[i].values.length; j++){
           let values = [];
