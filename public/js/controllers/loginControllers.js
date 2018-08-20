@@ -11,7 +11,10 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
 
     $scope.getAdminFromId(user, function(){
       if($scope.successRequest){
-        if($scope.admin.data.length > 0) isAdmin = true;
+        if($scope.admin.data.length > 0){
+          alert("true");
+          isAdmin = true;
+        }
         else isAdmin = false;
       }
       else{
