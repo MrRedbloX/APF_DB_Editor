@@ -33,17 +33,16 @@ var getValueOfVar = function(name){
   else alert("Error on request init file, please contact your administrator");
   return ret;
 }
-console.log(getValueOfVar('forbiddenChar'));
 
-var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
-var exceptionColumns = ['uuid']; //The columns that will not be displayed
-var readOnlyDB = ['sonde']; //Contains the read only databases
-var displayName = ['name', 'tenant_name', 'sg_name', 'subnet_name', 'ecs_name', 'kp_name', 'vpc_name', 'uuid']; //The name that will be displayed instead of the id
-var busy = false; //When a view in db_management is displayed, this turn to true in order to prevent from some unwanted behaviors
-var exceptionTables = ['map']; //The tables which starts with these elements won't be displayed in the dashboard charts
-var waitFor = 1; //The time in ms use in the sleep function
-var forbiddenChar = ['#','%','&','+','[',']','{','}',"'",'"','\\']; //The chars that the user can't write when he add or modify an element
-var isAdmin = false;
+var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be displayed
+var exceptionColumns = getValueOfVar('exceptionColumns'); //The columns that will not be displayed
+var readOnlyDB = getValueOfVar('readOnlyDB'); //Contains the read only databases
+var displayName = getValueOfVar('displayName'); //The name that will be displayed instead of the id
+var busy = getValueOfVar('busy'); //When a view in db_management is displayed, this turn to true in order to prevent from some unwanted behaviors
+var exceptionTables = getValueOfVar('exceptionTables'); //The tables which starts with these elements won't be displayed in the dashboard charts
+var waitFor = getValueOfVar('waitFor'); //The time in ms use in the sleep function
+var forbiddenChar = getValueOfVar('forbiddenChar'); //The chars that the user can't write when he add or modify an element
+var isAdmin = getValueOfVar('isAdmin');
 
 //Check if a table is elligible to exceptionTables
 var isInExceptionTables = function(table){
