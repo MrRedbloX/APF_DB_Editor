@@ -17,8 +17,8 @@ app.controller('configurationController', function($scope){
       value : exceptionDB
     },
     {
-      name: "exceptionDB",
-      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      name: "readOnlyDB",
+      description: "The database(s) in read only mode : ",
       type: "list",
       value : exceptionDB
     },
