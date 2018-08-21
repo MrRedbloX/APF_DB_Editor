@@ -41,7 +41,6 @@ var displayName = getValueOfVar('displayName'); //The name that will be displaye
 var exceptionTables = getValueOfVar('exceptionTables'); //The tables which starts with these elements won't be displayed in the dashboard charts
 var waitFor = getValueOfVar('waitFor'); //The time in ms use in the sleep function
 var forbiddenChar = getValueOfVar('forbiddenChar'); //The chars that the user can't write when he add or modify an element
-var isAdmin = getValueOfVar('isAdmin');
 
 var busy = false;
 
