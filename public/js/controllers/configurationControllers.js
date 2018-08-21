@@ -23,14 +23,14 @@ app.controller('configurationController', function($scope){
       value : exceptionDB
     },
     {
-      name: "exceptionDB",
-      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      name: "displayName",
+      description: "The list of names displayed in foreign keys instead of the ID : ",
       type: "list",
       value : exceptionDB
     },
     {
-      name: "exceptionDB",
-      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      name: "exceptionTables",
+      description: "The tables which start with the following element(s) will not be displayed in Dashboard : ",
       type: "list",
       value : exceptionDB
     },
