@@ -8,11 +8,11 @@ var waitFor = 1; //The time in ms use in the sleep function
 var forbiddenChar = ['#','%','&','+','[',']','{','}',"'",'"','\\']; //The chars that the user can't write when he add or modify an element
 var isAdmin = false;
 
-var getValueOfVar = function(name){
+var getValuesOfVar = function(){
   let ret;
   $.ajax({
     type: "GET",
-    url: "/init/getValuesOfVar?name="+name,
+    url: "/init/getValuesOfVar",
     success: function(data){
       ret = data;
     },
