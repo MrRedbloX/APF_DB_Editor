@@ -13,7 +13,7 @@ var getValuesOfVar = function(){
 var config = getValuesOfVar();
 var getValueOfVar = function(){
   let split = config.split(';\n');
-  return split;
+  return 'test';
 }
 console.log(getValuesOfVar());
 
