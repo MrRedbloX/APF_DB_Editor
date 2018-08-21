@@ -15,7 +15,7 @@ var getValueOfVar = function(name){
   let ret = null;
   let listVar1 = config.split(';\n');
   for(let i=0; i<listVar1.length; i++){
-    let listVar2 = listVar1[i].split(':'):
+    let listVar2 = listVar1[i].split(':');
     if(listVar2[0] == name){
       ret = listVar2[2];
       break;
