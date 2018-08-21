@@ -14,12 +14,11 @@
       </div>
       <div ng-if="var.type == list">
         <label>{{var.description}}</label>
-        <input type="text" list="{{var.name}}" />
-        <datalist id="{{var.name}}">
+        <select multiple>
           <option>Test</option>
           <option>Test</option>
           <option>Test</option>
-        </datalist>
+        </select>
       </div>
     </div>
   </div>
