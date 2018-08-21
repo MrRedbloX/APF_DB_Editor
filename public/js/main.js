@@ -23,7 +23,7 @@ var getValueOfVar = function(name){
   }
   return ret;
 }
-console.log(getValueOfVar());
+console.log(getValueOfVar('exceptionDB'));
 
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
