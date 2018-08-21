@@ -11,9 +11,17 @@ var getValuesOfVar = function(){
   return ret;
 };
 var config = getValuesOfVar();
-var getValueOfVar = function(){
-  let split = config.split(';\n');
-  return split;
+var getValueOfVar = function(name){
+  let ret = null;
+  let listVar1 = config.split(';\n');
+  for(let i=0; i<listVar1.length; i++){
+    let listVar2 = listVar1[i].split(':'):
+    if(listVar2[0] == name){
+      ret = listVar2[2];
+      break;
+    }
+  }
+  return ret;
 }
 console.log(getValueOfVar());
 
