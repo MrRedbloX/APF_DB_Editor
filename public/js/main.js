@@ -8,6 +8,10 @@ var waitFor = 1; //The time in ms use in the sleep function
 var forbiddenChar = ['#','%','&','+','[',']','{','}',"'",'"','\\']; //The chars that the user can't write when he add or modify an element
 var isAdmin = false;
 
+var getValueOfVar = function(name){
+
+};
+
 //Check if a table is elligible to exceptionTables
 var isInExceptionTables = function(table){
   ret = false;
