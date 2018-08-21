@@ -15,8 +15,8 @@
       <div ng-if="var.type == list">
         <label>{{var.description}}</label>
         <table>
-          <td>
-            <tr ng-repeat="val in var.value">{{val}}</tr>
+          <td ng-repeat="val in var.value">
+            <tr>{{val}}</tr>
           </td>
         </table>
       </div>
