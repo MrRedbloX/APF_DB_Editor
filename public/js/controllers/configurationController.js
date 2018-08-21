@@ -1,4 +1,10 @@
 app.controller('configurationController', function($scope){
-  $scope.exceptionDBDesc = "The databases not displayed in DB Management : ";
-  $scope.exceptionDBVal = exceptionDB;
+  $scope.variables = [
+    {
+      name: "waitFor",
+      description: "The time in ms the application will wait to prevent from network issues is : ",
+      type : "int",
+      value : waitFor
+    }
+  ];
 });
