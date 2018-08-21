@@ -6,3 +6,4 @@ busy:bool:false;
 exceptionTables:array:map;
 waitFor:int:1;
 forbiddenChar:array:#,%,&,+,[,],{,},',",\;
+isAdmin:bool:false;
