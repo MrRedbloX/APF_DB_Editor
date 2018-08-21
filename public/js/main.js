@@ -20,6 +20,11 @@ var getValueOfVar = function(name){
       if(listVar2[1] == 'array') ret = listVar2[2].split(',');
       else if(listVar2[1] == 'string') ret = listVar2[2];
       else if(listVar2[1] == 'int') ret = parseInt(listVar2[2]);
+      else if(listVar2[1] == 'int'){
+        if(listVar2[2] == 'true') ret = true;
+        else ret = false;
+      }
+      else console.log("Unhandle type");
       break;
     }
   }
