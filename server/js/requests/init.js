@@ -1,4 +1,4 @@
-var initFileName = '../../init.d';
+var initFileName = __dirname+'../../init.d';
 
 module.exports = {
   getValuesOfVar: function(req, res) {
