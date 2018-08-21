@@ -11,6 +11,36 @@ app.controller('configurationController', function($scope){
       value : exceptionDB
     },
     {
+      name: "exceptionColumns",
+      description: "The column(s) not used to add/modify a record : ",
+      type: "list",
+      value : exceptionDB
+    },
+    {
+      name: "exceptionDB",
+      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      type: "list",
+      value : exceptionDB
+    },
+    {
+      name: "exceptionDB",
+      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      type: "list",
+      value : exceptionDB
+    },
+    {
+      name: "exceptionDB",
+      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      type: "list",
+      value : exceptionDB
+    },
+    {
+      name: "exceptionDB",
+      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      type: "list",
+      value : exceptionDB
+    },
+    {
       name: "waitFor",
       description: "The time in ms the application will wait to prevent from network issues is : ",
       type : "input",
