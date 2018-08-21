@@ -13,6 +13,7 @@
         <input value="{{var.value}}" />
       </div>
       <div ng-if="var.type == list">
+        <label>{{var.description}}</label>
         <td>
           <tr ng-repeat="val in var.value">val</tr>
         <td>
