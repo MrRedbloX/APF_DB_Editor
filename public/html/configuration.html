@@ -8,9 +8,9 @@
           <option ng-repeat="val in var.value">{{val}}</option>
         </select>
       </div>
-      <div ng-if="var.type == int">
+      <div ng-if="var.type == input">
         <label>{{var.description}}</label>
-        <input type="number" value="{{var.value}}" />
+        <input value="{{var.value}}" />
       </div>
     </div>
   </div>
