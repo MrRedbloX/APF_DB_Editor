@@ -13,21 +13,24 @@ var getValuesOfVar = function(){
 var config = getValuesOfVar();
 var getValueOfVar = function(name){
   let ret = null;
-  let listVar1 = config.split(';\n');
-  for(let i=0; i<listVar1.length; i++){
-    let listVar2 = listVar1[i].split(':');
-    if(listVar2[0] == name){
-      if(listVar2[1] == 'array') ret = listVar2[2].split(',');
-      else if(listVar2[1] == 'string') ret = listVar2[2];
-      else if(listVar2[1] == 'int') ret = parseInt(listVar2[2]);
-      else if(listVar2[1] == 'int'){
-        if(listVar2[2] == 'true') ret = true;
-        else ret = false;
+  if(config != null){
+    let listVar1 = config.split(';\n');
+    for(let i=0; i<listVar1.length; i++){
+      let listVar2 = listVar1[i].split(':');
+      if(listVar2[0] == name){
+        if(listVar2[1] == 'array') ret = listVar2[2].split(',');
+        else if(listVar2[1] == 'string') ret = listVar2[2];
+        else if(listVar2[1] == 'int') ret = parseInt(listVar2[2]);
+        else if(listVar2[1] == 'int'){
+          if(listVar2[2] == 'true') ret = true;
+          else ret = false;
+        }
+        else console.log("Unhandle type");
+        break;
       }
-      else console.log("Unhandle type");
-      break;
     }
   }
+  else alert("Error on request init file, please contact your administrator");
   return ret;
 }
 console.log(getValueOfVar('waitFor'));
