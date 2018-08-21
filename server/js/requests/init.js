@@ -3,7 +3,7 @@ var initFileName = '../init.d';
 module.exports = {
   getValuesOfVar: function(req, res) {
     var fs = require('fs');
-    fs.readFile(initFileName, 'r', (err, data) => {
+    fs.readFile(initFileName, (err, data) => {
       if(err){
         res.status(400).send(err);
         throw err;
