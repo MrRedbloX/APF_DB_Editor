@@ -14,7 +14,7 @@ var config = getValuesOfVar();
 var getValueOfVar = function(){
   return config.split('\n');
 }
-console.log(getValuesOf());
+console.log(getValuesOfVar());
 
 var exceptionDB = ['postgres', 'template0', 'template1']; //The databases that will not be displayed
 var exceptionColumns = ['uuid']; //The columns that will not be displayed
