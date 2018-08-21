@@ -1,7 +1,7 @@
 var initFileName = '../init.d';
 
 module.exports = {
-  getValueOfVar: function(req, res) {
+  getValuesOfVar: function(req, res) {
     fetch(initFileName).then(function(response){
       if(response.status !== 200) throw response.status;
       return response.status;
