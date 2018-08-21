@@ -6,7 +6,7 @@ app.controller('configurationController', function($scope){
   $scope.variables = [
     {
       name: "exceptionDB",
-      description: "The database(s) not displayed in DB Management and Dashboard",
+      description: "The database(s) not displayed in DB Management and Dashboard : ",
       type: "list",
       value : exceptionDB
     },
