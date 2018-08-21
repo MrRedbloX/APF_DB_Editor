@@ -5,8 +5,12 @@
         <label>{{var.description}}</label>
         <select>
           <option selected>{{var.selectedValue}}</option>
-          <option ng-repeat="val in var.values">{{val}}</option>
+          <option ng-repeat="val in var.value">{{val}}</option>
         </select>
+      </div>
+      <div ng-if="var.type == int">
+        <label>{{var.description}}</label>
+        <input type="number" step="1" value="{{var.value}}" />
       </div>
     </div>
   </div>
