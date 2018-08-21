@@ -35,8 +35,8 @@ app.controller('configurationController', function($scope){
       value : exceptionDB
     },
     {
-      name: "exceptionDB",
-      description: "The database(s) not displayed in DB Management and Dashboard : ",
+      name: "forbiddenChar",
+      description: "The forbidden characters when the user wants to add/modify a record : ",
       type: "list",
       value : exceptionDB
     },
