@@ -8,7 +8,7 @@ var express = require('express'),
 var loginOperations = require('./server/js/requests/login.js');
 var dbOperations = require("./server/js/requests/psql.js");
 var webOperations = require("./server/js/requests/web.js");
-var initOperations = require("./server/js/request/init.js");
+var initOperations = require("./server/js/requests/init.js");
 var logFmt = require("logfmt");
 
 app.set('views', __dirname) ;
