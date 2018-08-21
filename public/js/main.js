@@ -9,7 +9,15 @@ var forbiddenChar = ['#','%','&','+','[',']','{','}',"'",'"','\\']; //The chars 
 var isAdmin = false;
 
 var getValueOfVar = function(name){
-
+  let ret;
+  $.ajax({
+    type: "GET",
+    url: "/init/getValuesOfVar?name="+name,
+    success: function(data){
+      ret = data;
+    }
+  });
+  return ret;
 };
 
 //Check if a table is elligible to exceptionTables
