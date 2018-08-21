@@ -19,6 +19,7 @@ var getValueOfVar = function(name){
   });
   return ret;
 };
+console.log(getValueOfVar('test'));
 
 //Check if a table is elligible to exceptionTables
 var isInExceptionTables = function(table){
