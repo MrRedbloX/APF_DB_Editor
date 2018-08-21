@@ -1,6 +1,14 @@
 <div ng-controller="loginController">
-  <div ng-if="isAdmin()">
-    <h1> Configuration </h1>
+  <div ng-if="isAdmin()" ng-controller="configurationController">
+    <div ng-repeat="var in variables">
+      <div ng-if="var.type == select">
+        <label>{{var.description}}</label>
+        <select>
+          <option selected>{{var.selectedValue}}</option>
+          <option ng-repeat="val in var.values">{{val}}</option>
+        </select>
+      </div>
+    </div>
   </div>
   <div ng-if="!isAdmin()">
     <h1>Forbidden access : you are not administrator</h1>
