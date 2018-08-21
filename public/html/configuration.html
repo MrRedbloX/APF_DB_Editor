@@ -11,13 +11,11 @@
       <div ng-if="var.type == input">
         <label>{{var.description}}</label>
         <input value="{{var.value}}" />
-        <form>
-          <select>
-            <option>Test1</option>
-            <option>Test1</option>
-            <option>Test1</option>
-          </select>
-        </form>
+      </div>
+      <div ng-if="var.type == list">
+        <td>
+          <tr ng-repeat="val in var.value">val</tr>
+        <td>
       </div>
     </div>
   </div>
