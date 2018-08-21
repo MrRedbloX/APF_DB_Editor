@@ -38,11 +38,13 @@ var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be
 var exceptionColumns = getValueOfVar('exceptionColumns'); //The columns that will not be displayed
 var readOnlyDB = getValueOfVar('readOnlyDB'); //Contains the read only databases
 var displayName = getValueOfVar('displayName'); //The name that will be displayed instead of the id
-var busy = getValueOfVar('busy'); //When a view in db_management is displayed, this turn to true in order to prevent from some unwanted behaviors
 var exceptionTables = getValueOfVar('exceptionTables'); //The tables which starts with these elements won't be displayed in the dashboard charts
 var waitFor = getValueOfVar('waitFor'); //The time in ms use in the sleep function
 var forbiddenChar = getValueOfVar('forbiddenChar'); //The chars that the user can't write when he add or modify an element
 var isAdmin = getValueOfVar('isAdmin');
+
+var busy = false;
+
 
 //Check if a table is elligible to exceptionTables
 var isInExceptionTables = function(table){
