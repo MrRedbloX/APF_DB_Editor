@@ -14,11 +14,9 @@
       </div>
       <div ng-if="var.type == list">
         <label>{{var.description}}</label>
-        <table>
-          <td ng-repeat="val in var.value">
-            <tr>{{val}}</tr>
-          </td>
-        </table>
+        <datalist>
+          <option ng-repeat="val in var.value">{{val}}</option>
+        </datalist>
       </div>
     </div>
   </div>
