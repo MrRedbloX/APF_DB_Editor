@@ -36,7 +36,7 @@ app.controller('configurationController', function($scope){
     },
     {
       name: "forbiddenChar",
-      description: "The forbidden characters when the user wants to add/modify a record : ",
+      description: "The forbidden character(s) when the user wants to add/modify a record : ",
       type: "list",
       value : exceptionDB
     },
