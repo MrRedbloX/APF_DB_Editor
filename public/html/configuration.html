@@ -1,1 +1,8 @@
-<h1> Configuration </h1>
+<div ng-controller="loginController">
+  <div ng-if="isAdmin()">
+    <h1> Configuration </h1>
+  </div>
+  <div ng-if="!isAdmin()">
+    <h1>Forbidden access : you are not administrator</h1>
+  </div>
+</div>
