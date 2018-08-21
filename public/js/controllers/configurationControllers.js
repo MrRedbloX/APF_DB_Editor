@@ -1,4 +1,7 @@
 app.controller('configurationController', function($scope){
+  $scope.select = "select";
+  $scope.int = "int";
+  
   $scope.variables = [
     {
       name: "waitFor",
