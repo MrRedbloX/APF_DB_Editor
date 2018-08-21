@@ -15,9 +15,7 @@
       <div ng-if="var.type == list">
         <label>{{var.description}}</label>
         <select multiple>
-          <option>Test</option>
-          <option>Test</option>
-          <option>Test</option>
+          <option ng-repeat="val in var.value">{{val}}</option>
         </select>
       </div>
     </div>
