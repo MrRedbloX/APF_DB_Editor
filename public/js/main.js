@@ -15,7 +15,8 @@ var getValueOfVar = function(name){
     url: "/init/getValuesOfVar?name="+name,
     success: function(data){
       ret = data;
-    }
+    },
+    async: false
   });
   return ret;
 };
