@@ -15,8 +15,8 @@
       </div>
       <div ng-if="var.type == list">
         <label>{{var.description}}</label>
-        <select multiple ng-keypress="deleteValue(var.name)">
-          <option ng-repeat="val in var.value" ng-dblclick="modifyValue(var.name,val)">{{val}}</option>
+        <select multiple>
+          <option ng-repeat="val in var.value" ng-dblclick="modifyValue(var.name,val)" ng-keypress="deleteValue(var.name)">{{val}}</option>
         </select>
         <input type="button" value="Add" ng-click="addValue(var.name)" />
       </div>
