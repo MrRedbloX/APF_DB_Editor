@@ -10,7 +10,7 @@ module.exports = {
       }
       res.status(200).send(data);
     });
-  }
+  },
 
   writeInInitFile: function(req, res) {
     var fs = require('fs')
