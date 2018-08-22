@@ -55,7 +55,7 @@ var alterInitFile = function(newConfig){
   }
   writeFile(str);
 };
-var list = ['n', 'nd'];
+var list = {};
 console.log(typeof list);
 
 var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be displayed
