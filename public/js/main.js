@@ -40,7 +40,22 @@ var writeInInitFile = function(content){
     async: true
   });
 };
-//writeInInitFile("Test");
+var alterInitFile = function(newConfig){
+  let str = '';
+  for(let i=0; i<newConfig.length; i++){
+    str += newConfig[i].name+':'+newConfig[i].type+':';
+    if(typeof newConfig[i].value == "list"){
+      for(let j=0; j<newConfig[i].value.length; j++){
+        str += newConfig[i].value[j];
+        if(j<newConfig[i].value.length -1) str += ',';
+      }
+    }
+    else str += newConfig[i].value;
+    str += ';\n';
+  }
+  writeFile(str);
+};
+console.log(typeof []);
 
 var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be displayed
 var exceptionColumns = getValueOfVar('exceptionColumns'); //The columns that will not be displayed
