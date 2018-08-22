@@ -1,6 +1,6 @@
 <div ng-controller="loginController">
   <div ng-if="isAdmin()" ng-controller="configurationController">
-    <h1 style="padding-bottom: 2px;">Configuration</h1>
+    <h1 style="padding-bottom: 10px;">Configuration</h1>
     <div class="form-control" ng-repeat="var in variables">
       <div ng-if="var.type == select">
         <label>{{var.description}}</label>
