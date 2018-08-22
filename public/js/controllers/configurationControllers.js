@@ -102,8 +102,7 @@ app.controller('configurationController', function($scope){
   };
 
   $scope.saveValues = function(){
-    console.log($scope.variables);
     alterInitFile($scope.variables);
-    //window.location = '/';
+    window.location = '/';
   };
 });
