@@ -14,12 +14,7 @@ module.exports = {
 
   writeInInitFile: function(req, res) {
     var fs = require('fs');
-    var content = '';
-    var split = req.query.content.split(';');
-    for(var i=0; i<split.length; i++)
-      content += split[i]+";\n";
-
-    fs.writeFile(initFileName, content, (err, data) => {
+    fs.writeFile(initFileName, req.query.content, (err, data) => {
       if(err){
         res.status(400).send(err);
         throw err;
