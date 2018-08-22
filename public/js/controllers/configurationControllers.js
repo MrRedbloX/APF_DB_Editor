@@ -50,11 +50,12 @@ app.controller('configurationController', function($scope){
 
   $scope.addValue = function(name){
     let val = prompt('Enter the value you want to add');
-    console.log(val);
-    for(let i=0; i<$scope.variables.length; i++){
-      if($scope.variables[i].name == name){
-        $scope.variables[i].value.push(val);
-        break;
+    if(val != null){
+      for(let i=0; i<$scope.variables.length; i++){
+        if($scope.variables[i].name == name){
+          $scope.variables[i].value.push(val);
+          break;
+        }
       }
     }
   };
