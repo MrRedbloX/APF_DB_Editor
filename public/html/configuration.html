@@ -18,7 +18,7 @@
         <select id="{{var.name}}" ng-keydown="deleteValue(var.name, $event)" multiple>
           <option ng-repeat="val in var.value" ng-dblclick="modifyValue(var.name,val)" value="{{val}}" >{{val}}</option>
         </select>
-        <input type="button" value="Add" ng-click="addValue(var.name)" />
+        <input type="button" value="Add" ng-click="addValue(var.name)" class="btn btn-primary btn-sm" />
       </div>
     </div>
     <input type="button" value="Done" ng-click="saveValues()" />
