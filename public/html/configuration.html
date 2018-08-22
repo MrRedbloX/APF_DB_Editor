@@ -15,7 +15,7 @@
       </div>
       <div ng-if="var.type == list">
         <label>{{var.description}}</label>
-        <select id="{{var.name}}" ng-keypress="deleteValue(var.name)" multiple>
+        <select id="{{var.name}}" ng-keydown="deleteValue(var.name, $event)" multiple>
           <option ng-repeat="val in var.value" ng-dblclick="modifyValue(var.name,val)" >{{val}}</option>
         </select>
         <input type="button" value="Add" ng-click="addValue(var.name)" />
