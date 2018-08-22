@@ -261,6 +261,10 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     if(localStorage['isAdmin'] == 'true') ret = true;
     return ret;
   }
+
+  $scope.wantToLog = function(even){
+    console.log(even);
+  }
 });
 
 app.controller('signupController', function($scope, $http, postgresqlFactory, loginFactory){
