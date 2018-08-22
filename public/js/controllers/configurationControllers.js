@@ -48,6 +48,7 @@ app.controller('configurationController', function($scope){
     if(val != null){
       for(let i=0; i<$scope.variables.length; i++){
         if($scope.variables[i].name == name){
+          console.log($scope.variables[i].value.length);
           $scope.variables[i].value.push(val);
           break;
         }
