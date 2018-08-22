@@ -84,7 +84,7 @@ app.controller('configurationController', function($scope){
         if(sel.options[i].selected) selectedValues.push(sel.options[i].value);
       }
       if(selectedValues.length > 0){
-        let val = "these multiple values";
+        let val = "multiple values";
         if(selectedValues.length == 1 ) val = selectedValues[0];
         if(confirm('Are you sure you want to delete '+val+' ?')){
           for(let i=0; i<$scope.variables.length; i++){
