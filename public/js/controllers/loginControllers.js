@@ -263,7 +263,8 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
   }
 
   $scope.wantToLog = function(even){
-    console.log(even);
+    if(even.originalEvent.keyCode == 13)
+      $scope.iden();
   }
 });
 
