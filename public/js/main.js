@@ -53,7 +53,7 @@ var alterInitFile = function(newConfig){
       }
     }
     else str += newConfig[i].value;
-    str += ';\n';
+    str += ';';
   }
   writeInInitFile(str);
 };
