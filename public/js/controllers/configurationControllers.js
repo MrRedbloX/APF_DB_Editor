@@ -79,14 +79,20 @@ app.controller('configurationController', function($scope){
   $scope.deleteValue = function(name, even){
     if(even.originalEvent.keyCode == 46){
       let sel = document.getElementById(name);
-      let val = sel.options[sel.selectedIndex].value;
-      console.log(sel.options);
-      if(val != null){
+      let selectedValues = [];
+      for(let i=0; i<sel.options.length; i++){
+        if(sel.options[i].selected) selectedValues.push(sel.options[i].value);
+      }
+      if(selectedValues.length > 0){
+        let val = "these multiple values";
+        if(selectedValues.length == 1 ) val = selectedValues[0];
         if(confirm('Are you sure you want to delete '+val+' ?')){
           for(let i=0; i<$scope.variables.length; i++){
             if($scope.variables[i].name == name){
-              let index = $scope.variables[i].value.indexOf(val);
-              if(index > -1) $scope.variables[i].value.splice(index, 1);
+              for(let j=0; j<selectedValues.length; j++){
+                let index = $scope.variables[i].value.indexOf(selectedValues[j]);
+                if(index > -1) $scope.variables[i].value.splice(index, 1);
+              }
             }
           }
         }
