@@ -37,6 +37,9 @@ var writeInInitFile = function(content){
   $.ajax({
     type: "POST",
     url: "/init/writeInInitFile?content="+content,
+    success: function(data){
+      console.log(data);
+    },
     async: true
   });
 };
