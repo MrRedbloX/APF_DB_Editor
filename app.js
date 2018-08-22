@@ -76,6 +76,9 @@ app.get('/login/getAdminFromId', function(req,res){
 app.get('/init/getValuesOfVar', function(req,res){
     initOperations.getValuesOfVar(req,res);
 });
+app.post('/init/writeInInitFile', function(req,res){
+    initOperations.writeInInitFile(req,res);
+});
 
 app.set('port', process.env.PORT || 3001);
 app.use(express.static(__dirname));
