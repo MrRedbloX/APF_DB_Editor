@@ -80,6 +80,7 @@ app.controller('configurationController', function($scope){
     if(even.originalEvent.keyCode == 46){
       let sel = document.getElementById(name);
       let val = sel.options[sel.selectedIndex].value;
+      console.log(sel.options);
       if(val != null){
         if(confirm('Are you sure you want to delete '+val+' ?')){
           for(let i=0; i<$scope.variables.length; i++){
