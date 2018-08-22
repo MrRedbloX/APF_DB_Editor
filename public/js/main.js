@@ -53,7 +53,7 @@ var alterInitFile = function(newConfig){
     else str += newConfig[i].value;
     str += ';\n';
   }
-  writeFile(str);
+  writeInInitFile(str);
 };
 var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be displayed
 var exceptionColumns = getValueOfVar('exceptionColumns'); //The columns that will not be displayed
