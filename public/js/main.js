@@ -43,7 +43,9 @@ var writeInInitFile = function(content){
 var alterInitFile = function(newConfig){
   let str = '';
   for(let i=0; i<newConfig.length; i++){
-    str += newConfig[i].name+':'+newConfig[i].type+':';
+    let type = newConfig[i].type;
+    if(type == 'input') type = newConfig[i].typeBis;
+    str += newConfig[i].name+':'+type+':';
     if(newConfig[i].value.length != null){
       for(let j=0; j<newConfig[i].value.length; j++){
         str += newConfig[i].value[j];
