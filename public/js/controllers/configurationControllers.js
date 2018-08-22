@@ -99,4 +99,8 @@ app.controller('configurationController', function($scope){
       }
     }
   };
+
+  $scope.saveValues = function(){
+    alterInitFile($scope.variables);
+  };
 });
