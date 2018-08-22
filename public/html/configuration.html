@@ -1,7 +1,7 @@
 <div ng-controller="loginController">
   <div ng-if="isAdmin()" ng-controller="configurationController">
     <h1 class="form-control">Configuration</h1>
-    <div class="form-control" ng-repeat="var in variables" style="padding-top: 2%;">
+    <div class="form-control" ng-repeat="var in variables" style="padding-top: 50px;">
       <div ng-if="var.type == select">
         <label>{{var.description}}</label>
         <select class="form-control">
