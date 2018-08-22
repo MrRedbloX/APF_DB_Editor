@@ -19,7 +19,7 @@ var getValueOfVar = function(name){
       let listVar2 = listVar1[i].split(':');
       if(listVar2[0] == name){
         if(listVar2[1] == 'list'){
-          if(listVar2[2].includes(',')) ret = listVar2[2].split(',');
+          if(listVar2[2] != '') ret = listVar2[2].split(',');
           else ret = [];
         }
         else if(listVar2[1] == 'string') ret = listVar2[2];
