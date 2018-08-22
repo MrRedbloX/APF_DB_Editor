@@ -35,12 +35,6 @@ app.controller('configurationController', function($scope){
       value : exceptionTables
     },
     {
-      name: "forbiddenChar",
-      description: "The forbidden character(s) when the user wants to add/modify a record : ",
-      type: "list",
-      value : forbiddenChar
-    },
-    {
       name: "waitFor",
       description: "The time in ms the application will wait to prevent from network issues is : ",
       type : "input",
