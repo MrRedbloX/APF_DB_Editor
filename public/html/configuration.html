@@ -4,18 +4,18 @@
     <div class="form-control" ng-repeat="var in variables">
       <div ng-if="var.type == select">
         <label>{{var.description}}</label>
-        <select>
+        <select class="form-control">
           <option selected>{{var.selectedValue}}</option>
           <option ng-repeat="val in var.value">{{val}}</option>
         </select>
       </div>
       <div ng-if="var.type == input">
         <label>{{var.description}}</label>
-        <input value="{{var.value}}" />
+        <input class="form-control" value="{{var.value}}" />
       </div>
       <div ng-if="var.type == list">
         <label>{{var.description}}</label>
-        <select id="{{var.name}}" ng-keydown="deleteValue(var.name, $event)" multiple>
+        <select class="form-control" id="{{var.name}}" ng-keydown="deleteValue(var.name, $event)" multiple>
           <option ng-repeat="val in var.value" ng-dblclick="modifyValue(var.name,val)" value="{{val}}" >{{val}}</option>
         </select>
         <input type="button" value="Add" ng-click="addValue(var.name)" class="btn btn-primary btn-sm" />
