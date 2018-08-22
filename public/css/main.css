@@ -121,8 +121,8 @@ fieldset.chartDisplayBorder {
 }
 
 legend.chartDisplayBorder {
-    width:inherit; /* Or auto */
-    padding:0 10px; /* To give a bit of padding on the left and right */
+    width:inherit;
+    padding:0 10px;
     border-bottom:none;
 }
 footer {
