@@ -16,7 +16,7 @@ module.exports = {
     var fs = require('fs');
     var content = '';
     var split = req.query.content.split(';');
-    for(let i=0; i<split.length; i++)
+    for(var i=0; i<split.length; i++)
       content += split[i]+";\n";
 
     fs.writeFile(initFileName, content, (err, data) => {
