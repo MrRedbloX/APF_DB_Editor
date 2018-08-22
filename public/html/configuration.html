@@ -18,7 +18,7 @@
         <select multiple>
           <option ng-repeat="val in var.value">{{val}}</option>
         </select>
-        <input type="button" value="Add" />
+        <input type="button" value="Add" ng-click="addValue(var.name)" />
       </div>
     </div>
   </div>
