@@ -19,7 +19,7 @@ module.exports = {
         res.status(400).send(err);
         throw err;
       }
-      res.status(200).send(data);
+      res.status(200).send("OK");
     });
   }
 }
