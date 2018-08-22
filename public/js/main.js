@@ -18,7 +18,7 @@ var getValueOfVar = function(name){
     for(let i=0; i<listVar1.length; i++){
       let listVar2 = listVar1[i].split(':');
       if(listVar2[0] == name){
-        if(listVar2[1] == 'array') ret = listVar2[2].split(',');
+        if(listVar2[1] == 'list') ret = listVar2[2].split(',');
         else if(listVar2[1] == 'string') ret = listVar2[2];
         else if(listVar2[1] == 'int') ret = parseInt(listVar2[2]);
         else if(listVar2[1] == 'bool'){
