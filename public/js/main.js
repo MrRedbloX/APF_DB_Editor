@@ -44,7 +44,7 @@ var alterInitFile = function(newConfig){
   let str = '';
   for(let i=0; i<newConfig.length; i++){
     str += newConfig[i].name+':'+newConfig[i].type+':';
-    if(typeof newConfig[i].value == "list"){
+    if(newConfig[i].value.length != null){
       for(let j=0; j<newConfig[i].value.length; j++){
         str += newConfig[i].value[j];
         if(j<newConfig[i].value.length -1) str += ',';
@@ -55,9 +55,6 @@ var alterInitFile = function(newConfig){
   }
   writeFile(str);
 };
-var list = {};
-console.log(typeof list);
-
 var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be displayed
 var exceptionColumns = getValueOfVar('exceptionColumns'); //The columns that will not be displayed
 var readOnlyDB = getValueOfVar('readOnlyDB'); //Contains the read only databases
