@@ -59,4 +59,20 @@ app.controller('configurationController', function($scope){
       }
     }
   };
+
+  $scope.modifyValue = function(name, value){
+    let val = prompt('Modify the value', value);
+    if(val != null){
+      for(let i=0; i<$scope.variables.length; i++){
+        if($scope.variables[i].name == name){
+          for(let j=0; j<$scope.variables[i].value.length; j++){
+            if($scope.variables[i].value[j] == value){
+              $scope.variables[i].value[j] = val;
+              break;
+            }
+          }
+        }
+      }
+    }
+  };
 });
