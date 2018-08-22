@@ -75,4 +75,8 @@ app.controller('configurationController', function($scope){
       }
     }
   };
+
+  $scope.deleteValue = function(name, value){
+    alert("Key Press");
+  };
 });
