@@ -5,4 +5,3 @@ displayName:list:name,tenant_name,sg_name,subnet_name,ecs_name,kp_name,vpc_name,
 exceptionTables:list:map;
 waitFor:int:1;
 forbiddenChar:list:#,%,&,+,[,],{,},',",\;
-et
