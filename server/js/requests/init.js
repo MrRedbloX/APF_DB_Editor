@@ -14,8 +14,8 @@ module.exports = {
 
   writeInInitFile: function(req, res) {
     var fs = require('fs');
-    let content = '';
-    let split = req.query.content.split(';');
+    var content = '';
+    var split = req.query.content.split(';');
     for(let i=0; i<split.length; i++)
       content += split[i]+";\n";
 
