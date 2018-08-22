@@ -76,8 +76,8 @@ app.controller('configurationController', function($scope){
     }
   };
 
-  $scope.deleteValue = function(name, $event){
-    console.log($event);
+  $scope.deleteValue = function(name, eve){
+    console.log(eve);
     alert("Key Press");
   };
 });
