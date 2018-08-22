@@ -134,7 +134,7 @@ div.treeProviders {
   padding-bottom: 3%;
 }
 
-select.add_config {
+input.add_config {
   background: url(public/css/img/plus.png) no-repeat center;
   border: none;
 }
