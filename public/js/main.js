@@ -36,7 +36,7 @@ var getValueOfVar = function(name){
 var writeInInitFile = function(content){
   $.ajax({
     type: "POST",
-    url: "/init/writeInInitFile",
+    url: "/init/writeInInitFile?content="+content,
     async: true
   });
 };
