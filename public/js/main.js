@@ -40,7 +40,7 @@ var writeInInitFile = function(content){
     async: true
   });
 };
-writeInInitFile("Test");
+//writeInInitFile("Test");
 
 var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be displayed
 var exceptionColumns = getValueOfVar('exceptionColumns'); //The columns that will not be displayed
