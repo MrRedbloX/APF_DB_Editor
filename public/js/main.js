@@ -33,6 +33,13 @@ var getValueOfVar = function(name){
   else alert("Error on request init file, please contact your administrator");
   return ret;
 }
+var writeInInitFile = function(content){
+  $.ajax({
+    type: "POST",
+    url: "/init/writeInInitFile",
+    async: true
+  });
+};
 
 var exceptionDB = getValueOfVar('exceptionDB'); //The databases that will not be displayed
 var exceptionColumns = getValueOfVar('exceptionColumns'); //The columns that will not be displayed
