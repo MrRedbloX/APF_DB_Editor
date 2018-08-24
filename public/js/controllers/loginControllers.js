@@ -175,6 +175,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
       function errorCallback(data) {
         $scope.successRequest = false;
         $scope.queryLogin = data;
+        alert("data" + data);
         if(callback) callback();
     });
   };
@@ -390,3 +391,15 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
     return ret;
   };
 });
+
+app.controller('resetController'), function($scope){
+  var postgresScope = postgresqlFactory.getScope();
+  var loginScope = loginFactory.getScope();
+
+  $scope.checkInfo = function(){
+    var user= document.getElementById("user").value;
+    var mail= document.getElementById("mail").value;
+  };
+
+
+};
