@@ -400,8 +400,25 @@ app.controller('resetController', function($scope, $http){
     var user= document.getElementById("user").value;
     var mail= document.getElementById("mail").value;
 
-    $scope.getIdFromusermail(user, mail);
+    $scope.check_user(check_user);
   };
+
+  $scope.check_user = function(check_user) {
+    $scope.getIdFromusermail(check_user, function(){
+      if($scope.successRequest){
+        if($scope.queryLogin.data.length > 0){
+          console.log("connu");
+        }
+        else {
+          alert("Id or password incorrect");
+        }
+      }
+      else {
+        console.log($scope.queryLogin);
+        alert("Error on getIdFromMD5 request, check console logs.");
+      }
+    });
+  }
 
   $scope.getIdFromusermail = function(user, mail, callback){
     $http({
@@ -412,7 +429,6 @@ app.controller('resetController', function($scope, $http){
       function successCallback(data) {
         $scope.successRequest = true;
         console.log("succ");
-        console.log("data"+data);
         $scope.queryLogin = data;
         if(callback) callback();
       },
