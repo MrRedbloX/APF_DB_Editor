@@ -444,16 +444,14 @@ app.controller('resetController', function($scope, $http){
 
 app.controller('changeController', function($scope, $http){
 
-  var querystring = require('querystring');
-  
-  $scope.verif = function() {
+    $scope.verif = function() {
 
     console.log("ok");
 
     var pass= document.getElementById("pass").value;
     var passcon= document.getElementById("passcon").value;
 
-    var params = querystring.parse(url.parse(req.url).query);
+    var params = getparams();
 
     if(pass == passcon){
         console.log(pass + " " + params['user']);
@@ -497,4 +495,14 @@ app.controller('changeController', function($scope, $http){
     });
   };
 
+  $scope.getparams = function(){
+    $http({
+      method: 'GET',
+      url: '/login/read_params'
+    })
+    .then(
+      function successCallback(data) {
+        return data;
+      });
+  };
 });
