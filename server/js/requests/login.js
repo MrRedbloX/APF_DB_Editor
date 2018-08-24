@@ -59,7 +59,16 @@ module.exports = {
 
     var client = new pg.Client(loginConString);
 
-    
+    client.connect(function(err,client) {
+      if(err){
+       console.log("Not able to get connection : "+ err);
+       res.status(400).send(err);
+      }
+      else{
+        console.log("Connection successful");
+        
+      }
+    });
   },
 
   //Allows to add a new registered user in database
