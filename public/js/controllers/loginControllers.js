@@ -41,6 +41,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
     var login_page = document.getElementById("connexion");
     var signup_page = document.getElementById("inscription");
     var reset_passwd_page = document.getElementById("reset_passwd");
+    var change_passwd_page = document.getElementById("change_passwd");
     var name = "date=";
     var cook = "";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -68,7 +69,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
             cookid = c.substring(name.length, c.length);
         }
     }
-    if(login_page == null && signup_page == null && reset_passwd_page == null){
+    if(login_page == null && signup_page == null && reset_passwd_page == null && change_passwd == null){
       if(cook == "" && cookid == ""){
         window.location="#!/login";
       }
