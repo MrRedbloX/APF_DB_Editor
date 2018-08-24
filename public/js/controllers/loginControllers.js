@@ -433,7 +433,22 @@ app.controller('resetController', function($scope, $http){
         alert("Error on getIdFromusermail request, check console logs.");
       }
     });
-  }
+  };
+
+  $scope.changemd5 = function(user, md5, callback){
+    $http({
+      method: 'GET',
+      url: '/login/changepass?user='+user+'&md5='+md5
+    })
+    .then(
+      function successCallback() {
+        console.log("pass is changed"):
+        window.location="#!/login";
+      },
+      function errorCallback(data) {
+        console.log("error change pass");
+    });
+  };
 
   $scope.getIdFromusermail = function(user, mail, callback){
     $http({
