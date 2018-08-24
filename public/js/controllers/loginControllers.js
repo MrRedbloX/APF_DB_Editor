@@ -411,11 +411,13 @@ app.controller('resetController', function($scope, $http){
     .then(
       function successCallback(data) {
         $scope.successRequest = true;
+        console.log("succ");
         $scope.queryLogin = data;
         if(callback) callback();
       },
       function errorCallback(data) {
         $scope.successRequest = false;
+        console.log("err");
         $scope.queryLogin = data;
         if(callback) callback();
     });
