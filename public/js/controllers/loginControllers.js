@@ -391,7 +391,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   };
 });
 
-app.controller('resetController', function($scope){
+app.controller('resetController', function($scope, postgresqlFactory){
   var postgresScope = postgresqlFactory.getScope();
   var loginScope = loginFactory.getScope();
 
