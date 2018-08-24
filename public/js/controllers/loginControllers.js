@@ -441,3 +441,58 @@ app.controller('resetController', function($scope, $http){
   };
 
 });
+
+app.controller('resetController', function($scope, $http){
+
+  $scope.verif = function() {
+
+    console.log("ok");
+
+    var pass= document.getElementById("pass").value;
+    var passcon= document.getElementById("passcon").value;
+
+    var params = querystring.parse(url.parse(req.url).query);
+
+    if(pass == passcon){
+        console.log(pass + " " + params['user']);
+    }
+
+  };
+
+  $scope.check_user = function(user, mail, rm) {
+    $scope.getIdFromusermail(user, mail, function(){
+      if($scope.successRequest){
+        if($scope.queryLogin.data.length > 0){
+          console.log("connu");
+          window.location="/#!/change_passwd?user="+user;
+        }
+        else {
+          alert("unknown account");
+        }
+      }
+      else {
+        console.log($scope.queryLogin);
+        alert("Error on getIdFromusermail request, check console logs.");
+      }
+    });
+  }
+
+  $scope.getIdFromusermail = function(user, mail, callback){
+    $http({
+      method: 'GET',
+      url: '/login/verifuser?user='+user+'&mail='+mail
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.queryLogin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.queryLogin = data;
+        if(callback) callback();
+    });
+  };
+
+});
