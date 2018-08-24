@@ -68,7 +68,11 @@ module.exports = {
         console.log("Connection successful");
         client.query("UPDATE APF_ID SET md5 = '"+req.query.md5"' WHERE username = '"+req.query.user+"';" ,function(err,result) {
           client.end(); // closing the connection;
-          
+          if(err){
+             console.log(err);
+             res.status(400).send(err);
+          }
+          else res.status(200).send(result.rows);
         });
       }
     });
