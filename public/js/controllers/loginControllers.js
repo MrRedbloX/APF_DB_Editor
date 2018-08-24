@@ -416,6 +416,20 @@ app.controller('resetController', function($scope, $http){
       });
     };
 
+
+
+    $scope.getuser(userpass, function(){
+      if($scope.successRequest){
+        $scope.check_user(user, mail);
+      }
+      else{
+        console.log($scope.md5);
+        alert("Error on getMD5, check console logs.");
+      }
+    });
+  }
+
+  $scope.check_user = function(user, mail) {
     $scope.verifuser(user, mail, function(){
       if($scope.successRequest){
         if($scope.queryLogin.data.length > 0){
