@@ -416,7 +416,7 @@ app.controller('resetController', function($scope, $http){
           console.log("connu");
           $scope.getMD5(userpass, function(){
             if($scope.successRequest){
-              console.log(newmd5);
+              console.log($scope.md5.data);
             }
             else{
               console.log($scope.md5);
