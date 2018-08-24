@@ -60,7 +60,7 @@ module.exports = {
     var params = querystring.parse(url.parse(req.url).query);
 
     res.status(200).send(params);
-  }
+  },
 
   //Allows to add a new registered user in database
   addLogin: function(req, res){
