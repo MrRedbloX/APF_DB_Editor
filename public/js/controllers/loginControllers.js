@@ -391,7 +391,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   };
 });
 
-app.controller('resetController'), function($scope){
+app.controller('resetController', function($scope){
   var postgresScope = postgresqlFactory.getScope();
   var loginScope = loginFactory.getScope();
 
@@ -400,4 +400,4 @@ app.controller('resetController'), function($scope){
     var mail= document.getElementById("mail").value;
   };
 
-};
+});
