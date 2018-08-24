@@ -408,7 +408,7 @@ app.controller('resetController', function($scope, $http){
       if($scope.successRequest){
         if($scope.queryLogin.data.length > 0){
           console.log("connu");
-          window.location="/change_passwd?user"+user;
+          window.location="/#!/change_passwd?user"+user;
         }
         else {
           alert("unknown account");
