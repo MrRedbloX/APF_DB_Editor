@@ -399,7 +399,7 @@ app.controller('resetController', function($scope, $http){
   $scope.verifuser = function(user, mail, callback){
     $http({
       method: 'GET',
-      url: '/login/verifuser?user='+md5+'&mail'+mail
+      url: '/login/verifuser?user='+user+'&mail'+mail
     })
     .then(
       function successCallback(data) {
