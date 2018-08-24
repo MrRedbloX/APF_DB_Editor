@@ -69,7 +69,7 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
             cookid = c.substring(name.length, c.length);
         }
     }
-    if(login_page == null && signup_page == null && reset_passwd_page == null && change_passwd == null){
+    if(login_page == null && signup_page == null && reset_passwd_page == null && change_passwd_page == null){
       if(cook == "" && cookid == ""){
         window.location="#!/login";
       }
