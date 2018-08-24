@@ -53,7 +53,14 @@ module.exports = {
     });
   },
 
-  
+  changepass: function(req, res){
+
+    var pg = require('pg');
+
+    var client = new pg.Client(loginConString);
+
+    
+  },
 
   //Allows to add a new registered user in database
   addLogin: function(req, res){
