@@ -391,10 +391,28 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   };
 });
 
-app.controller('resetController', function($scope, postgresqlFactory){
+app.controller('resetController', function($scope){
 
   var user= document.getElementById("user").value;
   var mail= document.getElementById("mail").value;
+
+  $scope.verifuser = function(user, mail, callback){
+    $http({
+      method: 'GET',
+      url: '/login/verifuser?user='+md5+'&mail'+mail
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.queryLogin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.queryLogin = data;
+        if(callback) callback();
+    });
+  };
 
   $scope.verifuser(user, mail, function(){
     if($scope.successRequest){

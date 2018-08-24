@@ -29,6 +29,30 @@ module.exports = {
     });
   },
 
+  verifuser: function(req, res){
+    var pg = require('pg');
+
+    var client = new pg.Client(loginConString);
+
+    client.connect(function(err,client) {
+      if(err){
+       console.log("Not able to get connection : "+ err);
+       res.status(400).send(err);
+      }
+      else{
+        console.log("Connection successful");
+        client.query("SELECT username FROM APF_ID WHERE username = '"+req.query.user+"' AND mail = '"+req.query.mail+"';" ,function(err,result) {
+          client.end(); // closing the connection;
+          if(err){
+             console.log(err);
+             res.status(400).send(err);
+          }
+          else res.status(200).send(result.rows);
+        });
+      }
+    });
+  },
+
   //Allows to add a new registered user in database
   addLogin: function(req, res){
     var pg = require('pg');
