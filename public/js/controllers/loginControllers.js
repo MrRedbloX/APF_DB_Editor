@@ -442,7 +442,7 @@ app.controller('resetController', function($scope, $http){
     })
     .then(
       function successCallback() {
-        console.log("pass is changed"):
+        console.log("pass is changed");
         window.location="#!/login";
       },
       function errorCallback(data) {
