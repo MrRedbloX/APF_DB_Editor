@@ -417,6 +417,15 @@ app.controller('resetController', function($scope, $http){
           $scope.getMD5(userpass, function(){
             if($scope.successRequest){
               console.log($scope.md5.data);
+              $scope.changemd5(user, md5, function(){
+                if($scope.successRequest){
+                  console.log("pass is changed");
+                  window.location="#!/login";
+                }
+                else {
+                  console.log("error change pass");
+                }
+              });
             }
             else{
               console.log($scope.md5);
@@ -442,11 +451,12 @@ app.controller('resetController', function($scope, $http){
     })
     .then(
       function successCallback() {
-        console.log("pass is changed");
-        window.location="#!/login";
+        $scope.successRequest = true;
+        if(callback) callback();
       },
       function errorCallback(data) {
-        console.log("error change pass");
+        $scope.successRequest = false;
+        if(callback) callback();
     });
   };
 
