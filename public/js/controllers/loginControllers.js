@@ -396,37 +396,38 @@ app.controller('resetController', function($scope, $http){
   var user= document.getElementById("user").value;
   var mail= document.getElementById("mail").value;
 
-  $scope.verifuser = function(user, mail, callback){
-    $http({
-      method: 'GET',
-      url: '/login/verifuser?user='+user+'&mail'+mail
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.queryLogin = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.queryLogin = data;
-        if(callback) callback();
-    });
-  };
+  $scope.verif = function() {
+    $scope.verifuser = function(user, mail, callback){
+      $http({
+        method: 'GET',
+        url: '/login/verifuser?user='+user+'&mail'+mail
+      })
+      .then(
+        function successCallback(data) {
+          $scope.successRequest = true;
+          $scope.queryLogin = data;
+          if(callback) callback();
+        },
+        function errorCallback(data) {
+          $scope.successRequest = false;
+          $scope.queryLogin = data;
+          if(callback) callback();
+      });
+    };
 
-  $scope.verifuser(user, mail, function(){
-    if($scope.successRequest){
-      if($scope.queryLogin.data.length > 0){
-        console.log("ok");
+    $scope.verifuser(user, mail, function(){
+      if($scope.successRequest){
+        if($scope.queryLogin.data.length > 0){
+          console.log("ok");
+        }
+        else {
+          alert("Id or password incorrect");
+        }
       }
       else {
-        alert("Id or password incorrect");
+        console.log($scope.queryLogin);
+        alert("Error on getIdFromMD5 request, check console logs.");
       }
-    }
-    else {
-      console.log($scope.queryLogin);
-      alert("Error on getIdFromMD5 request, check console logs.");
-    }
-  });
-
+    });
+  }
 });
