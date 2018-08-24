@@ -409,12 +409,20 @@ app.controller('resetController', function($scope, $http){
   };
 
   $scope.check_user = function(user, mail, pass) {
+    var userpass = user+pass;
     $scope.getIdFromusermail(user, mail, function(){
       if($scope.successRequest){
         if($scope.queryLogin.data.length > 0){
           console.log("connu");
-          var newmd5 = $scope.getMD5(user+pass);
-          console.log(newmd5);
+          $scope.getMD5(userpass, function(){
+            if($scope.successRequest){
+              console.log(newmd5);
+            }
+            else{
+              console.log($scope.md5);
+              alert("Error on getMD5, check console logs.");
+            }
+          });
         }
         else {
           alert("unknown account");
