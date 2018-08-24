@@ -53,15 +53,6 @@ module.exports = {
     });
   },
 
-  read_params: function(req, res){
-
-    var querystring = require('querystring');
-
-    var params = querystring.parse(url.parse(req.url).query);
-
-    res.status(200).send(params);
-  },
-
   //Allows to add a new registered user in database
   addLogin: function(req, res){
     var pg = require('pg');
