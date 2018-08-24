@@ -392,12 +392,23 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
 });
 
 app.controller('resetController', function($scope, postgresqlFactory){
-  var postgresScope = postgresqlFactory.getScope();
-  var loginScope = loginFactory.getScope();
 
-  $scope.checkInfo = function(){
-    var user= document.getElementById("user").value;
-    var mail= document.getElementById("mail").value;
-  };
+  var user= document.getElementById("user").value;
+  var mail= document.getElementById("mail").value;
+
+  $scope.verifuser(user, mail, function(){
+    if($scope.successRequest){
+      if($scope.queryLogin.data.length > 0){
+        console.log("ok");
+      }
+      else {
+        alert("Id or password incorrect");
+      }
+    }
+    else {
+      console.log($scope.queryLogin);
+      alert("Error on getIdFromMD5 request, check console logs.");
+    }
+  });
 
 });
