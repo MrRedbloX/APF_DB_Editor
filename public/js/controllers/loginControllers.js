@@ -433,6 +433,7 @@ app.controller('resetController', function($scope, $http){
         alert("Error on getIdFromusermail request, check console logs.");
       }
     });
+  }
   };
 
   $scope.changemd5 = function(user, md5, callback){
