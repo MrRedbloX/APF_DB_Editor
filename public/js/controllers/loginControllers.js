@@ -391,7 +391,7 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
   };
 });
 
-app.controller('resetController', function($scope){
+app.controller('resetController', function($scope, $http){
 
   var user= document.getElementById("user").value;
   var mail= document.getElementById("mail").value;
