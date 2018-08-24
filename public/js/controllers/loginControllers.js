@@ -444,6 +444,8 @@ app.controller('resetController', function($scope, $http){
 
 app.controller('changeController', function($scope, $http){
 
+  var querystring = require('querystring');
+  
   $scope.verif = function() {
 
     console.log("ok");
