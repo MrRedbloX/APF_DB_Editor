@@ -400,11 +400,11 @@ app.controller('resetController', function($scope, $http){
     var user= document.getElementById("user").value;
     var mail= document.getElementById("mail").value;
 
-    $scope.check_user(check_user);
+    $scope.check_user(user, mail);
   };
 
-  $scope.check_user = function(check_user) {
-    $scope.getIdFromusermail(check_user, function(){
+  $scope.check_user = function(user, mail, rm) {
+    $scope.getIdFromusermail(user, mail, function(){
       if($scope.successRequest){
         if($scope.queryLogin.data.length > 0){
           console.log("connu");
