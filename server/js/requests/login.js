@@ -42,12 +42,12 @@ module.exports = {
       else{
         console.log("Connection successful");
         client.query("SELECT username FROM APF_ID WHERE username = '"+req.query.user+"' AND mail = '"+req.query.mail+"';" ,function(err,result) {
-        client.end(); // closing the connection;
-        if(err){
-           console.log(err);
-           res.status(400).send(err);
-        }
-        else res.status(200).send(result.rows);
+          client.end(); // closing the connection;
+          if(err){
+             console.log(err);
+             res.status(400).send(err);
+          }
+          else res.status(200).send(result.rows);
         });
       }
     });
