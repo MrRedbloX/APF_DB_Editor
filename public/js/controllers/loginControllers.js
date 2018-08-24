@@ -401,7 +401,13 @@ app.controller('resetController', function($scope, $http){
     var user= document.getElementById("user").value;
     var mail= document.getElementById("mail").value;
 
-    $scope.check_user(user, mail);
+    var pass= document.getElementById("pass").value;
+    var passcon= document.getElementById("passcon").value;
+
+    if(pass == passcon){
+        $scope.check_user(user, mail);
+    }
+
   };
 
   $scope.check_user = function(user, mail, rm) {
@@ -440,69 +446,4 @@ app.controller('resetController', function($scope, $http){
     });
   };
 
-});
-
-app.controller('changeController', function($scope, $http){
-
-    $scope.verif = function() {
-
-    console.log("ok");
-
-    var pass= document.getElementById("pass").value;
-    var passcon= document.getElementById("passcon").value;
-
-    var params = $scope.getparams();
-
-    if(pass == passcon){
-        console.log(pass + " " + params['user']);
-    }
-
-  };
-
-  $scope.check_user = function(user, mail, rm) {
-    $scope.getIdFromusermail(user, mail, function(){
-      if($scope.successRequest){
-        if($scope.queryLogin.data.length > 0){
-          console.log("connu");
-          window.location="/#!/change_passwd?user="+user;
-        }
-        else {
-          alert("unknown account");
-        }
-      }
-      else {
-        console.log($scope.queryLogin);
-        alert("Error on getIdFromusermail request, check console logs.");
-      }
-    });
-  }
-
-  $scope.getIdFromusermail = function(user, mail, callback){
-    $http({
-      method: 'GET',
-      url: '/login/verifuser?user='+user+'&mail='+mail
-    })
-    .then(
-      function successCallback(data) {
-        $scope.successRequest = true;
-        $scope.queryLogin = data;
-        if(callback) callback();
-      },
-      function errorCallback(data) {
-        $scope.successRequest = false;
-        $scope.queryLogin = data;
-        if(callback) callback();
-    });
-  };
-
-  $scope.getparams = function(){
-    $http({
-      method: 'GET',
-      url: '/login/read_params'
-    })
-    .then(
-      function successCallback(data) {
-        return data;
-      });
-  };
 });
