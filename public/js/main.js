@@ -185,6 +185,9 @@ app.config(function($routeProvider) {
     .when("/providers", {
         templateUrl : "public/html/providers.html"
     })
+    .when("/providers", {
+        templateUrl : "public/html/reset_passwd.html"
+    })
     .otherwise({
         redirectTo: '/'
     });
