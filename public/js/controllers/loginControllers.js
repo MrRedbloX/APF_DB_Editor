@@ -408,8 +408,8 @@ app.controller('resetController', function($scope, $http){
       }
     });
   };
-  
-  $scope.verifuser = function(user, mail, callback){
+
+  $scope.getuser = function(user, mail, callback){
     $http({
       method: 'GET',
       url: '/login/verifuser?user='+user+'&mail='+mail
@@ -426,6 +426,8 @@ app.controller('resetController', function($scope, $http){
         if(callback) callback();
     });
   };
+
+
 
   $scope.check_user = function(user, mail) {
     $scope.verifuser(user, mail, function(){
