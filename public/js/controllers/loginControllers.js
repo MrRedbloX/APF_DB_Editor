@@ -393,10 +393,11 @@ app.controller('signupController', function($scope, $http, postgresqlFactory, lo
 
 app.controller('resetController', function($scope, $http){
 
-  var user= document.getElementById("user").value;
-  var mail= document.getElementById("mail").value;
-
   $scope.verif = function() {
+
+    var user= document.getElementById("user").value;
+    var mail= document.getElementById("mail").value;
+
     $scope.verifuser = function(user, mail, callback){
       $http({
         method: 'GET',
