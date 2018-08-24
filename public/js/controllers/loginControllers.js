@@ -398,18 +398,10 @@ app.controller('resetController', function($scope, $http){
     var user= document.getElementById("user").value;
     var mail= document.getElementById("mail").value;
 
-    $scope.getuser(user, mail, function(){
-      if($scope.successRequest){
-        $scope.check_user(user, mail);
-      }
-      else{
-        console.log($scope.md5);
-        alert("Error on getMD5, check console logs.");
-      }
-    });
+    $scope.getIdFromusermail(user, mail);
   };
 
-  $scope.getuser = function(user, mail, callback){
+  $scope.getIdFromusermail = function(user, mail, callback){
     $http({
       method: 'GET',
       url: '/login/verifuser?user='+user+'&mail='+mail
@@ -427,22 +419,4 @@ app.controller('resetController', function($scope, $http){
     });
   };
 
-
-
-  $scope.check_user = function(user, mail) {
-    $scope.verifuser(user, mail, function(){
-      if($scope.successRequest){
-        if($scope.queryLogin.data.length > 0){
-          console.log("ok");
-        }
-        else {
-          alert("Id or password incorrect");
-        }
-      }
-      else {
-        console.log($scope.queryLogin);
-        alert("Error on getIdFromMD5 request, check console logs.");
-      }
-    });
-  }
 });
