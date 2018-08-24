@@ -412,6 +412,7 @@ app.controller('resetController', function($scope, $http){
       function successCallback(data) {
         $scope.successRequest = true;
         console.log("succ");
+        console.log("data"+data);
         $scope.queryLogin = data;
         if(callback) callback();
       },
