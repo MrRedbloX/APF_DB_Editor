@@ -67,6 +67,9 @@ app.get('/db/getDbMemory', function(req, res){
 app.get('/login/getIdFromMd5NameMail', function(req,res){
     loginOperations.getIdFromMd5NameMail(req,res);
 });
+app.get('/login/verifuser', function(req,res){
+    loginOperations.verifuser(req,res);
+});
 app.post('/login/sendConfirmEmail', function(req,res){
     loginOperations.sendConfirmEmail(req,res);
 });
