@@ -451,7 +451,7 @@ app.controller('changeController', function($scope, $http){
     var pass= document.getElementById("pass").value;
     var passcon= document.getElementById("passcon").value;
 
-    var params = getparams();
+    var params = $scope.getparams();
 
     if(pass == passcon){
         console.log(pass + " " + params['user']);
