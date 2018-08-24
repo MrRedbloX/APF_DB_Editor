@@ -400,5 +400,4 @@ app.controller('resetController'), function($scope){
     var mail= document.getElementById("mail").value;
   };
 
-
 };
