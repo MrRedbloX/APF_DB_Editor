@@ -70,6 +70,9 @@ app.get('/login/getIdFromMd5NameMail', function(req,res){
 app.get('/login/verifuser', function(req,res){
     loginOperations.verifuser(req,res);
 });
+app.get('/login/read_params', function(req,res){
+    loginOperations.read_params(req,res);
+});
 app.post('/login/sendConfirmEmail', function(req,res){
     loginOperations.sendConfirmEmail(req,res);
 });
