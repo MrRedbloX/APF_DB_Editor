@@ -398,27 +398,7 @@ app.controller('resetController', function($scope, $http){
     var user= document.getElementById("user").value;
     var mail= document.getElementById("mail").value;
 
-    $scope.verifuser = function(user, mail, callback){
-      $http({
-        method: 'GET',
-        url: '/login/verifuser?user='+user+'&mail='+mail
-      })
-      .then(
-        function successCallback(data) {
-          $scope.successRequest = true;
-          $scope.queryLogin = data;
-          if(callback) callback();
-        },
-        function errorCallback(data) {
-          $scope.successRequest = false;
-          $scope.queryLogin = data;
-          if(callback) callback();
-      });
-    };
-
-
-
-    $scope.getuser(userpass, function(){
+    $scope.getuser(user, mail, function(){
       if($scope.successRequest){
         $scope.check_user(user, mail);
       }
@@ -427,7 +407,25 @@ app.controller('resetController', function($scope, $http){
         alert("Error on getMD5, check console logs.");
       }
     });
-  }
+  };
+  
+  $scope.verifuser = function(user, mail, callback){
+    $http({
+      method: 'GET',
+      url: '/login/verifuser?user='+user+'&mail='+mail
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.queryLogin = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.queryLogin = data;
+        if(callback) callback();
+    });
+  };
 
   $scope.check_user = function(user, mail) {
     $scope.verifuser(user, mail, function(){
