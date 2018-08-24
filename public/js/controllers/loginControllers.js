@@ -410,12 +410,12 @@ app.controller('resetController', function($scope, $http){
           console.log("connu");
         }
         else {
-          alert("Id or password incorrect");
+          alert("unknown account");
         }
       }
       else {
         console.log($scope.queryLogin);
-        alert("Error on getIdFromMD5 request, check console logs.");
+        alert("Error on getIdFromusermail request, check console logs.");
       }
     });
   }
@@ -428,13 +428,11 @@ app.controller('resetController', function($scope, $http){
     .then(
       function successCallback(data) {
         $scope.successRequest = true;
-        console.log("succ");
         $scope.queryLogin = data;
         if(callback) callback();
       },
       function errorCallback(data) {
         $scope.successRequest = false;
-        console.log("err");
         $scope.queryLogin = data;
         if(callback) callback();
     });
