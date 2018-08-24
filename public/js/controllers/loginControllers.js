@@ -403,17 +403,18 @@ app.controller('resetController', function($scope, $http){
     var passcon= document.getElementById("passcon").value;
 
     if(pass == passcon){
-        $scope.check_user(user, mail);
+        $scope.check_user(user, mail, pass);
     }
 
   };
 
-  $scope.check_user = function(user, mail, rm) {
+  $scope.check_user = function(user, mail, pass) {
     $scope.getIdFromusermail(user, mail, function(){
       if($scope.successRequest){
         if($scope.queryLogin.data.length > 0){
           console.log("connu");
-          window.location="/#!/change_passwd?user"+user;
+          var newmd5 = $scope.getMD5(user+pass);
+          console.log(newmd5);
         }
         else {
           alert("unknown account");
@@ -440,6 +441,24 @@ app.controller('resetController', function($scope, $http){
       function errorCallback(data) {
         $scope.successRequest = false;
         $scope.queryLogin = data;
+        if(callback) callback();
+    });
+  };
+
+  $scope.getMD5 = function(up, callback){
+    $http({
+      method: 'GET',
+      url: '/login/getTheMd5?up='+up
+    })
+    .then(
+      function successCallback(data) {
+        $scope.successRequest = true;
+        $scope.md5 = data;
+        if(callback) callback();
+      },
+      function errorCallback(data) {
+        $scope.successRequest = false;
+        $scope.md5 = data;
         if(callback) callback();
     });
   };
