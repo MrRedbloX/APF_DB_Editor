@@ -395,6 +395,8 @@ app.controller('resetController', function($scope, $http){
 
   $scope.verif = function() {
 
+    console.log("ok");
+
     var user= document.getElementById("user").value;
     var mail= document.getElementById("mail").value;
 
