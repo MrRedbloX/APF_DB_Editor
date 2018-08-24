@@ -175,7 +175,6 @@ app.controller('loginController', function($scope, $http, $route, postgresqlFact
       function errorCallback(data) {
         $scope.successRequest = false;
         $scope.queryLogin = data;
-        alert("data" + data);
         if(callback) callback();
     });
   };
