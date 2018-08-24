@@ -417,7 +417,7 @@ app.controller('resetController', function($scope, $http){
           $scope.getMD5(userpass, function(){
             if($scope.successRequest){
               console.log($scope.md5.data);
-              $scope.changemd5(user, md5, function(){
+              $scope.changemd5(user, $scope.md5.data, function(){
                 if($scope.successRequest){
                   console.log("pass is changed");
                   window.location="#!/login";
