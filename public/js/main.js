@@ -189,7 +189,7 @@ app.config(function($routeProvider) {
         templateUrl : "public/html/reset_passwd.html"
     })
     .when("/change_passwd", {
-        templateUrl : "public/html/change_passwd.html"
+        templateUrl : "public/html/change_pass.html"
     })
     .otherwise({
         redirectTo: '/'
