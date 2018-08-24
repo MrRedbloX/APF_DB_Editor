@@ -442,7 +442,7 @@ app.controller('resetController', function($scope, $http){
 
 });
 
-app.controller('resetController', function($scope, $http){
+app.controller('changeController', function($scope, $http){
 
   $scope.verif = function() {
 
